@@ -54,11 +54,16 @@ local function Resize()
 
 	PluginInstallFrame.Desc1:ClearAllPoints()
 	PluginInstallFrame.Desc1:SetPoint("TOP", PluginInstallFrame.SubTitle, "BOTTOM", 0, -30)
+	PluginInstallFrame.tutorialImage:ClearAllPoints()
+	PluginInstallFrame.tutorialImage:SetPoint("BOTTOM", 0, 100)
 end
 
 local function OnEnter(button)
 	button:SetBackdropBorderColor(SpectraUI.UIColor.r, SpectraUI.UIColor.g, SpectraUI.UIColor.b, SpectraUI.UIColor.a)
-	if button.Pic then PluginInstallFrame.tutorialImage:SetTexture(button.Pic) end
+	if button.Pic then
+		PluginInstallFrame.tutorialImage:SetTexture(button.Pic)
+		E:UIFrameFadeIn(PluginInstallFrame.tutorialImage, 0.75, 0, 1)
+	end
 end
 
 local function OnLeave(button)
@@ -221,6 +226,25 @@ local InstallerData = {
 			PluginInstallFrame.Option4:SetText("OmniCD")
 			PluginInstallFrame.Option4.Pic = path .. "preview\\OmniCD.tga"
 		end,
+		[7] = function()
+			Resize()
+			ResetPic()
+			PluginInstallFrame.SubTitle:SetText("Blizzard")
+			PluginInstallFrame.Desc1:SetText("On Retail, you can now copy and import the Blizzard interface profile.")
+			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400High|r")
+
+			PluginInstallFrame.Option1:Show()
+			PluginInstallFrame.Option1:SetScript("OnClick", function()
+				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "1 39 0 0 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%)#+#,$ 0 1 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%(#,$ 0 2 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%(#,$ 0 3 1 5 5 UIParent -5.0 -77.0 -1 #$$$%/&('%(#,$ 0 4 1 5 5 UIParent -5.0 -77.0 -1 #$$$%/&('%(#,$ 0 5 1 1 4 UIParent 0.0 0.0 -1 ##$$%/&('%(#,$ 0 6 1 1 4 UIParent 0.0 -50.0 -1 ##$$%/&('%(#,$ 0 7 1 1 4 UIParent 0.0 -100.0 -1 ##$$%/&('%(#,$ 0 10 1 7 7 UIParent 0.0 45.0 -1 ##$$&('% 0 11 1 7 7 UIParent 0.0 45.0 -1 ##$$&('%,# 0 12 1 7 7 UIParent 0.0 45.0 -1 ##$$&('% 1 -1 1 4 4 UIParent 0.0 0.0 -1 ##$#%# 2 -1 1 2 2 UIParent 0.0 0.0 -1 ##$#%( 3 0 1 8 7 UIParent -300.0 250.0 -1 $#3# 3 1 1 6 7 UIParent 300.0 250.0 -1 %#3# 3 2 1 6 7 UIParent 520.0 265.0 -1 %#&#3# 3 3 1 0 2 CompactRaidFrameManager 0.0 -7.0 -1 '#(#)#-#.#/#1$3# 3 4 1 0 2 CompactRaidFrameManager 0.0 -5.0 -1 ,#-#.#/#0#1#2( 3 5 1 5 5 UIParent 0.0 0.0 -1 &#*$3# 3 6 1 5 5 UIParent 0.0 0.0 -1 -#.#/#4$ 3 7 1 4 4 UIParent 0.0 0.0 -1 3# 4 -1 1 7 7 UIParent 0.0 45.0 -1 # 5 -1 1 7 7 UIParent 0.0 45.0 -1 # 6 0 1 2 2 UIParent -255.0 -10.0 -1 ##$#%#&.(()( 6 1 1 2 2 UIParent -270.0 -155.0 -1 ##$#%#'+(()( 7 -1 1 7 7 UIParent 0.0 45.0 -1 # 8 -1 0 6 6 UIParent 35.0 50.0 -1 #'$A%$&7 9 -1 1 7 7 UIParent 0.0 45.0 -1 # 10 -1 1 0 0 UIParent 16.0 -116.0 -1 # 11 -1 1 8 8 UIParent -9.0 85.0 -1 # 12 -1 1 2 2 UIParent -110.0 -275.0 -1 #K$#%# 13 -1 1 8 8 MicroButtonAndBagsBar 0.0 0.0 -1 ##$#%)&- 14 -1 1 2 2 MicroButtonAndBagsBar 0.0 10.0 -1 ##$#%( 15 0 1 7 7 StatusTrackingBarManager 0.0 0.0 -1 # 15 1 1 7 7 StatusTrackingBarManager 0.0 17.0 -1 # 16 -1 1 5 5 UIParent 0.0 0.0 -1 #( 17 -1 1 1 1 UIParent 0.0 -100.0 -1 ## 18 -1 1 5 5 UIParent 0.0 0.0 -1 #- 19 -1 1 7 7 UIParent 0.0 0.0 -1 ##")
+			end)
+			PluginInstallFrame.Option1:SetText("Blizzard")
+
+			PluginInstallFrame.Option2:Hide()
+
+			PluginInstallFrame.Option3:Hide()
+
+			PluginInstallFrame.Option4:Hide()
+		end,
 		[6] = function()
 			Resize()
 			ResetPic()
@@ -245,7 +269,8 @@ local InstallerData = {
 		[3] = "Weakaura",
 		[4] = "AddOns 1",
 		[5] = "AddOns 2",
-		[6] = "Installation Complete",
+		[6] = "Blizzard",
+		[7] = "Installation Complete",
 	},
 	StepTitlesColor = { 0.9, 0.9, 0.9 },
 	StepTitlesColorSelected = { 0, 0.98, 0.44 },
