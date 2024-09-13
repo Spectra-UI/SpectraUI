@@ -135,7 +135,7 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("ElvUI")
 			PluginInstallFrame.Desc1:SetText("These are the layouts that are available. Please click a button below to apply the layout of your choosing.")
-			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400High|r")
+			PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
 				SpectraUI:ElvUIProfile()
@@ -147,7 +147,7 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Weakaura")
 			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
-			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400High|r")
+			PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
@@ -168,7 +168,7 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("AddOns 1")
 			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
-			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400Medium|r")
+			PluginInstallFrame.Desc2:SetText("Importance: |CFFFF9130Medium|r")
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
@@ -196,7 +196,7 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("AddOns 2")
 			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
-			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400Low|r")
+			PluginInstallFrame.Desc2:SetText("Importance: |CFF9BFF30Low|r")
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
@@ -226,12 +226,12 @@ local InstallerData = {
 			PluginInstallFrame.Option4:SetText("OmniCD")
 			PluginInstallFrame.Option4.Pic = path .. "preview\\OmniCD.tga"
 		end,
-		[7] = function()
+		[6] = function()
 			Resize()
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Blizzard")
 			PluginInstallFrame.Desc1:SetText("On Retail, you can now copy and import the Blizzard interface profile.")
-			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400High|r")
+			PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
@@ -245,7 +245,7 @@ local InstallerData = {
 
 			PluginInstallFrame.Option4:Hide()
 		end,
-		[6] = function()
+		[7] = function()
 			Resize()
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Installation Complete")
