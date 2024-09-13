@@ -20,6 +20,5 @@ function SpectraUI:CooldownToGo()
 		["font"] = "SpectraUI Caption",
 	}
 
-	local profileDB = CooldownToGoDB["profileKeys"] or {}
-	profileDB[E.mynameRealm] = "SpectraUI"
+	CooldownToGoDB.profileKeys[E.mynameRealm] = "SpectraUI"
 end
