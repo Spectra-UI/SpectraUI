@@ -58,9 +58,7 @@ end
 
 local function OnEnter(button)
 	button:SetBackdropBorderColor(SpectraUI.UIColor.r, SpectraUI.UIColor.g, SpectraUI.UIColor.b, SpectraUI.UIColor.a)
-	if button.Pic then
-		PluginInstallFrame.tutorialImage:SetTexture(button.Pic)
-	end
+	if button.Pic then PluginInstallFrame.tutorialImage:SetTexture(button.Pic) end
 end
 
 local function OnLeave(button)
@@ -109,12 +107,8 @@ local InstallerData = {
 		[1] = function()
 			Resize()
 			PluginInstallFrame.SubTitle:SetText("Welcome to the installation for " .. SpectraUI.Name)
-			PluginInstallFrame.Desc1:SetText(
-				"This installation process will guide you through a few steps and create a new ElvUI profile."
-			)
-			PluginInstallFrame.Desc2:SetText(
-				"Please press the continue button if you wish to go through the installation process, otherwise click the 'Skip Process' button."
-			)
+			PluginInstallFrame.Desc1:SetText("This installation process will guide you through a few steps and create a new ElvUI profile.")
+			PluginInstallFrame.Desc2:SetText("Please press the continue button if you wish to go through the installation process, otherwise click the 'Skip Process' button.")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
 			PluginInstallFrame.Option1:SetText("Skip Process")
@@ -126,9 +120,7 @@ local InstallerData = {
 		[2] = function()
 			Resize()
 			PluginInstallFrame.SubTitle:SetText("ElvUI")
-			PluginInstallFrame.Desc1:SetText(
-				"These are the layouts that are available. Please click a button below to apply the layout of your choosing."
-			)
+			PluginInstallFrame.Desc1:SetText("These are the layouts that are available. Please click a button below to apply the layout of your choosing.")
 			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400High|r")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
@@ -139,9 +131,7 @@ local InstallerData = {
 		[3] = function()
 			Resize()
 			PluginInstallFrame.SubTitle:SetText("Weakaura")
-			PluginInstallFrame.Desc1:SetText(
-				"These are the profiles that are available. Please click a button below to apply the profile for the AddOn."
-			)
+			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
 			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400High|r")
 
 			PluginInstallFrame.Option1:Show()
@@ -161,9 +151,7 @@ local InstallerData = {
 		[4] = function()
 			Resize()
 			PluginInstallFrame.SubTitle:SetText("AddOns 1")
-			PluginInstallFrame.Desc1:SetText(
-				"These are the profiles that are available. Please click a button below to apply the profile for the AddOn."
-			)
+			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
 			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400Medium|r")
 
 			PluginInstallFrame.Option1:Show()
@@ -190,9 +178,7 @@ local InstallerData = {
 		[5] = function()
 			Resize()
 			PluginInstallFrame.SubTitle:SetText("AddOns 2")
-			PluginInstallFrame.Desc1:SetText(
-				"These are the profiles that are available. Please click a button below to apply the profile for the AddOn."
-			)
+			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
 			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400Low|r")
 
 			PluginInstallFrame.Option1:Show()
@@ -227,9 +213,7 @@ local InstallerData = {
 			Resize()
 			PluginInstallFrame.SubTitle:SetText("Installation Complete")
 			PluginInstallFrame.Desc1:SetText("You have completed the installation process.")
-			PluginInstallFrame.Desc2:SetText(
-				"Please click the button below in order to finalize the process and automatically reload your UI."
-			)
+			PluginInstallFrame.Desc2:SetText("Please click the button below in order to finalize the process and automatically reload your UI.")
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
@@ -335,10 +319,13 @@ local function InsertOptions()
 	}
 end
 
+function SpectraUI:Print(...)
+	local printName = SpectraUI.Icon .. " " .. SpectraUI.Name .. ":"
+	print(printName, ...)
+end
+
 function SpectraUI:Setup_mMediaTag()
-	if not IsAddOnLoaded("ElvUI_mMediaTag") then
-		return
-	end
+	if not IsAddOnLoaded("ElvUI_mMediaTag") then return end
 
 	local textureCoords = {
 		WARRIOR = { 0, 0, 0, 0.125, 0.125, 0, 0.125, 0.125 },

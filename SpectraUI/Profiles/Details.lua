@@ -17,4 +17,6 @@ function SpectraUI:Details()
 	if "SpectraUI" ~= _G.Details:GetCurrentProfileName() then
 		_G.Details:ApplyProfile("SpectraUI")
 	end
+
+	SpectraUI:Print("|CFFB707E2FFDetails|r" .. " profile |CFF03FA6Eset|r!")
 end

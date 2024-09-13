@@ -3,7 +3,6 @@ local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoa
 
 -- CDTL2 profile setup
 function SpectraUI:CDTL2()
-	print(SpectraUI.Name, "CooldownTimeline2")
 	if not IsAddOnLoaded("CooldownTimeline2") then return end
 	CDTL2DB.profiles["SpectraUI"] = {
 		["barFrames"] = {
@@ -12637,4 +12636,6 @@ function SpectraUI:CDTL2()
 	}
 
 	CDTL2DB.profileKeys[E.mynameRealm] = "SpectraUI"
+
+	SpectraUI:Print("|CFFB707E2FFCooldownTimeline2|r" .. " profile |CFF03FA6Eset|r!")
 end

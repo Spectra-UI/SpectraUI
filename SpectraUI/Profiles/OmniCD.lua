@@ -3,7 +3,6 @@ local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoa
 
 -- OmniCD profile setup
 function SpectraUI:OmniCD()
-	print(SpectraUI.Name, "OmniCD")
 	if not IsAddOnLoaded("OmniCD") then return end
 
 	OmniCDDB.profiles["SpectraUI"] = {
@@ -324,4 +323,6 @@ function SpectraUI:OmniCD()
 	}
 
 	OmniCDDB.profileKeys[E.mynameRealm] = "SpectraUI"
+
+	SpectraUI:Print("|CFFB707E2FFOmniCD|r" .. " profile |CFF03FA6Eset|r!")
 end

@@ -3,7 +3,6 @@ local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoa
 
 -- Hekili profile setup
 function SpectraUI:Hekili()
-	print(SpectraUI.Name, "Hekili")
 	if not IsAddOnLoaded("Hekili") then return end
 
 	HekiliDB.profiles["Spectra"] = {
@@ -3699,4 +3698,6 @@ function SpectraUI:Hekili()
 	}
 
 	HekiliDB.profileKeys[E.mynameRealm] = "SpectraUI"
+
+	SpectraUI:Print("|CFFB707E2FFHekili|r" .. " profile |CFF03FA6Eset|r!")
 end

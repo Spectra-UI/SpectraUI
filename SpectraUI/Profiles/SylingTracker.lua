@@ -3,7 +3,6 @@ local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoa
 
 -- SylingTracker profile setup
 function SpectraUI:SylingTracker()
-	print(SpectraUI.Name, "SylingTracker")
 	if not IsAddOnLoaded("SylingTracker") then
 		return
 	end
@@ -339,4 +338,6 @@ function SpectraUI:SylingTracker()
 			["hide"] = true,
 		},
 	}
+
+	SpectraUI:Print("|CFFB707E2FFSylingTracker|r" .. " profile |CFF03FA6Eset|r!")
 end

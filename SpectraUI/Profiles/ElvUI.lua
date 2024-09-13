@@ -28,11 +28,8 @@ function SpectraUI:ElvUIProfile()
 	D:ImportProfile(profile)
 	D:ImportProfile(global)
 
+	E:SetupCVars()
 	E:SetupChat()
 
-	-- Setup UI Scale
-	--E.global["general"]["UIScale"] = 0.51
-
-	PluginInstallStepComplete.message = "Layout Set"
-	PluginInstallStepComplete:Show()
+	SpectraUI:Print("|CFFB707E2FFElvUI|r" .. " profile |CFF03FA6Eset|r!")
 end

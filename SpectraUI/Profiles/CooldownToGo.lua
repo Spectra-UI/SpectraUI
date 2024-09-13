@@ -3,7 +3,6 @@ local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoa
 
 -- CooldownToGo profile setup
 function SpectraUI:CooldownToGo()
-	print(SpectraUI.Name, "CooldownToGo")
 	if not IsAddOnLoaded("CooldownToGo") then return end
 
 	CooldownToGoDB.profiles["SpectraUI"] = {
@@ -21,4 +20,6 @@ function SpectraUI:CooldownToGo()
 	}
 
 	CooldownToGoDB.profileKeys[E.mynameRealm] = "SpectraUI"
+
+	SpectraUI:Print("|CFFB707E2FFCooldownToGo|r" .. " profile |CFF03FA6Eset|r!")
 end
