@@ -19514,7 +19514,8 @@
         "CDTL2DB",
         "CooldownToGoDB",
         "HekiliDB",
-        "OmniCDDB"
+        "OmniCDDB",
+        "PluginInstallFrame"
   ],
   "diagnostics.disable": ["deprecated", "inject-field", "undefined-field",
         "cast-local-type"]

@@ -96,6 +96,13 @@ local function SetEvents()
 	PluginInstallFrame.Prev:SetScript("OnLeave", OnLeave)
 end
 
+local function ResetPic()
+	PluginInstallFrame.Option1.Pic = nil
+	PluginInstallFrame.Option2.Pic = nil
+	PluginInstallFrame.Option3.Pic = nil
+	PluginInstallFrame.Option4.Pic = nil
+end
+
 --This is the data we pass on to the ElvUI Plugin Installer.
 --The Plugin Installer is reponsible for displaying the install guide for this layout.
 local InstallerData = {
@@ -106,6 +113,7 @@ local InstallerData = {
 	Pages = {
 		[1] = function()
 			Resize()
+			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Welcome to the installation for " .. SpectraUI.Name)
 			PluginInstallFrame.Desc1:SetText("This installation process will guide you through a few steps and create a new ElvUI profile.")
 			PluginInstallFrame.Desc2:SetText("Please press the continue button if you wish to go through the installation process, otherwise click the 'Skip Process' button.")
@@ -119,6 +127,7 @@ local InstallerData = {
 		end,
 		[2] = function()
 			Resize()
+			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("ElvUI")
 			PluginInstallFrame.Desc1:SetText("These are the layouts that are available. Please click a button below to apply the layout of your choosing.")
 			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400High|r")
@@ -130,6 +139,7 @@ local InstallerData = {
 		end,
 		[3] = function()
 			Resize()
+			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Weakaura")
 			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
 			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400High|r")
@@ -150,6 +160,7 @@ local InstallerData = {
 		end,
 		[4] = function()
 			Resize()
+			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("AddOns 1")
 			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
 			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400Medium|r")
@@ -177,6 +188,7 @@ local InstallerData = {
 		end,
 		[5] = function()
 			Resize()
+			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("AddOns 2")
 			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
 			PluginInstallFrame.Desc2:SetText("Importance: |cff07D400Low|r")
@@ -211,6 +223,7 @@ local InstallerData = {
 		end,
 		[6] = function()
 			Resize()
+			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Installation Complete")
 			PluginInstallFrame.Desc1:SetText("You have completed the installation process.")
 			PluginInstallFrame.Desc2:SetText("Please click the button below in order to finalize the process and automatically reload your UI.")
