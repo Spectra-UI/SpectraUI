@@ -19511,7 +19511,8 @@
         "PLAYERSPELLS_BUTTON",
         "DUNGEON_SCORE",
         "GREAT_VAULT_REWARDS",
-        "CDTL2DB"
+        "CDTL2DB",
+        "CooldownToGoDB"
   ],
   "diagnostics.disable": ["deprecated", "inject-field", "undefined-field",
         "cast-local-type"]

@@ -5,7 +5,7 @@ local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoa
 function SpectraUI:CDTL2()
 	print(SpectraUI.Name, "CDTL2")
 	if not IsAddOnLoaded("CDTL2") then return end
-	CDTL2DB.profiles["SpectraUI"] = { ----------------------------------------------
+	CDTL2DB.profiles["SpectraUI"] = {
 		["barFrames"] = {
 			["frame3"] = {
 				["enabled"] = false,
