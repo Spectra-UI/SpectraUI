@@ -19510,7 +19510,8 @@
         "_TAGS",
         "PLAYERSPELLS_BUTTON",
         "DUNGEON_SCORE",
-        "GREAT_VAULT_REWARDS"
+        "GREAT_VAULT_REWARDS",
+        "CDTL2DB"
   ],
   "diagnostics.disable": ["deprecated", "inject-field", "undefined-field",
         "cast-local-type"]
