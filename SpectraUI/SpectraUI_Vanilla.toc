@@ -6,6 +6,7 @@
 ## IconTexture: Interface\AddOns\SpectraUI\media\icon.tga
 ## RequiredDeps: ElvUI, ElvUI_mMediaTag
 
-Init.lua
+init.lua
 profiles\load_profiles.xml
 media\load_media.xml
+
