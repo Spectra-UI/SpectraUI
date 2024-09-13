@@ -31,5 +31,5 @@ function SpectraUI:ElvUIProfile()
 	E:SetupCVars()
 	E:SetupChat()
 
-	SpectraUI:Print("|CFFB707E2FFElvUI|r" .. " profile |CFF03FA6Eset|r!")
+	SpectraUI:Print("|CFFB707E2ElvUI|r" .. " profile |CFF03FA6Eset|r!")
 end

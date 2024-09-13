@@ -339,5 +339,5 @@ function SpectraUI:SylingTracker()
 		},
 	}
 
-	SpectraUI:Print("|CFFB707E2FFSylingTracker|r" .. " profile |CFF03FA6Eset|r!")
+	SpectraUI:Print("|CFFB707E2SylingTracker|r" .. " profile |CFF03FA6Eset|r!")
 end

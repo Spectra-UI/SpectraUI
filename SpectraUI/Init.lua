@@ -190,6 +190,12 @@ local InstallerData = {
 			end)
 			PluginInstallFrame.Option3:SetText("Cooldown Timeline 2")
 			PluginInstallFrame.Option3.Pic = path .. "preview\\CDTL2.tga"
+			PluginInstallFrame.Option4:Show()
+			PluginInstallFrame.Option4:SetScript("OnClick", function()
+				SpectraUI:AddOnSkins()
+			end)
+			PluginInstallFrame.Option4:SetText("AddOnSkins")
+			PluginInstallFrame.Option4.Pic = path .. "preview\\AddOnSkins.tga"
 		end,
 		[5] = function()
 			Resize()

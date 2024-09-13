@@ -19515,7 +19515,8 @@
         "CooldownToGoDB",
         "HekiliDB",
         "OmniCDDB",
-        "PluginInstallFrame"
+        "PluginInstallFrame",
+        "AddOnSkinsDB"
   ],
   "diagnostics.disable": ["deprecated", "inject-field", "undefined-field",
         "cast-local-type"]

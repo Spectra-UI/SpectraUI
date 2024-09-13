@@ -21,5 +21,5 @@ function SpectraUI:CooldownToGo()
 
 	CooldownToGoDB.profileKeys[E.mynameRealm] = "SpectraUI"
 
-	SpectraUI:Print("|CFFB707E2FFCooldownToGo|r" .. " profile |CFF03FA6Eset|r!")
+	SpectraUI:Print("|CFFB707E2CooldownToGo|r" .. " profile |CFF03FA6Eset|r!")
 end

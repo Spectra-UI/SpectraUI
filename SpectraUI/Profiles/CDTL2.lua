@@ -12637,5 +12637,5 @@ function SpectraUI:CDTL2()
 
 	CDTL2DB.profileKeys[E.mynameRealm] = "SpectraUI"
 
-	SpectraUI:Print("|CFFB707E2FFCooldownTimeline2|r" .. " profile |CFF03FA6Eset|r!")
+	SpectraUI:Print("|CFFB707E2CooldownTimeline2|r" .. " profile |CFF03FA6Eset|r!")
 end

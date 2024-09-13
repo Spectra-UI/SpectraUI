@@ -324,5 +324,5 @@ function SpectraUI:OmniCD()
 
 	OmniCDDB.profileKeys[E.mynameRealm] = "SpectraUI"
 
-	SpectraUI:Print("|CFFB707E2FFOmniCD|r" .. " profile |CFF03FA6Eset|r!")
+	SpectraUI:Print("|CFFB707E2OmniCD|r" .. " profile |CFF03FA6Eset|r!")
 end

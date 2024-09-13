@@ -18,5 +18,5 @@ function SpectraUI:Details()
 		_G.Details:ApplyProfile("SpectraUI")
 	end
 
-	SpectraUI:Print("|CFFB707E2FFDetails|r" .. " profile |CFF03FA6Eset|r!")
+	SpectraUI:Print("|CFFB707E2Details|r" .. " profile |CFF03FA6Eset|r!")
 end

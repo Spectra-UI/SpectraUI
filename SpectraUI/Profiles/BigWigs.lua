@@ -12,5 +12,5 @@ function SpectraUI:BigWigs()
 
 	BigWigsAPI:ImportProfileString(SpectraUI.Name, SpectraUIBigWigs, "SpectraUI")
 
-	SpectraUI:Print("|CFFB707E2FFBigWigs|r" .. " profile |CFF03FA6Eset|r!")
+	SpectraUI:Print("|CFFB707E2BigWigs|r" .. " profile |CFF03FA6Eset|r!")
 end

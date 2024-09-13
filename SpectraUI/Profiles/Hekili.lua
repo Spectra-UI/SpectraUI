@@ -3699,5 +3699,5 @@ function SpectraUI:Hekili()
 
 	HekiliDB.profileKeys[E.mynameRealm] = "SpectraUI"
 
-	SpectraUI:Print("|CFFB707E2FFHekili|r" .. " profile |CFF03FA6Eset|r!")
+	SpectraUI:Print("|CFFB707E2Hekili|r" .. " profile |CFF03FA6Eset|r!")
 end
