@@ -4,7 +4,7 @@
 ## Version: 1.0.0
 ## Title: |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## IconTexture: Interface\AddOns\SpectraUI\media\icon.tga
-## RequiredDeps: ElvUI, ElvUI_mMediaTag
+## RequiredDeps: ElvUI, ElvUI_EltreumUI, ElvUI_mMediaTag, ElvUI_WindTools, WeakAuras
 
 init.lua
 profiles\load_profiles.xml
