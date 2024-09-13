@@ -19513,7 +19513,8 @@
         "GREAT_VAULT_REWARDS",
         "CDTL2DB",
         "CooldownToGoDB",
-        "HekiliDB"
+        "HekiliDB",
+        "OmniCDDB"
   ],
   "diagnostics.disable": ["deprecated", "inject-field", "undefined-field",
         "cast-local-type"]
