@@ -9,4 +9,4 @@
 init.lua
 profiles\load_profiles.xml
 media\load_media.xml
-misc\tags.lua
+misc\load_misc.xml
