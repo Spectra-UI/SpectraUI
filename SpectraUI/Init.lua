@@ -151,17 +151,17 @@ local InstallerData = {
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
-				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/NOLINK")
+				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/Kqz6loIke")
 			end)
-			PluginInstallFrame.Option1:SetText("Class WA")
-			PluginInstallFrame.Option1.Pic = path .. "preview\\ClassWA.tga"
+			PluginInstallFrame.Option1:SetText("SpectraUI - Frames")
+			PluginInstallFrame.Option1.Pic = path .. "preview\\Frames.tga"
 
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript("OnClick", function()
-				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/NOLINK")
+				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/MBm1s8QQa")
 			end)
-			PluginInstallFrame.Option2:SetText("Dynamic Portraits")
-			PluginInstallFrame.Option2.Pic = path .. "preview\\DynamicPortraits.tga"
+			PluginInstallFrame.Option2:SetText("SpectraUI - Theme Elements")
+			PluginInstallFrame.Option2.Pic = path .. "preview\\UI_Elements.tga"
 		end,
 		[4] = function()
 			Resize()
