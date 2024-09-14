@@ -17,22 +17,28 @@ local classIconStrings = {
 	DEMONHUNTER = "384:512:256:384",
 }
 
-E:AddTag("spectra:modern", "UNIT_NAME_UPDATE", function(unit)
+E:AddTag("spectra:modern", "UNIT_NAME_UPDATE", function(unit, _, args)
 	if not UnitIsPlayer(unit) then return end
 
 	local _, class = UnitClass(unit)
 	local icon = classIconPath .. "SpectraUI_Modern.tga"
-	if icon and classIconStrings[class] then return format("|T%s:%s:%s:0:0:1024:1024:%s|t", icon, 64, 64, classIconStrings[class]) end
+	local size = strsplit(":", args or "")
+	size = tonumber(size)
+	size = (size and (size >= 16 and size <= 128)) and size or 64
+	if icon and classIconStrings[class] then return format("|T%s:%s:%s:0:0:1024:1024:%s|t", icon, size, size, classIconStrings[class]) end
 end)
 
 E:AddTagInfo("spectra:modern", SpectraUI.Name .. " " .. L["Icons"], L["Class Icons."])
 
-E:AddTag("spectra:classic", "UNIT_NAME_UPDATE", function(unit)
+E:AddTag("spectra:classic", "UNIT_NAME_UPDATE", function(unit, _, args)
 	if not UnitIsPlayer(unit) then return end
 
 	local _, class = UnitClass(unit)
 	local icon = classIconPath .. "SpectraUI_Classic.tga"
-	if icon and classIconStrings[class] then return format("|T%s:%s:%s:0:0:1024:1024:%s|t", icon, 64, 64, classIconStrings[class]) end
+	local size = strsplit(":", args or "")
+	size = tonumber(size)
+	size = (size and (size >= 16 and size <= 128)) and size or 64
+	if icon and classIconStrings[class] then return format("|T%s:%s:%s:0:0:1024:1024:%s|t", icon, size, size, classIconStrings[class]) end
 end)
 
-E:AddTagInfo("spectra:classic", SpectraUI.Name .. " " .. L["Icons"], L["Class Icons."])
+E:AddTagInfo("spectra:classic", SpectraUI.Name .. " " .. L["Icons"], L["Class Icons."] .. " " .. L["The size can be set as follows"] .. " > spectra:styl{32}")
