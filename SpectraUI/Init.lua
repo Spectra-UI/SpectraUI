@@ -162,6 +162,13 @@ local InstallerData = {
 			end)
 			PluginInstallFrame.Option2:SetText("SpectraUI - Theme Elements")
 			PluginInstallFrame.Option2.Pic = path .. "preview\\UI_Elements.tga"
+
+			PluginInstallFrame.Option3:Show()
+			PluginInstallFrame.Option3:SetScript("OnClick", function()
+				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/yYEmOy4bL")
+			end)
+			PluginInstallFrame.Option3:SetText("Class WA")
+			PluginInstallFrame.Option3.Pic = path .. "preview\\ClassWA.tga"
 		end,
 		[4] = function()
 			Resize()
