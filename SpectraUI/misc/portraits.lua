@@ -1,5 +1,5 @@
 mMT.Media.CustomPortraits["spectraui"] = {
-	name = "Spectra UI", -- name to show
+	name = SpectraUI.Name, -- name to show
 
 	-- portrait texture part
 	texture = "Interface\\AddOns\\SpectraUI\\media\\portrait\\texture.tga",

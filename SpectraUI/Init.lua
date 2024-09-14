@@ -4,9 +4,7 @@ local Version = GetAddOnMetadata(addon, "Version")
 
 -- Cache Lua / WoW API
 local format = string.format
-local GetCVarBool = GetCVarBool
 local ReloadUI = ReloadUI
-local StopMusic = StopMusic
 local tconcat = _G.table.concat
 local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 local path = "Interface\\AddOns\\SpectraUI\\media\\"
