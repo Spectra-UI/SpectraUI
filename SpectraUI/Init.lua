@@ -134,7 +134,15 @@ local InstallerData = {
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
 			PluginInstallFrame.Option1:SetText("Skip Process")
 
-			PluginInstallFrame.Option2:Hide()
+			-- button 2 DC start
+			PluginInstallFrame.Option2:Show()
+			PluginInstallFrame.Option2:SetScript("OnClick", function()
+				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+			end)
+			PluginInstallFrame.Option2:SetText("Discord")
+			--PluginInstallFrame.Option2.Pic = path .. "preview\\Profile.tga"
+			-- button 2 end
+
 			PluginInstallFrame.Option3:Hide()
 			PluginInstallFrame.Option4:Hide()
 		end,
@@ -299,10 +307,16 @@ local InstallerData = {
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
 			PluginInstallFrame.Option1:SetText("Finished")
 
-			PluginInstallFrame.Option2:Hide()
+			-- button 2 DC start
+			PluginInstallFrame.Option2:Show()
+			PluginInstallFrame.Option2:SetScript("OnClick", function()
+				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+			end)
+			PluginInstallFrame.Option2:SetText("Discord")
+			--PluginInstallFrame.Option2.Pic = path .. "preview\\Profile.tga"
+			-- button 2 end
 
 			PluginInstallFrame.Option3:Hide()
-
 			PluginInstallFrame.Option4:Hide()
 		end,
 	},
