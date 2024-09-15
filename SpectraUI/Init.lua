@@ -376,6 +376,9 @@ local function InsertOptions()
 						min = 0,
 						max = 10,
 						step = 0.1,
+						disabled = function()
+							return not IsAddOnLoaded("ElvUI_mMediaTag")
+						end,
 						get = function(info)
 							return E.db[MyPluginName].portraitsOffset
 						end,
