@@ -20,9 +20,9 @@ function SpectraUI:AddPortraitsTextures()
 			rareborder = "Interface\\AddOns\\SpectraUI\\media\\portrait\\rare_border.tga",
 			rareshadow = "Interface\\AddOns\\SpectraUI\\media\\portrait\\rare_shadow.tga",
 
-			elite = "Interface\\AddOns\\SpectraUI\\media\\portrait\\elite_texture.tga",
-			eliteborder = "Interface\\AddOns\\SpectraUI\\media\\portrait\\elite_border.tga",
-			eliteshadow = "Interface\\AddOns\\SpectraUI\\media\\portrait\\elite_shadow.tga",
+			elite = "Interface\\AddOns\\SpectraUI\\media\\portrait\\rare_texture.tga",
+			eliteborder = "Interface\\AddOns\\SpectraUI\\media\\portrait\\rare_border.tga",
+			eliteshadow = "Interface\\AddOns\\SpectraUI\\media\\portrait\\rare_shadow.tga",
 
 			boss = "Interface\\AddOns\\SpectraUI\\media\\portrait\\border.tga",
 			bossborder = "Interface\\AddOns\\SpectraUI\\media\\portrait\\border_border.tga",
