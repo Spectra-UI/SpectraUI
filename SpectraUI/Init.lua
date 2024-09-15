@@ -158,7 +158,8 @@ local InstallerData = {
 			PluginInstallFrame.Desc1:SetText(
 				format("This process will install %s and allow you to choose between a Vertical or Horizontal layout. It will also activate the essential features of %s.", SpectraUI.Name, SpectraUI.Name)
 			)
-			PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
+			PluginInstallFrame.Desc3:SetText("|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!")
+			PluginInstallFrame.Desc3:SetText("Importance: |CFFF63939High|r")
 
 			-- button 1 start
 			PluginInstallFrame.Option1:Show()
