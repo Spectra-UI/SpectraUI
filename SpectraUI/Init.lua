@@ -332,6 +332,14 @@ local function InsertOptions()
 						type = "description",
 						name = format("%s is a layout for ElvUI.", SpectraUI.Name),
 					},
+					discord = {
+						order = 2,
+						type = "execute",
+						name = L["Discord"],
+						func = function()
+							E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+						end,
+					},
 				},
 			},
 			install = {
