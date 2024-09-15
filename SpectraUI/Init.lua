@@ -131,9 +131,9 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Welcome to the installation for " .. SpectraUI.Name)
 			PluginInstallFrame.Desc1:SetText(
-				format("|CFFF63939Important|r: Major updates to %s will require you to go through the installation process again, which may result in the loss of any changes you’ve made. Please make sure to back up your settings if needed!", SpectraUI.Name)
+				format("The %s installation process is designed to be straightforward. You'll be prompted through a series of steps to apply the interface to your system seamlessly. Once the installation is complete, you'll have access to the full suite of %s features", SpectraUI.Name, SpectraUI.Name)
 			)
-			PluginInstallFrame.Desc2:SetText(format("If you encounter any issues, feel free to join our %s Discord server. We're here to assist you and provide support!", SpectraUI.Name))
+			PluginInstallFrame.Desc2:SetText(format("|CFFF63939Important|r: Major updates to %s will require you to go through the installation process again, which may result in the loss of any changes you’ve made. Please make sure to back up your settings if needed!", SpectraUI.Name))
 			PluginInstallFrame.Desc3:SetText("Please press the continue button if you wish to go through the installation process, otherwise click the 'Skip Process' button.")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
