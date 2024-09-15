@@ -378,11 +378,19 @@ local function InsertOptions()
 						end,
 					},
 					elements = {
-						order = 1,
+						order = 2,
 						type = "execute",
 						name = L["Theme Elements"],
 						func = function()
 							E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/MBm1s8QQa")
+						end,
+					},
+					class = {
+						order = 3,
+						type = "execute",
+						name = L["Class WA"],
+						func = function()
+							E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/yYEmOy4bL")
 						end,
 					},
 				},
