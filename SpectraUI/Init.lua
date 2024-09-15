@@ -324,22 +324,8 @@ local function InsertOptions()
 					},
 				},
 			},
-			thankyou = {
-				order = 3,
-				type = "group",
-				inline = true,
-				name = L["Credits"],
-				args = {
-					desc = {
-						order = 1,
-						type = "description",
-						fontSize = "medium",
-						name = CREDITS_STRING,
-					},
-				},
-			},
 			install = {
-				order = 4,
+				order = 3,
 				type = "group",
 				inline = true,
 				name = L["Installation"],
@@ -364,6 +350,20 @@ local function InsertOptions()
 							E:GetModule("PluginInstaller"):Queue(InstallerData)
 							E:ToggleOptions()
 						end,
+					},
+				},
+			},
+			thankyou = {
+				order = 4,
+				type = "group",
+				inline = true,
+				name = L["Credits"],
+				args = {
+					desc = {
+						order = 1,
+						type = "description",
+						fontSize = "medium",
+						name = CREDITS_STRING,
 					},
 				},
 			},
