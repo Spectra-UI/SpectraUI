@@ -30,7 +30,7 @@ SpectraUI.LogoText = "Interface\\AddOns\\SpectraUI\\media\\logo_text.tga"
 
 -- example of credits if you want to add some
 local CREDITS = {
-	"|CFF16F5EEHoffa|r  - Author", --#16F5EE
+	"|CFF03FA6EHoffa|r  - Author", --#16F5EE
 	"|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Programming",
 	"|cfff48cbaRepooc|r",
 	"|cff0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r",
@@ -120,7 +120,7 @@ local InstallerData = {
 			Resize()
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Welcome to the installation for " .. SpectraUI.Name)
-			PluginInstallFrame.Desc1:SetText("This installation process will guide you through a few steps and create a new ElvUI profile.")
+			PluginInstallFrame.Desc1:SetText("The SpectraUI installation process is designed to be straightforward. You'll be prompted through a series of steps to apply the interface to your system seamlessly. Once the installation is complete, you'll have access to the full suite of SpectraUI features.")
 			PluginInstallFrame.Desc2:SetText("Please press the continue button if you wish to go through the installation process, otherwise click the 'Skip Process' button.")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
@@ -133,21 +133,21 @@ local InstallerData = {
 		[2] = function()
 			Resize()
 			ResetPic()
-			PluginInstallFrame.SubTitle:SetText("ElvUI")
-			PluginInstallFrame.Desc1:SetText("These are the layouts that are available. Please click a button below to apply the layout of your choosing.")
+			PluginInstallFrame.SubTitle:SetText("Essential Settings")
+			PluginInstallFrame.Desc1:SetText("This process will install SpectraUI and allow you to choose between a Vertical or Horizontal layout. It will also activate the essential features of SpectraUI.")
 			PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
 				SpectraUI:ElvUIProfile()
 			end)
-			PluginInstallFrame.Option1:SetText("SpectraUI")
+			PluginInstallFrame.Option1:SetText("Vertical")
 			PluginInstallFrame.Option1.Pic = path .. "preview\\Profile.tga"
 		end,
 		[3] = function()
 			Resize()
 			ResetPic()
-			PluginInstallFrame.SubTitle:SetText("Weakaura")
-			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
+			PluginInstallFrame.SubTitle:SetText("Weakauras")
+			PluginInstallFrame.Desc1:SetText("These are the Weakauras that are available. Please click a button below to apply the new Weakauras.")
 			PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
 
 			PluginInstallFrame.Option1:Show()
@@ -263,8 +263,8 @@ local InstallerData = {
 			Resize()
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Installation Complete")
-			PluginInstallFrame.Desc1:SetText("You have completed the installation process.")
-			PluginInstallFrame.Desc2:SetText("Please click the button below in order to finalize the process and automatically reload your UI.")
+			PluginInstallFrame.Desc1:SetText("|CFF03FA6EThe installation process is now complete!|r")
+			PluginInstallFrame.Desc2:SetText("Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |CFF03FA6EDiscord|r for assistance!")
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
@@ -280,7 +280,7 @@ local InstallerData = {
 	StepTitles = {
 		[1] = "Welcome",
 		[2] = "ElvUI",
-		[3] = "Weakaura",
+		[3] = "Weakauras",
 		[4] = "AddOns 1",
 		[5] = "AddOns 2",
 		[6] = "Blizzard",
