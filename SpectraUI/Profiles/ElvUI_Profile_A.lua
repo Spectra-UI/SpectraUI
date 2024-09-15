@@ -1,7 +1,7 @@
 local E = unpack(ElvUI)
 local D = E:GetModule("Distributor")
 
-function SpectraUI:ElvUIProfile()
+function SpectraUI:ElvUIProfileA()
 	-- donte remove the " at the begining and and of the string here
 	-- Profile! replace !E1!DUMMY ELVUI PROFILE STRING with your ElvUI Profile String.
 	local profile =
@@ -31,6 +31,9 @@ function SpectraUI:ElvUIProfile()
 
 	E:SetupCVars()
 	E:SetupChat()
+
+	-- Set UI Scale
+	E.global.general.UIScale = 0.7111
 
 	SpectraUI:Print("|CFFB707E2ElvUI|r" .. " profile |CFF03FA6Eset|r!")
 end

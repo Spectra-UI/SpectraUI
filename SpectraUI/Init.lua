@@ -345,14 +345,6 @@ local function InsertOptions()
 							E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
 						end,
 					},
-					test = {
-						order = 3,
-						type = "execute",
-						name = L["KLICK ME"],
-						func = function()
-							SpectraUI:Print(E.global["general"]["UIScale"])
-						end,
-					},
 				},
 			},
 			install = {
