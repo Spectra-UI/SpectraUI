@@ -317,7 +317,7 @@ local InstallerData = {
 			PluginInstallFrame.SubTitle:SetText("Installation Complete")
 			PluginInstallFrame.Desc1:SetText("|CFF03FA6EThe installation process is now complete!|r")
 			PluginInstallFrame.Desc2:SetText(
-				"Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |CFF03FA6EDiscord|r for assistance!"
+				"Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t  |CFF03FA6EDiscord|r for assistance!"
 			)
 
 			PluginInstallFrame.Option1:Show()
