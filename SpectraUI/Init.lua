@@ -363,8 +363,24 @@ local function InsertOptions()
 					},
 				},
 			},
-			settings = {
+			wa = {
 				order = 4,
+				type = "group",
+				inline = true,
+				name = L["Weakauras"],
+				args = {
+					frames = {
+						order = 1,
+						type = "execute",
+						name = L["Frames"],
+						func = function()
+							E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/Kqz6loIke")
+						end,
+					},
+				},
+			},
+			settings = {
+				order = 5,
 				type = "group",
 				inline = true,
 				name = L["Settings"],
@@ -391,7 +407,7 @@ local function InsertOptions()
 				},
 			},
 			thankyou = {
-				order = 5,
+				order = 6,
 				type = "group",
 				inline = true,
 				name = L["Credits"],
@@ -405,7 +421,7 @@ local function InsertOptions()
 				},
 			},
 			donators = {
-				order = 6,
+				order = 7,
 				type = "group",
 				inline = true,
 				name = L["Donators"],
