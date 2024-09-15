@@ -44,6 +44,7 @@ local DONATORS = {
 local CREDITS_STRING = tconcat(CREDITS, "|n")
 local DONATORS_STRING = tconcat(DONATORS, "|n")
 
+
 --This function is executed when you press "Skip Process" or "Finished" in the installer.
 local function InstallComplete()
 	-- Set a variable tracking the version of the addon when layout was installed
@@ -300,7 +301,10 @@ local InstallerData = {
 }
 
 -- Create a unique table for our plugin
-P[MyPluginName] = {}
+-- default settings db for the addon
+P[MyPluginName] = {
+	portraitsOffset = 5, -- Portrait zoom offest, default setting
+}
 
 -- Plugin Settings
 local function InsertOptions()
@@ -359,6 +363,30 @@ local function InsertOptions()
 					},
 				},
 			},
+			settings = {
+				order = 4,
+				type = "group",
+				inline = true,
+				name = L["Settings"],
+				args = {
+					range_sq = {
+						order = 1,
+						name = L["Portraits offset"],
+						type = "range",
+						min = 0,
+						max = 10,
+						step = 0.1,
+						get = function(info)
+							return E.db[MyPluginName].portraitsOffset
+						end,
+						set = function(info, value)
+							E.db[MyPluginName].portraitsOffset = value
+							SpectraUI:AddPortraitsTextures()
+							mMT.Modules.Portraits:Initialize()
+						end,
+					},
+				},
+			},
 			thankyou = {
 				order = 4,
 				type = "group",
@@ -398,6 +426,8 @@ end
 
 function SpectraUI:Setup_mMediaTag()
 	if not IsAddOnLoaded("ElvUI_mMediaTag") then return end
+
+	SpectraUI:AddPortraitsTextures()
 
 	local textureCoords = {
 		WARRIOR = { 0, 0, 0, 0.125, 0.125, 0, 0.125, 0.125 },
