@@ -36,7 +36,13 @@ local CREDITS = {
 	"|cff0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r",
 }
 
+-- example of donators if you want to add some
+local DONATORS = {
+	-- "EXAMPLE",
+}
+
 local CREDITS_STRING = tconcat(CREDITS, "|n")
+local DONATORS_STRING = tconcat(CREDITS, "|n")
 
 --This function is executed when you press "Skip Process" or "Finished" in the installer.
 local function InstallComplete()
@@ -364,6 +370,20 @@ local function InsertOptions()
 						type = "description",
 						fontSize = "medium",
 						name = CREDITS_STRING,
+					},
+				},
+			},
+			donators = {
+				order = 5,
+				type = "group",
+				inline = true,
+				name = L["Donators"],
+				args = {
+					desc = {
+						order = 1,
+						type = "description",
+						fontSize = "medium",
+						name = DONATORS_STRING,
 					},
 				},
 			},
