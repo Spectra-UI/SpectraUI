@@ -184,7 +184,7 @@ local InstallerData = {
 			-- button 2 start
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript("OnClick", function()
-				SpectraUI:ElvUIProfileB()
+				-- SpectraUI:ElvUIProfileB()
 			end)
 			PluginInstallFrame.Option2:SetText("Horizontal")
 			PluginInstallFrame.Option2.Pic = path .. "preview\\ProfileB.tga"
