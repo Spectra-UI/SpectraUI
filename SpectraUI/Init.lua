@@ -67,13 +67,17 @@ end
 local function OnEnter(button)
 	button:SetBackdropBorderColor(SpectraUI.UIColor.r, SpectraUI.UIColor.g, SpectraUI.UIColor.b, SpectraUI.UIColor.a)
 	if button.Pic then
+		PluginInstallFrame.tutorialImage:Size(512, 256)
 		PluginInstallFrame.tutorialImage:SetTexture(button.Pic)
 		E:UIFrameFadeIn(PluginInstallFrame.tutorialImage, 0.75, 0, 1)
+	else
+		PluginInstallFrame.tutorialImage:Size(256, 128)
 	end
 end
 
 local function OnLeave(button)
 	button:SetBackdropBorderColor(unpack(E.media.bordercolor))
+	PluginInstallFrame.tutorialImage:Size(256, 128)
 	PluginInstallFrame.tutorialImage:SetTexture(SpectraUI.Logo)
 end
 
@@ -127,9 +131,10 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Welcome to the installation for " .. SpectraUI.Name)
 			PluginInstallFrame.Desc1:SetText(
-				"The SpectraUI installation process is designed to be straightforward. You'll be prompted through a series of steps to apply the interface to your system seamlessly. Once the installation is complete, you'll have access to the full suite of SpectraUI features."
+				format("|CFFF63939Important|r: Major updates to %s will require you to go through the installation process again, which may result in the loss of any changes you’ve made. Please make sure to back up your settings if needed!", SpectraUI.Name)
 			)
-			PluginInstallFrame.Desc2:SetText("Please press the continue button if you wish to go through the installation process, otherwise click the 'Skip Process' button.")
+			PluginInstallFrame.Desc2:SetText(format("If you encounter any issues, feel free to join our %s Discord server. We're here to assist you and provide support!", SpectraUI.Name))
+			PluginInstallFrame.Desc3:SetText("Please press the continue button if you wish to go through the installation process, otherwise click the 'Skip Process' button.")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
 			PluginInstallFrame.Option1:SetText("Skip Process")
