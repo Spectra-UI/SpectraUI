@@ -161,7 +161,7 @@ local InstallerData = {
 				SpectraUI:ElvUIProfileA()
 			end)
 			PluginInstallFrame.Option1:SetText("Vertical")
-			PluginInstallFrame.Option1.Pic = path .. "preview\\Profile.tga"
+			PluginInstallFrame.Option1.Pic = path .. "preview\\ProfileA.tga"
 			-- button 1 end
 
 			-- button 2 start
@@ -170,7 +170,7 @@ local InstallerData = {
 				SpectraUI:ElvUIProfileB()
 			end)
 			PluginInstallFrame.Option2:SetText("Second")
-			PluginInstallFrame.Option2.Pic = path .. "preview\\Profile.tga"
+			PluginInstallFrame.Option2.Pic = path .. "preview\\ProfileA.tga"
 			-- button 2 end
 		end,
 		[3] = function()
