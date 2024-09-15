@@ -388,7 +388,7 @@ local function InsertOptions()
 				},
 			},
 			thankyou = {
-				order = 4,
+				order = 5,
 				type = "group",
 				inline = true,
 				name = L["Credits"],
@@ -402,7 +402,7 @@ local function InsertOptions()
 				},
 			},
 			donators = {
-				order = 5,
+				order = 6,
 				type = "group",
 				inline = true,
 				name = L["Donators"],
