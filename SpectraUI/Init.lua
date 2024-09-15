@@ -42,7 +42,7 @@ local DONATORS = {
 }
 
 local CREDITS_STRING = tconcat(CREDITS, "|n")
-local DONATORS_STRING = tconcat(CREDITS, "|n")
+local DONATORS_STRING = tconcat(DONATORS, "|n")
 
 --This function is executed when you press "Skip Process" or "Finished" in the installer.
 local function InstallComplete()
