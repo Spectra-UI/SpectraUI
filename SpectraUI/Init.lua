@@ -44,7 +44,6 @@ local DONATORS = {
 local CREDITS_STRING = tconcat(CREDITS, "|n")
 local DONATORS_STRING = tconcat(DONATORS, "|n")
 
-
 --This function is executed when you press "Skip Process" or "Finished" in the installer.
 local function InstallComplete()
 	-- Set a variable tracking the version of the addon when layout was installed
@@ -127,7 +126,9 @@ local InstallerData = {
 			Resize()
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Welcome to the installation for " .. SpectraUI.Name)
-			PluginInstallFrame.Desc1:SetText("The SpectraUI installation process is designed to be straightforward. You'll be prompted through a series of steps to apply the interface to your system seamlessly. Once the installation is complete, you'll have access to the full suite of SpectraUI features.")
+			PluginInstallFrame.Desc1:SetText(
+				"The SpectraUI installation process is designed to be straightforward. You'll be prompted through a series of steps to apply the interface to your system seamlessly. Once the installation is complete, you'll have access to the full suite of SpectraUI features."
+			)
 			PluginInstallFrame.Desc2:SetText("Please press the continue button if you wish to go through the installation process, otherwise click the 'Skip Process' button.")
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
@@ -141,14 +142,28 @@ local InstallerData = {
 			Resize()
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Essential Settings")
-			PluginInstallFrame.Desc1:SetText("This process will install SpectraUI and allow you to choose between a Vertical or Horizontal layout. It will also activate the essential features of SpectraUI.")
+			PluginInstallFrame.Desc1:SetText(
+				"This process will install SpectraUI and allow you to choose between a Vertical or Horizontal layout. It will also activate the essential features of SpectraUI."
+			)
 			PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
+
+			-- button 1 start
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
-				SpectraUI:ElvUIProfile()
+				SpectraUI:ElvUIProfileA()
 			end)
 			PluginInstallFrame.Option1:SetText("Vertical")
 			PluginInstallFrame.Option1.Pic = path .. "preview\\Profile.tga"
+			-- button 1 end
+
+			-- button 2 start
+			PluginInstallFrame.Option2:Show()
+			PluginInstallFrame.Option2:SetScript("OnClick", function()
+				SpectraUI:ElvUIProfileB()
+			end)
+			PluginInstallFrame.Option2:SetText("Second")
+			PluginInstallFrame.Option2.Pic = path .. "preview\\Profile.tga"
+			-- button 2 end
 		end,
 		[3] = function()
 			Resize()
@@ -256,7 +271,12 @@ local InstallerData = {
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
-				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "1 39 0 0 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%)#+#,$ 0 1 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%(#,$ 0 2 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%(#,$ 0 3 1 5 5 UIParent -5.0 -77.0 -1 #$$$%/&('%(#,$ 0 4 1 5 5 UIParent -5.0 -77.0 -1 #$$$%/&('%(#,$ 0 5 1 1 4 UIParent 0.0 0.0 -1 ##$$%/&('%(#,$ 0 6 1 1 4 UIParent 0.0 -50.0 -1 ##$$%/&('%(#,$ 0 7 1 1 4 UIParent 0.0 -100.0 -1 ##$$%/&('%(#,$ 0 10 1 7 7 UIParent 0.0 45.0 -1 ##$$&('% 0 11 1 7 7 UIParent 0.0 45.0 -1 ##$$&('%,# 0 12 1 7 7 UIParent 0.0 45.0 -1 ##$$&('% 1 -1 1 4 4 UIParent 0.0 0.0 -1 ##$#%# 2 -1 1 2 2 UIParent 0.0 0.0 -1 ##$#%( 3 0 1 8 7 UIParent -300.0 250.0 -1 $#3# 3 1 1 6 7 UIParent 300.0 250.0 -1 %#3# 3 2 1 6 7 UIParent 520.0 265.0 -1 %#&#3# 3 3 1 0 2 CompactRaidFrameManager 0.0 -7.0 -1 '#(#)#-#.#/#1$3# 3 4 1 0 2 CompactRaidFrameManager 0.0 -5.0 -1 ,#-#.#/#0#1#2( 3 5 1 5 5 UIParent 0.0 0.0 -1 &#*$3# 3 6 1 5 5 UIParent 0.0 0.0 -1 -#.#/#4$ 3 7 1 4 4 UIParent 0.0 0.0 -1 3# 4 -1 1 7 7 UIParent 0.0 45.0 -1 # 5 -1 1 7 7 UIParent 0.0 45.0 -1 # 6 0 1 2 2 UIParent -255.0 -10.0 -1 ##$#%#&.(()( 6 1 1 2 2 UIParent -270.0 -155.0 -1 ##$#%#'+(()( 7 -1 1 7 7 UIParent 0.0 45.0 -1 # 8 -1 0 6 6 UIParent 35.0 50.0 -1 #'$A%$&7 9 -1 1 7 7 UIParent 0.0 45.0 -1 # 10 -1 1 0 0 UIParent 16.0 -116.0 -1 # 11 -1 1 8 8 UIParent -9.0 85.0 -1 # 12 -1 1 2 2 UIParent -110.0 -275.0 -1 #K$#%# 13 -1 1 8 8 MicroButtonAndBagsBar 0.0 0.0 -1 ##$#%)&- 14 -1 1 2 2 MicroButtonAndBagsBar 0.0 10.0 -1 ##$#%( 15 0 1 7 7 StatusTrackingBarManager 0.0 0.0 -1 # 15 1 1 7 7 StatusTrackingBarManager 0.0 17.0 -1 # 16 -1 1 5 5 UIParent 0.0 0.0 -1 #( 17 -1 1 1 1 UIParent 0.0 -100.0 -1 ## 18 -1 1 5 5 UIParent 0.0 0.0 -1 #- 19 -1 1 7 7 UIParent 0.0 0.0 -1 ##")
+				E:StaticPopup_Show(
+					"ELVUI_EDITBOX",
+					nil,
+					nil,
+					"1 39 0 0 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%)#+#,$ 0 1 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%(#,$ 0 2 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%(#,$ 0 3 1 5 5 UIParent -5.0 -77.0 -1 #$$$%/&('%(#,$ 0 4 1 5 5 UIParent -5.0 -77.0 -1 #$$$%/&('%(#,$ 0 5 1 1 4 UIParent 0.0 0.0 -1 ##$$%/&('%(#,$ 0 6 1 1 4 UIParent 0.0 -50.0 -1 ##$$%/&('%(#,$ 0 7 1 1 4 UIParent 0.0 -100.0 -1 ##$$%/&('%(#,$ 0 10 1 7 7 UIParent 0.0 45.0 -1 ##$$&('% 0 11 1 7 7 UIParent 0.0 45.0 -1 ##$$&('%,# 0 12 1 7 7 UIParent 0.0 45.0 -1 ##$$&('% 1 -1 1 4 4 UIParent 0.0 0.0 -1 ##$#%# 2 -1 1 2 2 UIParent 0.0 0.0 -1 ##$#%( 3 0 1 8 7 UIParent -300.0 250.0 -1 $#3# 3 1 1 6 7 UIParent 300.0 250.0 -1 %#3# 3 2 1 6 7 UIParent 520.0 265.0 -1 %#&#3# 3 3 1 0 2 CompactRaidFrameManager 0.0 -7.0 -1 '#(#)#-#.#/#1$3# 3 4 1 0 2 CompactRaidFrameManager 0.0 -5.0 -1 ,#-#.#/#0#1#2( 3 5 1 5 5 UIParent 0.0 0.0 -1 &#*$3# 3 6 1 5 5 UIParent 0.0 0.0 -1 -#.#/#4$ 3 7 1 4 4 UIParent 0.0 0.0 -1 3# 4 -1 1 7 7 UIParent 0.0 45.0 -1 # 5 -1 1 7 7 UIParent 0.0 45.0 -1 # 6 0 1 2 2 UIParent -255.0 -10.0 -1 ##$#%#&.(()( 6 1 1 2 2 UIParent -270.0 -155.0 -1 ##$#%#'+(()( 7 -1 1 7 7 UIParent 0.0 45.0 -1 # 8 -1 0 6 6 UIParent 35.0 50.0 -1 #'$A%$&7 9 -1 1 7 7 UIParent 0.0 45.0 -1 # 10 -1 1 0 0 UIParent 16.0 -116.0 -1 # 11 -1 1 8 8 UIParent -9.0 85.0 -1 # 12 -1 1 2 2 UIParent -110.0 -275.0 -1 #K$#%# 13 -1 1 8 8 MicroButtonAndBagsBar 0.0 0.0 -1 ##$#%)&- 14 -1 1 2 2 MicroButtonAndBagsBar 0.0 10.0 -1 ##$#%( 15 0 1 7 7 StatusTrackingBarManager 0.0 0.0 -1 # 15 1 1 7 7 StatusTrackingBarManager 0.0 17.0 -1 # 16 -1 1 5 5 UIParent 0.0 0.0 -1 #( 17 -1 1 1 1 UIParent 0.0 -100.0 -1 ## 18 -1 1 5 5 UIParent 0.0 0.0 -1 #- 19 -1 1 7 7 UIParent 0.0 0.0 -1 ##"
+				)
 			end)
 			PluginInstallFrame.Option1:SetText("Blizzard")
 
@@ -271,7 +291,9 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Installation Complete")
 			PluginInstallFrame.Desc1:SetText("|CFF03FA6EThe installation process is now complete!|r")
-			PluginInstallFrame.Desc2:SetText("Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |CFF03FA6EDiscord|r for assistance!")
+			PluginInstallFrame.Desc2:SetText(
+				"Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |CFF03FA6EDiscord|r for assistance!"
+			)
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
