@@ -141,6 +141,7 @@ local InstallerData = {
 				SpectraUI:ElvUIProfile()
 			end)
 			PluginInstallFrame.Option1:SetText("SpectraUI")
+			PluginInstallFrame.Option1.Pic = path .. "preview\\Profile.tga"
 		end,
 		[3] = function()
 			Resize()
@@ -153,14 +154,14 @@ local InstallerData = {
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
 				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/Kqz6loIke")
 			end)
-			PluginInstallFrame.Option1:SetText("SpectraUI - Frames")
+			PluginInstallFrame.Option1:SetText("Frames")
 			PluginInstallFrame.Option1.Pic = path .. "preview\\Frames.tga"
 
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript("OnClick", function()
 				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/MBm1s8QQa")
 			end)
-			PluginInstallFrame.Option2:SetText("SpectraUI - Theme Elements")
+			PluginInstallFrame.Option2:SetText("Theme Elements")
 			PluginInstallFrame.Option2.Pic = path .. "preview\\UI_Elements.tga"
 
 			PluginInstallFrame.Option3:Show()
@@ -195,7 +196,7 @@ local InstallerData = {
 			PluginInstallFrame.Option3:SetScript("OnClick", function()
 				SpectraUI:CDTL2()
 			end)
-			PluginInstallFrame.Option3:SetText("Cooldown Timeline 2")
+			PluginInstallFrame.Option3:SetText("CDTL2")
 			PluginInstallFrame.Option3.Pic = path .. "preview\\CDTL2.tga"
 			PluginInstallFrame.Option4:Show()
 			PluginInstallFrame.Option4:SetScript("OnClick", function()
