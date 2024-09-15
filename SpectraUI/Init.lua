@@ -170,7 +170,7 @@ local InstallerData = {
 				format("This process will install %s and allow you to choose between a Vertical or Horizontal layout. It will also activate the essential features of %s.", SpectraUI.Name, SpectraUI.Name)
 			)
 			PluginInstallFrame.Desc2:SetText("|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!")
-			PluginInstallFrame.Desc3:SetText("Importance: |CFFF63939High|r")
+			--PluginInstallFrame.Desc3:SetText("Importance: |CFFF63939High|r")
 
 			-- button 1 start
 			PluginInstallFrame.Option1:Show()
@@ -195,7 +195,7 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Weakauras")
 			PluginInstallFrame.Desc1:SetText("These are the Weakauras that are available. Please click a button below to apply the new Weakauras.")
-			PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
+			--PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
@@ -223,7 +223,7 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("AddOns 1")
 			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
-			PluginInstallFrame.Desc2:SetText("Importance: |CFFFF9130Medium|r")
+			--PluginInstallFrame.Desc2:SetText("Importance: |CFFFF9130Medium|r")
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
@@ -257,7 +257,7 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("AddOns 2")
 			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
-			PluginInstallFrame.Desc2:SetText("Importance: |CFF9BFF30Low|r")
+			--PluginInstallFrame.Desc2:SetText("Importance: |CFF9BFF30Low|r")
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
@@ -292,7 +292,7 @@ local InstallerData = {
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Blizzard")
 			PluginInstallFrame.Desc1:SetText("On Retail, you can now copy and import the Blizzard interface profile.")
-			PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
+			--PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
