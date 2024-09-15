@@ -120,7 +120,7 @@ local InstallerData = {
 	Title = SpectraUI.Name,
 	Name = SpectraUI.Name,
 	tutorialImage = SpectraUI.Logo, --If you have a logo you want to use, otherwise it uses the one from ElvUI
-	tutorialImageSize = { 512, 256 },
+	tutorialImageSize = { 256, 128 },
 	Pages = {
 		[1] = function()
 			Resize()
