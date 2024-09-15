@@ -332,8 +332,13 @@ local function InsertOptions()
 						type = "description",
 						name = format("%s is a layout for ElvUI.", SpectraUI.Name),
 					},
-					discord = {
+					spacer1 = {
 						order = 2,
+						type = "description",
+						name = "\n",
+					},
+					discord = {
+						order = 3,
 						type = "execute",
 						name = L["Discord"],
 						func = function()
