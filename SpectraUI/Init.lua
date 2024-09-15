@@ -71,13 +71,13 @@ local function OnEnter(button)
 		PluginInstallFrame.tutorialImage:SetTexture(button.Pic)
 		E:UIFrameFadeIn(PluginInstallFrame.tutorialImage, 0.75, 0, 1)
 	else
-		PluginInstallFrame.tutorialImage:Size(256, 128)
+		PluginInstallFrame.tutorialImage:Size(410, 205)
 	end
 end
 
 local function OnLeave(button)
 	button:SetBackdropBorderColor(unpack(E.media.bordercolor))
-	PluginInstallFrame.tutorialImage:Size(256, 128)
+	PluginInstallFrame.tutorialImage:Size(410, 205)
 	PluginInstallFrame.tutorialImage:SetTexture(SpectraUI.Logo)
 end
 
@@ -124,7 +124,7 @@ local InstallerData = {
 	Title = SpectraUI.Name,
 	Name = SpectraUI.Name,
 	tutorialImage = SpectraUI.Logo, --If you have a logo you want to use, otherwise it uses the one from ElvUI
-	tutorialImageSize = { 256, 128 },
+	tutorialImageSize = { 410, 205 },
 	Pages = {
 		[1] = function()
 			Resize()
