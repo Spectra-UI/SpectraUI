@@ -1,2 +1,2 @@
-![GitHub](https://github.com/user-attachments/assets/d2dc2740-6e44-443b-a723-810946a7da6f)
-![GitHub2](https://github.com/user-attachments/assets/f4aa2976-d65c-473b-947e-e3731049b6d5)
+![GitHub Pic1](https://github.com/user-attachments/assets/946dec61-4bf1-4149-88cd-cc2e4e9e07c0)
+![GitHub Pic2](https://github.com/user-attachments/assets/803d4883-47ec-4fe7-80fc-60b4faba9840)
