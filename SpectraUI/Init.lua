@@ -32,7 +32,7 @@ SpectraUI.LogoText = "Interface\\AddOns\\SpectraUI\\media\\logo_text.tga"
 local CREDITS = {
 	"|CFF03FA6EHoffa|r  - Author", --#16F5EE
 	"|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Programming",
-	"|cfff48cbaRepooc|r",
+	"|cffc500ffRepooc|r",
 	"|cff0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r",
 }
 
