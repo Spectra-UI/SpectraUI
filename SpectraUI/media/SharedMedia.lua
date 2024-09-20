@@ -10,7 +10,7 @@ local LSM = E.Libs.LSM
 -- FONT
 --LSM:Register("font", "SpectraUI Font 1", [[Interface\AddOns\SpectraUI\media\font\dummy.ttf]])
 LSM:Register("font", "SpectraUI Caption", [[Interface\AddOns\SpectraUI\media\font\SpectraUI-Caption.ttf]])
-LSM:Register("font", "SpectraUI Icons", [[Interface\AddOns\SpectraUI\media\font\SpectraUI-Icons.ttf]])
+LSM:Register("font", "SpectraUI Combat", [[Interface\AddOns\SpectraUI\media\font\SpectraUI-Combat.ttf]])
 LSM:Register("font", "SpectraUI Title", [[Interface\AddOns\SpectraUI\media\font\SpectraUI-Title.ttf]])
 
 -- SOUND
