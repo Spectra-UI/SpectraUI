@@ -34,6 +34,8 @@ E:AddTag("spectra:classic", "UNIT_NAME_UPDATE", function(unit, _, args)
 	if not UnitIsPlayer(unit) then return end
 
 	local _, class = UnitClass(unit)
+	if not class then return end
+
 	local icon = classIconPath .. "SpectraUI_Classic.tga"
 	local size = strsplit(":", args or "")
 	size = tonumber(size)
