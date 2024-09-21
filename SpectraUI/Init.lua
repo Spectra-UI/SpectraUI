@@ -44,6 +44,43 @@ local DONATORS = {
 local CREDITS_STRING = tconcat(CREDITS, "|n")
 local DONATORS_STRING = tconcat(DONATORS, "|n")
 
+-- popup for ypur links
+E.PopupDialogs.SPECTRAUI_EDITBOX = {
+	text = SpectraUI.Icon .. " " .. SpectraUI.Name,
+	button1 = OKAY,
+	hasEditBox = 1,
+	OnShow = function(self, data)
+		self.editBox:SetAutoFocus(false)
+		self.editBox.width = self.editBox:GetWidth()
+		self.editBox:Width(280)
+		self.editBox:AddHistoryLine('text')
+		self.editBox.temptxt = data
+		self.editBox:SetText(data)
+		self.editBox:SetJustifyH('CENTER')
+	end,
+	OnHide = function(self)
+		self.editBox:Width(self.editBox.width or 50)
+		self.editBox.width = nil
+		self.temptxt = nil
+	end,
+	EditBoxOnEnterPressed = function(self)
+		self:GetParent():Hide()
+	end,
+	EditBoxOnEscapePressed = function(self)
+		self:GetParent():Hide()
+	end,
+	EditBoxOnTextChanged = function(self)
+		if self:GetText() ~= self.temptxt then
+			self:SetText(self.temptxt)
+		end
+
+		self:HighlightText()
+	end,
+	whileDead = 1,
+	preferredIndex = 3,
+	hideOnEscape = 1,
+}
+
 --This function is executed when you press "Skip Process" or "Finished" in the installer.
 local function InstallComplete()
 	-- Set a variable tracking the version of the addon when layout was installed
@@ -153,7 +190,7 @@ local InstallerData = {
 			-- button 2 DC start
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript("OnClick", function()
-				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
 			end)
 			PluginInstallFrame.Option2:SetText(dicordLogo .. " " .. "Discord")
 			--PluginInstallFrame.Option2.Pic = path .. "preview\\Profile.tga"
@@ -199,21 +236,21 @@ local InstallerData = {
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
-				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/Kqz6loIke")
+				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://wago.io/Kqz6loIke")
 			end)
 			PluginInstallFrame.Option1:SetText("Frames")
 			PluginInstallFrame.Option1.Pic = path .. "preview\\Frames.tga"
 
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript("OnClick", function()
-				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/MBm1s8QQa")
+				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://wago.io/MBm1s8QQa")
 			end)
 			PluginInstallFrame.Option2:SetText("Theme Elements")
 			PluginInstallFrame.Option2.Pic = path .. "preview\\UI_Elements.tga"
 
 			PluginInstallFrame.Option3:Show()
 			PluginInstallFrame.Option3:SetScript("OnClick", function()
-				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/yYEmOy4bL")
+				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://wago.io/yYEmOy4bL")
 			end)
 			PluginInstallFrame.Option3:SetText("Class WA")
 			PluginInstallFrame.Option3.Pic = path .. "preview\\ClassWA.tga"
@@ -297,7 +334,7 @@ local InstallerData = {
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
 				E:StaticPopup_Show(
-					"ELVUI_EDITBOX",
+					"SPECTRAUI_EDITBOX",
 					nil,
 					nil,
 					"1 39 0 0 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%)#+#,$ 0 1 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%(#,$ 0 2 1 7 7 UIParent 0.0 45.0 -1 ##$$%/&('%(#,$ 0 3 1 5 5 UIParent -5.0 -77.0 -1 #$$$%/&('%(#,$ 0 4 1 5 5 UIParent -5.0 -77.0 -1 #$$$%/&('%(#,$ 0 5 1 1 4 UIParent 0.0 0.0 -1 ##$$%/&('%(#,$ 0 6 1 1 4 UIParent 0.0 -50.0 -1 ##$$%/&('%(#,$ 0 7 1 1 4 UIParent 0.0 -100.0 -1 ##$$%/&('%(#,$ 0 10 1 7 7 UIParent 0.0 45.0 -1 ##$$&('% 0 11 1 7 7 UIParent 0.0 45.0 -1 ##$$&('%,# 0 12 1 7 7 UIParent 0.0 45.0 -1 ##$$&('% 1 -1 1 4 4 UIParent 0.0 0.0 -1 ##$#%# 2 -1 1 2 2 UIParent 0.0 0.0 -1 ##$#%( 3 0 1 8 7 UIParent -300.0 250.0 -1 $#3# 3 1 1 6 7 UIParent 300.0 250.0 -1 %#3# 3 2 1 6 7 UIParent 520.0 265.0 -1 %#&#3# 3 3 1 0 2 CompactRaidFrameManager 0.0 -7.0 -1 '#(#)#-#.#/#1$3# 3 4 1 0 2 CompactRaidFrameManager 0.0 -5.0 -1 ,#-#.#/#0#1#2( 3 5 1 5 5 UIParent 0.0 0.0 -1 &#*$3# 3 6 1 5 5 UIParent 0.0 0.0 -1 -#.#/#4$ 3 7 1 4 4 UIParent 0.0 0.0 -1 3# 4 -1 1 7 7 UIParent 0.0 45.0 -1 # 5 -1 1 7 7 UIParent 0.0 45.0 -1 # 6 0 1 2 2 UIParent -255.0 -10.0 -1 ##$#%#&.(()( 6 1 1 2 2 UIParent -270.0 -155.0 -1 ##$#%#'+(()( 7 -1 1 7 7 UIParent 0.0 45.0 -1 # 8 -1 0 6 6 UIParent 35.0 50.0 -1 #'$A%$&7 9 -1 1 7 7 UIParent 0.0 45.0 -1 # 10 -1 1 0 0 UIParent 16.0 -116.0 -1 # 11 -1 1 8 8 UIParent -9.0 85.0 -1 # 12 -1 1 2 2 UIParent -110.0 -275.0 -1 #K$#%# 13 -1 1 8 8 MicroButtonAndBagsBar 0.0 0.0 -1 ##$#%)&- 14 -1 1 2 2 MicroButtonAndBagsBar 0.0 10.0 -1 ##$#%( 15 0 1 7 7 StatusTrackingBarManager 0.0 0.0 -1 # 15 1 1 7 7 StatusTrackingBarManager 0.0 17.0 -1 # 16 -1 1 5 5 UIParent 0.0 0.0 -1 #( 17 -1 1 1 1 UIParent 0.0 -100.0 -1 ## 18 -1 1 5 5 UIParent 0.0 0.0 -1 #- 19 -1 1 7 7 UIParent 0.0 0.0 -1 ##"
@@ -327,7 +364,7 @@ local InstallerData = {
 			-- button 2 DC start
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript("OnClick", function()
-				E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
 			end)
 			PluginInstallFrame.Option2:SetText(dicordLogo .. " " .. "Discord")
 			--PluginInstallFrame.Option2.Pic = path .. "preview\\Profile.tga"
@@ -395,7 +432,7 @@ local function InsertOptions()
 						type = "execute",
 						name = L["Discord"],
 						func = function()
-							E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
 						end,
 					},
 				},
@@ -440,7 +477,7 @@ local function InsertOptions()
 						type = "execute",
 						name = L["Frames"],
 						func = function()
-							E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/Kqz6loIke")
+							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://wago.io/Kqz6loIke")
 						end,
 					},
 					elements = {
@@ -448,7 +485,7 @@ local function InsertOptions()
 						type = "execute",
 						name = L["Theme Elements"],
 						func = function()
-							E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/MBm1s8QQa")
+							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://wago.io/MBm1s8QQa")
 						end,
 					},
 					class = {
@@ -456,7 +493,7 @@ local function InsertOptions()
 						type = "execute",
 						name = L["Class WA"],
 						func = function()
-							E:StaticPopup_Show("ELVUI_EDITBOX", nil, nil, "https://wago.io/yYEmOy4bL")
+							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://wago.io/yYEmOy4bL")
 						end,
 					},
 				},
