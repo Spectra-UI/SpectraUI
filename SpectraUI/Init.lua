@@ -8,6 +8,7 @@ local ReloadUI = ReloadUI
 local tconcat = _G.table.concat
 local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 local path = "Interface\\AddOns\\SpectraUI\\media\\"
+local InstallerData = {}
 
 -- Change this line and use a unique name for your plugin.
 local MyPluginName = "SpectraUI"
@@ -91,15 +92,7 @@ local function InstallComplete()
 end
 
 -- some cosmetics to the installer
-local function Resize()
-	PluginInstallFrame:SetSize(800, 512)
-	PluginInstallFrame:SetScale(1.25)
-
-	PluginInstallFrame.Desc1:ClearAllPoints()
-	PluginInstallFrame.Desc1:SetPoint("TOP", PluginInstallFrame.SubTitle, "BOTTOM", 0, -30)
-	PluginInstallFrame.tutorialImage:ClearAllPoints()
-	PluginInstallFrame.tutorialImage:SetPoint("BOTTOM", 0, 100)
-end
+local skinInstaller = nil
 
 local function OnEnter(button)
 	button:SetBackdropBorderColor(SpectraUI.UIColor.r, SpectraUI.UIColor.g, SpectraUI.UIColor.b, SpectraUI.UIColor.a)
@@ -116,6 +109,13 @@ local function OnLeave(button)
 	button:SetBackdropBorderColor(unpack(E.media.bordercolor))
 	PluginInstallFrame.tutorialImage:Size(410, 205)
 	PluginInstallFrame.tutorialImage:SetTexture(SpectraUI.Logo)
+end
+
+local function ResetPic()
+	PluginInstallFrame.Option1.Pic = nil
+	PluginInstallFrame.Option2.Pic = nil
+	PluginInstallFrame.Option3.Pic = nil
+	PluginInstallFrame.Option4.Pic = nil
 end
 
 local function SetEvents()
@@ -148,18 +148,26 @@ local function SetEvents()
 	PluginInstallFrame.Prev:SetScript("OnLeave", OnLeave)
 end
 
-local function ResetPic()
-	PluginInstallFrame.Option1.Pic = nil
-	PluginInstallFrame.Option2.Pic = nil
-	PluginInstallFrame.Option3.Pic = nil
-	PluginInstallFrame.Option4.Pic = nil
+local function Resize()
+	if not skinInstaller then
+		SetEvents()
+		skinInstaller = true
+	end
+
+	PluginInstallFrame:SetSize(800, 512)
+	PluginInstallFrame:SetScale(1.25)
+
+	PluginInstallFrame.Desc1:ClearAllPoints()
+	PluginInstallFrame.Desc1:SetPoint("TOP", PluginInstallFrame.SubTitle, "BOTTOM", 0, -30)
+	PluginInstallFrame.tutorialImage:ClearAllPoints()
+	PluginInstallFrame.tutorialImage:SetPoint("BOTTOM", 0, 100)
 end
 
 local dicordLogo = "|TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t"
 
 --This is the data we pass on to the ElvUI Plugin Installer.
 --The Plugin Installer is reponsible for displaying the install guide for this layout.
-local InstallerData = {
+InstallerData = {
 	Title = SpectraUI.Name,
 	Name = SpectraUI.Name,
 	tutorialImage = SpectraUI.Logo, --If you have a logo you want to use, otherwise it uses the one from ElvUI
@@ -591,7 +599,6 @@ end
 function SpectraUI:Initialize()
 	-- Initiate installation process if ElvUI install is complete and our plugin install has not yet been run
 	if E.private.install_complete and E.db[MyPluginName].install_version == nil then
-		SetEvents()
 		E:GetModule("PluginInstaller"):Queue(InstallerData)
 	end
 
