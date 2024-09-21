@@ -15,6 +15,7 @@ local MyPluginName = "SpectraUI"
 
 -- Create references to ElvUI internals
 local E, L, V, P, G = unpack(ElvUI)
+local PI = E:GetModule("PluginInstaller")
 
 -- Create reference to LibElvUIPlugin
 local EP = LibStub("LibElvUIPlugin-1.0")
@@ -54,10 +55,10 @@ E.PopupDialogs.SPECTRAUI_EDITBOX = {
 		self.editBox:SetAutoFocus(false)
 		self.editBox.width = self.editBox:GetWidth()
 		self.editBox:Width(280)
-		self.editBox:AddHistoryLine('text')
+		self.editBox:AddHistoryLine("text")
 		self.editBox.temptxt = data
 		self.editBox:SetText(data)
-		self.editBox:SetJustifyH('CENTER')
+		self.editBox:SetJustifyH("CENTER")
 	end,
 	OnHide = function(self)
 		self.editBox:Width(self.editBox.width or 50)
@@ -71,9 +72,7 @@ E.PopupDialogs.SPECTRAUI_EDITBOX = {
 		self:GetParent():Hide()
 	end,
 	EditBoxOnTextChanged = function(self)
-		if self:GetText() ~= self.temptxt then
-			self:SetText(self.temptxt)
-		end
+		if self:GetText() ~= self.temptxt then self:SetText(self.temptxt) end
 
 		self:HighlightText()
 	end,
@@ -149,18 +148,18 @@ local function SetEvents()
 end
 
 local function Resize()
-	if not skinInstaller then
+	local currentInstalle = PI.Installs[1]
+	if currentInstalle and currentInstalle.Title == InstallerData.Title then
 		SetEvents()
-		skinInstaller = true
+
+		PluginInstallFrame:SetSize(800, 512)
+		PluginInstallFrame:SetScale(1.25)
+
+		PluginInstallFrame.Desc1:ClearAllPoints()
+		PluginInstallFrame.Desc1:SetPoint("TOP", PluginInstallFrame.SubTitle, "BOTTOM", 0, -30)
+		PluginInstallFrame.tutorialImage:ClearAllPoints()
+		PluginInstallFrame.tutorialImage:SetPoint("BOTTOM", 0, 100)
 	end
-
-	PluginInstallFrame:SetSize(800, 512)
-	PluginInstallFrame:SetScale(1.25)
-
-	PluginInstallFrame.Desc1:ClearAllPoints()
-	PluginInstallFrame.Desc1:SetPoint("TOP", PluginInstallFrame.SubTitle, "BOTTOM", 0, -30)
-	PluginInstallFrame.tutorialImage:ClearAllPoints()
-	PluginInstallFrame.tutorialImage:SetPoint("BOTTOM", 0, 100)
 end
 
 local dicordLogo = "|TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t"
@@ -598,9 +597,7 @@ end
 -- This function will handle initialization of the addon
 function SpectraUI:Initialize()
 	-- Initiate installation process if ElvUI install is complete and our plugin install has not yet been run
-	if E.private.install_complete and E.db[MyPluginName].install_version == nil then
-		E:GetModule("PluginInstaller"):Queue(InstallerData)
-	end
+	if E.private.install_complete and E.db[MyPluginName].install_version == nil then PI:Queue(InstallerData) end
 
 	-- add textures to mMT
 	SpectraUI:Setup_mMediaTag()
