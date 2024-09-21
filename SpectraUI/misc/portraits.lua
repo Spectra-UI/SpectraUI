@@ -1,6 +1,15 @@
 local E, L, V, P, G = unpack(ElvUI)
+local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 
 function SpectraUI:AddPortraitsTextures()
+	if not IsAddOnLoaded("ElvUI_mMediaTag") then
+		SpectraUI:Print(L["|CFFF63939Error!|r mMediaTag is missing! Pleas install or enable mMediaTag."]) --#F63939
+		return
+	elseif not (mMT and mMT.Media.CustomPortraits) then
+		SpectraUI:Print(L["|CFFF63939Error!|r You are using an outdated version of mMediaTag. Please update mMediaTag!"]) --#F63939
+		return
+	end
+
 	if not mMT.Media.CustomPortraits["spectraui"] then
 		mMT.Media.CustomPortraits["spectraui"] = {
 			name = SpectraUI.Name, -- name to show
