@@ -310,26 +310,20 @@ InstallerData = {
 			PluginInstallFrame.Option1:SetText("BigWigs")
 			PluginInstallFrame.Option1.Pic = path .. "preview\\BigWigs.tga"
 
+
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript("OnClick", function()
-				SpectraUI:Hekili()
+				SpectraUI:CooldownToGo()
 			end)
-			PluginInstallFrame.Option2:SetText("Hekili")
-			PluginInstallFrame.Option2.Pic = path .. "preview\\Hekili.tga"
+			PluginInstallFrame.Option2:SetText("Cooldown To Go")
+			PluginInstallFrame.Option2.Pic = path .. "preview\\CooldownToGo.tga"
 
 			PluginInstallFrame.Option3:Show()
 			PluginInstallFrame.Option3:SetScript("OnClick", function()
-				SpectraUI:CooldownToGo()
-			end)
-			PluginInstallFrame.Option3:SetText("Cooldown To Go")
-			PluginInstallFrame.Option3.Pic = path .. "preview\\CooldownToGo.tga"
-
-			PluginInstallFrame.Option4:Show()
-			PluginInstallFrame.Option4:SetScript("OnClick", function()
 				SpectraUI:OmniCD()
 			end)
-			PluginInstallFrame.Option4:SetText("OmniCD")
-			PluginInstallFrame.Option4.Pic = path .. "preview\\OmniCD.tga"
+			PluginInstallFrame.Option3:SetText("OmniCD")
+			PluginInstallFrame.Option3.Pic = path .. "preview\\OmniCD.tga"
 		end,
 		[6] = function()
 			Resize()
