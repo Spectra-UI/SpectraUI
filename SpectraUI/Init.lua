@@ -36,6 +36,7 @@ local CREDITS = {
 	"|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Programming",
 	"|cffc500ffRepooc|r",
 	"|cff0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r",
+	"|CFFC7D377Lillekatt|r  - Creator and provider of the Role Icons",
 }
 
 -- example of donators if you want to add some
