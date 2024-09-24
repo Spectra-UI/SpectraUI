@@ -1,3 +1,4 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
 	<Script file='spectraui.lua'/>
+	<Script file='details.lua'/>
 </Ui>
