@@ -1,9 +1,8 @@
 local E, L, V, P, G = unpack(ElvUI)
-local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 
 -- CooldownToGo profile setup
 function SpectraUI:CooldownToGo()
-	if not IsAddOnLoaded("CooldownToGo") then return end
+	if not SpectraUI.Addons.CooldownToGo then return end
 
 	CooldownToGoDB.profiles["SpectraUI"] = {
 		["fontSize"] = 15,

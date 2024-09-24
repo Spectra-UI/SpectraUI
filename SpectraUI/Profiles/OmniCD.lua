@@ -1,9 +1,8 @@
 local E, L, V, P, G = unpack(ElvUI)
-local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 
 -- OmniCD profile setup
 function SpectraUI:OmniCD()
-	if not IsAddOnLoaded("OmniCD") then return end
+	if not SpectraUI.Addons.OmniCD then return end
 
 	OmniCDDB.profiles["SpectraUI"] = {
 		["Party"] = {

@@ -1,9 +1,8 @@
 local E, L, V, P, G = unpack(ElvUI)
-local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 
 -- AddOnSkins profile setup
 function SpectraUI:AddOnSkins()
-	if not IsAddOnLoaded("AddOnSkins") then return end
+	if not SpectraUI.Addons.AddOnSkins then return end
 
 	AddOnSkinsDB.profiles["SpectraUI"] = {
 		["Font"] = "SpectraUI Caption",

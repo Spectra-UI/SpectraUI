@@ -1,11 +1,8 @@
 local E, L, V, P, G = unpack(ElvUI)
-local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 
 -- SylingTracker profile setup
 function SpectraUI:SylingTracker()
-	if not IsAddOnLoaded("SylingTracker") then
-		return
-	end
+	if not SpectraUI.Addons.SylingTracker then return end
 
 	SylingTrackerDB = {
 		["uiSettings"] = {

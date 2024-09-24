@@ -1,9 +1,8 @@
 local E, L, V, P, G = unpack(ElvUI)
-local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 
 -- CDTL2 profile setup
 function SpectraUI:CDTL2()
-	if not IsAddOnLoaded("CooldownTimeline2") then return end
+	if not SpectraUI.Addons.CooldownTimeline2 then return end
 	CDTL2DB.profiles["SpectraUI"] = {
 		["barFrames"] = {
 			["frame3"] = {

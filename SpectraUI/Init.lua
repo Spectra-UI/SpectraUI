@@ -30,6 +30,7 @@ SpectraUI.UIColor = { r = 0, g = 0.98, b = 0.44, a = 1, hex = "|CFF03FA6E" }
 SpectraUI.Icon = "|TInterface\\AddOns\\SpectraUI\\media\\icon.tga:14:14|t"
 SpectraUI.Logo = "Interface\\AddOns\\SpectraUI\\media\\logo.tga"
 SpectraUI.LogoText = "Interface\\AddOns\\SpectraUI\\media\\logo_text.tga"
+SpectraUI.Addons = {}
 
 -- example of credits if you want to add some
 local CREDITS = {
@@ -305,7 +306,6 @@ InstallerData = {
 			PluginInstallFrame.Option1:SetText("BigWigs")
 			PluginInstallFrame.Option1.Pic = path .. "preview\\BigWigs.tga"
 
-
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript("OnClick", function()
 				SpectraUI:CooldownToGo()
@@ -575,10 +575,23 @@ function SpectraUI:Setup_mMediaTag()
 	mMT:AddClassIcons("SpectraUI_Modern", path .. "class\\SpectraUI_Modern.tga", textureCoords, "SpectraUI Modern")
 end
 
+local function CheckAddons()
+	SpectraUI.Addons.AddOnSkins = IsAddOnLoaded("AddOnSkins")
+	SpectraUI.Addons.BigWigs = IsAddOnLoaded("BigWigs")
+	SpectraUI.Addons.CooldownTimeline2 = IsAddOnLoaded("CooldownTimeline2")
+	SpectraUI.Addons.CooldownToGo = IsAddOnLoaded("CooldownToGo")
+	SpectraUI.Addons.Details = IsAddOnLoaded("Details")
+	SpectraUI.Addons.OmniCD = IsAddOnLoaded("OmniCD")
+	SpectraUI.Addons.SylingTracker = IsAddOnLoaded("SylingTracker")
+end
+
 -- This function will handle initialization of the addon
 function SpectraUI:Initialize()
 	-- Initiate installation process if ElvUI install is complete and our plugin install has not yet been run
 	if E.private.install_complete and E.db[MyPluginName].install_version == nil then PI:Queue(InstallerData) end
+
+	-- check wich addons are loaded
+	CheckAddons()
 
 	-- add textures to mMT
 	SpectraUI:Setup_mMediaTag()

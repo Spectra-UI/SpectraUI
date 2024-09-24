@@ -1,10 +1,9 @@
 local E = unpack(ElvUI)
 local _G = _G
-local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 
 -- Details profile setup
 function SpectraUI:Details()
-	if not IsAddOnLoaded("Details") then
+	if not SpectraUI.Addons.Details then
 		return
 	end
 	local SpectraUIDetails =
