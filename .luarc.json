@@ -19519,5 +19519,6 @@
         "AddOnSkinsDB"
   ],
   "diagnostics.disable": ["deprecated", "inject-field", "undefined-field",
-        "cast-local-type"]
+        "cast-local-type",
+        "duplicate-set-field"]
 }

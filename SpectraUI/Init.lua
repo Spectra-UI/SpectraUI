@@ -220,19 +220,19 @@ InstallerData = {
 			-- button 1 start
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
-				SpectraUI:ElvUIProfileA()
+				SpectraUI:ElvUIProfileVertical()
 			end)
 			PluginInstallFrame.Option1:SetText("Vertical")
-			PluginInstallFrame.Option1.Pic = path .. "preview\\ProfileA.tga"
+			PluginInstallFrame.Option1.Pic = path .. "preview\\profile_vertical.tga"
 			-- button 1 end
 
 			-- button 2 start
 			PluginInstallFrame.Option2:Show()
 			PluginInstallFrame.Option2:SetScript("OnClick", function()
-				-- SpectraUI:ElvUIProfileB()
+				-- SpectraUI:ElvUIProfileHorizontal()
 			end)
 			PluginInstallFrame.Option2:SetText("Horizontal")
-			PluginInstallFrame.Option2.Pic = path .. "preview\\ProfileB.tga"
+			PluginInstallFrame.Option2.Pic = path .. "preview\\profile_horizontal.tga"
 			-- button 2 end
 		end,
 		[3] = function()

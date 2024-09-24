@@ -1,7 +1,8 @@
 local E = unpack(ElvUI)
 local D = E:GetModule("Distributor")
 
-function SpectraUI:ElvUIProfileA()
+-- ! classic vertical profile
+function SpectraUI:ElvUIProfileVertical()
 	-- donte remove the " at the begining and and of the string here
 	-- Profile! replace !E1!DUMMY ELVUI PROFILE STRING with your ElvUI Profile String.
 	local profile =

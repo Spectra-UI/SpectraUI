@@ -7,6 +7,6 @@
 ## RequiredDeps: ElvUI, ElvUI_EltreumUI, ElvUI_mMediaTag, WeakAuras
 
 init.lua
-profiles\load_profiles.xml
+profiles\load_profiles_classic.xml
 media\load_media.xml
 misc\load_misc.xml
