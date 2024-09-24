@@ -46,9 +46,13 @@ function SpectraUI:DetailsEmbedded()
 	--_G.Details.opened_windows
 	if _G["DetailsBaseFrame1"] then
 		_G["DetailsBaseFrame1"]:SetParent(detailsEmbedded)
+		_G["DetailsRowFrame1"]:SetParent(detailsEmbedded)
+		_G["Details_SwitchButtonFrame1"]:SetParent(detailsEmbedded)
 		_G["DetailsBaseFrame1"]:ClearAllPoints()
 		_G["DetailsBaseFrame1"]:SetPoint("TOPLEFT", detailsEmbedded, "TOPLEFT", 0, -20)
 	end
+
+	--mMT:DebugPrintTable(_G.RightChatPanel)
 end
 
 function SpectraUI:DetailsEmbeddedToggle()
