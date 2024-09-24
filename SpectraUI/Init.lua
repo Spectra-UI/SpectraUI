@@ -25,6 +25,7 @@ SpectraUI = E:NewModule(MyPluginName, "AceHook-3.0", "AceEvent-3.0", "AceTimer-3
 
 -- Name, Logo and Icon for your plugin.
 SpectraUI.Name = "|CFFFFFFFFSpectra|r |CFF03FA6EUI|r" --#03FA6E #FFFFFF
+SpectraUI.Version = Version
 SpectraUI.UIColor = { r = 0, g = 0.98, b = 0.44, a = 1, hex = "|CFF03FA6E" }
 SpectraUI.Icon = "|TInterface\\AddOns\\SpectraUI\\media\\icon.tga:14:14|t"
 SpectraUI.Logo = "Interface\\AddOns\\SpectraUI\\media\\logo.tga"

@@ -10,3 +10,4 @@ init.lua
 profiles\load_profiles.xml
 media\load_media.xml
 misc\load_misc.xml
+datatext\load_datatext.xml
