@@ -595,7 +595,15 @@ function SpectraUI:Initialize()
 
 	-- add textures to mMT
 	SpectraUI:Setup_mMediaTag()
-	SpectraUI:SetupDetails()
+
+	-- do this only if details is loaded
+	if SpectraUI.Addons.Details then
+		-- details embedded feature
+		SpectraUI:DetailsEmbedded()
+
+		-- add class icons to details
+		SpectraUI:SetupDetails()
+	end
 
 	-- Insert our options table when ElvUI config is loaded
 	EP:RegisterPlugin(addon, InsertOptions)

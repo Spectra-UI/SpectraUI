@@ -20,6 +20,7 @@ end
 local function OnClick(self, event, ...)
   if SpectraUI.Addons.Details then
     SpectraUI:Print("I WILL HIDE DETAILS ... soon :D")
+    SpectraUI:DetailsEmbeddedToggle()
   end
 end
 
