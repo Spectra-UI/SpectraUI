@@ -393,7 +393,7 @@ P[MyPluginName] = {
 	detailsEmbedded = {
 		firsttime =true,
 		size = { height = 170, wide = 408 },
-		chatEmbedded = "RightChatMover",
+		chatEmbedded = "RightChat",
 		hideChat = false,
 	},
 }
@@ -574,8 +574,8 @@ local function InsertOptions()
 						end,
 						values = {
 							NONE = "NONE",
-							LeftChatMover = "Left Chat",
-							RightChatMover = "Right Chat",
+							LeftChat = "Left Chat",
+							RightChat = "Right Chat",
 						},
 					},
 				},

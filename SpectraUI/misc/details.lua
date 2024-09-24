@@ -26,10 +26,12 @@ function SpectraUI:DetailsEmbedded()
 	if not detailsEmbedded then
 		local wide = E.db.SpectraUI.detailsEmbedded.size.wide
 		local height = E.db.SpectraUI.detailsEmbedded.size.height
-		if E.db.SpectraUI.detailsEmbedded.chatEmbedded ~= "NONE" then
-			E.db.movers.SpectraUI_DetailsEmbedded_Mover = E.db.movers[E.db.SpectraUI.detailsEmbedded.chatEmbedded]
+		local chatEmbedded = E.db.SpectraUI.detailsEmbedded.chatEmbedded
+		if chatEmbedded ~= "NONE" then
+			E.db.movers.SpectraUI_DetailsEmbedded_Mover = E.db.movers[chatEmbedded .. "Mover"]
 			wide = E.db.chat.panelWidth - 2
 			height = E.db.chat.panelHeight - 2
+			_G[chatEmbedded .. "Panel"]:Hide()
 		end
 
 		detailsEmbedded = CreateFrame("Frame", "SpectraUI_DetailsEmbedded_Frame", UIParent)
@@ -37,7 +39,7 @@ function SpectraUI:DetailsEmbedded()
 		detailsEmbedded:SetWidth(wide)
 		detailsEmbedded:SetHeight(height)
 		detailsEmbedded:SetPoint("CENTER", 0, 0)
-		--detailsEmbedded:CreateBackdrop() -- for testing
+		detailsEmbedded:CreateBackdrop("Transparent") -- for testing
 		detailsEmbedded:Show()
 
 		E:CreateMover(detailsEmbedded, "SpectraUI_DetailsEmbedded_Mover", "SpectraUI_DetailsEmbedded_Frame", nil, nil, nil, "ALL", nil, "SpectraUI", nil)
@@ -53,13 +55,18 @@ function SpectraUI:DetailsEmbedded()
 	end
 
 	--mMT:DebugPrintTable(_G.RightChatPanel)
+	local child = _G.RightChatPanel:GetChildren()
+	mMT:DebugPrintTable(child)
 end
 
 function SpectraUI:DetailsEmbeddedToggle()
+	local chatEmbedded = E.db.SpectraUI.detailsEmbedded.chatEmbedded
 	if detailsEmbedded:IsShown() then
 		detailsEmbedded:Hide()
+		_G[chatEmbedded .. "Panel"]:Show()
 	else
 		detailsEmbedded:Show()
+		_G[chatEmbedded .. "Panel"]:Hide()
 	end
 end
 
@@ -67,8 +74,9 @@ function SpectraUI:DetailsEmbeddedUpdateSize()
 	if detailsEmbedded then
 		local wide = E.db.SpectraUI.detailsEmbedded.size.wide
 		local height = E.db.SpectraUI.detailsEmbedded.size.height
-		if E.db.SpectraUI.detailsEmbedded.chatEmbedded ~= "NONE" then
-			E.db.movers.SpectraUI_DetailsEmbedded_Mover = E.db.movers[E.db.SpectraUI.detailsEmbedded.chatEmbedded]
+		local chatEmbedded = E.db.SpectraUI.detailsEmbedded.chatEmbedded
+		if chatEmbedded ~= "NONE" then
+			E.db.movers.SpectraUI_DetailsEmbedded_Mover = E.db.movers[chatEmbedded .. "Mover"]
 			wide = E.db.chat.panelWidth - 2
 			height = E.db.chat.panelHeight - 2
 		end
