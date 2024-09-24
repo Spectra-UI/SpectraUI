@@ -390,6 +390,12 @@ InstallerData = {
 -- default settings db for the addon
 P[MyPluginName] = {
 	portraitsOffset = 5, -- Portrait zoom offest, default setting
+	detailsEmbedded = {
+		firsttime =true,
+		size = { height = 170, wide = 408 },
+		chatEmbedded = "RightChatMover",
+		hideChat = false,
+	},
 }
 
 -- Plugin Settings
@@ -513,8 +519,69 @@ local function InsertOptions()
 					},
 				},
 			},
-			thankyou = {
+			embedded = {
 				order = 6,
+				type = "group",
+				inline = true,
+				name = L["Details Embedded"],
+				args = {
+					wide = {
+						order = 1,
+						name = L["Embedded Frame wide"],
+						type = "range",
+						min = 128,
+						max = 1920,
+						step = 1,
+						disabled = function()
+							return E.db[MyPluginName].detailsEmbedded.chatEmbedded ~= "NONE"
+						end,
+						get = function(info)
+							return E.db[MyPluginName].detailsEmbedded.size.wide
+						end,
+						set = function(info, value)
+							E.db[MyPluginName].detailsEmbedded.size.wide = value
+							SpectraUI:DetailsEmbeddedUpdateSize()
+						end,
+					},
+					height = {
+						order = 2,
+						name = L["Embedded Frame height"],
+						type = "range",
+						min = 128,
+						max = 1080,
+						step = 1,
+						disabled = function()
+							return E.db[MyPluginName].detailsEmbedded.chatEmbedded ~= "NONE"
+						end,
+						get = function(info)
+							return E.db[MyPluginName].detailsEmbedded.size.height
+						end,
+						set = function(info, value)
+							E.db[MyPluginName].detailsEmbedded.size.height = value
+							SpectraUI:DetailsEmbeddedUpdateSize()
+						end,
+					},
+					chat = {
+						order = 3,
+						type = "select",
+						name = L["Embedded to Chat"],
+						get = function(info)
+							return E.db[MyPluginName].detailsEmbedded.chatEmbedded
+						end,
+						set = function(info, value)
+							E.db[MyPluginName].detailsEmbedded.chatEmbedded = value
+							E:StaticPopup_Show("CONFIG_RL")
+						end,
+						values = {
+							NONE = "NONE",
+							LeftChatMover = "Left Chat",
+							RightChatMover = "Right Chat",
+						},
+					},
+				},
+			},
+			thankyou = {
+				order = 7,
 				type = "group",
 				inline = true,
 				name = L["Credits"],
