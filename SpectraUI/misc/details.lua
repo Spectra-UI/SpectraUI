@@ -27,6 +27,7 @@ function SpectraUI:DetailsEmbedded()
 		local wide = E.db.SpectraUI.detailsEmbedded.size.wide
 		local height = E.db.SpectraUI.detailsEmbedded.size.height
 		local chatEmbedded = E.db.SpectraUI.detailsEmbedded.chatEmbedded
+		local color = E.db.chat.panelColor
 		if chatEmbedded ~= "NONE" then
 			E.db.movers.SpectraUI_DetailsEmbedded_Mover = E.db.movers[chatEmbedded .. "Mover"]
 			wide = E.db.chat.panelWidth - 2
@@ -39,7 +40,8 @@ function SpectraUI:DetailsEmbedded()
 		detailsEmbedded:SetWidth(wide)
 		detailsEmbedded:SetHeight(height)
 		detailsEmbedded:SetPoint("CENTER", 0, 0)
-		detailsEmbedded:CreateBackdrop("Transparent") -- for testing
+		detailsEmbedded:CreateBackdrop("Transparent")
+		detailsEmbedded.backdrop:SetBackdropColor(color.r, color.g, color.b, color.a)
 		detailsEmbedded:Show()
 
 		E:CreateMover(detailsEmbedded, "SpectraUI_DetailsEmbedded_Mover", "SpectraUI_DetailsEmbedded_Frame", nil, nil, nil, "ALL", nil, "SpectraUI", nil)
@@ -54,9 +56,9 @@ function SpectraUI:DetailsEmbedded()
 		_G["DetailsBaseFrame1"]:SetPoint("TOPLEFT", detailsEmbedded, "TOPLEFT", 0, -20)
 	end
 
-	--mMT:DebugPrintTable(_G.RightChatPanel)
+	mMT:DebugPrintTable(detailsEmbedded)
 	local child = _G.RightChatPanel:GetChildren()
-	mMT:DebugPrintTable(child)
+	--mMT:DebugPrintTable(child)
 end
 
 function SpectraUI:DetailsEmbeddedToggle()

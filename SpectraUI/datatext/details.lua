@@ -17,7 +17,7 @@ local function OnEvent(self, event, ...)
     self.text:SetText(color .. "Details|r")
 end
 
-local function OnClick(self, event, ...)
+local function OnClick()
   if SpectraUI.Addons.Details then
     SpectraUI:DetailsEmbeddedToggle()
   end
