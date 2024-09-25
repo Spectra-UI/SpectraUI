@@ -390,11 +390,8 @@ InstallerData = {
 -- default settings db for the addon
 P[MyPluginName] = {
 	portraitsOffset = 5, -- Portrait zoom offest, default setting
-	detailsEmbedded = {
-		firsttime =true,
-		size = { height = 170, wide = 408 },
+	detailsEmbedded = { -- settings for the embedded system
 		chatEmbedded = "RightChat",
-		hideChat = false,
 	},
 }
 
@@ -525,44 +522,8 @@ local function InsertOptions()
 				inline = true,
 				name = L["Details Embedded"],
 				args = {
-					wide = {
-						order = 1,
-						name = L["Embedded Frame wide"],
-						type = "range",
-						min = 128,
-						max = 1920,
-						step = 1,
-						disabled = function()
-							return E.db[MyPluginName].detailsEmbedded.chatEmbedded ~= "NONE"
-						end,
-						get = function(info)
-							return E.db[MyPluginName].detailsEmbedded.size.wide
-						end,
-						set = function(info, value)
-							E.db[MyPluginName].detailsEmbedded.size.wide = value
-							SpectraUI:DetailsEmbeddedUpdateSize()
-						end,
-					},
-					height = {
-						order = 2,
-						name = L["Embedded Frame height"],
-						type = "range",
-						min = 128,
-						max = 1080,
-						step = 1,
-						disabled = function()
-							return E.db[MyPluginName].detailsEmbedded.chatEmbedded ~= "NONE"
-						end,
-						get = function(info)
-							return E.db[MyPluginName].detailsEmbedded.size.height
-						end,
-						set = function(info, value)
-							E.db[MyPluginName].detailsEmbedded.size.height = value
-							SpectraUI:DetailsEmbeddedUpdateSize()
-						end,
-					},
 					chat = {
-						order = 3,
+						order = 1,
 						type = "select",
 						name = L["Embedded to Chat"],
 						get = function(info)
@@ -573,7 +534,7 @@ local function InsertOptions()
 							E:StaticPopup_Show("CONFIG_RL")
 						end,
 						values = {
-							NONE = "NONE",
+							DISABLE = "DISABLE",
 							LeftChat = "Left Chat",
 							RightChat = "Right Chat",
 						},
@@ -666,7 +627,7 @@ function SpectraUI:Initialize()
 	-- do this only if details is loaded
 	if SpectraUI.Addons.Details then
 		-- details embedded feature
-		SpectraUI:DetailsEmbedded()
+		if E.db.SpectraUI.detailsEmbedded.chatEmbedded ~= "DISABLE" then SpectraUI:DetailsEmbedded() end
 
 		-- add class icons to details
 		SpectraUI:SetupDetails()

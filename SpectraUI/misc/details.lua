@@ -67,27 +67,13 @@ end
 
 function SpectraUI:DetailsEmbeddedToggle()
 	local chatEmbedded = E.db.SpectraUI.detailsEmbedded.chatEmbedded
+	local chat = _G[chatEmbedded .. "Panel"]
+
 	if detailsEmbedded:IsShown() then
 		detailsEmbedded:Hide()
-		_G[chatEmbedded .. "Panel"]:Show()
+		chat:Show()
 	else
 		detailsEmbedded:Show()
-		_G[chatEmbedded .. "Panel"]:Hide()
-	end
-end
-
-function SpectraUI:DetailsEmbeddedUpdateSize()
-	if detailsEmbedded then
-		local wide = E.db.SpectraUI.detailsEmbedded.size.wide
-		local height = E.db.SpectraUI.detailsEmbedded.size.height
-		local chatEmbedded = E.db.SpectraUI.detailsEmbedded.chatEmbedded
-		if chatEmbedded ~= "NONE" then
-			E.db.movers.SpectraUI_DetailsEmbedded_Mover = E.db.movers[chatEmbedded .. "Mover"]
-			wide = E.db.chat.panelWidth - 2
-			height = E.db.chat.panelHeight - 2
-		end
-
-		detailsEmbedded:SetWidth(wide)
-		detailsEmbedded:SetHeight(height)
+		chat:Hide()
 	end
 end
