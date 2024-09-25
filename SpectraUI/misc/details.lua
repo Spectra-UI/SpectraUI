@@ -24,41 +24,45 @@ end
 
 function SpectraUI:DetailsEmbedded()
 	if not detailsEmbedded then
-		local wide = E.db.SpectraUI.detailsEmbedded.size.wide
-		local height = E.db.SpectraUI.detailsEmbedded.size.height
 		local chatEmbedded = E.db.SpectraUI.detailsEmbedded.chatEmbedded
-		local color = E.db.chat.panelColor
-		if chatEmbedded ~= "NONE" then
-			E.db.movers.SpectraUI_DetailsEmbedded_Mover = E.db.movers[chatEmbedded .. "Mover"]
-			wide = E.db.chat.panelWidth - 2
-			height = E.db.chat.panelHeight - 2
-			_G[chatEmbedded .. "Panel"]:Hide()
+		local chat = _G[chatEmbedded .. "Panel"]
+
+		detailsEmbedded = CreateFrame("Frame", "SpectraUI_DetailsEmbedded_Frame", UIParent, "BackdropTemplate")
+		detailsEmbedded:SetFrameStrata("BACKGROUND")
+
+		local chatHeight = chat:GetHeight()
+		local chatWidth = chat:GetWidth()
+		print(chatHeight, chatWidth)
+
+		local backdrop = chat.backdrop:GetBackdrop()
+		detailsEmbedded:SetBackdrop(backdrop)
+
+		local r, g, b, a = chat.backdrop:GetBackdropBorderColor()
+		detailsEmbedded:SetBackdropBorderColor(r, g, b, a)
+
+		r, g, b, a = chat.backdrop:GetBackdropColor()
+		detailsEmbedded:SetBackdropColor(r, g, b, a)
+
+		detailsEmbedded:SetWidth(chatWidth)
+		detailsEmbedded:SetHeight(chatHeight)
+
+		for i = 1, chat:GetNumPoints() do
+			local point, _, relativePoint, xOfs, yOfs = chat:GetPoint(i)
+			detailsEmbedded:SetPoint(point, chat, relativePoint, xOfs, yOfs)
 		end
 
-		detailsEmbedded = CreateFrame("Frame", "SpectraUI_DetailsEmbedded_Frame", UIParent)
-		detailsEmbedded:SetFrameStrata("BACKGROUND")
-		detailsEmbedded:SetWidth(wide)
-		detailsEmbedded:SetHeight(height)
-		detailsEmbedded:SetPoint("CENTER", 0, 0)
-		detailsEmbedded:CreateBackdrop("Transparent")
-		detailsEmbedded.backdrop:SetBackdropColor(color.r, color.g, color.b, color.a)
+		chat:Hide()
 		detailsEmbedded:Show()
-
-		E:CreateMover(detailsEmbedded, "SpectraUI_DetailsEmbedded_Mover", "SpectraUI_DetailsEmbedded_Frame", nil, nil, nil, "ALL", nil, "SpectraUI", nil)
 	end
 
-	--_G.Details.opened_windows
-	if _G["DetailsBaseFrame1"] then
-		_G["DetailsBaseFrame1"]:SetParent(detailsEmbedded)
+	local detailsBaseFrame = _G["DetailsBaseFrame1"]
+	if detailsBaseFrame then
+		detailsBaseFrame:SetParent(detailsEmbedded)
+		detailsBaseFrame:ClearAllPoints()
+		detailsBaseFrame:SetPoint("TOPLEFT", detailsEmbedded, "TOPLEFT", 0, -20)
 		_G["DetailsRowFrame1"]:SetParent(detailsEmbedded)
 		_G["Details_SwitchButtonFrame1"]:SetParent(detailsEmbedded)
-		_G["DetailsBaseFrame1"]:ClearAllPoints()
-		_G["DetailsBaseFrame1"]:SetPoint("TOPLEFT", detailsEmbedded, "TOPLEFT", 0, -20)
 	end
-
-	mMT:DebugPrintTable(detailsEmbedded)
-	local child = _G.RightChatPanel:GetChildren()
-	--mMT:DebugPrintTable(child)
 end
 
 function SpectraUI:DetailsEmbeddedToggle()
