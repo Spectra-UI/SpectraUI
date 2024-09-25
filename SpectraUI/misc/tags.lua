@@ -44,3 +44,21 @@ E:AddTag("spectra:classic", "UNIT_NAME_UPDATE", function(unit, _, args)
 end)
 
 E:AddTagInfo("spectra:classic", SpectraUI.Name .. " " .. L["Icons"], L["Class Icons."] .. " " .. L["The size can be set as follows"] .. " > spectra:styl{32}")
+
+local roleIocns = {
+	TANK = "Interface\\Addons\\SpectraUI\\media\\role\\Tank.tga",
+	HEALER = "Interface\\Addons\\SpectraUI\\media\\role\\Healer.tga",
+	DAMAGER = "Interface\\Addons\\SpectraUI\\media\\role\\DPS.tga",
+}
+
+E:AddTag("spectra:roleicon", "PLAYER_ROLES_ASSIGNED GROUP_ROSTER_UPDATE", function(unit, _, args)
+	local UnitRole = (E.Retail or E.Cata) and UnitGroupRolesAssigned(unit)
+
+	local icon = UnitRole and roleIocns[UnitRole]
+	local size = strsplit(":", args or "")
+	size = tonumber(size)
+	size = (size and (size >= 16 and size <= 128)) and size or 64
+	if icon then return format("|T%s:%s:%s|t", icon, size, size) end
+end)
+
+E:AddTagInfo("spectra:roleicon", SpectraUI.Name .. " " .. L["Icons"], L["Role Icons."] .. " " .. L["The size can be set as follows"] .. " > spectra:styl{32}")
