@@ -76,5 +76,7 @@ function SpectraUI:DetailsEmbeddedToggle()
 			detailsEmbedded:Show()
 			chat:Hide()
 		end
+	else
+		SpectraUI:Print(format("|CFFF63939Error|r: Embedded System is disabled, you can enable it in the %s settings.", SpectraUI.Name))
 	end
 end
