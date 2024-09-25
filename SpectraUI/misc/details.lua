@@ -32,7 +32,6 @@ function SpectraUI:DetailsEmbedded()
 
 		local chatHeight = chat:GetHeight()
 		local chatWidth = chat:GetWidth()
-		print(chatHeight, chatWidth)
 
 		local backdrop = chat.backdrop:GetBackdrop()
 		detailsEmbedded:SetBackdrop(backdrop)
