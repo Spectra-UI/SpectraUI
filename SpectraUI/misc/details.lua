@@ -66,14 +66,16 @@ function SpectraUI:DetailsEmbedded()
 end
 
 function SpectraUI:DetailsEmbeddedToggle()
-	local chatEmbedded = E.db.SpectraUI.detailsEmbedded.chatEmbedded
-	local chat = _G[chatEmbedded .. "Panel"]
+	if detailsEmbedded then
+		local chatEmbedded = E.db.SpectraUI.detailsEmbedded.chatEmbedded
+		local chat = _G[chatEmbedded .. "Panel"]
 
-	if detailsEmbedded:IsShown() then
-		detailsEmbedded:Hide()
-		chat:Show()
-	else
-		detailsEmbedded:Show()
-		chat:Hide()
+		if detailsEmbedded:IsShown() then
+			detailsEmbedded:Hide()
+			chat:Show()
+		else
+			detailsEmbedded:Show()
+			chat:Hide()
+		end
 	end
 end
