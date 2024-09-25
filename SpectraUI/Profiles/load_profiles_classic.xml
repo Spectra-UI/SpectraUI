@@ -1,5 +1,4 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
-	<Script file='AddOnSkins.lua'/>
 	<Script file='BigWigs.lua'/>
 	<Script file='CDTL2.lua'/>
 	<Script file='CooldownToGo.lua'/>
