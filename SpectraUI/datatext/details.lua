@@ -21,23 +21,25 @@ local function OnEvent(self, event, ...)
 end
 
 local function OnClick(_, button)
-	if button == "LeftButton" and SpectraUI.Addons.Details then
-		SpectraUI:DetailsEmbeddedToggle()
-	else
-		if _G.DetailsOptionsWindow then
-			if _G.DetailsOptionsWindow:IsShown() then
-				_G.DetailsOptionsWindow:Hide()
-				return
-			end
-		end
-
-		local lower_instance = Details:GetLowerInstanceNumber()
-		if not lower_instance then
-			local instance = Details:GetInstance(1)
-			Details.CriarInstancia(_, _, 1)
-			Details:OpenOptionsWindow(instance)
+	if Details then
+		if button == "LeftButton" and SpectraUI.Addons.Details then
+			SpectraUI:DetailsEmbeddedToggle()
 		else
-			Details:OpenOptionsWindow(Details:GetInstance(lower_instance))
+			if _G.DetailsOptionsWindow then
+				if _G.DetailsOptionsWindow:IsShown() then
+					_G.DetailsOptionsWindow:Hide()
+					return
+				end
+			end
+
+			local lower_instance = Details:GetLowerInstanceNumber()
+			if not lower_instance then
+				local instance = Details:GetInstance(1)
+				Details.CriarInstancia(_, _, 1)
+				Details:OpenOptionsWindow(instance)
+			else
+				Details:OpenOptionsWindow(Details:GetInstance(lower_instance))
+			end
 		end
 	end
 end
