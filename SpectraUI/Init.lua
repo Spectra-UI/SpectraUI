@@ -474,7 +474,9 @@ local function InsertOptions()
 						type = "execute",
 						name = L["Frames"],
 						func = function()
-							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://wago.io/Kqz6loIke")
+							local classicLink = "https://wago.io/TKMI9EwrP"
+							local retailLink = "https://wago.io/Kqz6loIke"
+							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and retailLink or classicLink)
 						end,
 					},
 					elements = {
@@ -482,7 +484,9 @@ local function InsertOptions()
 						type = "execute",
 						name = L["Theme Elements"],
 						func = function()
-							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://wago.io/MBm1s8QQa")
+							local classicLink = "https://wago.io/Kgw3rnboZ"
+							local retailLink = "https://wago.io/MBm1s8QQa"
+							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and retailLink or classicLink)
 						end,
 					},
 				},

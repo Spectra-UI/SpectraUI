@@ -19,7 +19,7 @@ local function OnEnter(self)
 	DT.tooltip:Show()
 end
 
-local function OnEvent(self, event, ...)
+local function OnEvent(self)
 	local color = SpectraUI.Addons.Details and "|CFFFFFFFF" or "|CFFF63939"
 	self.text:SetText(color .. "Details|r")
 end
