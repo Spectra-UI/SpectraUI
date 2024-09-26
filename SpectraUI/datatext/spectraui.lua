@@ -1,22 +1,39 @@
-local E = unpack(ElvUI)
+local E, L, V, P, G = unpack(ElvUI)
+
 local DT = E:GetModule("DataTexts")
+local M = E:GetModule('Minimap')
 
 --WoW API / Variables
 local _G = _G
+local format = string.format
+local ReloadUI = ReloadUI
+local IsShiftKeyDown = IsShiftKeyDown
 
 local function OnEnter(self)
 	DT.tooltip:ClearLines()
 	DT.tooltip:AddDoubleLine(SpectraUI.Name, SpectraUI.Icon)
 	DT.tooltip:AddDoubleLine("Version:", SpectraUI.Version)
+	DT.tooltip:AddLine(" ")
+	DT.tooltip:AddDoubleLine("|CFFFFFFFFLeft click:|r", format("open %s Settings", SpectraUI.Name))
+	DT.tooltip:AddDoubleLine("|CFFFFFFFFRight click:|r", "open Menu")
+	DT.tooltip:AddDoubleLine(SpectraUI.UIColor.hex .. "SHIFT|r " .. "|CFFFFFFFFLeft click:|r", "ReloadUI (/rl)")
 	DT.tooltip:Show()
 end
 
 local function OnEvent(self, event, ...)
-    self.text:SetText(SpectraUI.Name)
+	self.text:SetText(SpectraUI.Name)
 end
 
-local function OnClick(self, event, ...)
-    E:ToggleOptions("SpectraUI")
+local function OnClick(_, button)
+	if button == "LeftButton" then
+		if IsShiftKeyDown() then
+			ReloadUI()
+		else
+			E:ToggleOptions("SpectraUI")
+		end
+	elseif button == "RightButton" then
+		M:Minimap_OnMouseDown("MiddleButton")
+	end
 end
 
 local function OnLeave(self)
