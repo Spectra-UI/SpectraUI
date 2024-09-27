@@ -8,11 +8,11 @@
 ## RequiredDeps: ElvUI, ElvUI_EltreumUI, ElvUI_mMediaTag, WeakAuras
 
 lib\load_libs.xml
-lib\LibAddonCompat-1.0.lua
 
 localization\load_localization.xml
 
 init.lua
+core\load_core.xml
 profiles\load_profiles_classic.xml
 media\load_media.xml
 misc\load_misc.xml

@@ -1,4 +1,4 @@
-
+-- Create references to ElvUI internals
 local E, _, V, P, G = unpack(ElvUI)
 local L = SpectraUI.Locales
 -- dont touch this ^
@@ -10,7 +10,6 @@ local tconcat = _G.table.concat
 -- Build the Credits & Donator String
 local CREDITS_STRING = tconcat(SpectraUI.CREDITS, "|n")
 local DONATORS_STRING = tconcat(SpectraUI.DONATORS, "|n")
-
 
 -- Plugin Settings table
 local function OptionsTable()
@@ -75,8 +74,7 @@ local function OptionsTable()
 						name = L["Install"],
 						desc = L["Run the installation process."],
 						func = function()
-							--SpectraUI:Installer_SetEvents() update this
-							--E:GetModule("PluginInstaller"):Queue(InstallerData)
+							SpectraUI:RunInstaller()
 							E:ToggleOptions()
 						end,
 					},
@@ -124,7 +122,7 @@ local function OptionsTable()
 						max = 10,
 						step = 0.1,
 						disabled = function()
-							return not IsAddOnLoaded("ElvUI_mMediaTag")
+							return not SpectraUI.Addons.mMediaTag
 						end,
 						get = function(info)
 							return E.db.SpectraUI.portraitsOffset
@@ -195,4 +193,4 @@ local function OptionsTable()
 end
 
 -- add the settings to our main table
-tinsert(SpectraUI.Config, OptionsTable)
+tinsert(SpectraUI.Options, OptionsTable)

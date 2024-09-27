@@ -1,3 +1,4 @@
+-- Create references to ElvUI internals
 local E, _, V, P, G = unpack(ElvUI)
 -- dont touch this ^
 
