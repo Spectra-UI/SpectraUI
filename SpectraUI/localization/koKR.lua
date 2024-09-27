@@ -33,7 +33,7 @@ L["These are the profiles that are available. Please click a button below to app
 L["This process will install %s and allow you to choose between a Vertical or Horizontal layout. It will also activate the essential features of %s."] = true
 L["Vertical"] = true
 L["Weakauras"] = true
-L["Welcome to the installation for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r"] = true
+L["Welcome to the installation for %s"] = true
 L["Welcome"] = true
 L["|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Programming"] = true
 L["|CFF03FA6EThe installation process is now complete!|r"] = true
