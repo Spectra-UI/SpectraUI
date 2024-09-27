@@ -14,7 +14,7 @@ local function OnEnter(self)
 	DT.tooltip:AddDoubleLine("|CFFFFFFFFLeft click:|r", "toggle Details")
 	DT.tooltip:AddDoubleLine("|CFFFFFFFFRight click:|r", "open Settings")
 	else
-		DT.tooltip:AddLine("|CFFF63939Details not found!|r |CFFFFFFFF(details is not installed or enabled)|r")
+		DT.tooltip:AddLine(L["|CFFF63939Details not found!|r |CFFFFFFFF(details is not installed or enabled)|r"])
 	end
 	DT.tooltip:Show()
 end

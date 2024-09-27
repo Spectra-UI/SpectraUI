@@ -23,6 +23,9 @@ local EP = LibStub("LibElvUIPlugin-1.0")
 -- Create a new ElvUI module so ElvUI can handle initialization when ready
 SpectraUI = E:NewModule(MyPluginName, "AceHook-3.0", "AceEvent-3.0", "AceTimer-3.0")
 
+-- settings
+SpectraUI.Locales = LibStub("AceLocale-3.0"):GetLocale("SpectraUI")
+
 -- Name, Logo and Icon for your plugin.
 SpectraUI.Name = "|CFFFFFFFFSpectra|r |CFF03FA6EUI|r" --#03FA6E #FFFFFF
 SpectraUI.Version = Version
@@ -32,13 +35,16 @@ SpectraUI.Logo = "Interface\\AddOns\\SpectraUI\\media\\logo.tga"
 SpectraUI.LogoText = "Interface\\AddOns\\SpectraUI\\media\\logo_text.tga"
 SpectraUI.Addons = {}
 
+local L = SpectraUI.Locales
+
 -- example of credits if you want to add some
 local CREDITS = {
-	"|CFF03FA6EHoffa|r  - Author", --#16F5EE
-	"|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Programming",
-	"|CFFC7D377Lillekatt|r  - Creator and provider of the Role Icons",
+	L["|CFF03FA6EHoffa|r  - Author"], --#16F5EE
+	L["|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Programming"],
+	L["|CFFC7D377Lillekatt|r  - Creator and provider of the Role Icons"],
 	"|cffc500ffRepooc|r",
 	"|cff0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r",
+	"|cff0DB1D0Dlarge|r - Localization",
 }
 
 -- example of donators if you want to add some
@@ -178,24 +184,24 @@ InstallerData = {
 		[1] = function()
 			Resize()
 			ResetPic()
-			PluginInstallFrame.SubTitle:SetText("Welcome to the installation for " .. SpectraUI.Name)
+			PluginInstallFrame.SubTitle:SetText(L["Welcome to the installation for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r"])
 			PluginInstallFrame.Desc1:SetText(
 				format(
-					"The %s installation process is designed to be straightforward. You'll be prompted through a series of steps to apply the interface to your system seamlessly. Once the installation is complete, you'll have access to the full suite of %s features",
+					L["The %s installation process is designed to be straightforward. You'll be prompted through a series of steps to apply the interface to your system seamlessly. Once the installation is complete, you'll have access to the full suite of %s features"],
 					SpectraUI.Name,
 					SpectraUI.Name
 				)
 			)
 			PluginInstallFrame.Desc2:SetText(
 				format(
-					"|CFFF63939Important|r: Major updates to %s will require you to go through the installation process again, which may result in the loss of any changes you’ve made. Please make sure to back up your settings if needed!",
+					L["|CFFF63939Important|r: Major updates to %s will require you to go through the installation process again, which may result in the loss of any changes you’ve made. Please make sure to back up your settings if needed!"],
 					SpectraUI.Name
 				)
 			)
-			PluginInstallFrame.Desc3:SetText("Please press the continue button if you wish to go through the installation process, otherwise click the 'Skip Process' button.")
+			PluginInstallFrame.Desc3:SetText(L["Please press the continue button if you wish to go through the installation process, otherwise click the 'Skip Process' button."])
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
-			PluginInstallFrame.Option1:SetText("Skip Process")
+			PluginInstallFrame.Option1:SetText(L["Skip Process"])
 
 			-- button 2 DC start
 			PluginInstallFrame.Option2:Show()
@@ -212,11 +218,15 @@ InstallerData = {
 		[2] = function()
 			Resize()
 			ResetPic()
-			PluginInstallFrame.SubTitle:SetText("Essential Settings")
+			PluginInstallFrame.SubTitle:SetText(L["Essential Settings"])
 			PluginInstallFrame.Desc1:SetText(
-				format("This process will install %s and allow you to choose between a Vertical or Horizontal layout. It will also activate the essential features of %s.", SpectraUI.Name, SpectraUI.Name)
+				format(
+					L["This process will install %s and allow you to choose between a Vertical or Horizontal layout. It will also activate the essential features of %s."], 
+					SpectraUI.Name,
+					SpectraUI.Name
+				)
 			)
-			PluginInstallFrame.Desc2:SetText("|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!")
+			PluginInstallFrame.Desc2:SetText(L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"])
 			--PluginInstallFrame.Desc3:SetText("Importance: |CFFF63939High|r")
 
 			-- button 1 start
@@ -224,7 +234,7 @@ InstallerData = {
 			PluginInstallFrame.Option1:SetScript("OnClick", function()
 				SpectraUI:ElvUIProfileVertical()
 			end)
-			PluginInstallFrame.Option1:SetText("Vertical")
+			PluginInstallFrame.Option1:SetText(L["Vertical"])
 			PluginInstallFrame.Option1.Pic = path .. "preview\\profile_vertical.tga"
 			-- button 1 end
 
@@ -233,7 +243,7 @@ InstallerData = {
 			PluginInstallFrame.Option2:SetScript("OnClick", function()
 				-- SpectraUI:ElvUIProfileHorizontal()
 			end)
-			PluginInstallFrame.Option2:SetText("Horizontal")
+			PluginInstallFrame.Option2:SetText(L["Horizontal"])
 			PluginInstallFrame.Option2.Pic = path .. "preview\\profile_horizontal.tga"
 			-- button 2 end
 		end,
@@ -241,7 +251,7 @@ InstallerData = {
 			Resize()
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Weakauras")
-			PluginInstallFrame.Desc1:SetText("These are the Weakauras that are available. Please click a button below to apply the new Weakauras.")
+			PluginInstallFrame.Desc1:SetText(L["These are the Weakauras that are available. Please click a button below to apply the new Weakauras."])
 			--PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
 
 			PluginInstallFrame.Option1:Show()
@@ -250,7 +260,7 @@ InstallerData = {
 				local retailLink = "https://wago.io/Kqz6loIke"
 				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and retailLink or classicLink)
 			end)
-			PluginInstallFrame.Option1:SetText("Frames")
+			PluginInstallFrame.Option1:SetText(L["Frames"])
 			PluginInstallFrame.Option1.Pic = path .. "preview\\Frames.tga"
 
 			PluginInstallFrame.Option2:Show()
@@ -259,14 +269,14 @@ InstallerData = {
 				local retailLink = "https://wago.io/MBm1s8QQa"
 				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and retailLink or classicLink)
 			end)
-			PluginInstallFrame.Option2:SetText("Theme Elements")
+			PluginInstallFrame.Option2:SetText(L["Theme Elements"])
 			PluginInstallFrame.Option2.Pic = path .. "preview\\UI_Elements.tga"
 		end,
 		[4] = function()
 			Resize()
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("AddOns 1")
-			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
+			PluginInstallFrame.Desc1:SetText(L["These are the profiles that are available. Please click a button below to apply the profile for the AddOn."])
 			--PluginInstallFrame.Desc2:SetText("Importance: |CFFFF9130Medium|r")
 
 			PluginInstallFrame.Option1:Show()
@@ -294,7 +304,7 @@ InstallerData = {
 			Resize()
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("AddOns 2")
-			PluginInstallFrame.Desc1:SetText("These are the profiles that are available. Please click a button below to apply the profile for the AddOn.")
+			PluginInstallFrame.Desc1:SetText(L["These are the profiles that are available. Please click a button below to apply the profile for the AddOn."])
 			--PluginInstallFrame.Desc2:SetText("Importance: |CFF9BFF30Low|r")
 
 			PluginInstallFrame.Option1:Show()
@@ -322,7 +332,7 @@ InstallerData = {
 			Resize()
 			ResetPic()
 			PluginInstallFrame.SubTitle:SetText("Blizzard")
-			PluginInstallFrame.Desc1:SetText("On Retail, you can now copy and import the Blizzard interface profile.")
+			PluginInstallFrame.Desc1:SetText(L["On Retail, you can now copy and import the Blizzard interface profile."])
 			--PluginInstallFrame.Desc2:SetText("Importance: |CFFF63939High|r")
 
 			PluginInstallFrame.Option1:Show()
@@ -345,15 +355,15 @@ InstallerData = {
 		[7] = function()
 			Resize()
 			ResetPic()
-			PluginInstallFrame.SubTitle:SetText("Installation Complete")
-			PluginInstallFrame.Desc1:SetText("|CFF03FA6EThe installation process is now complete!|r")
+			PluginInstallFrame.SubTitle:SetText(L["Installation Complete"])
+			PluginInstallFrame.Desc1:SetText(L["|CFF03FA6EThe installation process is now complete!|r"])
 			PluginInstallFrame.Desc2:SetText(
-				"Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t  |CFF03FA6EDiscord|r for assistance!"
+				L["Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t  |CFF03FA6EDiscord|r for assistance!"]
 			)
 
 			PluginInstallFrame.Option1:Show()
 			PluginInstallFrame.Option1:SetScript("OnClick", InstallComplete)
-			PluginInstallFrame.Option1:SetText("Finished")
+			PluginInstallFrame.Option1:SetText(L["Finished"])
 
 			-- button 2 DC start
 			PluginInstallFrame.Option2:Show()
@@ -369,13 +379,13 @@ InstallerData = {
 		end,
 	},
 	StepTitles = {
-		[1] = "Welcome",
-		[2] = "ElvUI",
-		[3] = "Weakauras",
-		[4] = "AddOns 1",
-		[5] = "AddOns 2",
-		[6] = "Blizzard",
-		[7] = "Installation Complete",
+		[1] = L["Welcome"],
+		[2] = L["ElvUI"],
+		[3] = L["Weakauras"],
+		[4] = L["AddOns 1"],
+		[5] = L["AddOns 2"],
+		[6] = L["Blizzard"],
+		[7] = L["Installation Complete"],
 	},
 	StepTitlesColor = { 0.9, 0.9, 0.9 },
 	StepTitlesColorSelected = { 0, 0.98, 0.44 },
@@ -417,7 +427,7 @@ local function InsertOptions()
 					description1 = {
 						order = 1,
 						type = "description",
-						name = format("%s is a layout for ElvUI.", SpectraUI.Name),
+						name = format(L["%s is a layout for ElvUI."], SpectraUI.Name),
 					},
 					spacer1 = {
 						order = 2,
@@ -443,7 +453,7 @@ local function InsertOptions()
 					description2 = {
 						order = 1,
 						type = "description",
-						name = "The installation guide should pop up automatically after you have completed the ElvUI installation. If you wish to re-run the installation process for this layout then please click the button below.",
+						name = L["The installation guide should pop up automatically after you have completed the ElvUI installation. If you wish to re-run the installation process for this layout then please click the button below."],
 					},
 					spacer2 = {
 						order = 2,
@@ -453,8 +463,8 @@ local function InsertOptions()
 					install = {
 						order = 3,
 						type = "execute",
-						name = "Install",
-						desc = "Run the installation process.",
+						name = L["Install"],
+						desc = L["Run the installation process."],
 						func = function()
 							SetEvents()
 							E:GetModule("PluginInstaller"):Queue(InstallerData)
@@ -536,9 +546,9 @@ local function InsertOptions()
 							E:StaticPopup_Show("CONFIG_RL")
 						end,
 						values = {
-							DISABLE = "DISABLE",
-							LeftChat = "Left Chat",
-							RightChat = "Right Chat",
+							DISABLE = L["DISABLE"],
+							LeftChat = L["Left Chat"],
+							RightChat = L["Right Chat"],
 						},
 					},
 				},
