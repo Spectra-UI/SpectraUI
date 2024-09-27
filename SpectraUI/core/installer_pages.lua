@@ -4,8 +4,7 @@ local L = SpectraUI.Locales
 -- dont touch this ^
 
 -- media path & files
-local path = "Interface\\AddOns\\SpectraUI\\media\\"
-local dicordLogo = "|TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t"
+local path = SpectraUI.Media.mediaPath
 
 -- here yu can setup your installer pages
 -- example page below >
@@ -58,7 +57,7 @@ local dicordLogo = "|TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:1
 -- general settings for the installer
 SpectraUI.InstallerData.Title = SpectraUI.Name
 SpectraUI.InstallerData.Name = SpectraUI.Name
-SpectraUI.InstallerData.Logo = SpectraUI.Logo
+SpectraUI.InstallerData.Logo = SpectraUI.Media.logo
 SpectraUI.InstallerData.LogoSize = { 410, 205 }
 SpectraUI.InstallerData.StepTitlesColor = { 0.9, 0.9, 0.9 }
 SpectraUI.InstallerData.StepTitlesColorSelected = { 0, 0.98, 0.44 }
@@ -88,7 +87,7 @@ SpectraUI.InstallerData[1] = {
 			end,
 		},
 		[2] = {
-			text = dicordLogo .. " " .. "Discord",
+			text = SpectraUI.Media.discordLogo .. " " .. "Discord",
 			func = function()
 				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
 			end,
@@ -134,18 +133,14 @@ SpectraUI.InstallerData[3] = {
 		[1] = {
 			text = L["Frames"],
 			func = function()
-				local classicLink = "https://wago.io/TKMI9EwrP"
-				local retailLink = "https://wago.io/Kqz6loIke"
-				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and retailLink or classicLink)
+				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.frames.retail or SpectraUI.Links.WA.frames.classic)
 			end,
 			preview = path .. "preview\\Frames.tga",
 		},
 		[2] = {
 			text = L["Theme Elements"],
 			func = function()
-				local classicLink = "https://wago.io/Kgw3rnboZ"
-				local retailLink = "https://wago.io/MBm1s8QQa"
-				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and retailLink or classicLink)
+				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.elements.retail or SpectraUI.Links.WA.elements.classic)
 			end,
 			preview = path .. "preview\\UI_Elements.tga",
 		},
@@ -228,7 +223,7 @@ SpectraUI.InstallerData[6] = {
 			end,
 		},
 		[2] = {
-			text = dicordLogo .. " " .. "Discord",
+			text = SpectraUI.Media.discordLogo .. " " .. "Discord",
 			func = function()
 				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
 			end,

@@ -1,4 +1,4 @@
-local E, L, V, P, G = unpack(ElvUI)
+local E = unpack(ElvUI)
 
 -- CDTL2 profile setup
 function SpectraUI:CDTL2()

@@ -1,5 +1,3 @@
-local E, L, V, P, G = unpack(ElvUI)
-
 -- BigWigs profile setup
 function SpectraUI:BigWigs()
 	if not SpectraUI.Addons.BigWigs then return end

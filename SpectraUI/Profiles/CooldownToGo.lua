@@ -1,4 +1,4 @@
-local E, L, V, P, G = unpack(ElvUI)
+local E = unpack(ElvUI)
 
 -- CooldownToGo profile setup
 function SpectraUI:CooldownToGo()

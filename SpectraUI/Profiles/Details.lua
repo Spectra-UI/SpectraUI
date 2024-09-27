@@ -1,4 +1,3 @@
-local E = unpack(ElvUI)
 local _G = _G
 
 -- Details profile setup

@@ -1,4 +1,5 @@
-local E, L, V, P, G = unpack(ElvUI)
+local E = unpack(ElvUI)
+local L = SpectraUI.Locales
 
 local DT = E:GetModule("DataTexts")
 local M = E:GetModule('Minimap')
@@ -11,7 +12,7 @@ local IsShiftKeyDown = IsShiftKeyDown
 
 local function OnEnter(self)
 	DT.tooltip:ClearLines()
-	DT.tooltip:AddDoubleLine(SpectraUI.Name, SpectraUI.Icon)
+	DT.tooltip:AddDoubleLine(SpectraUI.Name, SpectraUI.Media.icon)
 	DT.tooltip:AddDoubleLine("Version:", SpectraUI.Version)
 	DT.tooltip:AddLine(" ")
 	DT.tooltip:AddDoubleLine("|CFFFFFFFFLeft click:|r", format("open %s Settings", SpectraUI.Name))

@@ -16,14 +16,14 @@ local function OptionsTable()
 	E.Options.args.SpectraUI = {
 		order = 100,
 		type = "group",
-		name = SpectraUI.Icon .. " " .. SpectraUI.Name,
+		name = SpectraUI.Media.icon .. " " .. SpectraUI.Name,
 		args = {
 			logo = {
 				type = "description",
 				name = "",
 				order = 1,
 				image = function()
-					return SpectraUI.Logo, 307, 154
+					return SpectraUI.Media.logo, 307, 154
 				end,
 			},
 			about = {
@@ -45,7 +45,7 @@ local function OptionsTable()
 					discord = {
 						order = 3,
 						type = "execute",
-						name = L["Discord"],
+						name = SpectraUI.Media.discordLogo .. " " .. L["Discord"],
 						func = function()
 							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
 						end,
@@ -91,9 +91,7 @@ local function OptionsTable()
 						type = "execute",
 						name = L["Frames"],
 						func = function()
-							local classicLink = "https://wago.io/TKMI9EwrP"
-							local retailLink = "https://wago.io/Kqz6loIke"
-							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and retailLink or classicLink)
+							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.frames.retail or SpectraUI.Links.WA.frames.classic)
 						end,
 					},
 					elements = {
@@ -101,9 +99,7 @@ local function OptionsTable()
 						type = "execute",
 						name = L["Theme Elements"],
 						func = function()
-							local classicLink = "https://wago.io/Kgw3rnboZ"
-							local retailLink = "https://wago.io/MBm1s8QQa"
-							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and retailLink or classicLink)
+							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.elements.retail or SpectraUI.Links.WA.elements.classic)
 						end,
 					},
 				},

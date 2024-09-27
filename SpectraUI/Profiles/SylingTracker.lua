@@ -1,5 +1,3 @@
-local E, L, V, P, G = unpack(ElvUI)
-
 -- SylingTracker profile setup
 function SpectraUI:SylingTracker()
 	if not SpectraUI.Addons.SylingTracker then return end

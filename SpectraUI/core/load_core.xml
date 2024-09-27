@@ -4,4 +4,5 @@
     <Script file='options.lua'/>
 	<Script file='installer_pages.lua'/>
 	<Script file='installer_skin.lua'/>
+    <Script file='mmediatag.lua'/>
 </Ui>

@@ -1,4 +1,6 @@
 local E = unpack(ElvUI)
+local L = SpectraUI.Locales
+
 local DT = E:GetModule("DataTexts")
 
 --WoW API / Variables
@@ -8,7 +10,7 @@ local Details = _G.Details
 
 local function OnEnter(self)
 	DT.tooltip:ClearLines()
-	DT.tooltip:AddDoubleLine(SpectraUI.Name, SpectraUI.Icon)
+	DT.tooltip:AddDoubleLine(SpectraUI.Name, SpectraUI.Media.icon)
 	DT.tooltip:AddLine(" ")
 	if Details then
 	DT.tooltip:AddDoubleLine("|CFFFFFFFFLeft click:|r", "toggle Details")

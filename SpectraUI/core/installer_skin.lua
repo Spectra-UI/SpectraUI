@@ -1,15 +1,10 @@
 -- Create references to ElvUI internals
 local E, _, V, P, G = unpack(ElvUI)
-local L = SpectraUI.Locales
 -- dont touch this ^
 
 -- Cache Lua / WoW API
-local format = string.format
 local ReloadUI = ReloadUI
-local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 
-local path = "Interface\\AddOns\\SpectraUI\\media\\"
-local color = { SpectraUI.UIColor.r, SpectraUI.UIColor.g, SpectraUI.UIColor.b, SpectraUI.UIColor.a }
 
 local elvuiInstallCompleted = nil -- backup ElvUI installations Version
 
@@ -50,13 +45,13 @@ local function OnEnter(button)
 	end
 
 	if button.backdrop then button = button.backdrop end
-	if button.SetBackdropBorderColor then button:SetBackdropBorderColor(unpack(color)) end
+	if button.SetBackdropBorderColor then button:SetBackdropBorderColor(unpack(SpectraUI.Color.ui.rgb)) end
 end
 
 -- Button OnLeave (Installer Skin)
 local function OnLeave(button)
 	PluginInstallFrame.tutorialImage:Size(410, 205)
-	PluginInstallFrame.tutorialImage:SetTexture(SpectraUI.Logo)
+	PluginInstallFrame.tutorialImage:SetTexture(SpectraUI.Media.logo)
 
 	if button.backdrop then button = button.backdrop end
 	if button.SetBackdropBorderColor then button:SetBackdropBorderColor(unpack(E.media.bordercolor)) end

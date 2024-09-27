@@ -1,4 +1,4 @@
-local E, L, V, P, G = unpack(ElvUI)
+local E = unpack(ElvUI)
 
 -- OmniCD profile setup
 function SpectraUI:OmniCD()
