@@ -5,7 +5,6 @@ local DT = E:GetModule("DataTexts")
 
 --WoW API / Variables
 local _G = _G
-local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 local Details = _G.Details
 
 local function OnEnter(self)

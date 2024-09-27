@@ -55,13 +55,29 @@ function SpectraUI:DetailsEmbedded()
 		detailsEmbedded:Show()
 	end
 
-	local detailsBaseFrame = _G["DetailsBaseFrame1"]
-	if detailsBaseFrame then
-		detailsBaseFrame:SetParent(detailsEmbedded)
-		detailsBaseFrame:ClearAllPoints()
-		detailsBaseFrame:SetPoint("TOPLEFT", detailsEmbedded, "TOPLEFT", 0, -20)
-		_G["DetailsRowFrame1"]:SetParent(detailsEmbedded)
-		_G["Details_SwitchButtonFrame1"]:SetParent(detailsEmbedded)
+	local detailsWindow1 = Details:GetInstance(1)
+	if detailsWindow1 then
+		detailsWindow1:UngroupInstance()
+		detailsWindow1.baseframe:ClearAllPoints()
+
+		detailsWindow1.baseframe:SetParent(detailsEmbedded)
+
+		detailsWindow1.rowframe:SetParent(detailsWindow1.baseframe)
+		detailsWindow1.rowframe:ClearAllPoints()
+		detailsWindow1.rowframe:SetAllPoints()
+
+		detailsWindow1.windowSwitchButton:SetParent(detailsWindow1.baseframe)
+		detailsWindow1.windowSwitchButton:ClearAllPoints()
+		detailsWindow1.windowSwitchButton:SetAllPoints()
+
+		local topOffset = detailsWindow1.toolbar_side == 1 and -20 or 0
+		local bottomOffset = (detailsWindow1.show_statusbar and 14 or 0) + (detailsWindow1.toolbar_side == 2 and 20 or 0)
+
+		detailsWindow1.baseframe:SetPoint("topleft", detailsEmbedded, "topleft", 0, topOffset + Details.chat_tab_embed.y_offset)
+		detailsWindow1.baseframe:SetPoint("bottomright", detailsEmbedded, "bottomright", Details.chat_tab_embed.x_offset, bottomOffset)
+
+		detailsWindow1:LockInstance(true)
+		detailsWindow1:SaveMainWindowPosition()
 	end
 end
 
