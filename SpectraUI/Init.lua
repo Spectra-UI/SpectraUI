@@ -62,7 +62,7 @@ SpectraUI.CREDITS = {
 	L["|CFFC7D377Lillekatt|r  - Creator and provider of the Role Icons"],
 	"|cffc500ffRepooc|r",
 	"|cff0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r",
-	"|cff0DB1D0Dlarge|r - Localization",
+	L["|cff0DB1D0Dlarge|r - Localization"],
 }
 
 -- example of donators if you want to add some

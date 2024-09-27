@@ -1,8 +1,3 @@
--- Create references to ElvUI internals
-local E, _, V, P, G = unpack(ElvUI)
-local L = SpectraUI.Locales
--- dont touch this ^
-
 function SpectraUI:Setup_mMediaTag()
 	if not SpectraUI.Addons.mMediaTag then return end
 	local path = SpectraUI.Media.mediaPath

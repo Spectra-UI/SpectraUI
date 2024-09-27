@@ -1,8 +1,8 @@
-local E, L, V, P, G = unpack(ElvUI)
-local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
+local E = unpack(ElvUI)
+local L = SpectraUI.Locales
 
 function SpectraUI:AddPortraitsTextures()
-	if not IsAddOnLoaded("ElvUI_mMediaTag") then
+	if not SpectraUI.Addons.mMediaTag then
 		SpectraUI:Print(L["|CFFF63939Error!|r mMediaTag is missing! Pleas install or enable mMediaTag."]) --#F63939
 		return
 	elseif not (mMT and mMT.Media.CustomPortraits) then

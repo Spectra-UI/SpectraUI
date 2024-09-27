@@ -13,8 +13,8 @@ local function OnEnter(self)
 	DT.tooltip:AddDoubleLine(SpectraUI.Name, SpectraUI.Media.icon)
 	DT.tooltip:AddLine(" ")
 	if Details then
-	DT.tooltip:AddDoubleLine("|CFFFFFFFFLeft click:|r", "toggle Details")
-	DT.tooltip:AddDoubleLine("|CFFFFFFFFRight click:|r", "open Settings")
+	DT.tooltip:AddDoubleLine(L["|CFFFFFFFFLeft click:|r"], L["Toggle Details"])
+	DT.tooltip:AddDoubleLine(L["|CFFFFFFFFRight click:|r"], L["Open Settings"])
 	else
 		DT.tooltip:AddLine(L["|CFFF63939Details not found!|r |CFFFFFFFF(details is not installed or enabled)|r"])
 	end

@@ -1,10 +1,9 @@
 -- Create references to ElvUI internals
-local E, _, V, P, G = unpack(ElvUI)
+local E = unpack(ElvUI)
 -- dont touch this ^
 
 -- Cache Lua / WoW API
 local ReloadUI = ReloadUI
-
 
 local elvuiInstallCompleted = nil -- backup ElvUI installations Version
 

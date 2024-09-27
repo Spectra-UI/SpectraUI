@@ -1,5 +1,5 @@
 -- Create references to ElvUI internals
-local E, _, V, P, G = unpack(ElvUI)
+local E = unpack(ElvUI)
 local L = SpectraUI.Locales
 -- dont touch this ^
 
@@ -97,7 +97,7 @@ SpectraUI.InstallerData[1] = {
 
 SpectraUI.InstallerData[2] = {
 	SubTitle = L["Essential Settings"],
-	StepTitle = L["ElvUI"],
+	StepTitle = "ElvUI",
 	tutorialImage = true,
 	descriptions = {
 		[1] = format(

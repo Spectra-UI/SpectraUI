@@ -15,9 +15,9 @@ local function OnEnter(self)
 	DT.tooltip:AddDoubleLine(SpectraUI.Name, SpectraUI.Media.icon)
 	DT.tooltip:AddDoubleLine("Version:", SpectraUI.Version)
 	DT.tooltip:AddLine(" ")
-	DT.tooltip:AddDoubleLine("|CFFFFFFFFLeft click:|r", format("open %s Settings", SpectraUI.Name))
-	DT.tooltip:AddDoubleLine("|CFFFFFFFFRight click:|r", "open Menu")
-	DT.tooltip:AddDoubleLine(SpectraUI.Color.ui.hex .. "SHIFT|r " .. "|CFFFFFFFFLeft click:|r", "ReloadUI (/rl)")
+	DT.tooltip:AddDoubleLine(L["|CFFFFFFFFLeft click:|r"], format(L["Open %s Settings"], SpectraUI.Name))
+	DT.tooltip:AddDoubleLine(L["|CFFFFFFFFRight click:|r"], L["Open Menu"])
+	DT.tooltip:AddDoubleLine(SpectraUI.Color.ui.hex .. "SHIFT|r " .. L["|CFFFFFFFFLeft click:|r"], L["ReloadUI (/rl)"])
 	DT.tooltip:Show()
 end
 

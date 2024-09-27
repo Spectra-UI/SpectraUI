@@ -1,4 +1,5 @@
-local E, L, V, P, G = unpack(ElvUI)
+local E = unpack(ElvUI)
+local L = SpectraUI.Locales
 
 local _G = _G
 local path = "Interface\\Addons\\SpectraUI\\media\\class\\"
@@ -77,6 +78,6 @@ function SpectraUI:DetailsEmbeddedToggle()
 			chat:Hide()
 		end
 	else
-		SpectraUI:Print(format("|CFFF63939Error|r: Embedded System is disabled, you can enable it in the %s settings.", SpectraUI.Name))
+		SpectraUI:Print(format(L["|CFFF63939Error|r: Embedded System is disabled, you can enable it in the %s settings."], SpectraUI.Name))
 	end
 end

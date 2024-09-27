@@ -1,5 +1,5 @@
 -- Create references to ElvUI internals
-local E, _, V, P, G = unpack(ElvUI)
+local _, _, _, P, _ = unpack(ElvUI)
 -- dont touch this ^
 
 -- Create a unique table for our plugin

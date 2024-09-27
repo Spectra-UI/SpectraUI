@@ -1,5 +1,5 @@
 -- Create references to ElvUI internals
-local E, _, V, P, G = unpack(ElvUI)
+local E = unpack(ElvUI)
 local L = SpectraUI.Locales
 -- dont touch this ^
 
@@ -45,7 +45,7 @@ local function OptionsTable()
 					discord = {
 						order = 3,
 						type = "execute",
-						name = SpectraUI.Media.discordLogo .. " " .. L["Discord"],
+						name = SpectraUI.Media.discordLogo .. " " .. "Discord",
 						func = function()
 							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
 						end,

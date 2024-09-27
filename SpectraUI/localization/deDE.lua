@@ -10,7 +10,6 @@ L["Click the button below to finalize everything and automatically reload your i
 L["Credits"] = true
 L["DISABLE"] = "Deaktivieren"
 L["Details Embedded"] = "Details Einbettung"
-L["ElvUI"] = true
 L["Embedded to Chat"] = "In den Chat enbetten"
 L["Essential Settings"] = "Wichtige Einstellungen"
 L["Finished"] = "Fertig"
@@ -42,3 +41,14 @@ L["|CFFC7D377Lillekatt|r  - Creator and provider of the Role Icons"] = "|CFFC7D3
 L["|CFFF63939Details not found!|r |CFFFFFFFF(details is not installed or enabled)|r"] = "|CFFF63939Details nicht gefunden!|r |CFFFFFFFF(Details ist nicht installiert oder aktiviert)|r"
 L["|CFFF63939Important|r: Major updates to %s will require you to go through the installation process again, which may result in the loss of any changes you’ve made. Please make sure to back up your settings if needed!"] = "|CFFF63939Wichtig|r: Bei größeren Updates von %s musst Du den Installationsvorgang erneut durchführen, was zum Verlust aller vorgenommenen Änderungen führen kann. Bitte sichere Deine Einstellungen bei Bedarf!"
 L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"] = "|CFFF63939Wichtig|r: Das Überspringen dieses Schritts kann zu einem unvollständigen und fehlerhaftem Interface führen!"
+
+-- new
+L["Open %s Settings"] = true
+L["Open Menu"] = true
+L["Open Settings"] = true
+L["ReloadUI (/rl)"] = true
+L["toggle Details"] = true
+L["|CFFF63939Error|r: Embedded System is disabled, you can enable it in the %s settings."] = true
+L["|CFFFFFFFFLeft click:|r"] = true
+L["|CFFFFFFFFRight click:|r"] = true
+L["|cff0DB1D0Dlarge|r - Localization"] = true
