@@ -17,7 +17,7 @@ local function OnEnter(self)
 	DT.tooltip:AddLine(" ")
 	DT.tooltip:AddDoubleLine("|CFFFFFFFFLeft click:|r", format("open %s Settings", SpectraUI.Name))
 	DT.tooltip:AddDoubleLine("|CFFFFFFFFRight click:|r", "open Menu")
-	DT.tooltip:AddDoubleLine(SpectraUI.UIColor.hex .. "SHIFT|r " .. "|CFFFFFFFFLeft click:|r", "ReloadUI (/rl)")
+	DT.tooltip:AddDoubleLine(SpectraUI.Color.ui.hex .. "SHIFT|r " .. "|CFFFFFFFFLeft click:|r", "ReloadUI (/rl)")
 	DT.tooltip:Show()
 end
 
