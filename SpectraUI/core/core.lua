@@ -1,6 +1,9 @@
 -- Create references to ElvUI internals
 local E, _, V, P, G = unpack(ElvUI)
+local L = SpectraUI.Locales
 -- dont touch this ^
+
+local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 
 -- Popup for our links
 E.PopupDialogs.SPECTRAUI_EDITBOX = {
@@ -41,4 +44,14 @@ E.PopupDialogs.SPECTRAUI_EDITBOX = {
 function SpectraUI:Print(...)
 	local printName = SpectraUI.Icon .. " " .. SpectraUI.Name .. ":"
 	print(printName, ...)
+end
+
+function SpectraUI:CheckAddons()
+	SpectraUI.Addons.BigWigs = IsAddOnLoaded("BigWigs")
+	SpectraUI.Addons.CooldownTimeline2 = IsAddOnLoaded("CooldownTimeline2")
+	SpectraUI.Addons.CooldownToGo = IsAddOnLoaded("CooldownToGo")
+	SpectraUI.Addons.Details = IsAddOnLoaded("Details")
+	SpectraUI.Addons.OmniCD = IsAddOnLoaded("OmniCD")
+	SpectraUI.Addons.SylingTracker = IsAddOnLoaded("SylingTracker")
+	SpectraUI.Addons.mMediaTag = IsAddOnLoaded("ElvUI_mMediaTag")
 end

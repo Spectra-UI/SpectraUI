@@ -1,44 +1,46 @@
-local addon, ns = ...
-GetAddOnMetadata = _G.C_AddOns and _G.C_AddOns.GetAddOnMetadata or _G.GetAddOnMetadata
-local Version = GetAddOnMetadata(addon, "Version")
-
--- Cache Lua / WoW API
-local format = string.format
-local ReloadUI = ReloadUI
-local tconcat = _G.table.concat
-local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
-local path = "Interface\\AddOns\\SpectraUI\\media\\"
-local InstallerData = {}
-
--- Change this line and use a unique name for your plugin.
-local MyPluginName = "SpectraUI"
-
 -- Create references to ElvUI internals
 local E, _, V, P, G = unpack(ElvUI)
-local PI = E:GetModule("PluginInstaller")
+local addon, ns = ...
+-- dont touch this ^
 
 -- Create reference to LibElvUIPlugin
 local EP = LibStub("LibElvUIPlugin-1.0")
 
--- Create a new ElvUI module so ElvUI can handle initialization when ready
-SpectraUI = E:NewModule(MyPluginName, "AceHook-3.0", "AceEvent-3.0", "AceTimer-3.0")
+-- Cache Lua / WoW API
+local _G = _G
+local GetAddOnMetadata = _G.C_AddOns and _G.C_AddOns.GetAddOnMetadata or _G.GetAddOnMetadata
 
--- settings
+-- Create a new ElvUI module so ElvUI can handle initialization when ready
+SpectraUI = E:NewModule("SpectraUI", "AceHook-3.0", "AceEvent-3.0", "AceTimer-3.0")
+
+-- Load Locales
 SpectraUI.Locales = LibStub("AceLocale-3.0"):GetLocale("SpectraUI")
+local L = SpectraUI.Locales
 
 -- Name, Logo and Icon for your plugin.
 SpectraUI.Name = "|CFFFFFFFFSpectra|r |CFF03FA6EUI|r" --#03FA6E #FFFFFF
-SpectraUI.Version = Version
-SpectraUI.UIColor = { r = 0, g = 0.98, b = 0.44, a = 1, hex = "|CFF03FA6E" }
-SpectraUI.Icon = "|TInterface\\AddOns\\SpectraUI\\media\\icon.tga:14:14|t"
-SpectraUI.Logo = "Interface\\AddOns\\SpectraUI\\media\\logo.tga"
-SpectraUI.LogoText = "Interface\\AddOns\\SpectraUI\\media\\logo_text.tga"
-SpectraUI.DicordLogo = "|TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t"
+SpectraUI.Version = GetAddOnMetadata(addon, "Version")
+
+SpectraUI.Media = {
+	mediaPath = "Interface\\AddOns\\SpectraUI\\media\\",
+	icon = "|TInterface\\AddOns\\SpectraUI\\media\\icon.tga:14:14|t",
+	logo = "Interface\\AddOns\\SpectraUI\\media\\logo.tga",
+	logoText = "Interface\\AddOns\\SpectraUI\\media\\logo_text.tga",
+	discordLogo = "|TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t",
+}
+
+SpectraUI.Color = {
+	ui = {
+		hex = "|CFF03FA6E",
+		rgb = { 0, 0.98, 0.44, 1},
+		color = { r = 0, g = 0.98, b = 0.44, a = 1, hex = "|CFF03FA6E" },
+	}
+}
+
+-- other global settings
 SpectraUI.Addons = {}
 SpectraUI.InstallerData = {}
 SpectraUI.Options = {}
-
-local L = SpectraUI.Locales
 
 -- example of credits if you want to add some
 SpectraUI.CREDITS = {
@@ -55,43 +57,6 @@ SpectraUI.DONATORS = {
 	-- "EXAMPLE",
 }
 
-
-
-function SpectraUI:Setup_mMediaTag()
-	if not IsAddOnLoaded("ElvUI_mMediaTag") then return end
-
-	SpectraUI:AddPortraitsTextures()
-
-	local textureCoords = {
-		WARRIOR = { 0, 0, 0, 0.125, 0.125, 0, 0.125, 0.125 },
-		MAGE = { 0.125, 0, 0.125, 0.125, 0.25, 0, 0.25, 0.125 },
-		ROGUE = { 0.25, 0, 0.25, 0.125, 0.375, 0, 0.375, 0.125 },
-		DRUID = { 0.375, 0, 0.375, 0.125, 0.5, 0, 0.5, 0.125 },
-		EVOKER = { 0.5, 0, 0.5, 0.125, 0.625, 0, 0.625, 0.125 },
-		HUNTER = { 0, 0.125, 0, 0.25, 0.125, 0.125, 0.125, 0.25 },
-		SHAMAN = { 0.125, 0.125, 0.125, 0.25, 0.25, 0.125, 0.25, 0.25 },
-		PRIEST = { 0.25, 0.125, 0.25, 0.25, 0.375, 0.125, 0.375, 0.25 },
-		WARLOCK = { 0.375, 0.125, 0.375, 0.25, 0.5, 0.125, 0.5, 0.25 },
-		PALADIN = { 0, 0.25, 0, 0.375, 0.125, 0.25, 0.125, 0.375 },
-		DEATHKNIGHT = { 0.125, 0.25, 0.125, 0.375, 0.25, 0.25, 0.25, 0.375 },
-		MONK = { 0.25, 0.25, 0.25, 0.375, 0.375, 0.25, 0.375, 0.375 },
-		DEMONHUNTER = { 0.375, 0.25, 0.375, 0.375, 0.5, 0.25, 0.5, 0.375 },
-	}
-
-	mMT:AddClassIcons("SpectraUI_Classic", path .. "class\\SpectraUI_Classic.tga", textureCoords, "SpectraUI Classic")
-	mMT:AddClassIcons("SpectraUI_Modern", path .. "class\\SpectraUI_Modern.tga", textureCoords, "SpectraUI Modern")
-end
-
-local function CheckAddons()
-	SpectraUI.Addons.BigWigs = IsAddOnLoaded("BigWigs")
-	SpectraUI.Addons.CooldownTimeline2 = IsAddOnLoaded("CooldownTimeline2")
-	SpectraUI.Addons.CooldownToGo = IsAddOnLoaded("CooldownToGo")
-	SpectraUI.Addons.Details = IsAddOnLoaded("Details")
-	SpectraUI.Addons.OmniCD = IsAddOnLoaded("OmniCD")
-	SpectraUI.Addons.SylingTracker = IsAddOnLoaded("SylingTracker")
-	SpectraUI.Addons.mMediaTag = IsAddOnLoaded("ElvUI_mMediaTag")
-end
-
 -- load our options table
 local function LoadOptions()
 	for _, func in pairs(SpectraUI.Options) do
@@ -103,10 +68,10 @@ end
 -- This function will handle initialization of the addon
 function SpectraUI:Initialize()
 	-- Initiate installation process if ElvUI install is complete and our plugin install has not yet been run
-	if E.private.install_complete and E.db[MyPluginName].install_version == nil then PI:Queue(InstallerData) end
+	if E.private.install_complete and E.db.SpectraUI.install_version == nil then SpectraUI:RunInstaller() end
 
 	-- check wich addons are loaded
-	CheckAddons()
+	SpectraUI:CheckAddons()
 
 	-- add textures to mMT
 	SpectraUI:Setup_mMediaTag()
