@@ -64,7 +64,7 @@ SpectraUI.InstallerData.StepTitlesColorSelected = { 0, 0.98, 0.44 }
 
 -- installer pages
 SpectraUI.InstallerData[1] = {
-	SubTitle = L["Welcome to the installation for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r"],
+	SubTitle = format(L["Welcome to the installation for %s"], SpectraUI.Name),
 	StepTitle = L["Welcome"],
 	tutorialImage = true,
 	descriptions = {

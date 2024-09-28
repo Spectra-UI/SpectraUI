@@ -38,7 +38,7 @@ L["This process will install %s and allow you to choose between a Vertical or Ho
 L["Toggle Details"] = "Details ein-/ausblenden"
 L["Vertical"] = "Vertikal"
 L["Weakauras"] = true
-L["Welcome to the installation for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r"] = "Willkommen bei der Installation für |CFFFFFFFFSpectra|r |CFF03FA6EUI|r"
+L["Welcome to the installation for %s"] = "Willkommen bei der Installation für %s"
 L["Welcome"] = "Willkommen"
 L["|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Programming"] = "|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Programmierung"
 L["|CFF03FA6EThe installation process is now complete!|r"] = "|CFF03FA6EDer Installationsvorgang ist jetzt abgeschlossen!|r"
