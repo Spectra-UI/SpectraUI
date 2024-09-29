@@ -104,33 +104,14 @@ local function OptionsTable()
 					},
 				},
 			},
-			settings = {
-				order = 5,
-				type = "group",
-				inline = true,
-				name = L["Settings"],
-				args = {
-					range_sq = {
-						order = 1,
-						name = L["Portraits offset"],
-						type = "range",
-						min = 0,
-						max = 10,
-						step = 0.1,
-						disabled = function()
-							return not SpectraUI.Addons.mMediaTag
-						end,
-						get = function(info)
-							return E.db.SpectraUI.portraitsOffset
-						end,
-						set = function(info, value)
-							E.db.SpectraUI.portraitsOffset = value
-							SpectraUI:AddPortraitsTextures()
-							mMT.Modules.Portraits:Initialize()
-						end,
-					},
-				},
-			},
+			-- settings = {
+			-- 	order = 5,
+			-- 	type = "group",
+			-- 	inline = true,
+			-- 	name = L["Settings"],
+			-- 	args = {
+			-- 	},
+			-- },
 			embedded = {
 				order = 6,
 				type = "group",

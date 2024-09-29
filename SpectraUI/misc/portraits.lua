@@ -19,7 +19,7 @@ function SpectraUI:AddPortraitsTextures()
 			border = "Interface\\AddOns\\SpectraUI\\media\\portrait\\border.tga",
 			shadow = "Interface\\AddOns\\SpectraUI\\media\\portrait\\shadow.tga",
 			inner = "Interface\\AddOns\\SpectraUI\\media\\portrait\\inner_shadow.tga",
-			offset = E.db.SpectraUI.portraitsOffset,
+
 			-- else use this
 			extraMask = false,
 			mask = "Interface\\AddOns\\SpectraUI\\media\\portrait\\mask.tga",
