@@ -2,7 +2,7 @@
 ## Author: Hoffa
 ## Notes: An |CFF1784D1ElvUI|r Profile Installer for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## Notes-deDE: An |CFF1784D1ElvUI|r Profil Installer für |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
-## Version: 1.0.3
+## Version: 1.0.4
 ## Title: |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## IconTexture: Interface\AddOns\SpectraUI\media\icon.tga
 ## RequiredDeps: ElvUI, ElvUI_EltreumUI, ElvUI_mMediaTag, ElvUI_WindTools, WeakAuras
