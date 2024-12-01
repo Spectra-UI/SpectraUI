@@ -1,4 +1,4 @@
-## Interface: 11504
+## Interface: 11505
 ## Author: Hoffa
 ## Notes: An |CFF1784D1ElvUI|r Profile Installer for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## Notes-deDE: An |CFF1784D1ElvUI|r Profil Installer für |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
