@@ -50,3 +50,4 @@ L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfu
 L["|CFFFFFFFFLeft click:|r"] = "|CFFFFFFFFLinksklick:|r"
 L["|CFFFFFFFFRight click:|r"] = "|CFFFFFFFFRechtsklick:|r"
 L["|cff0DB1D0Dlarge|r - Localization"] = "|cff0DB1D0Dlarge|r - Übersetzungen"
+

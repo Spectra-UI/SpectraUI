@@ -32,22 +32,22 @@ SpectraUI.Media = {
 SpectraUI.Color = {
 	ui = {
 		hex = "|CFF03FA6E",
-		rgb = { 0, 0.98, 0.44, 1},
+		rgb = { 0, 0.98, 0.44, 1 },
 		color = { r = 0, g = 0.98, b = 0.44, a = 1, hex = "|CFF03FA6E" },
-	}
+	},
 }
 
 SpectraUI.Links = {
 	WA = {
 		frames = {
-				classic = "https://wago.io/TKMI9EwrP",
-				retail = "https://wago.io/Kqz6loIke",
+			classic = "https://wago.io/TKMI9EwrP",
+			retail = "https://wago.io/Kqz6loIke",
 		},
 		elements = {
 			classic = "https://wago.io/Kgw3rnboZ",
 			retail = "https://wago.io/MBm1s8QQa",
-		}
-	}
+		},
+	},
 }
 
 -- other global settings
@@ -77,7 +77,6 @@ local function LoadOptions()
 	end
 end
 
-
 -- This function will handle initialization of the addon
 function SpectraUI:Initialize()
 	-- Initiate installation process if ElvUI install is complete and our plugin install has not yet been run
@@ -98,8 +97,17 @@ function SpectraUI:Initialize()
 		SpectraUI:SetupDetails()
 	end
 
+	if not SpectraUI.eventRegistered then
+		self:RegisterEvent("PLAYER_ENTERING_WORLD")
+		SpectraUI.eventRegistered = true
+	end
+
 	-- Insert our options table when ElvUI config is loaded
 	EP:RegisterPlugin(addon, LoadOptions)
+end
+
+function SpectraUI:PLAYER_ENTERING_WORLD(event)
+	SpectraUI:PlayerPortrait()
 end
 
 -- Register module with callback so it gets initialized when ready

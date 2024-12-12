@@ -41,3 +41,22 @@ function SpectraUI:AddPortraitsTextures()
 		mMT.Media.CustomPortraits.spectraui.offset = E.db.SpectraUI.portraitsOffset
 	end
 end
+
+function SpectraUI:PlayerPortrait()
+	if mMT and mMT.Modules.Portraits and _G.mMT_Portrait_Player then
+		if E.db.SpectraUI.playerPortraitHide then
+			SpectraUI:RegisterEvent("PLAYER_TARGET_CHANGED")
+		else
+			SpectraUI:UnregisterEvent("PLAYER_TARGET_CHANGED")
+			_G.mMT_Portrait_Player:Show()
+		end
+	end
+end
+
+function SpectraUI:PLAYER_TARGET_CHANGED(event, unit)
+	if UnitExists("target") then
+		_G.mMT_Portrait_Player:Hide()
+	else
+		_G.mMT_Portrait_Player:Show()
+	end
+end

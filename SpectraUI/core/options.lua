@@ -104,14 +104,27 @@ local function OptionsTable()
 					},
 				},
 			},
-			-- settings = {
-			-- 	order = 5,
-			-- 	type = "group",
-			-- 	inline = true,
-			-- 	name = L["Settings"],
-			-- 	args = {
-			-- 	},
-			-- },
+			settings = {
+				order = 5,
+				type = "group",
+				inline = true,
+				name = L["Settings"],
+				args = {
+					playerPortrait = {
+						order = 1,
+						type = "toggle",
+						name = L["Player Portrait Hide"],
+						desc = L["Hides the player portrait if a target exists."],
+						get = function(info)
+							return E.db.SpectraUI.playerPortraitHide
+						end,
+						set = function(info, value)
+							E.db.SpectraUI.playerPortraitHide = value
+							SpectraUI:PlayerPortrait()
+						end,
+					},
+				},
+			},
 			embedded = {
 				order = 6,
 				type = "group",
