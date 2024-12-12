@@ -50,3 +50,6 @@ L["|CFFF63939Error|r: Embedded System is disabled, you can enable it in the %s s
 L["|CFFFFFFFFLeft click:|r"] = true
 L["|CFFFFFFFFRight click:|r"] = true
 L["|cff0DB1D0Dlarge|r - Localization"] = true
+-- new
+L["Player Portrait Hide"] = true
+L["Hides the player portrait if a target exists."] = true

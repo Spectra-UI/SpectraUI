@@ -51,3 +51,6 @@ L["|CFFFFFFFFLeft click:|r"] = "|CFFFFFFFFLinksklick:|r"
 L["|CFFFFFFFFRight click:|r"] = "|CFFFFFFFFRechtsklick:|r"
 L["|cff0DB1D0Dlarge|r - Localization"] = "|cff0DB1D0Dlarge|r - Übersetzungen"
 
+-- new
+L["Player Portrait Hide"] = true
+L["Hides the player portrait if a target exists."] = true

@@ -50,3 +50,6 @@ L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfu
 L["|CFFFFFFFFLeft click:|r"] = true
 L["|CFFFFFFFFRight click:|r"] = true
 L["|cff0DB1D0Dlarge|r - Localization"] = true
+-- new
+L["Player Portrait Hide"] = true
+L["Hides the player portrait if a target exists."] = true
