@@ -46,17 +46,50 @@ function SpectraUI:PlayerPortrait()
 	if mMT and mMT.Modules.Portraits and _G.mMT_Portrait_Player then
 		if E.db.SpectraUI.playerPortraitHide then
 			SpectraUI:RegisterEvent("PLAYER_TARGET_CHANGED")
+			SpectraUI:RegisterEvent("PLAYER_REGEN_ENABLED")
 		else
 			SpectraUI:UnregisterEvent("PLAYER_TARGET_CHANGED")
+			SpectraUI:UnregisterEvent("PLAYER_REGEN_ENABLED")
 			_G.mMT_Portrait_Player:Show()
 		end
 	end
 end
 
-function SpectraUI:PLAYER_TARGET_CHANGED(event, unit)
+function SpectraUI:PLAYER_REGEN_ENABLED(event, unit)
 	if UnitExists("target") then
 		_G.mMT_Portrait_Player:Hide()
 	else
 		_G.mMT_Portrait_Player:Show()
+	end
+end
+
+function SpectraUI:PLAYER_TARGET_CHANGED(event, unit)
+	local inCombat = InCombatLockdown()
+	local targetExists = UnitExists("target")
+
+	local function delayedAction(action)
+		E:Delay(5, function()
+			if not inCombat then
+				if action == "Hide" then
+					_G.mMT_Portrait_Player:Hide()
+				else
+					_G.mMT_Portrait_Player:Show()
+				end
+			end
+		end)
+	end
+
+	if targetExists then
+		if inCombat then
+			delayedAction("Hide")
+		else
+			_G.mMT_Portrait_Player:Hide()
+		end
+	else
+		if inCombat then
+			delayedAction("Show")
+		else
+			_G.mMT_Portrait_Player:Show()
+		end
 	end
 end
