@@ -97,7 +97,7 @@ function SpectraUI:Initialize()
 		SpectraUI:SetupDetails()
 	end
 
-	if not SpectraUI.eventRegistered then
+	if E.db.SpectraUI.playerPortraitHide and not SpectraUI.eventRegistered then
 		self:RegisterEvent("PLAYER_ENTERING_WORLD")
 		SpectraUI.eventRegistered = true
 	end
@@ -107,7 +107,7 @@ function SpectraUI:Initialize()
 end
 
 function SpectraUI:PLAYER_ENTERING_WORLD(event)
-	SpectraUI:PlayerPortrait()
+	E:Delay(5, SpectraUI.PlayerPortrait)
 end
 
 -- Register module with callback so it gets initialized when ready

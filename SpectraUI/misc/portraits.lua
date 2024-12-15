@@ -42,54 +42,44 @@ function SpectraUI:AddPortraitsTextures()
 	end
 end
 
-function SpectraUI:PlayerPortrait()
-	if mMT and mMT.Modules.Portraits and _G.mMT_Portrait_Player then
-		if E.db.SpectraUI.playerPortraitHide then
-			SpectraUI:RegisterEvent("PLAYER_TARGET_CHANGED")
-			SpectraUI:RegisterEvent("PLAYER_REGEN_ENABLED")
-		else
-			SpectraUI:UnregisterEvent("PLAYER_TARGET_CHANGED")
-			SpectraUI:UnregisterEvent("PLAYER_REGEN_ENABLED")
-			_G.mMT_Portrait_Player:Show()
-		end
-	end
-end
+local elements = {}
 
-function SpectraUI:PLAYER_REGEN_ENABLED(event, unit)
-	if UnitExists("target") then
-		_G.mMT_Portrait_Player:Hide()
-	else
-		_G.mMT_Portrait_Player:Show()
-	end
+local function ShowHideElements(show)
+    for _, element in ipairs(elements) do
+        if element then
+            element:SetShown(show)
+        end
+    end
 end
 
 function SpectraUI:PLAYER_TARGET_CHANGED(event, unit)
-	local inCombat = InCombatLockdown()
-	local targetExists = UnitExists("target")
-
-	local function delayedAction(action)
-		E:Delay(5, function()
-			if not inCombat then
-				if action == "Hide" then
-					_G.mMT_Portrait_Player:Hide()
-				else
-					_G.mMT_Portrait_Player:Show()
-				end
-			end
-		end)
-	end
-
-	if targetExists then
-		if inCombat then
-			delayedAction("Hide")
-		else
-			_G.mMT_Portrait_Player:Hide()
-		end
-	else
-		if inCombat then
-			delayedAction("Show")
-		else
-			_G.mMT_Portrait_Player:Show()
-		end
-	end
+    local targetExists = UnitExists("target")
+    ShowHideElements(not targetExists)
 end
+
+function SpectraUI:PlayerPortrait()
+    if mMT and mMT.Modules.Portraits and _G.mMT_Portrait_Player then
+        elements = {
+            _G.mMT_Portrait_Player.texture,
+            _G.mMT_Portrait_Player.portrait,
+            _G.mMT_Portrait_Player.iconbg,
+            _G.mMT_Portrait_Player.shadow,
+            _G.mMT_Portrait_Player.innerShadow,
+            _G.mMT_Portrait_Player.border,
+            _G.mMT_Portrait_Player.extraBorder,
+            _G.mMT_Portrait_Player.extraShadow,
+            _G.mMT_Portrait_Player.corner,
+            _G.mMT_Portrait_Player.cornerBorder,
+        }
+
+        SpectraUI:PLAYER_TARGET_CHANGED()
+
+        if E.db.SpectraUI.playerPortraitHide then
+            SpectraUI:RegisterEvent("PLAYER_TARGET_CHANGED")
+        else
+            SpectraUI:UnregisterEvent("PLAYER_TARGET_CHANGED")
+            ShowHideElements(true)
+        end
+    end
+end
+
