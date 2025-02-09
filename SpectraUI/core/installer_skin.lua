@@ -99,10 +99,13 @@ end
 function SpectraUI:InstallComplete()
 	-- Set a variable tracking the version of the addon when layout was installed
 	E.private.ElvUI_EltreumUI.install_version = ElvUI_EltreumUI and ElvUI_EltreumUI.Version or nil
+	E.private.ElvUI_EltreumUI.skippedcheck = nil
+	E.private.ElvUI_EltreumUI.isInstalled.sle = true
+	E.private.ElvUI_EltreumUI.isInstalled.windtools = true
+	E.private.ElvUI_EltreumUI.isInstalled.projectazilroka = true
 	E.db.SpectraUI.install_version = SpectraUI.Version
 
 	if E.db.SpectraUI.elvui_skipped then E.private.install_complete = E.version end
-
 	ResetInstallerSkin()
 	ReloadUI()
 end
