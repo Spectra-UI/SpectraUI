@@ -19516,7 +19516,8 @@
         "HekiliDB",
         "OmniCDDB",
         "PluginInstallFrame",
-        "AddOnSkinsDB"
+        "AddOnSkinsDB",
+        "ElvUI_EltreumUI"
   ],
   "diagnostics.disable": ["deprecated", "inject-field", "undefined-field",
         "cast-local-type",

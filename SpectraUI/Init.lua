@@ -79,20 +79,11 @@ end
 
 -- This function will handle initialization of the addon
 function SpectraUI:Initialize()
-	if E.db.SpectraUI.elvui_skipped and not E.db.SpectraUI.install_version then
-		E.private.install_complete = nil
-		E.db.SpectraUI.elvui_skipped = false
-	elseif E.db.SpectraUI.install_version and E.db.SpectraUI.elvui_skipped then
-		E.db.SpectraUI.elvui_skipped = false
-	end
+	SpectraUI:CheckSkippedInstallers()
 
 	-- Initiate installation process if ElvUI install is complete and our plugin install has not yet been run
 	if E.db.SpectraUI.install_version == nil then
-		if not E.private.install_complete then
-			E.private.install_complete = E.version
-			E.db.SpectraUI.elvui_skipped = true
-		end
-
+		SpectraUI:SkipInstallers()
 		SpectraUI:RunInstaller()
 	end
 

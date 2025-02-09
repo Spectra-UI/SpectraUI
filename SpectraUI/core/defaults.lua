@@ -11,4 +11,5 @@ P.SpectraUI = {
 		chatEmbedded = "RightChat",
 	},
 	elvui_skipped = false,
+	eltruism_skipped = false,
 }
