@@ -6,7 +6,6 @@
 ## Title: |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## IconTexture: Interface\AddOns\SpectraUI\media\icon.tga
 ## RequiredDeps: ElvUI, ElvUI_EltreumUI, ElvUI_mMediaTag, WeakAuras
-## OptionalDeps: ElvUI_WindTools
 
 lib\load_libs.xml
 
