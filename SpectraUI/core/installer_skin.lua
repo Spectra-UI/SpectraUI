@@ -98,6 +98,7 @@ end
 --This function is executed when you press "Skip Process" or "Finished" in the installer.
 function SpectraUI:InstallComplete()
 	-- Set a variable tracking the version of the addon when layout was installed
+	E.private.ElvUI_EltreumUI.install_version = ElvUI_EltreumUI and ElvUI_EltreumUI.Version or nil
 	E.db.SpectraUI.install_version = SpectraUI.Version
 	E.private.install_complete = E.version
 
