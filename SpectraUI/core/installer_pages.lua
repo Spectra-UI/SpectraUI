@@ -111,6 +111,11 @@ SpectraUI.InstallerData[2] = {
 		[1] = {
 			text = L["Vertical"],
 			func = function()
+				-- we need to run elvui setup for cvars and chat first, because we are skipping the elvui installer
+				E:SetupCVars()
+				E:SetupChat()
+
+				-- run the profile setup
 				SpectraUI:ElvUIProfileVertical()
 			end,
 			preview = path .. "preview\\profile_vertical.tga",

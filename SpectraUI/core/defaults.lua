@@ -10,4 +10,5 @@ P.SpectraUI = {
 	detailsEmbedded = { -- settings for the embedded system
 		chatEmbedded = "RightChat",
 	},
+	elvui_skipped = false,
 }
