@@ -247,7 +247,7 @@ SpectraUI.InstallerData[7] = {
 		[1] = {
 			text = L["Finished"],
 			func = function()
-				if E.Retail then SpectraUI:InstallComplete() end
+				SpectraUI:InstallComplete()
 			end,
 		},
 	},
