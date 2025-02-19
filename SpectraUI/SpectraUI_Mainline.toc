@@ -1,8 +1,8 @@
-## Interface: 110007
+## Interface: 110100
 ## Author: Hoffa
 ## Notes: An |CFF1784D1ElvUI|r Profile Installer for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## Notes-deDE: An |CFF1784D1ElvUI|r Profil Installer für |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
-## Version: 1.0.6
+## Version: 1.0.7
 ## Title: |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## IconTexture: Interface\AddOns\SpectraUI\media\icon.tga
 ## RequiredDeps: ElvUI, ElvUI_EltreumUI, ElvUI_mMediaTag, WeakAuras
