@@ -136,16 +136,9 @@ SpectraUI.InstallerData[3] = {
 	},
 	options = {
 		[1] = {
-			text = L["Frames"],
+			text = L["UI Elements"],
 			func = function()
-				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.frames.retail or SpectraUI.Links.WA.frames.classic)
-			end,
-			preview = path .. "preview\\Frames.tga",
-		},
-		[2] = {
-			text = L["Theme Elements"],
-			func = function()
-				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.elements.retail or SpectraUI.Links.WA.elements.classic)
+				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.retail or SpectraUI.Links.WA.classic)
 			end,
 			preview = path .. "preview\\UI_Elements.tga",
 		},

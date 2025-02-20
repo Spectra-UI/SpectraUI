@@ -52,6 +52,7 @@ function SpectraUI:CheckAddons()
 	SpectraUI.Addons.CooldownToGo = IsAddOnLoaded("CooldownToGo")
 	SpectraUI.Addons.Details = IsAddOnLoaded("Details")
 	SpectraUI.Addons.OmniCD = IsAddOnLoaded("OmniCD")
+	SpectraUI.Addons.Scorpio = IsAddOnLoaded("Scorpio")
 	SpectraUI.Addons.SylingTracker = IsAddOnLoaded("SylingTracker")
 	SpectraUI.Addons.mMediaTag = IsAddOnLoaded("ElvUI_mMediaTag")
 end

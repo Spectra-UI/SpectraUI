@@ -39,14 +39,8 @@ SpectraUI.Color = {
 
 SpectraUI.Links = {
 	WA = {
-		frames = {
-			classic = "https://wago.io/TKMI9EwrP",
-			retail = "https://wago.io/Kqz6loIke",
-		},
-		elements = {
-			classic = "https://wago.io/Kgw3rnboZ",
-			retail = "https://wago.io/MBm1s8QQa",
-		},
+		classic = "https://wago.io/A2fUaQ0bp",
+		retail = "https://wago.io/uPWYrGAFW",
 	},
 }
 
