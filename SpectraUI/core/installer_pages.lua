@@ -163,6 +163,7 @@ SpectraUI.InstallerData[4] = {
 			text = "Syling Tracker",
 			func = function()
 				SpectraUI:SylingTracker()
+				SpectraUI:Scorpio()
 			end,
 			preview = path .. "preview\\SylingTracker.tga",
 		},
@@ -172,13 +173,6 @@ SpectraUI.InstallerData[4] = {
 				SpectraUI:CDTL2()
 			end,
 			preview = path .. "preview\\CDTL2.tga",
-		},
-		[4] = {
-			text = "Scorpio",
-			func = function()
-				SpectraUI:Scorpio()
-			end,
-			preview = path .. "preview\\Scorpio.tga",
 		},
 	},
 }
