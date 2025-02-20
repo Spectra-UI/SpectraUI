@@ -2,7 +2,9 @@ local E = unpack(ElvUI)
 
 -- CooldownToGo profile setup
 function SpectraUI:Scorpio()
-	if not SpectraUI.Addons.Scorpio then return end
+	if not SpectraUI.Addons.Scorpio then
+		return
+	end
 
 	if E.Retail then
 		Scorpio_DB = {
@@ -94,14 +96,17 @@ function SpectraUI:Scorpio()
 				88584,
 			},
 		}
-		Scorpio_Setting = {
-			["loglevel"] = 3,
-			["taskfactor"] = 0.4,
-			["smoothloading"] = false,
-			["taskthreshold"] = 15,
-		}
-	else
 	end
+
+	Scorpio_DB = {
+		["ToyItems"] = {},
+	}
+	Scorpio_Setting = {
+		["loglevel"] = 3,
+		["taskfactor"] = 0.4,
+		["smoothloading"] = false,
+		["taskthreshold"] = 15,
+	}
 
 	CooldownToGoDB.profileKeys[E.mynameRealm] = "SpectraUI"
 

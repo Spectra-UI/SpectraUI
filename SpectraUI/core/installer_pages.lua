@@ -207,6 +207,7 @@ SpectraUI.InstallerData[5] = {
 	},
 }
 
+if E.Retail then
 SpectraUI.InstallerData[6] = {
 	SubTitle = "Blizzard",
 	tutorialImage = true,
@@ -228,6 +229,23 @@ SpectraUI.InstallerData[6] = {
 		},
 	},
 }
+else
+	SpectraUI.InstallerData[6] = {
+		SubTitle = "Blizzard",
+		tutorialImage = true,
+		descriptions = {
+			[1] = L["For more information and support, visit my Discord server."],
+		},
+		options = {
+			[1] = {
+				text = SpectraUI.Media.discordLogo .. " " .. "Discord",
+				func = function()
+					E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+				end,
+			},
+		},
+	}
+end
 
 SpectraUI.InstallerData[7] = {
 	SubTitle = L["Installation Complete"],
