@@ -173,6 +173,13 @@ SpectraUI.InstallerData[4] = {
 			end,
 			preview = path .. "preview\\CDTL2.tga",
 		},
+		[4] = {
+			text = "Scorpio",
+			func = function()
+				SpectraUI:Scorpio()
+			end,
+			preview = path .. "preview\\Scorpio.tga",
+		},
 	},
 }
 
