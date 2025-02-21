@@ -183,7 +183,7 @@ SpectraUI.InstallerData[4] = {
 }
 
 SpectraUI.InstallerData[5] = {
-	SubTitle = "AddOns 1",
+	SubTitle = "AddOns 2",
 	tutorialImage = true,
 	descriptions = {
 		[1] = L["These are the profiles that are available. Please click a button below to apply the profile for the AddOn."],
@@ -225,12 +225,6 @@ if E.Retail then
 				text = "Blizzard",
 				func = function()
 					SpectraUI:Blizzard()
-				end,
-			},
-			[2] = {
-				text = SpectraUI.Media.discordLogo .. " " .. "Discord",
-				func = function()
-					E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
 				end,
 			},
 		},
