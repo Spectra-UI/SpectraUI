@@ -89,17 +89,9 @@ local function OptionsTable()
 					frames = {
 						order = 1,
 						type = "execute",
-						name = L["Frames"],
+						name = L["UI Elements"],
 						func = function()
-							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.frames.retail or SpectraUI.Links.WA.frames.classic)
-						end,
-					},
-					elements = {
-						order = 2,
-						type = "execute",
-						name = L["Theme Elements"],
-						func = function()
-							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.elements.retail or SpectraUI.Links.WA.elements.classic)
+							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.retail or SpectraUI.Links.WA.classic)
 						end,
 					},
 				},
