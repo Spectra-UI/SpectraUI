@@ -214,7 +214,7 @@ SpectraUI.InstallerData[5] = {
 }
 
 if E.Retail then
-	SpectraUI.InstallerData[6] = {
+	SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 		SubTitle = "Blizzard",
 		tutorialImage = true,
 		descriptions = {
@@ -235,25 +235,40 @@ if E.Retail then
 			},
 		},
 	}
-else
-	SpectraUI.InstallerData[6] = {
-		SubTitle = "Discord",
-		tutorialImage = true,
-		descriptions = {
-			[1] = L["For more information and support, visit my Discord server."],
-		},
-		options = {
-			[1] = {
-				text = SpectraUI.Media.discordLogo .. " " .. "Discord",
-				func = function()
-					E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
-				end,
-			},
-		},
-	}
 end
 
-SpectraUI.InstallerData[7] = {
+-- Recommendations here is the new page
+SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
+	SubTitle = "Recommendations",
+	tutorialImage = true,
+	descriptions = {
+		[1] = L["For more information and support, visit my Discord server."],
+	},
+	options = {
+		[1] = {
+			text = "OPTIONAL BUTTON 1",
+			func = function()
+				--E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+			end,
+			preview = path .. "preview\\IMAGE.tga",
+		},
+		[2] = {
+			text = "OPTIONAL BUTTON 2",
+			func = function()
+				--E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+			end,
+			preview = path .. "preview\\IMAGE.tga",
+		},
+		[3] = {
+			text = SpectraUI.Media.discordLogo .. " " .. "Discord",
+			func = function()
+				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+			end,
+		},
+	},
+}
+
+SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Installation Complete"],
 	tutorialImage = true,
 	descriptions = {
