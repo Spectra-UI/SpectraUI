@@ -253,12 +253,6 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			end,
 			preview = path .. "preview\\IMAGE.tga",
 		},
-		[3] = {
-			text = SpectraUI.Media.discordLogo .. " " .. "Discord",
-			func = function()
-				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
-			end,
-		},
 	},
 }
 
@@ -274,6 +268,12 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			text = L["Finished"],
 			func = function()
 				SpectraUI:InstallComplete()
+			end,
+		},
+		[2] = {
+			text = SpectraUI.Media.discordLogo .. " " .. "Discord",
+			func = function()
+				E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
 			end,
 		},
 	},
