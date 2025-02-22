@@ -115,6 +115,16 @@ SpectraUI.InstallerData[2] = {
 				E:SetupCVars()
 				E:SetupChat()
 
+				-- create and set a new private profile
+				if ElvPrivateDB then
+					ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
+
+					if not ElvPrivateDB.profiles.Spectra then
+						ElvPrivateDB.profiles.Spectra = E:CopyTable({}, E.privateVars.profile)
+						E:CopyTable(E.private, ElvPrivateDB.profiles.Spectra)
+					end
+				end
+
 				-- run the profile setup
 				SpectraUI:ElvUIProfileVertical()
 			end,

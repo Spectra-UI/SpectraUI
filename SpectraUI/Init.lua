@@ -100,6 +100,7 @@ function SpectraUI:Initialize()
 	-- Insert our options table when ElvUI config is loaded
 	EP:RegisterPlugin(addon, LoadOptions)
 
+	-- run the installer
 	if E.db.SpectraUI.install_version == nil then
 		SpectraUI:RunInstaller()
 	end

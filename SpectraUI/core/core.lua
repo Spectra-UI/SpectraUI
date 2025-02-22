@@ -58,3 +58,14 @@ function SpectraUI:CheckAddons()
 	SpectraUI.Addons.SylingTracker = IsAddOnLoaded("SylingTracker")
 	SpectraUI.Addons.mMediaTag = IsAddOnLoaded("ElvUI_mMediaTag")
 end
+
+-- auto set profile if exists
+function SpectraUI:AutoSetProfiles()
+	if  ElvDB.profiles then
+		mMT:DebugPrintTable(ElvDB.profiles)
+	end
+
+	if ElvPrivateDB.profiles then
+		mMT:DebugPrintTable(ElvPrivateDB.profiles)
+	end
+end
