@@ -6,7 +6,9 @@ function SpectraUI:AddPortraitsTextures()
 		SpectraUI:Print(L["|CFFF63939Error!|r mMediaTag is missing! Pleas install or enable mMediaTag."]) --#F63939
 		return
 	elseif not (mMT and mMT.Media.CustomPortraits) then
-		SpectraUI:Print(L["|CFFF63939Error!|r You are using an outdated version of mMediaTag. Please update mMediaTag!"]) --#F63939
+		SpectraUI:Print(
+			L["|CFFF63939Error!|r You are using an outdated version of mMediaTag. Please update mMediaTag!"]
+		) --#F63939
 		return
 	end
 
@@ -71,41 +73,8 @@ function SpectraUI:AddPortraitsTextures()
 	mMT.Media.CustomPortraits.spectraui_diamond.offset = E.db.SpectraUI.portraitsOffset
 end
 
-local elements = {}
-
-local function ShowHideElements(show)
-	for _, element in ipairs(elements) do
-		if element then element:SetShown(show) end
-	end
-end
-
-function SpectraUI:PLAYER_TARGET_CHANGED(event, unit)
-	local targetExists = UnitExists("target")
-	ShowHideElements(not targetExists)
-end
-
 function SpectraUI:PlayerPortrait()
 	if mMT and mMT.Modules.Portraits and _G.mMT_Portrait_Player then
-		elements = {
-			_G.mMT_Portrait_Player.texture,
-			_G.mMT_Portrait_Player.portrait,
-			_G.mMT_Portrait_Player.iconbg,
-			_G.mMT_Portrait_Player.shadow,
-			_G.mMT_Portrait_Player.innerShadow,
-			_G.mMT_Portrait_Player.border,
-			_G.mMT_Portrait_Player.extraBorder,
-			_G.mMT_Portrait_Player.extraShadow,
-			_G.mMT_Portrait_Player.corner,
-			_G.mMT_Portrait_Player.cornerBorder,
-		}
-
-		SpectraUI:PLAYER_TARGET_CHANGED()
-
-		if E.db.SpectraUI.playerPortraitHide then
-			SpectraUI:RegisterEvent("PLAYER_TARGET_CHANGED")
-		else
-			SpectraUI:UnregisterEvent("PLAYER_TARGET_CHANGED")
-			ShowHideElements(true)
-		end
+		RegisterStateDriver(_G.mMT_Portrait_Player,"visibility","[exists]hide;show")
 	end
 end
