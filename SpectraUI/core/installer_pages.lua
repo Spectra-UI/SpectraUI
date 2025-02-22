@@ -3,6 +3,69 @@ local E = unpack(ElvUI)
 local L = SpectraUI.Locales
 -- dont touch this ^
 
+local private, profile, privateIsSet, profileIsSet = SpectraUI:CheckProfile()
+
+local function ChangeProfile()
+	if not profileIsSet then
+		if ElvDB and ElvDB.profiles and ElvDB.profiles.Spectra then
+			ElvDB.profileKeys[E.mynameRealm] = "Spectra"
+		end
+	end
+
+	if not privateIsSet then
+		if not E.private.install_complete then
+			E:SetupCVars()
+			E:SetupChat()
+		end
+
+		if ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles.Spectra then
+			ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
+		end
+	end
+
+	SpectraUI:InstallComplete()
+end
+
+local function InstallProfile()
+	-- we need to run elvui setup for cvars and chat first, because we are skipping the elvui installer
+	E:SetupCVars()
+	E:SetupChat()
+
+	-- create and set a new private profile
+	if ElvPrivateDB then
+		ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
+
+		if not ElvPrivateDB.profiles.Spectra then
+			ElvPrivateDB.profiles.Spectra = E:CopyTable({}, E.privateVars.profile)
+			E:CopyTable(E.private, ElvPrivateDB.profiles.Spectra)
+		end
+	end
+
+	-- run the profile setup
+	SpectraUI:ElvUIProfileVertical()
+end
+
+-- Popup for profile change
+E.PopupDialogs.SPECTRAUI_SELECT = {
+	text = format(
+		L["You already have the %s profile installed. Would you like to change to the %s profile?"],
+		SpectraUI.Name,
+		SpectraUI.Name
+	),
+	button1 = L["Change Profile"],
+	button2 = L["Install new"],
+	OnAccept = function(frame, data)
+		ChangeProfile()
+	end,
+	OnCancel = function()
+		InstallProfile()
+	end,
+	timeout = 0,
+	whileDead = 1,
+	hideOnEscape = true,
+	preferredIndex = 3,
+}
+
 -- media path & files
 local path = SpectraUI.Media.mediaPath
 
@@ -62,65 +125,6 @@ SpectraUI.InstallerData.LogoSize = { 410, 205 }
 SpectraUI.InstallerData.StepTitlesColor = { 0.9, 0.9, 0.9 }
 SpectraUI.InstallerData.StepTitlesColorSelected = { 0, 0.98, 0.44 }
 
-local private, profile, privateIsSet, profileIsSet = SpectraUI:CheckProfile()
-
-local function ChangeProfile()
-	if not profileIsSet then
-		if ElvDB and ElvDB.profiles and ElvDB.profiles.Spectra then
-			ElvDB.profileKeys[E.mynameRealm] = "Spectra"
-		end
-	end
-
-	if not privateIsSet then
-		if not E.private.install_complete then
-			E:SetupCVars()
-			E:SetupChat()
-		end
-
-		if ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles.Spectra then
-			ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
-		end
-	end
-
-	SpectraUI:InstallComplete()
-end
-
--- Popup for profile change
-E.PopupDialogs.SPECTRAUI_SELECT = {
-	text = format(
-		L["You already have the %s profile installed. Would you like to change to the %s profile?"],
-		SpectraUI.Name,
-		SpectraUI.Name
-	),
-	button1 = L["Change Profile"],
-	button2 = L["Install new"],
-	OnAccept = function(frame, data)
-		ChangeProfile()
-	end,
-	OnCancel = function()
-		-- we need to run elvui setup for cvars and chat first, because we are skipping the elvui installer
-		E:SetupCVars()
-		E:SetupChat()
-
-		-- create and set a new private profile
-		if ElvPrivateDB then
-			ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
-
-			if not ElvPrivateDB.profiles.Spectra then
-				ElvPrivateDB.profiles.Spectra = E:CopyTable({}, E.privateVars.profile)
-				E:CopyTable(E.private, ElvPrivateDB.profiles.Spectra)
-			end
-		end
-
-		-- run the profile setup
-		SpectraUI:ElvUIProfileVertical()
-	end,
-	timeout = 0,
-	whileDead = 1,
-	hideOnEscape = true,
-	preferredIndex = 3,
-}
-
 -- installer pages
 SpectraUI.InstallerData[1] = {
 	SubTitle = format(L["Welcome to the installation for %s"], SpectraUI.Name),
@@ -145,24 +149,8 @@ SpectraUI.InstallerData[1] = {
 				SpectraUI:SetupSkip()
 			end,
 		},
-		-- [2] = {
-		-- 	text = SpectraUI.Media.discordLogo .. " " .. "Discord",
-		-- 	func = function()
-		-- 		E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
-		-- 	end,
-		-- },
 	},
 }
-
-if private and profile then
-	SpectraUI.InstallerData[1].options[2] = {
-		text = L["Change Profile"],
-		func = function()
-			ChangeProfile()
-		end,
-	}
-end
-
 
 SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Essential Settings"],
@@ -183,22 +171,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 				if private and profile then
 					E:StaticPopup_Show("SPECTRAUI_SELECT")
 				else
-					-- we need to run elvui setup for cvars and chat first, because we are skipping the elvui installer
-					E:SetupCVars()
-					E:SetupChat()
-
-					-- create and set a new private profile
-					if ElvPrivateDB then
-						ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
-
-						if not ElvPrivateDB.profiles.Spectra then
-							ElvPrivateDB.profiles.Spectra = E:CopyTable({}, E.privateVars.profile)
-							E:CopyTable(E.private, ElvPrivateDB.profiles.Spectra)
-						end
-					end
-
-					-- run the profile setup
-					SpectraUI:ElvUIProfileVertical()
+					InstallProfile()
 				end
 			end,
 			preview = path .. "preview\\profile_vertical.tga",
