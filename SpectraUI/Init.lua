@@ -101,8 +101,18 @@ function SpectraUI:Initialize()
 	EP:RegisterPlugin(addon, LoadOptions)
 
 	-- run the installer
-	if E.db.SpectraUI.install_version == nil then
+	local private, profile, privateIsSet, profileIsSet = SpectraUI:CheckProfile()
+	local forceInstall = (private and profile) and not (privateIsSet and profileIsSet)
+
+	if E.db.SpectraUI.install_version == nil or (forceInstall and not E.db.SpectraUI.profile_change_skip) then
+		print(forceInstall, E.db.SpectraUI.profile_change_skip)
 		SpectraUI:RunInstaller()
+
+		-- only popup one time for profile change, prevent spam
+		if (private and profile) and not (privateIsSet and profileIsSet) then
+			print("SpectraUI: profile change detected")
+			E.db.SpectraUI.profile_change_skip = true
+		end
 	end
 end
 

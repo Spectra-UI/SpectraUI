@@ -59,13 +59,12 @@ function SpectraUI:CheckAddons()
 	SpectraUI.Addons.mMediaTag = IsAddOnLoaded("ElvUI_mMediaTag")
 end
 
--- auto set profile if exists
-function SpectraUI:AutoSetProfiles()
-	if  ElvDB.profiles then
-		mMT:DebugPrintTable(ElvDB.profiles)
-	end
+function SpectraUI:CheckProfile()
+	local privateProfileExists = (ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles.Spectra)
+	local profileExists = (ElvDB and ElvDB.profiles and ElvDB.profiles.Spectra)
 
-	if ElvPrivateDB.profiles then
-		mMT:DebugPrintTable(ElvPrivateDB.profiles)
-	end
+	local privateiIsSet = privateProfileExists and ElvPrivateDB.profileKeys[E.mynameRealm] == "Spectra"
+	local profileIsSet = profileExists and ElvDB.profileKeys[E.mynameRealm] == "Spectra"
+
+	return privateProfileExists, profileExists, privateiIsSet, profileIsSet
 end

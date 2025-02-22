@@ -95,7 +95,51 @@ SpectraUI.InstallerData[1] = {
 	},
 }
 
-SpectraUI.InstallerData[2] = {
+local private, profile, privateIsSet, profileIsSet = SpectraUI:CheckProfile()
+
+if private and profile then
+	SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
+		SubTitle = L["Change Profile"],
+		StepTitle = L["Change Profile"],
+		tutorialImage = true,
+		descriptions = {
+			[1] = format(
+				L["You already have the %s profile installed. Would you like to change to the %s profile?"],
+				SpectraUI.Name,
+				SpectraUI.Name
+			),
+			[2] = L["You can also skip this step if you want to keep your current profile or reinstall the profile."],
+			[3] = L["|CFFF63939Important|r: This will automatically, reload your UI!"],
+		},
+		options = {
+			[1] = {
+				text = L["Change Profile"],
+				func = function()
+					if not profileIsSet then
+						if ElvDB and ElvDB.profiles and ElvDB.profiles.Spectra then
+							ElvDB.profileKeys[E.mynameRealm] = "Spectra"
+						end
+					end
+
+					if not privateIsSet then
+						if not E.private.install_complete then
+							E:SetupCVars()
+							E:SetupChat()
+						end
+
+						if ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles.Spectra then
+							ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
+						end
+					end
+
+					SpectraUI:InstallComplete()
+				end,
+			},
+		},
+	}
+end
+
+SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Essential Settings"],
 	StepTitle = "ElvUI",
 	tutorialImage = true,
@@ -135,10 +179,27 @@ SpectraUI.InstallerData[2] = {
 			func = function() end,
 			preview = path .. "preview\\profile_horizontal.tga",
 		},
+		[3] = {
+			text = L["TEST"],
+			func = function()
+				if ElvDB and ElvDB.profiles and ElvDB.profiles.Spectra then
+					if not (ElvDB.profileKeys[E.mynameRealm] == "Spectra") then
+						ElvDB.profileKeys[E.mynameRealm] = "Spectra"
+					end
+				end
+
+				if ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles.Spectra then
+					ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
+				end
+
+				SpectraUI:InstallComplete()
+			end,
+			preview = path .. "preview\\profile_vertical.tga",
+		},
 	},
 }
 
-SpectraUI.InstallerData[3] = {
+SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Weakauras"],
 	tutorialImage = true,
 	descriptions = {
@@ -160,7 +221,7 @@ SpectraUI.InstallerData[3] = {
 	},
 }
 
-SpectraUI.InstallerData[4] = {
+SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = "AddOns 1",
 	tutorialImage = true,
 	descriptions = {
@@ -192,7 +253,7 @@ SpectraUI.InstallerData[4] = {
 	},
 }
 
-SpectraUI.InstallerData[5] = {
+SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = "AddOns 2",
 	tutorialImage = true,
 	descriptions = {
