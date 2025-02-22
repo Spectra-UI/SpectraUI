@@ -75,12 +75,6 @@ end
 function SpectraUI:Initialize()
 	SpectraUI:CheckSkippedInstallers()
 
-	-- Initiate installation process if ElvUI install is complete and our plugin install has not yet been run
-	if E.db.SpectraUI.install_version == nil then
-		SpectraUI:SkipInstallers()
-		SpectraUI:RunInstaller()
-	end
-
 	-- check wich addons are loaded
 	SpectraUI:CheckAddons()
 
@@ -90,7 +84,9 @@ function SpectraUI:Initialize()
 	-- do this only if details is loaded
 	if SpectraUI.Addons.Details then
 		-- details embedded feature
-		if E.db.SpectraUI.detailsEmbedded.chatEmbedded ~= "DISABLE" then SpectraUI:DetailsEmbedded() end
+		if E.db.SpectraUI.detailsEmbedded.chatEmbedded ~= "DISABLE" then
+			SpectraUI:DetailsEmbedded()
+		end
 
 		-- add class icons to details
 		SpectraUI:SetupDetails()
@@ -103,6 +99,10 @@ function SpectraUI:Initialize()
 
 	-- Insert our options table when ElvUI config is loaded
 	EP:RegisterPlugin(addon, LoadOptions)
+
+	if E.db.SpectraUI.install_version == nil then
+		SpectraUI:RunInstaller()
+	end
 end
 
 function SpectraUI:PLAYER_ENTERING_WORLD(event)

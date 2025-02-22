@@ -29,7 +29,9 @@ local PI = E:GetModule("PluginInstaller")
 local function ResetInstallerSkin()
 	for i = 1, 4 do
 		local option = _G.PluginInstallFrame["Option" .. i]
-		if option.preview then option.preview = nil end
+		if option.preview then
+			option.preview = nil
+		end
 	end
 end
 
@@ -43,8 +45,12 @@ local function OnEnter(button)
 		PluginInstallFrame.tutorialImage:Size(410, 205)
 	end
 
-	if button.backdrop then button = button.backdrop end
-	if button.SetBackdropBorderColor then button:SetBackdropBorderColor(unpack(SpectraUI.Color.ui.rgb)) end
+	if button.backdrop then
+		button = button.backdrop
+	end
+	if button.SetBackdropBorderColor then
+		button:SetBackdropBorderColor(unpack(SpectraUI.Color.ui.rgb))
+	end
 end
 
 -- Button OnLeave (Installer Skin)
@@ -52,8 +58,12 @@ local function OnLeave(button)
 	PluginInstallFrame.tutorialImage:Size(410, 205)
 	PluginInstallFrame.tutorialImage:SetTexture(SpectraUI.Media.logo)
 
-	if button.backdrop then button = button.backdrop end
-	if button.SetBackdropBorderColor then button:SetBackdropBorderColor(unpack(E.media.bordercolor)) end
+	if button.backdrop then
+		button = button.backdrop
+	end
+	if button.SetBackdropBorderColor then
+		button:SetBackdropBorderColor(unpack(E.media.bordercolor))
+	end
 end
 
 -- Button Events (Installer Skin)
@@ -116,21 +126,17 @@ end
 
 function SpectraUI:SkipInstallers()
 	-- skip elvui installer
-	if not E.private.install_complete then
-		E.private.install_complete = E.version
-		E.db.SpectraUI.elvui_skipped = true
-	end
+	E.private.install_complete = E.version
+	E.db.SpectraUI.elvui_skipped = true
 
 	-- skip eltruism installer
-	if not E.private.ElvUI_EltreumUI.install_version then
-		E.private.ElvUI_EltreumUI.install_version = ElvUI_EltreumUI and ElvUI_EltreumUI.Version or nil
-		E.private.ElvUI_EltreumUI.skippedcheck = nil
-		E.private.ElvUI_EltreumUI.isInstalled.sle = true
-		E.private.ElvUI_EltreumUI.isInstalled.windtools = true
-		E.private.ElvUI_EltreumUI.isInstalled.projectazilroka = true
+	E.private.ElvUI_EltreumUI.install_version = ElvUI_EltreumUI and ElvUI_EltreumUI.Version or nil
+	E.private.ElvUI_EltreumUI.skippedcheck = nil
+	E.private.ElvUI_EltreumUI.isInstalled.sle = true
+	E.private.ElvUI_EltreumUI.isInstalled.windtools = true
+	E.private.ElvUI_EltreumUI.isInstalled.projectazilroka = true
 
-		E.db.SpectraUI.eltruism_skipped = true
-	end
+	E.db.SpectraUI.eltruism_skipped = true
 end
 
 --This function is executed when you press "Skip Process" or "Finished" in the installer.
@@ -161,8 +167,8 @@ end
 
 -- Our Simple Steps/ Page function
 local function SetUpPage(page)
-	local currentInstalle = PI.Installs[1]
-	if currentInstalle and currentInstalle.Title == installerData.Title then
+	local currentInstallPage = PI.Installs[1]
+	if currentInstallPage and currentInstallPage.Title == installerData.Title then
 		SetEvents()
 		Resize()
 
@@ -195,7 +201,12 @@ end
 
 function SpectraUI:RunInstaller()
 	-- check elvui installation
-	if E.private.install_complete then elvuiInstallCompleted = E.private.install_complete end
+	if E.private.install_complete then
+		elvuiInstallCompleted = E.private.install_complete
+	end
+
+	-- Initiate installation process if ElvUI install is complete and our plugin install has not yet been run
+	SpectraUI:SkipInstallers()
 
 	-- build the installer table
 	if not SpectraUI.InstallerData.build then
