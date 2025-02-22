@@ -53,7 +53,7 @@ E.PopupDialogs.SPECTRAUI_SELECT = {
 		SpectraUI.Name
 	),
 	button1 = L["Change Profile"],
-	button2 = L["Install new"],
+	button2 = L["Install New"],
 	OnAccept = function(frame, data)
 		ChangeProfile()
 	end,
