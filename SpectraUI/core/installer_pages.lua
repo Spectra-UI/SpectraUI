@@ -179,23 +179,6 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			func = function() end,
 			preview = path .. "preview\\profile_horizontal.tga",
 		},
-		[3] = {
-			text = L["TEST"],
-			func = function()
-				if ElvDB and ElvDB.profiles and ElvDB.profiles.Spectra then
-					if not (ElvDB.profileKeys[E.mynameRealm] == "Spectra") then
-						ElvDB.profileKeys[E.mynameRealm] = "Spectra"
-					end
-				end
-
-				if ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles.Spectra then
-					ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
-				end
-
-				SpectraUI:InstallComplete()
-			end,
-			preview = path .. "preview\\profile_vertical.tga",
-		},
 	},
 }
 
