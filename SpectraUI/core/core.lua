@@ -30,7 +30,9 @@ E.PopupDialogs.SPECTRAUI_EDITBOX = {
 		self:GetParent():Hide()
 	end,
 	EditBoxOnTextChanged = function(self)
-		if self:GetText() ~= self.temptxt then self:SetText(self.temptxt) end
+		if self:GetText() ~= self.temptxt then
+			self:SetText(self.temptxt)
+		end
 
 		self:HighlightText()
 	end,

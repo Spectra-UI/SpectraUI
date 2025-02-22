@@ -7,4 +7,5 @@
 	<Script file='profile_classic_vertical.lua'/>
 	<Script file='OmniCD.lua'/>
 	<Script file='SylingTracker.lua'/>
+	<Script file='Scorpio.lua'/>
 </Ui>

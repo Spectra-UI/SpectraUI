@@ -19517,7 +19517,8 @@
         "OmniCDDB",
         "PluginInstallFrame",
         "AddOnSkinsDB",
-        "ElvUI_EltreumUI"
+        "ElvUI_EltreumUI",
+        "ElvPrivateDB"
   ],
   "diagnostics.disable": ["deprecated", "inject-field", "undefined-field",
         "cast-local-type",
