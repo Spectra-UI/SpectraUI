@@ -1,3 +1,3 @@
 [![Discord](https://img.shields.io/discord/1283555480085729382?style=for-the-badge&logo=discord&logoColor=5865F2&logoSize=auto&label=Discord&labelColor=151B23)](https://discord.gg/WCgGV4uRua)  [![Static Badge](https://img.shields.io/badge/Contribute-Ko--fi?style=for-the-badge&logo=kofi&color=151B23)](https://ko-fi.com/spectraui)                                   [![CurseForge Version](https://img.shields.io/curseforge/v/1102865?style=for-the-badge&logo=curseforge&logoColor=F16436&label=Version&labelColor=151B23&color=03fa6e)](https://www.curseforge.com/wow/addons/spectraui)  [![GitHub Tag](https://img.shields.io/github/v/tag/Spectra-UI/SpectraUI?style=for-the-badge&logo=github&label=Version&labelColor=151B23&color=03fa6e)](https://github.com/Spectra-UI/SpectraUI)
-![GitHub 1](https://github.com/user-attachments/assets/7ad894a9-ae42-4210-b9a6-b92730029d01)
-![GitHub 2](https://github.com/user-attachments/assets/8fd1499a-32fb-4988-a3cf-fc6707ed4892)
+![GitHub   Wago 1](https://github.com/user-attachments/assets/34e4dd92-e616-491b-9748-0d4ee85a39cf)
+![GitHub   Wago 2](https://github.com/user-attachments/assets/11dc372c-06b1-487c-b440-6b483582c9f0)
