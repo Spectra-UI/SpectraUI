@@ -51,7 +51,7 @@ SpectraUI.Options = {}
 
 -- example of credits if you want to add some
 SpectraUI.CREDITS = {
-	L["|CFF03FA6EHoffa|r  - Author"], --#16F5EE
+	L["|CFF03FA6EHoffa|r - Author"], --#16F5EE
 	L["|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Programming"],
 	L["|cff0DB1D0Dlarge|r - Localization"],
 	L["|CFFC7D377Lillekatt|r  - Creator and provider of the Role Icons"],
@@ -61,7 +61,7 @@ SpectraUI.CREDITS = {
 
 -- example of donators if you want to add some
 SpectraUI.DONATORS = {
-	-- "EXAMPLE",
+	"|CFF03FA6EMérica|r - |CFFA335EEEpic Supporter|r",
 }
 
 -- load our options table
