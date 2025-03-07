@@ -62,6 +62,7 @@ SpectraUI.CREDITS = {
 -- example of donators if you want to add some
 SpectraUI.DONATORS = {
 	"|CFF03FA6EMérica|r - |CFFA335EEEpic Supporter|r",
+	"|CFF03FA6ERipper|r - |CFFFF8000Legendary Supporter|r",
 }
 
 -- load our options table
