@@ -19,5 +19,6 @@ LSM:Register("font", "SpectraUI Title", [[Interface\AddOns\SpectraUI\media\font\
 -- STATUSBAR
 --LSM:Register("statusbar", "SpectraUI Statusbar 1", [[Interface\AddOns\SpectraUI\media\statusbar\dummy.tga]])
 LSM:Register("statusbar", "SpectraUI Blank", [[Interface\AddOns\SpectraUI\media\statusbar\SpectraUI Blank.tga]])
-LSM:Register("statusbar", "SpectraUI Dark", [[Interface\AddOns\SpectraUI\media\statusbar\SpectraUI Dark.tga]])
+LSM:Register("statusbar", "SpectraUI Execute", [[Interface\AddOns\SpectraUI\media\statusbar\SpectraUI Execute.tga]])
 LSM:Register("statusbar", "SpectraUI Main", [[Interface\AddOns\SpectraUI\media\statusbar\SpectraUI Main.tga]])
+LSM:Register("statusbar", "SpectraUI Stripes", [[Interface\AddOns\SpectraUI\media\statusbar\SpectraUI Stripes.tga]])
