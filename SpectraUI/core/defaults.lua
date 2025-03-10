@@ -9,6 +9,7 @@ P.SpectraUI = {
 	playerPortraitHide = false, -- hide player portrait when target exist
 	detailsEmbedded = { -- settings for the embedded system
 		chatEmbedded = "RightChat",
+		style = "two",
 	},
 	elvui_skipped = false,
 	eltruism_skipped = false,
