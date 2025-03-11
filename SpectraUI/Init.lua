@@ -86,7 +86,7 @@ function SpectraUI:Initialize()
 	-- do this only if details is loaded
 	if SpectraUI.Addons.Details then
 		-- details embedded feature
-		if E.db.SpectraUI.detailsEmbedded.chatEmbedded ~= "DISABLE" then
+		if E.db.SpectraUI.detailsEmbedded.style ~= "DISABLE" then
 			SpectraUI:DetailsEmbedded()
 		end
 

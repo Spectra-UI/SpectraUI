@@ -91,7 +91,12 @@ local function OptionsTable()
 						type = "execute",
 						name = L["UI Elements"],
 						func = function()
-							E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, E.Retail and SpectraUI.Links.WA.retail or SpectraUI.Links.WA.classic)
+							E:StaticPopup_Show(
+							"SPECTRAUI_EDITBOX",
+								nil,
+								nil,
+								E.Retail and SpectraUI.Links.WA.retail or SpectraUI.Links.WA.classic
+							)
 						end,
 					},
 				},
@@ -123,10 +128,29 @@ local function OptionsTable()
 				inline = true,
 				name = L["Details Embedded"],
 				args = {
-					chat = {
+					style = {
 						order = 1,
 						type = "select",
+						name = L["Embedded Style"],
+						get = function(info)
+							return E.db.SpectraUI.detailsEmbedded.style
+						end,
+						set = function(info, value)
+							E.db.SpectraUI.detailsEmbedded.style = value
+							E:StaticPopup_Show("CONFIG_RL")
+						end,
+						values = {
+							DISABLE = L["DISABLE"],
+							one = L["One"],
+							two_side = L["Two side by side"],
+							two_top = L["Two on top of each other"],
+						},
+					},
+					chat = {
+						order = 2,
+						type = "select",
 						name = L["Embedded to Chat"],
+						disabled = function() return E.db.SpectraUI.detailsEmbedded.style == "DISABLE" end,
 						get = function(info)
 							return E.db.SpectraUI.detailsEmbedded.chatEmbedded
 						end,
@@ -135,7 +159,6 @@ local function OptionsTable()
 							E:StaticPopup_Show("CONFIG_RL")
 						end,
 						values = {
-							DISABLE = L["DISABLE"],
 							LeftChat = L["Left Chat"],
 							RightChat = L["Right Chat"],
 						},

@@ -24,62 +24,67 @@ function SpectraUI:SetupDetails()
 end
 
 function SpectraUI:DetailsEmbedded()
-	if not detailsEmbedded then
-		local chatEmbedded = E.db.SpectraUI.detailsEmbedded.chatEmbedded
-		local chat = _G[chatEmbedded .. "Panel"]
+    if detailsEmbedded then return end
 
-		detailsEmbedded = CreateFrame("Frame", "SpectraUI_DetailsEmbedded_Frame", UIParent, "BackdropTemplate")
-		detailsEmbedded:SetFrameStrata("BACKGROUND")
+    local config = E.db.SpectraUI.detailsEmbedded
+    local chat = _G[config.chatEmbedded .. "Panel"]
+    local chatHeight, chatWidth = chat:GetHeight(), chat:GetWidth()
 
-		local chatHeight = chat:GetHeight()
-		local chatWidth = chat:GetWidth()
+    detailsEmbedded = CreateFrame("Frame", "SpectraUI_DetailsEmbedded_Frame", UIParent, "BackdropTemplate")
+    detailsEmbedded:SetFrameStrata("BACKGROUND")
+    detailsEmbedded:SetSize(chatWidth, chatHeight)
+    detailsEmbedded:SetBackdrop(chat.backdrop:GetBackdrop())
+    detailsEmbedded:SetBackdropBorderColor(chat.backdrop:GetBackdropBorderColor())
+    detailsEmbedded:SetBackdropColor(chat.backdrop:GetBackdropColor())
 
-		local backdrop = chat.backdrop:GetBackdrop()
-		detailsEmbedded:SetBackdrop(backdrop)
+    for i = 1, chat:GetNumPoints() do
+        local point, _, relativePoint, xOfs, yOfs = chat:GetPoint(i)
+        detailsEmbedded:SetPoint(point, chat, relativePoint, xOfs, yOfs)
+    end
 
-		local r, g, b, a = chat.backdrop:GetBackdropBorderColor()
-		detailsEmbedded:SetBackdropBorderColor(r, g, b, a)
+    if config.style ~= "one" then
+        local window_a = CreateFrame("Frame", "SpectraUI_DetailsEmbedded_Window_A", detailsEmbedded)
+        local window_b = CreateFrame("Frame", "SpectraUI_DetailsEmbedded_Window_B", detailsEmbedded)
+        local isTwoSide = (config.style == "two_side")
 
-		r, g, b, a = chat.backdrop:GetBackdropColor()
-		detailsEmbedded:SetBackdropColor(r, g, b, a)
+        window_a:SetSize(isTwoSide and (chatWidth / 2) - 1 or chatWidth, isTwoSide and chatHeight or (chatHeight / 2) - 1)
+        window_b:SetSize(window_a:GetSize())
+        window_a:SetPoint(isTwoSide and "LEFT" or "TOP", detailsEmbedded, isTwoSide and "LEFT" or "TOP")
+        window_b:SetPoint(isTwoSide and "RIGHT" or "BOTTOM", detailsEmbedded, isTwoSide and "RIGHT" or "BOTTOM")
 
-		detailsEmbedded:SetWidth(chatWidth)
-		detailsEmbedded:SetHeight(chatHeight)
+        detailsEmbedded.window_a, detailsEmbedded.window_b = window_a, window_b
+    end
 
-		for i = 1, chat:GetNumPoints() do
-			local point, _, relativePoint, xOfs, yOfs = chat:GetPoint(i)
-			detailsEmbedded:SetPoint(point, chat, relativePoint, xOfs, yOfs)
-		end
+    chat:Hide()
+    detailsEmbedded:Show()
 
-		chat:Hide()
-		detailsEmbedded:Show()
-	end
+    local function setupDetailsWindow(instanceID, parentFrame)
+        local detailsWindow = Details:GetInstance(instanceID)
+        if not detailsWindow then return end
 
-	local detailsWindow1 = Details:GetInstance(1)
-	if detailsWindow1 then
-		detailsWindow1:UngroupInstance()
-		detailsWindow1.baseframe:ClearAllPoints()
+        detailsWindow:UngroupInstance()
+        detailsWindow.baseframe:SetParent(parentFrame)
+        detailsWindow.baseframe:ClearAllPoints()
+        detailsWindow.rowframe:SetParent(detailsWindow.baseframe)
+        detailsWindow.rowframe:SetAllPoints()
+        detailsWindow.windowSwitchButton:SetParent(detailsWindow.baseframe)
+        detailsWindow.windowSwitchButton:SetAllPoints()
 
-		detailsWindow1.baseframe:SetParent(detailsEmbedded)
+        local topOffset = detailsWindow.toolbar_side == 1 and -20 or 0
+        local bottomOffset = (detailsWindow.show_statusbar and 14 or 0) + (detailsWindow.toolbar_side == 2 and 20 or 0)
+        detailsWindow.baseframe:SetPoint("topleft", parentFrame, "topleft", 0, topOffset + Details.chat_tab_embed.y_offset)
+        detailsWindow.baseframe:SetPoint("bottomright", parentFrame, "bottomright", Details.chat_tab_embed.x_offset, bottomOffset)
 
-		detailsWindow1.rowframe:SetParent(detailsWindow1.baseframe)
-		detailsWindow1.rowframe:ClearAllPoints()
-		detailsWindow1.rowframe:SetAllPoints()
+        detailsWindow:LockInstance(true)
+        detailsWindow:SaveMainWindowPosition()
+    end
 
-		detailsWindow1.windowSwitchButton:SetParent(detailsWindow1.baseframe)
-		detailsWindow1.windowSwitchButton:ClearAllPoints()
-		detailsWindow1.windowSwitchButton:SetAllPoints()
-
-		local topOffset = detailsWindow1.toolbar_side == 1 and -20 or 0
-		local bottomOffset = (detailsWindow1.show_statusbar and 14 or 0) + (detailsWindow1.toolbar_side == 2 and 20 or 0)
-
-		detailsWindow1.baseframe:SetPoint("topleft", detailsEmbedded, "topleft", 0, topOffset + Details.chat_tab_embed.y_offset)
-		detailsWindow1.baseframe:SetPoint("bottomright", detailsEmbedded, "bottomright", Details.chat_tab_embed.x_offset, bottomOffset)
-
-		detailsWindow1:LockInstance(true)
-		detailsWindow1:SaveMainWindowPosition()
-	end
+    setupDetailsWindow(2, config.style == "one" and detailsEmbedded or detailsEmbedded.window_a)
+    if config.style ~= "one" then
+        setupDetailsWindow(1, detailsEmbedded.window_b)
+    end
 end
+
 
 function SpectraUI:DetailsEmbeddedToggle()
 	if detailsEmbedded then
