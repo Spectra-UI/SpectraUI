@@ -68,9 +68,7 @@ SpectraUI.DONATORS = {
 -- load our options table
 local function LoadOptions()
 	E.Options.name = format("%s + %s %s |cff99ff33%s|r", E.Options.name, SpectraUI.Media.icon, SpectraUI.Name, SpectraUI.Version)
-	for _, func in pairs(SpectraUI.Options) do
-		func()
-	end
+	E.Options.args.SpectraUI = SpectraUI.options
 end
 
 -- This function will handle initialization of the addon
