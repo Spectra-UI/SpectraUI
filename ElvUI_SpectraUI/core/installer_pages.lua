@@ -317,7 +317,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	tutorialImage = true,
 	descriptions = {
 		[1] = L["|CFF03FA6EThe installation process is now complete!|r"],
-		[2] = L["Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t  |CFF03FA6EDiscord|r for assistance!"],
+		[2] = L["Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |TInterface\\AddOns\\ElvUI_SpectraUI\\media\\discord_logo.tga:14:14|t  |CFF03FA6EDiscord|r for assistance!"],
 	},
 	options = {
 		[1] = {

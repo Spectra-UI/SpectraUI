@@ -2,7 +2,7 @@ local E = unpack(ElvUI)
 local L = SpectraUI.Locales
 
 local _G = _G
-local path = "Interface\\Addons\\SpectraUI\\media\\class\\"
+local path = "Interface\\Addons\\ElvUI_SpectraUI\\media\\class\\"
 local detailsEmbedded
 
 local styles = {
@@ -16,7 +16,7 @@ local styles = {
 	},
 }
 
-local dropdownIcon = "Interface\\AddOns\\SpectraUI\\media\\icon.tga"
+local dropdownIcon = "Interface\\AddOns\\ElvUI_SpectraUI\\media\\icon.tga"
 function SpectraUI:SetupDetails()
 	for _, data in next, styles do
 		_G.Details:AddCustomIconSet(data.texture, data.name, false, dropdownIcon, { 0, 1, 0, 1 })

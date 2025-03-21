@@ -22,11 +22,11 @@ SpectraUI.Name = "|CFFFFFFFFSpectra|r |CFF03FA6EUI|r" --#03FA6E #FFFFFF
 SpectraUI.Version = GetAddOnMetadata(addon, "Version")
 
 SpectraUI.Media = {
-	mediaPath = "Interface\\AddOns\\SpectraUI\\media\\",
-	icon = "|TInterface\\AddOns\\SpectraUI\\media\\icon.tga:14:14|t",
-	logo = "Interface\\AddOns\\SpectraUI\\media\\logo.tga",
-	logoText = "Interface\\AddOns\\SpectraUI\\media\\logo_text.tga",
-	discordLogo = "|TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t",
+	mediaPath = "Interface\\AddOns\\ElvUI_SpectraUI\\media\\",
+	icon = "|TInterface\\AddOns\\ElvUI_SpectraUI\\media\\icon.tga:14:14|t",
+	logo = "Interface\\AddOns\\ElvUI_SpectraUI\\media\\logo.tga",
+	logoText = "Interface\\AddOns\\ElvUI_SpectraUI\\media\\logo_text.tga",
+	discordLogo = "|TInterface\\AddOns\\ElvUI_SpectraUI\\media\\discord_logo.tga:14:14|t",
 }
 
 SpectraUI.Color = {

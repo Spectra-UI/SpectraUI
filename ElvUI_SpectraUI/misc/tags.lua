@@ -1,7 +1,7 @@
 local E = unpack(ElvUI)
 local L = SpectraUI.Locales
 
-local classIconPath = "Interface\\Addons\\SpectraUI\\media\\class\\"
+local classIconPath = "Interface\\Addons\\ElvUI_SpectraUI\\media\\class\\"
 local classIconStrings = {
 	WARRIOR = "0:128:0:128",
 	MAGE = "128:256:0:128",
@@ -47,9 +47,9 @@ end)
 E:AddTagInfo("spectra:classic", SpectraUI.Name .. " " .. L["Icons"], L["Class Icons."] .. " " .. L["The size can be set as follows"] .. " > spectra:styl{32}")
 
 local roleIocns = {
-	TANK = "Interface\\Addons\\SpectraUI\\media\\role\\Tank.tga",
-	HEALER = "Interface\\Addons\\SpectraUI\\media\\role\\Healer.tga",
-	DAMAGER = "Interface\\Addons\\SpectraUI\\media\\role\\DPS.tga",
+	TANK = "Interface\\Addons\\ElvUI_SpectraUI\\media\\role\\Tank.tga",
+	HEALER = "Interface\\Addons\\ElvUI_SpectraUI\\media\\role\\Healer.tga",
+	DAMAGER = "Interface\\Addons\\ElvUI_SpectraUI\\media\\role\\DPS.tga",
 }
 
 E:AddTag("spectra:roleicon", "PLAYER_ROLES_ASSIGNED GROUP_ROSTER_UPDATE", function(unit, _, args)

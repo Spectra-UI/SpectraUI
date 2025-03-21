@@ -1,4 +1,4 @@
-﻿local L = LibStub("AceLocale-3.0"):NewLocale("SpectraUI", "frFR")
+﻿local L = LibStub("AceLocale-3.0"):NewLocale("SpectraUI", "ruRU")
 if not L then return end
 
 L["%s is a layout for ElvUI."] = true
@@ -6,7 +6,7 @@ L["About"] = true
 L["AddOns 1"] = true
 L["AddOns 2"] = true
 L["Blizzard"] = true
-L["Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |TInterface\\AddOns\\SpectraUI\\media\\discord_logo.tga:14:14|t  |CFF03FA6EDiscord|r for assistance!"] = true
+L["Click the button below to finalize everything and automatically reload your interface. If you run into any questions or issues, feel free to join our |TInterface\\AddOns\\ElvUI_SpectraUI\\media\\discord_logo.tga:14:14|t  |CFF03FA6EDiscord|r for assistance!"] = true
 L["Credits"] = true
 L["DISABLE"] = true
 L["Details Embedded"] = true
