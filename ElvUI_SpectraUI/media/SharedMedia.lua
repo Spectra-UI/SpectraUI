@@ -6,8 +6,8 @@ local LSM = E.Libs.LSM
 
 -- BORDER
 -- LSM:Register("border", "SpectraUI Border 1", [[Interface\AddOns\ElvUI_SpectraUI\media\border\dummy.tga]])
-LSM:Register("border", "SpectraUI Nova Light", [[Interface\AddOns\ElvUI_SpectraUI\media\border\SpectraUI-Border-Light]])
-LSM:Register("border", "SpectraUI Nova", [[Interface\AddOns\ElvUI_SpectraUI\media\border\SpectraUI-Border]])
+LSM:Register("border", "SpectraUI Nova Light", [[Interface\AddOns\ElvUI_SpectraUI\media\borders\SpectraUI-Border-Light]])
+LSM:Register("border", "SpectraUI Nova", [[Interface\AddOns\ElvUI_SpectraUI\media\borders\SpectraUI-Border]])
 
 -- FONT
 --LSM:Register("font", "SpectraUI Font 1", [[Interface\AddOns\ElvUI_SpectraUI\media\font\dummy.ttf]])
