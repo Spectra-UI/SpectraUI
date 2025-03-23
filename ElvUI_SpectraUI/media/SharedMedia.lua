@@ -6,19 +6,24 @@ local LSM = E.Libs.LSM
 
 -- BORDER
 -- LSM:Register("border", "SpectraUI Border 1", [[Interface\AddOns\ElvUI_SpectraUI\media\border\dummy.tga]])
+LSM:Register("border", "SpectraUI Nova Light", [[Interface\AddOns\ElvUI_SpectraUI\media\border\SpectraUI-Border-Light]])
+LSM:Register("border", "SpectraUI Nova", [[Interface\AddOns\ElvUI_SpectraUI\media\border\SpectraUI-Border]])
 
 -- FONT
 --LSM:Register("font", "SpectraUI Font 1", [[Interface\AddOns\ElvUI_SpectraUI\media\font\dummy.ttf]])
 LSM:Register("font", "SpectraUI Caption", [[Interface\AddOns\ElvUI_SpectraUI\media\font\SpectraUI-Caption.ttf]])
 LSM:Register("font", "SpectraUI Combat", [[Interface\AddOns\ElvUI_SpectraUI\media\font\SpectraUI-Combat.ttf]])
 LSM:Register("font", "SpectraUI Title", [[Interface\AddOns\ElvUI_SpectraUI\media\font\SpectraUI-Title.ttf]])
+LSM:Register("font", "SpectraUI Nova", [[Interface\AddOns\ElvUI_SpectraUI\media\font\SpectraUI-Nova.ttf]])
 
 -- SOUND
 --LSM:Register("sound", "SpectraUI Sound 1", [[Interface\AddOns\ElvUI_SpectraUI\media\sound\dummy.mp3]])
 
 -- STATUSBAR
 --LSM:Register("statusbar", "SpectraUI Statusbar 1", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\dummy.tga]])
-LSM:Register("statusbar", "SpectraUI Blank", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI Blank.tga]])
-LSM:Register("statusbar", "SpectraUI Execute", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI Execute.tga]])
-LSM:Register("statusbar", "SpectraUI Main", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI Main.tga]])
-LSM:Register("statusbar", "SpectraUI Stripes", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI Stripes.tga]])
+LSM:Register("statusbar", "SpectraUI Blank", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI-Blank.tga]])
+LSM:Register("statusbar", "SpectraUI Execute", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI-Execute.tga]])
+LSM:Register("statusbar", "SpectraUI Main", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI-Main.tga]])
+LSM:Register("statusbar", "SpectraUI Stripes", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI-Stripes.tga]])
+LSM:Register("statusbar", "SpectraUI Overlay", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI-Nova-Overlay.tga]])
+LSM:Register("statusbar", "SpectraUI Nova", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI-Nova.tga]])
