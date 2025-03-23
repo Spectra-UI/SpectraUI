@@ -158,7 +158,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	tutorialImage = true,
 	descriptions = {
 		[1] = format(
-			L["This process will install %s and allow you to choose between a Vertical or Horizontal layout. It will also activate the essential features of %s."],
+			L["This process will install %s and allow you to choose between a DPS/Tank or Healer layout. It will also activate the essential features of %s."],
 			SpectraUI.Name,
 			SpectraUI.Name
 		),
@@ -166,7 +166,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	},
 	options = {
 		[1] = {
-			text = L["Vertical"],
+			text = L["DPS/Tank"],
 			func = function()
 				if private and profile then
 					E:StaticPopup_Show("SPECTRAUI_SELECT")
@@ -177,7 +177,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			preview = path .. "preview\\profile_vertical.tga",
 		},
 		[2] = {
-			text = L["Horizontal"],
+			text = L["Healer"],
 			func = function() end,
 			preview = path .. "preview\\profile_horizontal.tga",
 		},
@@ -288,29 +288,29 @@ if E.Retail then
 end
 
 -- Recommendations here is the new page
-SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
-	SubTitle = "Recommendations",
-	tutorialImage = true,
-	descriptions = {
-		[1] = L["For more information and support, visit my Discord server."],
-	},
-	options = {
-		[1] = {
-			text = "OPTIONAL BUTTON 1",
-			func = function()
-				--E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
-			end,
-			preview = path .. "preview\\IMAGE.tga",
-		},
-		[2] = {
-			text = "OPTIONAL BUTTON 2",
-			func = function()
-				--E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
-			end,
-			preview = path .. "preview\\IMAGE.tga",
-		},
-	},
-}
+--SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
+--	SubTitle = "Recommendations",
+--	tutorialImage = true,
+--	descriptions = {
+--		[1] = L["For more information and support, visit my Discord server."],
+--	},
+--	options = {
+--		[1] = {
+--			text = "OPTIONAL BUTTON 1",
+--			func = function()
+--				--E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+--			end,
+--			preview = path .. "preview\\IMAGE.tga",
+--		},
+--		[2] = {
+--			text = "OPTIONAL BUTTON 2",
+--			func = function()
+--				--E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
+--			end,
+--			preview = path .. "preview\\IMAGE.tga",
+--		},
+--	},
+--}
 
 SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Installation Complete"],
