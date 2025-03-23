@@ -1,6 +1,6 @@
 ## Interface: 110100
 ## Author: Hoffa
-## Version: 1.0.9
+## Version: 1.1.0
 ## Title: |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## Notes: An |CFF1784D1ElvUI|r Profile Installer for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## Notes-deDE: An |CFF1784D1ElvUI|r Profil Installer für |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
