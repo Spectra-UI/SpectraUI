@@ -42,7 +42,7 @@ local function InstallProfile(layout)
 	end
 
 	-- run the profile setup
-	if layout == "healer" then
+	if layout == "healer" or layout == "Spectra V2" then
 		SpectraUI:ElvUIProfileHorizontal()
 	else
 		SpectraUI:ElvUIProfileVertical()
@@ -61,8 +61,8 @@ E.PopupDialogs.SPECTRAUI_SELECT = {
 	OnAccept = function(frame, data)
 		ChangeProfile(data)
 	end,
-	OnCancel = function()
-		InstallProfile()
+	OnCancel = function(frame, data)
+		InstallProfile(data)
 	end,
 	timeout = 0,
 	whileDead = 1,
