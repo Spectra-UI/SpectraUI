@@ -59,11 +59,11 @@ function SpectraUI:CheckAddons()
 	SpectraUI.Addons.mMediaTag = IsAddOnLoaded("ElvUI_mMediaTag")
 end
 
-function SpectraUI:CheckProfile()
-	local privateProfileExists = (ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles.Spectra)
+function SpectraUI:CheckProfile(layout)
+	local privateProfileExists = (ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles["Spectra"] or ElvPrivateDB.profiles["Spectra V2"])
 	local profileExists = (ElvDB and ElvDB.profiles and ElvDB.profiles.Spectra)
 
-	local privateiIsSet = privateProfileExists and ElvPrivateDB.profileKeys[E.mynameRealm] == "Spectra"
+	local privateiIsSet = privateProfileExists and ElvPrivateDB.profileKeys[E.mynameRealm] == "Spectra" or ElvPrivateDB.profileKeys[E.mynameRealm] == "Spectra V2"
 	local profileIsSet = profileExists and ElvDB.profileKeys[E.mynameRealm] == "Spectra"
 
 	return privateProfileExists, profileExists, privateiIsSet, profileIsSet

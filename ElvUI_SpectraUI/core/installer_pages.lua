@@ -5,10 +5,10 @@ local L = SpectraUI.Locales
 
 local private, profile, privateIsSet, profileIsSet = SpectraUI:CheckProfile()
 
-local function ChangeProfile()
+local function ChangeProfile(layout)
 	if not profileIsSet then
 		if ElvDB and ElvDB.profiles and ElvDB.profiles.Spectra then
-			ElvDB.profileKeys[E.mynameRealm] = "Spectra"
+			ElvDB.profileKeys[E.mynameRealm] = layout
 		end
 	end
 
@@ -26,7 +26,7 @@ local function ChangeProfile()
 	SpectraUI:InstallComplete()
 end
 
-local function InstallProfile()
+local function InstallProfile(layout)
 	-- we need to run elvui setup for cvars and chat first, because we are skipping the elvui installer
 	E:SetupCVars()
 	E:SetupChat()
@@ -42,7 +42,11 @@ local function InstallProfile()
 	end
 
 	-- run the profile setup
-	SpectraUI:ElvUIProfileVertical()
+	if layout == "healer" then
+		SpectraUI:ElvUIProfileHorizontal()
+	else
+		SpectraUI:ElvUIProfileVertical()
+	end
 end
 
 -- Popup for profile change
@@ -55,7 +59,7 @@ E.PopupDialogs.SPECTRAUI_SELECT = {
 	button1 = L["Change Profile"],
 	button2 = L["Install New"],
 	OnAccept = function(frame, data)
-		ChangeProfile()
+		ChangeProfile(data)
 	end,
 	OnCancel = function()
 		InstallProfile()
@@ -169,7 +173,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			text = L["DPS/Tank"],
 			func = function()
 				if private and profile then
-					E:StaticPopup_Show("SPECTRAUI_SELECT")
+					E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Spectra")
 				else
 					InstallProfile()
 				end
@@ -178,7 +182,13 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 		},
 		[2] = {
 			text = L["Healer"],
-			func = function() end,
+			func = function()
+				if private and profile then
+					E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Spectra V2")
+				else
+					InstallProfile("healer")
+				end
+			end,
 			preview = path .. "preview\\profile_horizontal.tga",
 		},
 	},
