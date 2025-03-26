@@ -28,6 +28,7 @@ function SpectraUI:DetailsEmbedded()
 
     local config = E.db.SpectraUI.detailsEmbedded
     local chat = _G[config.chatEmbedded .. "Panel"]
+	if not chat then return end
     local chatHeight, chatWidth = chat:GetHeight(), chat:GetWidth()
 
     detailsEmbedded = CreateFrame("Frame", "SpectraUI_DetailsEmbedded_Frame", UIParent, "BackdropTemplate")
