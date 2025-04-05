@@ -31,21 +31,25 @@ local function InstallProfile(layout)
 	E:SetupCVars()
 	E:SetupChat()
 
-	-- create and set a new private profile
-	if ElvPrivateDB then
-		ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
-
-		if not ElvPrivateDB.profiles.Spectra then
-			ElvPrivateDB.profiles.Spectra = E:CopyTable({}, E.privateVars.profile)
-			E:CopyTable(E.private, ElvPrivateDB.profiles.Spectra)
-		end
-	end
-
-	-- run the profile setup
-	if layout == "healer" or layout == "Spectra V2" then
-		SpectraUI:ElvUIProfileHorizontal()
+	if layout == "nova" then
+		SpectraUI:ElvUIProfileNova()
 	else
-		SpectraUI:ElvUIProfileVertical()
+		-- create and set a new private profile
+		if ElvPrivateDB then
+			ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
+
+			if not ElvPrivateDB.profiles.Spectra then
+				ElvPrivateDB.profiles.Spectra = E:CopyTable({}, E.privateVars.profile)
+				E:CopyTable(E.private, ElvPrivateDB.profiles.Spectra)
+			end
+		end
+
+		-- run the profile setup
+		if layout == "healer" or layout == "Spectra V2" then
+			SpectraUI:ElvUIProfileHorizontal()
+		else
+			SpectraUI:ElvUIProfileVertical()
+		end
 	end
 end
 
@@ -191,6 +195,13 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			end,
 			preview = path .. "preview\\profile_horizontal.tga",
 		},
+		[3] = {
+			text = L["Nova"],
+			func = function()
+					InstallProfile("nova")
+			end,
+			preview = path .. "preview\\profile_horizontal.tga",
+		},
 	},
 }
 
@@ -209,6 +220,18 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 					nil,
 					nil,
 					E.Retail and SpectraUI.Links.WA.retail or SpectraUI.Links.WA.classic
+				)
+			end,
+			preview = path .. "preview\\UI_Elements.tga",
+		},
+		[1] = {
+			text = L["UI Elements for Nova"],
+			func = function()
+				E:StaticPopup_Show(
+					"SPECTRAUI_EDITBOX",
+					nil,
+					nil,
+					"Not available yet"
 				)
 			end,
 			preview = path .. "preview\\UI_Elements.tga",
