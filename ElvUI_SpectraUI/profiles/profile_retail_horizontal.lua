@@ -37,5 +37,5 @@ function SpectraUI:ElvUIProfileHorizontal()
 	-- Set UI Scale
 	E.global.general.UIScale = 0.7111111111111111
 
-	SpectraUI:Print("|CFFB707E2ElvUI|r" .. " profile |CFF03FA6Eset|r!")
+	SpectraUI:Print("|CFFB707E2ElvUI|r" .. " Horizontal profile |CFF03FA6Eset|r!")
 end
