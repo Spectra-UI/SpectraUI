@@ -224,7 +224,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			end,
 			preview = path .. "preview\\UI_Elements.tga",
 		},
-		[1] = {
+		[2] = {
 			text = L["UI Elements for Nova"],
 			func = function()
 				E:StaticPopup_Show(
