@@ -63,3 +63,21 @@ E:AddTag("spectra:roleicon", "PLAYER_ROLES_ASSIGNED GROUP_ROSTER_UPDATE", functi
 end)
 
 E:AddTagInfo("spectra:roleicon", SpectraUI.Name .. " " .. L["Icons"], L["Role Icons."] .. " " .. L["The size can be set as follows"] .. " > spectra:styl{32}")
+
+E:AddTag("spectra:power", "UNIT_DISPLAYPOWER UNIT_POWER_FREQUENT UNIT_MAXPOWER PLAYER_ROLES_ASSIGNED GROUP_ROSTER_UPDATE UNIT_COMBAT", function(unit, _, arg1)
+    local threshold = tonumber(arg1) or 100
+    local power = _TAGS.perpp(unit)
+
+    if power and power < threshold then
+        return _TAGS["mPower:percent"](unit, power)
+    end
+end)
+
+E:AddTagInfo("spectra:power", SpectraUI.Name .. " " .. L["Shows your Power / Mana and is customizable. Hides when the Power value is higher than the threshold. The threshold can be set as follows, the number can be as small or as large as you like."] .. " > spectra:power{80}")
+
+E:AddTag("spectra:health", "UNIT_HEALTH UNIT_MAXHEALTH", function(unit, _, arg1)
+	return E:GetFormattedText("-%s", UnitHealth(unit), UnitHealthMax(unit), nil, true)
+end)
+
+E:AddTagInfo("spectra:health", SpectraUI.Name .. " " .. L["Shows your health and is customizable. Hides when the health value is higher than the threshold. The threshold can be set as follows, the number can be as small or as large as you like."] .. " > spectra:health{80}")
+
