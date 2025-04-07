@@ -84,5 +84,5 @@ E:AddTag("spectra:health", "UNIT_HEALTH UNIT_MAXHEALTH", function(unit, _, arg1)
 	end
 end)
 
-E:AddTagInfo("spectra:health", SpectraUI.Name .. " " .. L["Shows your health and is customizable. Hides when the health value is higher than the threshold. The threshold can be set as follows, the number can be as small or as large as you like."] .. " > spectra:health{80}")
+E:AddTagInfo("spectra:health", SpectraUI.Name .. " " .. L["Shows your health deficit and is customizable. Hides when the health percent value is higher than the threshold. The threshold can be set as follows, the number can be as small or as large as you like."] .. " > spectra:health{80}")
 
