@@ -76,7 +76,12 @@ end)
 E:AddTagInfo("spectra:power", SpectraUI.Name .. " " .. L["Shows your Power / Mana and is customizable. Hides when the Power value is higher than the threshold. The threshold can be set as follows, the number can be as small or as large as you like."] .. " > spectra:power{80}")
 
 E:AddTag("spectra:health", "UNIT_HEALTH UNIT_MAXHEALTH", function(unit, _, arg1)
-	return E:GetFormattedText("-%s", UnitHealth(unit), UnitHealthMax(unit), nil, true)
+	local threshold = tonumber(arg1) or 100
+	local percent = (UnitHealth(unit) / UnitHealthMax(unit)) * 100
+
+	if percent and percent < threshold then
+		return E:GetFormattedText("DEFICIT", UnitHealth(unit), UnitHealthMax(unit), nil, true)
+	end
 end)
 
 E:AddTagInfo("spectra:health", SpectraUI.Name .. " " .. L["Shows your health and is customizable. Hides when the health value is higher than the threshold. The threshold can be set as follows, the number can be as small or as large as you like."] .. " > spectra:health{80}")
