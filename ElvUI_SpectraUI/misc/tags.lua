@@ -29,7 +29,7 @@ E:AddTag("spectra:modern", "UNIT_NAME_UPDATE", function(unit, _, args)
 	if icon and classIconStrings[class] then return format("|T%s:%s:%s:0:0:1024:1024:%s|t", icon, size, size, classIconStrings[class]) end
 end)
 
-E:AddTagInfo("spectra:modern", SpectraUI.Name .. " " .. L["Icons"], L["Class Icons."])
+E:AddTagInfo("spectra:modern", SpectraUI.Name, L["Class Icons."])
 
 E:AddTag("spectra:classic", "UNIT_NAME_UPDATE", function(unit, _, args)
 	if not UnitIsPlayer(unit) then return end
@@ -44,7 +44,7 @@ E:AddTag("spectra:classic", "UNIT_NAME_UPDATE", function(unit, _, args)
 	if icon and classIconStrings[class] then return format("|T%s:%s:%s:0:0:1024:1024:%s|t", icon, size, size, classIconStrings[class]) end
 end)
 
-E:AddTagInfo("spectra:classic", SpectraUI.Name .. " " .. L["Icons"], L["Class Icons."] .. " " .. L["The size can be set as follows"] .. " > spectra:styl{32}")
+E:AddTagInfo("spectra:classic", SpectraUI.Name, L["Class Icons."] .. " " .. L["The size can be set as follows"] .. " > spectra:styl{32}")
 
 local roleIocns = {
 	TANK = "Interface\\Addons\\ElvUI_SpectraUI\\media\\role\\Tank.tga",
@@ -62,7 +62,7 @@ E:AddTag("spectra:roleicon", "PLAYER_ROLES_ASSIGNED GROUP_ROSTER_UPDATE", functi
 	if icon then return format("|T%s:%s:%s|t", icon, size, size) end
 end)
 
-E:AddTagInfo("spectra:roleicon", SpectraUI.Name .. " " .. L["Icons"], L["Role Icons."] .. " " .. L["The size can be set as follows"] .. " > spectra:styl{32}")
+E:AddTagInfo("spectra:roleicon", SpectraUI.Name, L["Role Icons."] .. " " .. L["The size can be set as follows"] .. " > spectra:styl{32}")
 
 E:AddTag("spectra:power", "UNIT_DISPLAYPOWER UNIT_POWER_FREQUENT UNIT_MAXPOWER PLAYER_ROLES_ASSIGNED GROUP_ROSTER_UPDATE UNIT_COMBAT", function(unit, _, arg1)
     local threshold = tonumber(arg1) or 100
@@ -73,7 +73,7 @@ E:AddTag("spectra:power", "UNIT_DISPLAYPOWER UNIT_POWER_FREQUENT UNIT_MAXPOWER P
     end
 end)
 
-E:AddTagInfo("spectra:power", SpectraUI.Name .. " " .. L["Shows your Power / Mana and is customizable. Hides when the Power value is higher than the threshold. The threshold can be set as follows, the number can be as small or as large as you like."] .. " > spectra:power{80}")
+E:AddTagInfo("spectra:power", SpectraUI.Name, L["Shows your Power / Mana and is customizable. Hides when the Power value is higher than the threshold. The threshold can be set as follows, the number can be as small or as large as you like."] .. " > spectra:power{80}")
 
 E:AddTag("spectra:health", "UNIT_HEALTH UNIT_MAXHEALTH", function(unit, _, arg1)
 	local threshold = tonumber(arg1) or 100
@@ -83,6 +83,6 @@ E:AddTag("spectra:health", "UNIT_HEALTH UNIT_MAXHEALTH", function(unit, _, arg1)
 		return E:GetFormattedText("DEFICIT", UnitHealth(unit), UnitHealthMax(unit), nil, true)
 	end
 end)
-
-E:AddTagInfo("spectra:health", SpectraUI.Name .. " " .. L["Shows your health deficit and is customizable. Hides when the health percent value is higher than the threshold. The threshold can be set as follows, the number can be as small or as large as you like."] .. " > spectra:health{80}")
+ 
+E:AddTagInfo("spectra:health", SpectraUI.Name, L["Shows your health deficit and is customizable. Hides when the health percent value is higher than the threshold. The threshold can be set as follows, the number can be as small or as large as you like."] .. " > spectra:health{80}")
 
