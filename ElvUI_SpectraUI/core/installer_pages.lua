@@ -195,13 +195,6 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			end,
 			preview = path .. "preview\\profile_horizontal.tga",
 		},
-		[3] = {
-			text = L["Nova"],
-			func = function()
-					InstallProfile("nova")
-			end,
-			preview = path .. "preview\\profile_horizontal.tga",
-		},
 	},
 }
 
@@ -220,18 +213,6 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 					nil,
 					nil,
 					E.Retail and SpectraUI.Links.WA.retail or SpectraUI.Links.WA.classic
-				)
-			end,
-			preview = path .. "preview\\UI_Elements.tga",
-		},
-		[2] = {
-			text = L["UI Elements for Nova"],
-			func = function()
-				E:StaticPopup_Show(
-					"SPECTRAUI_EDITBOX",
-					nil,
-					nil,
-					"Not available yet"
 				)
 			end,
 			preview = path .. "preview\\UI_Elements.tga",
@@ -344,6 +325,42 @@ end
 --		},
 --	},
 --}
+
+SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
+	SubTitle = L["Nova Profile"],
+	StepTitle = "ElvUI",
+	tutorialImage = true,
+	descriptions = {
+		[1] = format(
+			L["This process will install %s and allow you to choose between a DPS/Tank or Healer layout. It will also activate the essential features of %s."],
+			SpectraUI.Name,
+			SpectraUI.Name
+		),
+		[2] = L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"],
+	},
+	options = {
+		[1] = {
+			text = L["Nova"],
+			func = function()
+					InstallProfile("nova")
+			end,
+			preview = path .. "preview\\profile_horizontal.tga",
+		},
+		[2] = {
+			text = L["UI Elements for Nova"],
+			func = function()
+				E:StaticPopup_Show(
+					"SPECTRAUI_EDITBOX",
+					nil,
+					nil,
+					"Not available yet"
+				)
+			end,
+			preview = path .. "preview\\UI_Elements.tga",
+		},
+	},
+}
+
 
 SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Installation Complete"],
