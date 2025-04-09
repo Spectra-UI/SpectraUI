@@ -12,10 +12,9 @@ LSM:Register("border", "SpectraUI Nova Dark", [[Interface\AddOns\ElvUI_SpectraUI
 
 -- FONT
 --LSM:Register("font", "SpectraUI Font 1", [[Interface\AddOns\ElvUI_SpectraUI\media\font\dummy.ttf]])
-LSM:Register("font", "SpectraUI Caption", [[Interface\AddOns\ElvUI_SpectraUI\media\font\SpectraUI-Caption.ttf]])
-LSM:Register("font", "SpectraUI Combat", [[Interface\AddOns\ElvUI_SpectraUI\media\font\SpectraUI-Combat.ttf]])
-LSM:Register("font", "SpectraUI Title", [[Interface\AddOns\ElvUI_SpectraUI\media\font\SpectraUI-Title.ttf]])
-LSM:Register("font", "SpectraUI Nova", [[Interface\AddOns\ElvUI_SpectraUI\media\font\SpectraUI-Nova.ttf]])
+LSM:Register("font", "SpectraUI Caption", [[Interface\AddOns\ElvUI_SpectraUI\media\font\GothamXNarrow-Black.ttf]])
+LSM:Register("font", "SpectraUI Title", [[Interface\AddOns\ElvUI_SpectraUI\media\font\GothamXNarrow-BlackCAPS.ttf]])
+LSM:Register("font", "SpectraUI Nova", [[Interface\AddOns\ElvUI_SpectraUI\media\font\FiraSansExtraCondensed-BlackItalic.ttf]])
 
 -- SOUND
 --LSM:Register("sound", "SpectraUI Sound 1", [[Interface\AddOns\ElvUI_SpectraUI\media\sound\dummy.mp3]])
