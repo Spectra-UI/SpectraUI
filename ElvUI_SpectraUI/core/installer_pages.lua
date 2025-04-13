@@ -162,7 +162,7 @@ SpectraUI.InstallerData[1] = {
 
 SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Essential Settings"],
-	StepTitle = "ElvUI",
+	StepTitle = "SpectraUI",
 	tutorialImage = true,
 	descriptions = {
 		[1] = format(
