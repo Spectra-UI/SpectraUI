@@ -327,12 +327,12 @@ end
 --}
 
 SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
-	SubTitle = L["Nova Profile"],
-	StepTitle = "ElvUI",
+	SubTitle = L["NOVA Project"],
+	StepTitle = "NOVA",
 	tutorialImage = true,
 	descriptions = {
 		[1] = format(
-			L["This process will install %s and allow you to choose between a DPS/Tank or Healer layout. It will also activate the essential features of %s."],
+			L["This process will install %s's NOVA Project. It will also activate the essential features of %s."],
 			SpectraUI.Name,
 			SpectraUI.Name
 		),
@@ -340,14 +340,14 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	},
 	options = {
 		[1] = {
-			text = L["Nova"],
+			text = L["ElvUI Settings"],
 			func = function()
 					InstallProfile("nova")
 			end,
 			preview = path .. "preview\\profile_horizontal.tga",
 		},
 		[2] = {
-			text = L["UI Elements for Nova"],
+			text = L["Weakauras"],
 			func = function()
 				E:StaticPopup_Show(
 					"SPECTRAUI_EDITBOX",
