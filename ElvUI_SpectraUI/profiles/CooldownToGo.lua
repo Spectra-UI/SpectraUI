@@ -5,17 +5,18 @@ function SpectraUI:CooldownToGo()
 	if not SpectraUI.Addons.CooldownToGo then return end
 
 	CooldownToGoDB.profiles["SpectraUI"] = {
-		["fontSize"] = 15,
+		["strata"] = "LOW",
+		["iconSize"] = 32,
+		["textPosition"] = "LEFT",
+		["suppressReadyNotif"] = true,
+		["font"] = "SpectraUI Nova",
 		["warnSound"] = false,
 		["fadeTime"] = 1,
 		["y"] = -70.00029754638672,
 		["x"] = -89.99955749511719,
-		["strata"] = "LOW",
 		["locked"] = true,
-		["iconSize"] = 32,
-		["textPosition"] = "LEFT",
-		["suppressReadyNotif"] = true,
-		["font"] = "SpectraUI Caption",
+		["fontSize"] = 15,
+		["padding"] = 8,
 	}
 
 	CooldownToGoDB.profileKeys[E.mynameRealm] = "SpectraUI"
