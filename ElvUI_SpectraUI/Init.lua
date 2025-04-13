@@ -63,6 +63,16 @@ SpectraUI.CREDITS = {
 SpectraUI.DONATORS = {
 	"|CFF03FA6EMérica|r - |CFFA335EEEpic Supporter|r",
 	"|CFF03FA6ERipper|r - |CFFFF8000Legendary Supporter|r",
+	"|CFF03FA6EEzdeath|r - |CFFA335EEEpic Supporter|r",
+	"|CFF03FA6ERazorfold|r - |CFFA335EEEpic Supporter|r",
+	"|CFF03FA6ELee|r - |CFFFF8000Legendary Supporter|r",
+	"|CFF03FA6ELysergic|r - |CFFFF8000Legendary Supporter|r",
+	"|CFF03FA6EXayn|r - |CFFFF8000Legendary Supporter|r",
+	"|CFF03FA6ECalarc|r - |CFFA335EEEpic Supporter|r",
+	"|CFF03FA6EFenix|r - |CFFA335EEEpic Supporter|r",
+	"|CFF03FA6EI R Salo|r - |CFFA335EEEpic Supporter|r",
+	"|CFF03FA6EMattIzHypd|r - |CFFA335EEEpic Supporter|r",
+	"|CFF03FA6EQuizle|r - |CFFA335EEEpic Supporter|r",
 }
 
 -- load our options table
