@@ -344,7 +344,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			func = function()
 					InstallProfile("nova")
 			end,
-			preview = path .. "preview\\profile_horizontal.tga",
+			preview = path .. "preview\\NOVA.tga",
 		},
 		[2] = {
 			text = L["Weakauras"],
@@ -356,7 +356,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 					"Not available yet"
 				)
 			end,
-			preview = path .. "preview\\UI_Elements.tga",
+			preview = path .. "preview\\NOVA_Weakauras.tga",
 		},
 	},
 }
