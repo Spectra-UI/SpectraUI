@@ -1,6 +1,8 @@
 -- Create references to ElvUI internals
 local E = unpack(ElvUI)
 local L = SpectraUI.Locales
+-- Cache/ Load ElvUI PluginInstaller API
+local PI = E:GetModule("PluginInstaller")
 -- dont touch this ^
 
 local private, profile, privateIsSet, profileIsSet = SpectraUI:CheckProfile()
@@ -196,12 +198,14 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			text = spectra_name,
 			func = function()
 				chosen_profile = "spectra"
+				PI:NextPage()
 			end,
 		},
 		[2] = {
 			text = nova_name,
 			func = function()
 				chosen_profile = "nova"
+				PI:NextPage()
 			end,
 		},
 	},
