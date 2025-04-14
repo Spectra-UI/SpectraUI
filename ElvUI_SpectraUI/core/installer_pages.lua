@@ -196,6 +196,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	options = {
 		[1] = {
 			text = spectra_name,
+			preview = path .. "preview\\profile_horizontal.tga",
 			func = function()
 				chosen_profile = "spectra"
 				PI:NextPage()
@@ -203,6 +204,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 		},
 		[2] = {
 			text = nova_name,
+			preview = path .. "preview\\NOVA.tga",
 			func = function()
 				chosen_profile = "nova"
 				PI:NextPage()
@@ -332,21 +334,21 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			func = function()
 				SpectraUI:Details()
 			end,
-			preview = path .. "preview\\Details.tga",
+			preview = path .. chosen_profile == "spectra" and "preview\\Details.tga" or "preview\\NOVA_Details.tga",
 		},
 		[2] = {
 			text = "BigWigs",
 			func = function()
 				SpectraUI:BigWigs()
 			end,
-			preview = path .. "preview\\BigWigs.tga",
+			preview = path .. chosen_profile == "spectra" and "preview\\BigWigs.tga" or "preview\\NOVA_BigWigs.tga",
 		},
 		[3] = {
 			text = "Cooldown To Go",
 			func = function()
 				SpectraUI:CooldownToGo()
 			end,
-			preview = path .. "preview\\CooldownToGo.tga",
+			preview = path .. chosen_profile == "spectra" and "preview\\CooldownToGo.tga" or "preview\\NOVA_CooldownToGo.tga",
 		},
 	},
 }
@@ -363,7 +365,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			func = function()
 				SpectraUI:OmniCD()
 			end,
-			preview = path .. "preview\\OmniCD.tga",
+			preview = path .. chosen_profile == "spectra" and "preview\\OmniCD.tga" or "preview\\NOVA_OmniCD.tga",
 		},
 		[2] = function()
 			local spectra = {
