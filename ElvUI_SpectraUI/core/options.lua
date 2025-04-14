@@ -97,7 +97,7 @@ SpectraUI.options.args.misc.args = {
 
 -- weakauras
 SpectraUI.options.args.weakauras.args = {
-	frames = {
+	spectra = {
 		order = 1,
 		type = "execute",
 		name = L["UI Elements"],
@@ -106,7 +106,20 @@ SpectraUI.options.args.weakauras.args = {
 				"SPECTRAUI_EDITBOX",
 				nil,
 				nil,
-				E.Retail and SpectraUI.Links.WA.retail or SpectraUI.Links.WA.classic
+				E.Retail and SpectraUI.Links.WA.spectra.retail or SpectraUI.Links.WA.spectra.classic
+			)
+		end,
+	},
+	nova = {
+		order = 2,
+		type = "execute",
+		name = L["Nova Weakauras"],
+		func = function()
+			E:StaticPopup_Show(
+				"SPECTRAUI_EDITBOX",
+				nil,
+				nil,
+				E.Retail and SpectraUI.Links.WA.nova.retail or SpectraUI.Links.WA.nova.classic
 			)
 		end,
 	},
