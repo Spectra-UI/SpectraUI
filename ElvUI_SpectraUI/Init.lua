@@ -44,8 +44,8 @@ SpectraUI.Links = {
 			retail = "https://wago.io/3k0v1a2b4",
 		},
 		nova = {
-			classic = "https://wago.io/3k0v1a2b4",
-			retail = "https://wago.io/3k0v1a2b4",
+			classic = "https://cdn.discordapp.com/attachments/1358749159980793956/1359761882847776798/NOVA_Weakaura.txt?ex=67fdee70&is=67fc9cf0&hm=080bc5ed7e3c58eeaa4cf444c6c259f2e939f69a735c6b723ba1e630542051f3&",
+			retail = "https://cdn.discordapp.com/attachments/1358749159980793956/1359761882847776798/NOVA_Weakaura.txt?ex=67fdee70&is=67fc9cf0&hm=080bc5ed7e3c58eeaa4cf444c6c259f2e939f69a735c6b723ba1e630542051f3&",
 		},
 	},
 }
