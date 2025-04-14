@@ -221,6 +221,9 @@ local function SetUpPage(page)
 end
 
 function SpectraUI:RunInstaller()
+	-- clear layout selection (spectra or nova)
+	SpectraUI:ClearSelection()
+
 	-- check elvui installation
 	if E.private.install_complete then
 		elvuiInstallCompleted = E.private.install_complete

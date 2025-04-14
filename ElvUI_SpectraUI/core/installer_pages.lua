@@ -135,7 +135,11 @@ SpectraUI.InstallerData.StepTitlesColorSelected = { 0, 0.98, 0.44 }
 
 local spectra_name = SpectraUI.Name
 local nova_name = "|CFF03DDFANOVA|r" --#03DDFAFF
-local choose_profile = nil
+local chosen_profile = nil
+
+function SpectraUI:ClearSelection()
+	chosen_profile = nil
+end
 
 -- installer pages
 SpectraUI.InstallerData[1] = {
@@ -184,13 +188,13 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 		[1] = {
 			text = spectra_name,
 			func = function()
-				choose_profile = "spectra"
+				chosen_profile = "spectra"
 			end,
 		},
 		[2] = {
 			text = nova_name,
 			func = function()
-				choose_profile = "nova"
+				chosen_profile = "nova"
 			end,
 		},
 	},
@@ -216,13 +220,13 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 				L["You have |CFFF63939not selected a layout|r yet. Please select a layout to continue the process."]
 			)
 
-			return choose_profile == "nova" and text_nova
-				or (choose_profile == "spectra" and text_spectra or text_not_selected)
+			return chosen_profile == "nova" and text_nova
+				or (chosen_profile == "spectra" and text_spectra or text_not_selected)
 		end,
 		[2] = function()
 			local text =
 				L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"]
-			return choose_profile and text or ""
+			return chosen_profile and text or ""
 		end,
 	},
 	options = {
@@ -249,7 +253,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 				end,
 				preview = path .. "preview\\NOVA.tga",
 			}
-			return choose_profile == "nova" and nova or choose_profile == "spectra" and spectra
+			return chosen_profile == "nova" and nova or chosen_profile == "spectra" and spectra
 		end,
 		[2] = function()
 			local spectra = {
@@ -263,7 +267,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 				end,
 				preview = path .. "preview\\profile_horizontal.tga",
 			}
-			return choose_profile == "spectra" and spectra
+			return chosen_profile == "spectra" and spectra
 		end,
 	},
 }
@@ -300,7 +304,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 				end,
 				preview = path .. "preview\\NOVA_Weakauras.tga",
 			}
-			return choose_profile == "nova" and nova or choose_profile == "spectra" and spectra
+			return chosen_profile == "nova" and nova or chosen_profile == "spectra" and spectra
 		end,
 	},
 }
@@ -359,7 +363,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 				end,
 				preview = path .. "preview\\SylingTracker.tga",
 			}
-			return choose_profile == "spectra" and spectra
+			return chosen_profile == "spectra" and spectra
 		end,
 		[3] = function()
 			local spectra = {
@@ -369,7 +373,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 				end,
 				preview = path .. "preview\\CDTL2.tga",
 			}
-			return choose_profile == "spectra" and spectra
+			return chosen_profile == "spectra" and spectra
 		end,
 	},
 }
