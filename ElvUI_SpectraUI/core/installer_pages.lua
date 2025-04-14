@@ -183,7 +183,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	tutorialImage = true,
 	descriptions = {
 		[1] = format(
-			L["On this page, you can choose which layout you want to install. You can select either %s or %s. Please select your preferred option to proceed with the installation."],
+			L["On this page, you can choose which layout you want to install. You can select either %s or NOVA. Please select your preferred option to proceed with the installation."],
 			spectra_name,
 			SpectraUI.Name
 		),
@@ -304,7 +304,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 				preview = path .. "preview\\UI_Elements.tga",
 			}
 			local nova = {
-				text = L["NOVA Weakauras"],
+				text = L["NOVA Elements"],
 				func = function()
 					E:StaticPopup_Show(
 						"SPECTRAUI_EDITBOX",
