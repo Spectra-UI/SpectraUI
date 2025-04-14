@@ -6,9 +6,16 @@ local L = SpectraUI.Locales
 local private, profile, privateIsSet, profileIsSet = SpectraUI:CheckProfile()
 
 local function ChangeProfile(layout)
+	local profile_name = "Spectra"
+	if layout == "nova" then
+		profile_name = "Nova"
+	elseif layout == "healer" or layout == "Spectra V2" then
+		profile_name = "Spectra V2"
+	end
+
 	if not profileIsSet then
-		if ElvDB and ElvDB.profiles and ElvDB.profiles.Spectra then
-			ElvDB.profileKeys[E.mynameRealm] = layout
+		if ElvDB and ElvDB.profiles and ElvDB.profiles[profile_name] then
+			ElvDB.profileKeys[E.mynameRealm] = profile_name
 		end
 	end
 
@@ -18,8 +25,8 @@ local function ChangeProfile(layout)
 			E:SetupChat()
 		end
 
-		if ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles.Spectra then
-			ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
+		if ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles[profile_name] then
+			ElvPrivateDB.profileKeys[E.mynameRealm] = profile_name
 		end
 	end
 
