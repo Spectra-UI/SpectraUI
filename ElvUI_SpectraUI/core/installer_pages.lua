@@ -133,6 +133,10 @@ SpectraUI.InstallerData.LogoSize = { 410, 205 }
 SpectraUI.InstallerData.StepTitlesColor = { 0.9, 0.9, 0.9 }
 SpectraUI.InstallerData.StepTitlesColorSelected = { 0, 0.98, 0.44 }
 
+local spectra_name = SpectraUI.Name
+local nova_name = "|CFF03DDFANOVA|r" --#03DDFAFF
+local choose_profile = nil
+
 -- installer pages
 SpectraUI.InstallerData[1] = {
 	SubTitle = format(L["Welcome to the installation for %s"], SpectraUI.Name),
@@ -161,40 +165,106 @@ SpectraUI.InstallerData[1] = {
 }
 
 SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
+	SubTitle = L["Choose the layout you prefer"],
+	StepTitle = "Layout selection",
+	tutorialImage = true,
+	descriptions = {
+		[1] = format(
+			L["On this page, you can choose which layout you want to install. You can select either %s or %s. Please select your preferred option to proceed with the installation."],
+			spectra_name,
+			SpectraUI.Name
+		),
+		[2] = format(
+			L["|CFFF63939Important|r: Major updates to %s will require you to go through the installation process again, which may result in the loss of any changes you’ve made. Please make sure to back up your settings if needed!"],
+			SpectraUI.Name
+		),
+		[3] = L["Please select a layout to continue the process."],
+	},
+	options = {
+		[1] = {
+			text = spectra_name,
+			func = function()
+				choose_profile = "spectra"
+			end,
+		},
+		[2] = {
+			text = nova_name,
+			func = function()
+				choose_profile = "nova"
+			end,
+		},
+	},
+}
+
+SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Essential Settings"],
 	StepTitle = "SpectraUI",
 	tutorialImage = true,
 	descriptions = {
-		[1] = format(
-			L["This process will install %s and allow you to choose between a DPS/Tank or Healer layout. It will also activate the essential features of %s."],
-			SpectraUI.Name,
-			SpectraUI.Name
-		),
-		[2] = L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"],
+		[1] = function()
+			local text_spectra = format(
+				L["This process will install %s and allow you to choose between a DPS/Tank or Healer layout. It will also activate the essential features of %s."],
+				SpectraUI.Name,
+				SpectraUI.Name
+			)
+			local text_nova = format(
+				L["This process will install %s's NOVA Project. It will also activate the essential features of %s."],
+				SpectraUI.Name,
+				SpectraUI.Name
+			)
+			local text_not_selected = format(
+				L["You have |CFFF63939not selected a layout|r yet. Please select a layout to continue the process."]
+			)
+
+			return choose_profile == "nova" and text_nova
+				or (choose_profile == "spectra" and text_spectra or text_not_selected)
+		end,
+		[2] = function()
+			local text =
+				L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"]
+			return choose_profile and text or ""
+		end,
 	},
 	options = {
-		[1] = {
-			text = L["DPS/Tank"],
-			func = function()
-				if private and profile then
-					E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Spectra")
-				else
-					InstallProfile()
-				end
-			end,
-			preview = path .. "preview\\profile_vertical.tga",
-		},
-		[2] = {
-			text = L["Healer"],
-			func = function()
-				if private and profile then
-					E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Spectra V2")
-				else
-					InstallProfile("healer")
-				end
-			end,
-			preview = path .. "preview\\profile_horizontal.tga",
-		},
+		[1] = function()
+			local spectra = {
+				text = L["DPS/Tank"],
+				func = function()
+					if private and profile then
+						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Spectra")
+					else
+						InstallProfile("spectra")
+					end
+				end,
+				preview = path .. "preview\\profile_vertical.tga",
+			}
+			local nova = {
+				text = L["Nova"],
+				func = function()
+					if private and profile then
+						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Nova")
+					else
+						InstallProfile("nova")
+					end
+				end,
+				preview = path .. "preview\\NOVA.tga",
+			}
+			return choose_profile == "nova" and nova or choose_profile == "spectra" and spectra
+		end,
+		[2] = function()
+			local spectra = {
+				text = L["Healer"],
+				func = function()
+					if private and profile then
+						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Spectra V2")
+					else
+						InstallProfile("healer")
+					end
+				end,
+				preview = path .. "preview\\profile_horizontal.tga",
+			}
+			return choose_profile == "spectra" and spectra
+		end,
 	},
 }
 
@@ -205,18 +275,33 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 		[1] = L["These are the Weakauras that are available. Please click a button below to apply the new Weakauras."],
 	},
 	options = {
-		[1] = {
-			text = L["UI Elements"],
-			func = function()
-				E:StaticPopup_Show(
-					"SPECTRAUI_EDITBOX",
-					nil,
-					nil,
-					E.Retail and SpectraUI.Links.WA.retail or SpectraUI.Links.WA.classic
-				)
-			end,
-			preview = path .. "preview\\UI_Elements.tga",
-		},
+		[1] = function()
+			local spectra = {
+				text = L["UI Elements"],
+				func = function()
+					E:StaticPopup_Show(
+						"SPECTRAUI_EDITBOX",
+						nil,
+						nil,
+						E.Retail and SpectraUI.Links.WA.spectra.retail or SpectraUI.Links.WA.spectra.classic
+					)
+				end,
+				preview = path .. "preview\\UI_Elements.tga",
+			}
+			local nova = {
+				text = L["NOVA Weakauras"],
+				func = function()
+					E:StaticPopup_Show(
+						"SPECTRAUI_EDITBOX",
+						nil,
+						nil,
+						E.Retail and SpectraUI.Links.WA.nova.retail or SpectraUI.Links.WA.nova.classic
+					)
+				end,
+				preview = path .. "preview\\NOVA_Weakauras.tga",
+			}
+			return choose_profile == "nova" and nova or choose_profile == "spectra" and spectra
+		end,
 	},
 }
 
@@ -235,19 +320,18 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			preview = path .. "preview\\Details.tga",
 		},
 		[2] = {
-			text = "Syling Tracker",
+			text = "BigWigs",
 			func = function()
-				SpectraUI:SylingTracker()
-				SpectraUI:Scorpio()
+				SpectraUI:BigWigs()
 			end,
-			preview = path .. "preview\\SylingTracker.tga",
+			preview = path .. "preview\\BigWigs.tga",
 		},
 		[3] = {
-			text = "CDTL2",
+			text = "Cooldown To Go",
 			func = function()
-				SpectraUI:CDTL2()
+				SpectraUI:CooldownToGo()
 			end,
-			preview = path .. "preview\\CDTL2.tga",
+			preview = path .. "preview\\CooldownToGo.tga",
 		},
 	},
 }
@@ -260,26 +344,33 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	},
 	options = {
 		[1] = {
-			text = "BigWigs",
-			func = function()
-				SpectraUI:BigWigs()
-			end,
-			preview = path .. "preview\\BigWigs.tga",
-		},
-		[2] = {
-			text = "Cooldown To Go",
-			func = function()
-				SpectraUI:CooldownToGo()
-			end,
-			preview = path .. "preview\\CooldownToGo.tga",
-		},
-		[3] = {
 			text = "OmniCD",
 			func = function()
 				SpectraUI:OmniCD()
 			end,
 			preview = path .. "preview\\OmniCD.tga",
 		},
+		[2] = function()
+			local spectra = {
+				text = "Syling Tracker",
+				func = function()
+					SpectraUI:SylingTracker()
+					SpectraUI:Scorpio()
+				end,
+				preview = path .. "preview\\SylingTracker.tga",
+			}
+			return choose_profile == "spectra" and spectra
+		end,
+		[3] = function()
+			local spectra = {
+				text = "CDTL2",
+				func = function()
+					SpectraUI:CDTL2()
+				end,
+				preview = path .. "preview\\CDTL2.tga",
+			}
+			return choose_profile == "spectra" and spectra
+		end,
 	},
 }
 
@@ -300,67 +391,6 @@ if E.Retail then
 		},
 	}
 end
-
--- Recommendations here is the new page
---SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
---	SubTitle = "Recommendations",
---	tutorialImage = true,
---	descriptions = {
---		[1] = L["For more information and support, visit my Discord server."],
---	},
---	options = {
---		[1] = {
---			text = "OPTIONAL BUTTON 1",
---			func = function()
---				--E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
---			end,
---			preview = path .. "preview\\IMAGE.tga",
---		},
---		[2] = {
---			text = "OPTIONAL BUTTON 2",
---			func = function()
---				--E:StaticPopup_Show("SPECTRAUI_EDITBOX", nil, nil, "https://discord.gg/gfGrNrER3K")
---			end,
---			preview = path .. "preview\\IMAGE.tga",
---		},
---	},
---}
-
-SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
-	SubTitle = L["NOVA Project"],
-	StepTitle = "NOVA",
-	tutorialImage = true,
-	descriptions = {
-		[1] = format(
-			L["This process will install %s's NOVA Project. It will also activate the essential features of %s."],
-			SpectraUI.Name,
-			SpectraUI.Name
-		),
-		[2] = L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"],
-	},
-	options = {
-		[1] = {
-			text = L["ElvUI Settings"],
-			func = function()
-					InstallProfile("nova")
-			end,
-			preview = path .. "preview\\NOVA.tga",
-		},
-		[2] = {
-			text = L["Weakauras"],
-			func = function()
-				E:StaticPopup_Show(
-					"SPECTRAUI_EDITBOX",
-					nil,
-					nil,
-					"Not available yet"
-				)
-			end,
-			preview = path .. "preview\\NOVA_Weakauras.tga",
-		},
-	},
-}
-
 
 SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Installation Complete"],

@@ -183,17 +183,38 @@ local function SetUpPage(page)
 		local desc = SpectraUI.InstallerData[page].descriptions
 		if desc then
 			for i = 1, #desc do
-				_G.PluginInstallFrame["Desc" .. i]:SetText(desc[i])
+				if desc[i] then
+					local text = ""
+					if type(desc[i]) == "string" then
+						text = desc[i]
+					else
+						text = desc[i]()
+					end
+
+					_G.PluginInstallFrame["Desc" .. i]:SetText(text)
+				end
 			end
 		end
 
 		local options = SpectraUI.InstallerData[page].options
 		if options then
 			for i = 1, #options do
-				_G.PluginInstallFrame["Option" .. i]:Show()
-				_G.PluginInstallFrame["Option" .. i]:SetText(options[i].text)
-				_G.PluginInstallFrame["Option" .. i]:SetScript("OnClick", options[i].func)
-				_G.PluginInstallFrame["Option" .. i].preview = options[i].preview or nil
+				if options[i] then
+					local settings = nil
+
+					if type(options[i]) == "table" then
+						settings = options[i]
+					else
+						settings = options[i]()
+					end
+
+					if settings then
+						_G.PluginInstallFrame["Option" .. i]:Show()
+						_G.PluginInstallFrame["Option" .. i]:SetText(settings.text)
+						_G.PluginInstallFrame["Option" .. i]:SetScript("OnClick", settings.func)
+						_G.PluginInstallFrame["Option" .. i].preview = settings.preview or nil
+					end
+				end
 			end
 		end
 	end

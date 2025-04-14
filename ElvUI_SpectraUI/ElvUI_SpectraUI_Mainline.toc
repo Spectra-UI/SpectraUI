@@ -16,7 +16,7 @@ localization\load_localization.xml
 
 init.lua
 core\load_core.xml
-profiles\load_profiles.xml
+profiles\load_profiles_retail.xml
 media\load_media.xml
 misc\load_misc.xml
 datatext\load_datatext.xml

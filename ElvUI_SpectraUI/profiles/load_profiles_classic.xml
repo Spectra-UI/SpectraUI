@@ -2,5 +2,5 @@
 	<Script file='BigWigs.lua'/>
 	<Script file='CooldownToGo.lua'/>
 	<include file='spectra\load_spectra_classic.xml'/>
-	<include file='spectra\load_nova_classic.xml'/>
+	<include file='nova\load_nova_classic.xml'/>
 </Ui>
