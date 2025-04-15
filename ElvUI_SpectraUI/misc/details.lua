@@ -61,7 +61,8 @@ function SpectraUI:DetailsEmbedded()
 
     local function setupDetailsWindow(instanceID, parentFrame)
         local detailsWindow = Details:GetInstance(instanceID)
-        if not detailsWindow then return end
+        if not detailsWindow or not (detailsWindow and detailsWindow.baseframe) then return end
+
 
         detailsWindow:UngroupInstance()
         detailsWindow.baseframe:SetParent(parentFrame)
