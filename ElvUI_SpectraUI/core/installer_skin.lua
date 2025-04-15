@@ -212,7 +212,14 @@ local function SetUpPage(page)
 						_G.PluginInstallFrame["Option" .. i]:Show()
 						_G.PluginInstallFrame["Option" .. i]:SetText(settings.text)
 						_G.PluginInstallFrame["Option" .. i]:SetScript("OnClick", settings.func)
-						_G.PluginInstallFrame["Option" .. i].preview = settings.preview or nil
+
+						local preview = nil
+						if type(settings.preview) == "function" then
+							preview = settings.preview()
+						else
+							preview = settings.preview
+						end
+						_G.PluginInstallFrame["Option" .. i].preview = preview or nil
 					end
 				end
 			end
