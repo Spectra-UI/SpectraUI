@@ -6,7 +6,8 @@ local PI = E:GetModule("PluginInstaller")
 
 local function ChangeProfile(layout)
 	if E.charSettings then
-		E.charSettings:SetProfile("Spectra")
+		local profileName =layout == "Nova" and "Nova" or "Spectra"
+		E.charSettings:SetProfile(profileName)
 	end
 
 	if E.data then
@@ -19,13 +20,15 @@ local function InstallProfile(layout)
 	E:SetupCVars()
 	E:SetupChat()
 
+	local profileName =layout == "Nova" and "Nova" or "Spectra"
+
 	-- create and set a new private profile
 	if ElvPrivateDB then
 		if not ElvPrivateDB.profiles.Spectra then
-			ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
-			ElvPrivateDB.profiles.Spectra = {}
-			ElvPrivateDB.profiles.Spectra = E:CopyTable({}, E.privateVars.profile)
-			E:CopyTable(E.private, ElvPrivateDB.profiles.Spectra)
+			ElvPrivateDB.profileKeys[E.mynameRealm] = profileName
+			ElvPrivateDB.profiles[profileName] = {}
+			ElvPrivateDB.profiles[profileName] = E:CopyTable({}, E.privateVars.profile)
+			E:CopyTable(E.private, ElvPrivateDB.profiles[profileName])
 		end
 	end
 

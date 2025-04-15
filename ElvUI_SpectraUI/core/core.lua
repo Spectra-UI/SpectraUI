@@ -90,9 +90,9 @@ function SpectraUI:CheckProfile()
 				profileIsSet = E.data:GetCurrentProfile() == "Spectra V2",
 			},
 			nova = {
-				private = CheckForProfile(privateProfiles, "Spectra"),
+				private = CheckForProfile(privateProfiles, "Nova"),
 				profile = CheckForProfile(profiles, "Nova"),
-				privateIsSet = E.charSettings:GetCurrentProfile() == "Spectra",
+				privateIsSet = E.charSettings:GetCurrentProfile() == "Nova",
 				profileIsSet = E.data:GetCurrentProfile() == "Nova",
 			},
 		}
