@@ -6,34 +6,13 @@ local PI = E:GetModule("PluginInstaller")
 -- dont touch this ^
 
 local function ChangeProfile(layout)
-	print(layout)
-	SpectraUI:CheckProfile()
-
-	local profile_name = "Spectra"
-	if layout == "nova" then
-		profile_name = "Nova"
-	elseif layout == "healer" or layout == "Spectra V2" then
-		profile_name = "Spectra V2"
+	if E.charSettings then
+		E.charSettings:SetProfile("Spectra")
 	end
 
-	-- if not profileIsSet then
-	-- 	if ElvDB and ElvDB.profiles and ElvDB.profiles[profile_name] then
-	-- 		ElvDB.profileKeys[E.mynameRealm] = profile_name
-	-- 	end
-	-- end
-
-	-- if not privateIsSet then
-	-- 	if not E.private.install_complete then
-	-- 		E:SetupCVars()
-	-- 		E:SetupChat()
-	-- 	end
-
-	-- 	if ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles[profile_name] then
-	-- 		ElvPrivateDB.profileKeys[E.mynameRealm] = profile_name
-	-- 	end
-	-- end
-
-	--SpectraUI:InstallComplete()
+	if E.data then
+		E.data:SetProfile(layout)
+	end
 end
 
 local function InstallProfile(layout)

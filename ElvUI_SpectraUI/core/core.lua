@@ -82,13 +82,13 @@ function SpectraUI:CheckProfile()
 				profileIsSet = E.data:GetCurrentProfile() == "Spectra",
 			},
 			spectraV2 = {
-				private = CheckForProfile(privateProfiles, "Spectra V2"),
+				private = CheckForProfile(privateProfiles, "Spectra"),
 				profile = CheckForProfile(profiles, "Spectra V2"),
 				privateIsSet = E.charSettings:GetCurrentProfile() == "Spectra",
 				profileIsSet = E.data:GetCurrentProfile() == "Spectra V2",
 			},
 			nova = {
-				private = CheckForProfile(privateProfiles, "Nova"),
+				private = CheckForProfile(privateProfiles, "Spectra"),
 				profile = CheckForProfile(profiles, "Nova"),
 				privateIsSet = E.charSettings:GetCurrentProfile() == "Spectra",
 				profileIsSet = E.data:GetCurrentProfile() == "Nova",
