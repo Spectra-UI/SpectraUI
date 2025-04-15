@@ -50,6 +50,27 @@ SpectraUI.Links = {
 	},
 }
 
+SpectraUI.Profiles = {
+	spectra = {
+		private = nil,
+		profile = nil,
+		privateIsSet = nil,
+		profileIsSet = nil,
+	},
+	spectraV2 = {
+		private = nil,
+		profile = nil,
+		privateIsSet = nil,
+		profileIsSet = nil,
+	},
+	nova = {
+		private = nil,
+		profile = nil,
+		privateIsSet = nil,
+		profileIsSet = nil,
+	},
+}
+
 -- other global settings
 SpectraUI.Addons = {}
 SpectraUI.InstallerData = {}
@@ -83,7 +104,8 @@ SpectraUI.DONATORS = {
 
 -- load our options table
 local function LoadOptions()
-	E.Options.name = format("%s + %s %s |cff99ff33%s|r", E.Options.name, SpectraUI.Media.icon, SpectraUI.Name, SpectraUI.Version)
+	E.Options.name =
+		format("%s + %s %s |cff99ff33%s|r", E.Options.name, SpectraUI.Media.icon, SpectraUI.Name, SpectraUI.Version)
 	E.Options.args.SpectraUI = SpectraUI.options
 end
 
@@ -117,14 +139,31 @@ function SpectraUI:Initialize()
 	EP:RegisterPlugin(addon, LoadOptions)
 
 	-- run the installer
-	local private, profile, privateIsSet, profileIsSet = SpectraUI:CheckProfile()
-	local forceInstall = (private and profile) and not (privateIsSet and profileIsSet)
+	SpectraUI:CheckProfile()
+
+	local profiles = {
+		SpectraUI.Profiles.nova,
+		SpectraUI.Profiles.spectra,
+		SpectraUI.Profiles.spectraV2,
+	}
+
+	local function needsForceInstall(profile)
+		return profile.private and profile.profile and not (profile.privateIsSet and profile.profileIsSet)
+	end
+
+	local forceInstall = false
+	for _, profile in ipairs(profiles) do
+		if needsForceInstall(profile) then
+			forceInstall = true
+			break
+		end
+	end
 
 	if E.db.SpectraUI.install_version == nil or (forceInstall and not E.db.SpectraUI.profile_change_skip) then
 		SpectraUI:RunInstaller()
 
 		-- only popup one time for profile change, prevent spam
-		if (private and profile) and not (privateIsSet and profileIsSet) then
+		if forceInstall then
 			E.db.SpectraUI.profile_change_skip = true
 		end
 	end

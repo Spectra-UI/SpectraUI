@@ -59,12 +59,40 @@ function SpectraUI:CheckAddons()
 	SpectraUI.Addons.mMediaTag = IsAddOnLoaded("ElvUI_mMediaTag")
 end
 
-function SpectraUI:CheckProfile(layout)
-	local privateProfileExists = (ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles["Spectra"] or ElvPrivateDB.profiles["Spectra V2"])
-	local profileExists = (ElvDB and ElvDB.profiles and ElvDB.profiles.Spectra)
+local function CheckForProfile(db, name)
+	if db then
+		for i = 1, #db do
+			if db[i] == name then
+				return true
+			end
+		end
+	end
+end
 
-	local privateiIsSet = privateProfileExists and ElvPrivateDB.profileKeys[E.mynameRealm] == "Spectra" or ElvPrivateDB.profileKeys[E.mynameRealm] == "Spectra V2"
-	local profileIsSet = profileExists and ElvDB.profileKeys[E.mynameRealm] == "Spectra"
+function SpectraUI:CheckProfile()
+	local privateProfiles = E.charSettings and E.charSettings:GetProfiles()
+	local profiles = E.data and E.data:GetProfiles()
 
-	return privateProfileExists, profileExists, privateiIsSet, profileIsSet
+	if privateProfiles and profiles then
+		SpectraUI.Profiles = {
+			spectra = {
+				private = CheckForProfile(privateProfiles, "Spectra"),
+				profile = CheckForProfile(profiles, "Spectra"),
+				privateIsSet = E.charSettings:GetCurrentProfile() == "Spectra",
+				profileIsSet = E.data:GetCurrentProfile() == "Spectra",
+			},
+			spectraV2 = {
+				private = CheckForProfile(privateProfiles, "Spectra V2"),
+				profile = CheckForProfile(profiles, "Spectra V2"),
+				privateIsSet = E.charSettings:GetCurrentProfile() == "Spectra",
+				profileIsSet = E.data:GetCurrentProfile() == "Spectra V2",
+			},
+			nova = {
+				private = CheckForProfile(privateProfiles, "Nova"),
+				profile = CheckForProfile(profiles, "Nova"),
+				privateIsSet = E.charSettings:GetCurrentProfile() == "Spectra",
+				profileIsSet = E.data:GetCurrentProfile() == "Nova",
+			},
+		}
+	end
 end

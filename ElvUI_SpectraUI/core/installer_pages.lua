@@ -5,9 +5,10 @@ local L = SpectraUI.Locales
 local PI = E:GetModule("PluginInstaller")
 -- dont touch this ^
 
-local private, profile, privateIsSet, profileIsSet = SpectraUI:CheckProfile()
-
 local function ChangeProfile(layout)
+	print(layout)
+	SpectraUI:CheckProfile()
+
 	local profile_name = "Spectra"
 	if layout == "nova" then
 		profile_name = "Nova"
@@ -15,24 +16,24 @@ local function ChangeProfile(layout)
 		profile_name = "Spectra V2"
 	end
 
-	if not profileIsSet then
-		if ElvDB and ElvDB.profiles and ElvDB.profiles[profile_name] then
-			ElvDB.profileKeys[E.mynameRealm] = profile_name
-		end
-	end
+	-- if not profileIsSet then
+	-- 	if ElvDB and ElvDB.profiles and ElvDB.profiles[profile_name] then
+	-- 		ElvDB.profileKeys[E.mynameRealm] = profile_name
+	-- 	end
+	-- end
 
-	if not privateIsSet then
-		if not E.private.install_complete then
-			E:SetupCVars()
-			E:SetupChat()
-		end
+	-- if not privateIsSet then
+	-- 	if not E.private.install_complete then
+	-- 		E:SetupCVars()
+	-- 		E:SetupChat()
+	-- 	end
 
-		if ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles[profile_name] then
-			ElvPrivateDB.profileKeys[E.mynameRealm] = profile_name
-		end
-	end
+	-- 	if ElvPrivateDB and ElvPrivateDB.profiles and ElvPrivateDB.profiles[profile_name] then
+	-- 		ElvPrivateDB.profileKeys[E.mynameRealm] = profile_name
+	-- 	end
+	-- end
 
-	SpectraUI:InstallComplete()
+	--SpectraUI:InstallComplete()
 end
 
 local function InstallProfile(layout)
@@ -198,6 +199,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			text = spectra_name,
 			preview = path .. "preview\\profile_horizontal.tga",
 			func = function()
+				SpectraUI:CheckProfile()
 				chosen_profile = "spectra"
 				PI:NextPage()
 			end,
@@ -206,6 +208,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			text = nova_name,
 			preview = path .. "preview\\NOVA.tga",
 			func = function()
+				SpectraUI:CheckProfile()
 				chosen_profile = "nova"
 				PI:NextPage()
 			end,
@@ -247,7 +250,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			local spectra = {
 				text = L["DPS/Tank"],
 				func = function()
-					if private and profile then
+					if SpectraUI.Profiles.spectra.private and SpectraUI.Profiles.spectra.profile then
 						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Spectra")
 					else
 						InstallProfile("spectra")
@@ -258,7 +261,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			local nova = {
 				text = L["Nova"],
 				func = function()
-					if private and profile then
+					if SpectraUI.Profiles.nova.private and SpectraUI.Profiles.nova.profile then
 						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Nova")
 					else
 						InstallProfile("nova")
@@ -272,7 +275,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			local spectra = {
 				text = L["Healer"],
 				func = function()
-					if private and profile then
+					if SpectraUI.Profiles.spectraV2.private and SpectraUI.Profiles.spectraV2.profile then
 						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Spectra V2")
 					else
 						InstallProfile("healer")
