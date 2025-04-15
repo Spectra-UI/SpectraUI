@@ -112,45 +112,16 @@ function SpectraUI:CheckSkippedInstallers()
 	elseif E.db.SpectraUI.install_version and E.db.SpectraUI.elvui_skipped then
 		E.db.SpectraUI.elvui_skipped = false
 	end
-
-	if E.db.SpectraUI.eltruism_skipped and not E.db.SpectraUI.install_version then
-		E.private.ElvUI_EltreumUI.install_version = nil
-		E.private.ElvUI_EltreumUI.skippedcheck = nil
-		E.private.ElvUI_EltreumUI.isInstalled.sle = false
-		E.private.ElvUI_EltreumUI.isInstalled.windtools = false
-		E.private.ElvUI_EltreumUI.isInstalled.projectazilroka = false
-	elseif E.db.SpectraUI.install_version and E.db.SpectraUI.eltruism_skipped then
-		E.db.SpectraUI.eltruism_skipped = false
-	end
 end
 
 function SpectraUI:SkipInstallers()
 	-- skip elvui installer
 	E.private.install_complete = E.version
 	E.db.SpectraUI.elvui_skipped = true
-
-	-- skip eltruism installer
-	E.private.ElvUI_EltreumUI.install_version = ElvUI_EltreumUI and ElvUI_EltreumUI.Version or nil
-	E.private.ElvUI_EltreumUI.skippedcheck = nil
-	E.private.ElvUI_EltreumUI.isInstalled.sle = true
-	E.private.ElvUI_EltreumUI.isInstalled.windtools = true
-	E.private.ElvUI_EltreumUI.isInstalled.projectazilroka = true
-
-	E.db.SpectraUI.eltruism_skipped = true
 end
 
 --This function is executed when you press "Skip Process" or "Finished" in the installer.
 function SpectraUI:InstallComplete()
-	-- Set a variable tracking the version of the addon when layout was installed
-	if E.db.SpectraUI.eltruism_skipped then
-		E.private.ElvUI_EltreumUI.install_version = ElvUI_EltreumUI and ElvUI_EltreumUI.Version or nil
-		E.private.ElvUI_EltreumUI.skippedcheck = nil
-		E.private.ElvUI_EltreumUI.isInstalled.sle = true
-		E.private.ElvUI_EltreumUI.isInstalled.windtools = true
-		E.private.ElvUI_EltreumUI.isInstalled.projectazilroka = true
-		E.db.SpectraUI.eltruism_skipped = false
-	end
-
 	E.db.SpectraUI.install_version = SpectraUI.Version
 
 	if E.db.SpectraUI.elvui_skipped then

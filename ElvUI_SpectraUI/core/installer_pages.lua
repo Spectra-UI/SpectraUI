@@ -1,7 +1,6 @@
 -- Create references to ElvUI internals
 local E = unpack(ElvUI)
 local L = SpectraUI.Locales
--- Cache/ Load ElvUI PluginInstaller API
 local PI = E:GetModule("PluginInstaller")
 -- dont touch this ^
 
@@ -20,19 +19,19 @@ local function InstallProfile(layout)
 	E:SetupCVars()
 	E:SetupChat()
 
+	-- create and set a new private profile
+	if ElvPrivateDB then
+		if not ElvPrivateDB.profiles.Spectra then
+			ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
+			ElvPrivateDB.profiles.Spectra = {}
+			ElvPrivateDB.profiles.Spectra = E:CopyTable({}, E.privateVars.profile)
+			E:CopyTable(E.private, ElvPrivateDB.profiles.Spectra)
+		end
+	end
+
 	if layout == "nova" then
 		SpectraUI:ElvUIProfileNova()
 	else
-		-- create and set a new private profile
-		if ElvPrivateDB then
-			ElvPrivateDB.profileKeys[E.mynameRealm] = "Spectra"
-
-			if not ElvPrivateDB.profiles.Spectra then
-				ElvPrivateDB.profiles.Spectra = E:CopyTable({}, E.privateVars.profile)
-				E:CopyTable(E.private, ElvPrivateDB.profiles.Spectra)
-			end
-		end
-
 		-- run the profile setup
 		if layout == "healer" or layout == "Spectra V2" then
 			SpectraUI:ElvUIProfileHorizontal()

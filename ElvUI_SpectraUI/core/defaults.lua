@@ -12,5 +12,4 @@ P.SpectraUI = {
 		style = "one",
 	},
 	elvui_skipped = false,
-	eltruism_skipped = false,
 }

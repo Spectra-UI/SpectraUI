@@ -75,6 +75,8 @@ function SpectraUI:CheckProfile()
 
 	if privateProfiles and profiles then
 		SpectraUI.Profiles = {
+			private = CheckForProfile(privateProfiles, "Spectra"),
+			privateIsSet = E.charSettings:GetCurrentProfile() == "Spectra",
 			spectra = {
 				private = CheckForProfile(privateProfiles, "Spectra"),
 				profile = CheckForProfile(profiles, "Spectra"),
