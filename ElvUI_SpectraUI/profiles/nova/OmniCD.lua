@@ -1,7 +1,7 @@
 local E = unpack(ElvUI)
 
 -- OmniCD profile setup
-function SpectraUI:OmniCD()
+function SpectraUI:OmniCDNova()
 	if not SpectraUI.Addons.OmniCD then
 		return
 	end

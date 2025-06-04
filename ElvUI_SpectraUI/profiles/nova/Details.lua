@@ -1,7 +1,7 @@
 local _G = _G
 
 -- Details profile setup
-function SpectraUI:Details()
+function SpectraUI:DetailsNova()
 	if not SpectraUI.Addons.Details then
 		return
 	end

@@ -6,7 +6,7 @@ local PI = E:GetModule("PluginInstaller")
 
 local function ChangeProfile(layout)
 	if E.charSettings then
-		local profileName =layout == "Nova" and "Nova" or "Spectra"
+		local profileName = layout == "Nova" and "Nova" or "Spectra"
 		E.charSettings:SetProfile(profileName)
 	end
 
@@ -20,7 +20,7 @@ local function InstallProfile(layout)
 	E:SetupCVars()
 	E:SetupChat()
 
-	local profileName =layout == "Nova" and "Nova" or "Spectra"
+	local profileName = layout == "Nova" and "Nova" or "Spectra"
 
 	-- create and set a new private profile
 	if ElvPrivateDB then
@@ -316,7 +316,11 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 		[1] = {
 			text = "Details",
 			func = function()
-				SpectraUI:Details()
+				if chosen_profile == "nova" then
+					SpectraUI:DetailsNova()
+				else
+					SpectraUI:Details()
+				end
 			end,
 			preview = function()
 				local spectra = path .. "preview\\Details.tga"
@@ -359,7 +363,11 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 		[1] = {
 			text = "OmniCD",
 			func = function()
-				SpectraUI:OmniCD()
+				if chosen_profile == "nova" then
+					SpectraUI:OmniCDNova()
+				else
+					SpectraUI:OmniCD()
+				end
 			end,
 			preview = function()
 				local spectra = path .. "preview\\OmniCD.tga"
@@ -402,7 +410,11 @@ if E.Retail then
 			[1] = {
 				text = "Blizzard",
 				func = function()
-					SpectraUI:Blizzard()
+					if chosen_profile == "nova" then
+						SpectraUI:BlizzardNova()
+					else
+						SpectraUI:Blizzard()
+					end
 				end,
 			},
 		},
