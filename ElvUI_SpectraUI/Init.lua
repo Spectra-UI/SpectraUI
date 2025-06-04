@@ -40,8 +40,8 @@ SpectraUI.Color = {
 SpectraUI.Links = {
 	WA = {
 		spectra = {
-			classic = "https://wago.io/3k0v1a2b4",
-			retail = "https://wago.io/3k0v1a2b4",
+			classic = "https://wago.io/A2fUaQ0bp",
+			retail = "https://wago.io/uPWYrGAFW",
 		},
 		nova = {
 			classic = "https://wago.io/UMIyqBEat",
