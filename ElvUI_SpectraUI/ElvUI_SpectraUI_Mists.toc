@@ -1,4 +1,4 @@
-## Interface: 40402
+## Interface: 50500
 ## Author: Hoffa
 ## Version: 1.2.1
 ## Title: |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
