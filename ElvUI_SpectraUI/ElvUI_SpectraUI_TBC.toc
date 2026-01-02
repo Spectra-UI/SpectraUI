@@ -1,11 +1,12 @@
-## Interface: 110107
+## Interface: 20505
 ## Author: Hoffa
-## Version: 1.2.1
+## Version: 4.4.3.1
 ## Title: |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## Notes: An |CFF1784D1ElvUI|r Profile Installer for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## Notes-deDE: An |CFF1784D1ElvUI|r Profil Installer für |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## IconTexture: Interface\AddOns\ElvUI_SpectraUI\media\icon.tga
-## RequiredDeps: ElvUI, ElvUI_EltreumUI, ElvUI_mMediaTag, WeakAuras
+## RequiredDeps: ElvUI
+## OptionalDeps: ElvUI_EltreumUI, Weakauras
 ## DefaultState: Enabled
 
 
