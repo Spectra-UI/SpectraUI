@@ -1,17 +1,3 @@
-name: Discord Commits
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  notify:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Send commit to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
@@ -19,10 +5,16 @@ jobs:
           COMMIT_MSG=$(git log -1 --pretty=format:"%s")
           AUTHOR=$(git log -1 --pretty=format:"%an")
           SHA=$(git log -1 --pretty=format:"%H")
+          SHORT_SHA=$(git log -1 --pretty=format:"%h")
+          BRANCH=${GITHUB_REF#refs/heads/}
           REPO=${{ github.repository }}
 
-          # Minimal JSON for Discord
-          JSON_PAYLOAD="{\"embeds\":[{\"title\":\"New Commit\",\"description\":\"$COMMIT_MSG\",\"url\":\"https://github.com/$REPO/commit/$SHA\",\"color\":5814783,\"footer\":{\"text\":\"Committed by $AUTHOR\"}}]}"
+          JSON_PAYLOAD="{\"embeds\":[{
+            \"title\":\"🔨 [$BRANCH] Commit $SHORT_SHA\",
+            \"description\":\"**$COMMIT_MSG**\nby $AUTHOR\",
+            \"url\":\"https://github.com/$REPO/commit/$SHA\",
+            \"color\":5814783,
+            \"footer\":{\"text\":\"SpectraUI Commits\"}
+          }]}"
 
-          # Send to Discord
           curl -H "Content-Type: application/json" -d "$JSON_PAYLOAD" $DISCORD_WEBHOOK
