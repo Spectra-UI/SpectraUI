@@ -1,0 +1,20 @@
+name: Discord Commits
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send commit to Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          COMMIT_MSG=$(git log -1 --pretty=format:"%s")
+          AUTHOR=$(git log -1 --pretty=format:"%an")
+          curl -H "Content-Type: application/json" \
+          -d "{\"content\":\"🔨 **New commit** by **$AUTHOR**\n\`\`\`$COMMIT_MSG\`\`\`\"}" \
+          $DISCORD_WEBHOOK
