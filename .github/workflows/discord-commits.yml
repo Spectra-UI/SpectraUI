@@ -19,21 +19,10 @@ jobs:
           COMMIT_MSG=$(git log -1 --pretty=format:"%s")
           AUTHOR=$(git log -1 --pretty=format:"%an")
           SHA=$(git log -1 --pretty=format:"%H")
-          SHORT_SHA=$(git log -1 --pretty=format:"%h")
           REPO=${{ github.repository }}
 
-          # Build JSON payload safely
-          read -r -d '' PAYLOAD << EOM
-          {
-            "embeds": [{
-              "title": "🔨 New Commit ($SHORT_SHA)",
-              "description": "**$COMMIT_MSG**",
-              "url": "https://github.com/$REPO/commit/$SHA",
-              "color": 5814783,
-              "footer": { "text": "Committed by $AUTHOR" }
-            }]
-          }
-          EOM
+          # Minimal JSON for Discord
+          JSON_PAYLOAD="{\"embeds\":[{\"title\":\"New Commit\",\"description\":\"$COMMIT_MSG\",\"url\":\"https://github.com/$REPO/commit/$SHA\",\"color\":5814783,\"footer\":{\"text\":\"Committed by $AUTHOR\"}}]}"
 
           # Send to Discord
-          curl -H "Content-Type: application/json" -d "$PAYLOAD" $DISCORD_WEBHOOK
+          curl -H "Content-Type: application/json" -d "$JSON_PAYLOAD" $DISCORD_WEBHOOK
