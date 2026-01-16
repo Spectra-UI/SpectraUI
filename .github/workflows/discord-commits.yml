@@ -22,7 +22,7 @@ jobs:
           REPO=${{ github.repository }}
 
           # Minimal JSON for Discord
-          JSON_PAYLOAD="{\"embeds\":[{\"title":"🔨 Click here to view the commit"\",\"description\":\"$COMMIT_MSG\",\"url\":\"https://github.com/$REPO/commit/$SHA\",\"color\":5814783,\"footer\":{\"text\":\"Committed by $AUTHOR\"}}]}"
+          JSON_PAYLOAD="{\"embeds\":[{\"title\":\"🛠️ Alpha Update\",\"description\":\"$COMMIT_MSG\",\"url\":\"https://github.com/$REPO/commit/$SHA\",\"color\":5814783,\"footer\":{\"text\":\"Committed by $AUTHOR\"}}]}"
 
           # Send to Discord
           curl -H "Content-Type: application/json" -d "$JSON_PAYLOAD" $DISCORD_WEBHOOK
