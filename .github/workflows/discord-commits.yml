@@ -22,5 +22,5 @@ jobs:
           REPO=${{ github.repository }}
 
           curl -H "Content-Type: application/json" \
-          -d "{\"content\":\"🔨 **New commit** by **$AUTHOR**\n📦 **$REPO**\n🔗 https://github.com/$REPO/commit/$URL\n\n\`\`\`$COMMIT_MSG\`\`\`\"}" \
+          -d "{\"content\":\"🛠️ **New commit** by **$AUTHOR**\n📦 **$REPO**\n🔗 https://github.com/$REPO/commit/$URL\n\n\`\`\`$COMMIT_MSG\`\`\`\"}" \
           $DISCORD_WEBHOOK
