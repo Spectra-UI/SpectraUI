@@ -1,3 +1,17 @@
+name: Discord Commits
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Send commit to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
@@ -8,16 +22,18 @@
           SHORT_SHA=$(git log -1 --pretty=format:"%h")
           REPO=${{ github.repository }}
 
-          curl -H "Content-Type: application/json" \
-          -d "{
-            \"embeds\": [{
-              \"title\": \"🔨 New Commit ($SHORT_SHA)\",
-              \"description\": \"**$COMMIT_MSG**\",
-              \"url\": \"https://github.com/$REPO/commit/$SHA\",
-              \"color\": 5814783,
-              \"footer\": {
-                \"text\": \"Committed by $AUTHOR\"
-              }
+          # Build JSON payload safely
+          read -r -d '' PAYLOAD << EOM
+          {
+            "embeds": [{
+              "title": "🔨 New Commit ($SHORT_SHA)",
+              "description": "**$COMMIT_MSG**",
+              "url": "https://github.com/$REPO/commit/$SHA",
+              "color": 5814783,
+              "footer": { "text": "Committed by $AUTHOR" }
             }]
-          }" \
-          $DISCORD_WEBHOOK
+          }
+          EOM
+
+          # Send to Discord
+          curl -H "Content-Type: application/json" -d "$PAYLOAD" $DISCORD_WEBHOOK
