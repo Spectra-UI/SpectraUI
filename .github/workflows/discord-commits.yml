@@ -9,12 +9,18 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Send commit to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           COMMIT_MSG=$(git log -1 --pretty=format:"%s")
           AUTHOR=$(git log -1 --pretty=format:"%an")
+          URL=$(git log -1 --pretty=format:"%H")
+          REPO=${{ github.repository }}
+
           curl -H "Content-Type: application/json" \
-          -d "{\"content\":\"🔨 **New commit** by **$AUTHOR**\n\`\`\`$COMMIT_MSG\`\`\`\"}" \
+          -d "{\"content\":\"🔨 **New commit** by **$AUTHOR**\n📦 **$REPO**\n🔗 https://github.com/$REPO/commit/$URL\n\n\`\`\`$COMMIT_MSG\`\`\`\"}" \
           $DISCORD_WEBHOOK
