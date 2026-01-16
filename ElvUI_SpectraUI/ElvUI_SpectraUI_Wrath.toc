@@ -1,4 +1,4 @@
-## Interface: 20505
+## Interface: 38000
 ## Author: Hoffa
 ## Version: 1.3.0
 ## Title: |CFFFFFFFFSpectra|r |CFF03FA6EUI|r

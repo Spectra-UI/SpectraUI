@@ -1,6 +1,6 @@
 ## Interface: 11508
 ## Author: Hoffa
-## Version: 4.4.3.1
+## Version: 1.3.0
 ## Title: |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## Notes: An |CFF1784D1ElvUI|r Profile Installer for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
 ## Notes-deDE: An |CFF1784D1ElvUI|r Profil Installer für |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
