@@ -18,7 +18,7 @@ SpectraUI.Locales = LibStub("AceLocale-3.0"):GetLocale("SpectraUI")
 local L = SpectraUI.Locales
 
 -- Name, Logo and Icon for your plugin.
-SpectraUI.Name = "|CFFFFFFFFSpectra|r|CFF03FA6EUI|r" --#03FA6E #FFFFFF
+SpectraUI.Name = "|CFFFFFFFFSpectra|r|CFF2AB6FFUI|r" --#2AB6FF #FFFFFF
 SpectraUI.Version = GetAddOnMetadata(addon, "Version")
 
 SpectraUI.Media = {
@@ -31,9 +31,9 @@ SpectraUI.Media = {
 
 SpectraUI.Color = {
 	ui = {
-		hex = "|CFF03FA6E",
-		rgb = { 0, 0.98, 0.44, 1 },
-		color = { r = 0, g = 0.98, b = 0.44, a = 1, hex = "|CFF03FA6E" },
+		hex = "|CFF2AB6FF",
+		rgb = { 0.1647, 0.7137, 1, 1 },
+		color = { r = 0.1647, g = 0.7137, b = 1, a = 1, hex = "|CFF2AB6FF" },
 	},
 }
 
