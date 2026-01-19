@@ -22,7 +22,7 @@ local function OnEnter(self)
 end
 
 local function OnEvent(self, event, ...)
-	self.text:SetText(color .. "S|CFF2AB6FFUI|r")
+	self.text:SetText "S|CFF2AB6FFUI|r"
 end
 
 local function OnClick(_, button)
