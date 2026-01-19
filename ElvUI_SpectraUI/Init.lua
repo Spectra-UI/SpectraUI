@@ -79,28 +79,18 @@ SpectraUI.Options = {}
 -- example of credits if you want to add some
 SpectraUI.CREDITS = {
 	L["|CFF03FA6EHoffa|r - Author"], --#16F5EE
-	L["|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Programming"],
+	L["|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Foundational Programming"],
 	L["|cff0DB1D0Dlarge|r - DE Localization"],
 	L["|cff0DB1D0ZamestoTV|r - RU Localization"],
 	L["|CFFC7D377Lillekatt|r  - Creator and provider of the Role Icons"],
-	"|cffc500ffRepooc|r",
-	"|cff0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r",
+	L["|cffc500ffRepooc|r - Technical Guidance"],
+	L["|cff0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r - The Spark Behind the Project"],
 }
 
 -- example of donators if you want to add some
 SpectraUI.DONATORS = {
-	"|CFF03FA6EMérica|r - |CFFA335EEEpic Supporter|r",
-	"|CFF03FA6ERipper|r - |CFFFF8000Legendary Supporter|r",
-	"|CFF03FA6EEzdeath|r - |CFFA335EEEpic Supporter|r",
-	"|CFF03FA6ERazorfold|r - |CFFA335EEEpic Supporter|r",
-	"|CFF03FA6ELee|r - |CFFFF8000Legendary Supporter|r",
-	"|CFF03FA6ELysergic|r - |CFFFF8000Legendary Supporter|r",
-	"|CFF03FA6EXayn|r - |CFFFF8000Legendary Supporter|r",
-	"|CFF03FA6ECalarc|r - |CFFA335EEEpic Supporter|r",
-	"|CFF03FA6EFenix|r - |CFFA335EEEpic Supporter|r",
-	"|CFF03FA6EI R Salo|r - |CFFA335EEEpic Supporter|r",
-	"|CFF03FA6EMattIzHypd|r - |CFFA335EEEpic Supporter|r",
-	"|CFF03FA6EQuizle|r - |CFFA335EEEpic Supporter|r",
+	"|CFFA335EELysergic|r - |CFFFF8000Ascended Supporter|r",
+
 }
 
 -- load our options table
