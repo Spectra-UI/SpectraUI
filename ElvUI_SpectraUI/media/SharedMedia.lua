@@ -3,8 +3,6 @@ local LSM = E.Libs.LSM
 
 -- BACKGROUND
 -- LSM:Register("background", "SUI BG", [[Interface\Addons\ElvUI_SpectraUI\Media\Background\dummy.tga]])
-LSM:Register("background", "SUI Main", [[Interface\Addons\ElvUI_SpectraUI\Media\Textures\FrameBG\SUI_BG_Main.tga]])
-LSM:Register("background", "SUI Light", [[Interface\Addons\ElvUI_SpectraUI\Media\Textures\FrameBG\SUI_BG_Light.tga]])
 
 -- BORDER
 -- LSM:Register("border", "SUI Border", [[Interface\AddOns\ElvUI_SpectraUI\Media\Border\dummy.tga]])
