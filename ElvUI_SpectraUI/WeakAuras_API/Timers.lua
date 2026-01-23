@@ -3,9 +3,11 @@ local SpectraUI = LibStub("AceAddon-3.0"):GetAddon("SpectraUI")
 local db
 
 local WAScanEvents = function(...)
+---@diagnostic disable-next-line: undefined-global
   if not WeakAuras then
     return
   end
+---@diagnostic disable-next-line: undefined-global
   WeakAuras.ScanEvents(...)
 end
 
@@ -26,6 +28,7 @@ local function GetClassColorName(unit)
   if unit and UnitExists(unit) then
     local name = UnitName(unit)
     local _, class = UnitClass(unit)
+---@diagnostic disable-next-line: undefined-global
     local classData = (CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS)[class]
     return classData and ("|c%s%s|r"):format(classData.colorStr, name) or name
   end

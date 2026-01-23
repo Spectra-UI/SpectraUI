@@ -200,6 +200,7 @@ Spectra.SetOption = function(value, ...)
 end
 
 Spectra.ResizeCastBar = function(auraName, isHealer)
+---@diagnostic disable-next-line: undefined-global
   local region = WeakAuras.GetRegion(auraName)
   if not region then
     return
@@ -207,6 +208,7 @@ Spectra.ResizeCastBar = function(auraName, isHealer)
 
   local resolution = GetProfileResolution()
   local options = Spectra.GetOption("CastBar", resolution, isHealer and "Healer" or "DPS/TANK")
+---@diagnostic disable-next-line: need-check-nil
   local barWidth, barHeight = options.barWidth, options.barHeight
 
   region:SetWidth(barWidth)
@@ -218,9 +220,12 @@ Spectra.SetRotationPanel = function(newPositions, activeRegions, isHealer)
 
   local options = Spectra.GetOption("RotationPanel", resolution, isHealer and "Healer" or "DPS/TANK")
 
+---@diagnostic disable-next-line: need-check-nil
   local spacing = options.spacing
+---@diagnostic disable-next-line: need-check-nil
   local iconHeight, iconWidth = options.iconHeight, options.iconWidth
   local sizes = { w = iconWidth, h = iconHeight }
+---@diagnostic disable-next-line: need-check-nil
   local maxIcons = options.maxIcons
 
   Spectra.CenteredHorizontal(newPositions, activeRegions, spacing, sizes, maxIcons)
@@ -232,6 +237,7 @@ Spectra.SetMainPanel = function(newPositions, activeRegions, isHealer)
   if isHealer then
     local options = Spectra.GetOption("MainPanel", resolution, "Healer")
     local iconHeight, iconWidth, spacing, maxIcons =
+---@diagnostic disable-next-line: need-check-nil
       options.iconHeight, options.iconWidth, options.spacing, options.maxIcons
     Spectra.CenteredHorizontal(newPositions, activeRegions, spacing, { w = iconWidth, h = iconHeight }, maxIcons)
     return true
@@ -239,14 +245,19 @@ Spectra.SetMainPanel = function(newPositions, activeRegions, isHealer)
 
   local options = Spectra.GetOption("MainPanel", resolution, "DPS/TANK")
 
+---@diagnostic disable-next-line: need-check-nil
   local iconHeightFirstRow, iconWidthFirstRow = options.iconHeightFirstRow, options.iconWidthFirstRow
+---@diagnostic disable-next-line: need-check-nil
   local iconHeightSecondRow, iconWidthSecondRow = options.iconHeightSecondRow, options.iconWidthSecondRow
   local sizes = {
     [1] = { w = iconWidthFirstRow, h = iconHeightFirstRow },
     [2] = { w = iconWidthSecondRow, h = iconHeightSecondRow },
   }
+---@diagnostic disable-next-line: need-check-nil
   local spacing = options.spacing
+---@diagnostic disable-next-line: need-check-nil
   local maxIconsPerRow = options.maxIconsPerRow
+---@diagnostic disable-next-line: need-check-nil
   local maxIcons = options.maxIcons
 
   Spectra.GridDown(newPositions, activeRegions, spacing, sizes, maxIconsPerRow, maxIcons)
@@ -257,10 +268,14 @@ Spectra.SetTopPanel = function(newPositions, activeRegions, isHealer)
 
   local options = Spectra.GetOption("TopPanel", resolution, isHealer and "Healer" or "DPS/TANK")
 
+---@diagnostic disable-next-line: need-check-nil
   local spacing = options.spacing
+---@diagnostic disable-next-line: need-check-nil
   local iconHeight, iconWidth = options.iconHeight, options.iconWidth
   local sizes = { w = iconWidth, h = iconHeight }
+---@diagnostic disable-next-line: need-check-nil
   local maxIconsPerRow = options.maxIconsPerRow
+---@diagnostic disable-next-line: need-check-nil
   local maxIcons = options.maxIcons
 
   Spectra.GridUp(newPositions, activeRegions, spacing, sizes, maxIconsPerRow, maxIcons)
@@ -271,10 +286,14 @@ Spectra.SetCooldownOnPanel = function(newPositions, activeRegions)
 
   local options = Spectra.GetOption("CooldownOnPanel", resolution, "ALL")
 
+---@diagnostic disable-next-line: need-check-nil
   local spacing = options.spacing
+---@diagnostic disable-next-line: need-check-nil
   local iconHeight, iconWidth = options.iconHeight, options.iconWidth
   local sizes = { w = iconWidth, h = iconHeight }
+---@diagnostic disable-next-line: need-check-nil
   local maxIconsPerRow = options.maxIconsPerRow
+---@diagnostic disable-next-line: need-check-nil
   local maxIcons = options.maxIcons
 
   Spectra.Left(newPositions, activeRegions, spacing, sizes, maxIcons)
@@ -284,9 +303,12 @@ Spectra.SetDefensivesEscapesPanel = function(newPositions, activeRegions)
   local resolution = GetProfileResolution()
   local options = Spectra.GetOption("DefensivesEscapes", resolution, "ALL")
 
+---@diagnostic disable-next-line: need-check-nil
   local spacing = options.spacing
+---@diagnostic disable-next-line: need-check-nil
   local iconHeight, iconWidth = options.iconHeight, options.iconWidth
   local sizes = { w = iconWidth, h = iconHeight }
+---@diagnostic disable-next-line: need-check-nil
   local maxIcons = options.maxIcons
 
   Spectra.Left(newPositions, activeRegions, spacing, sizes, maxIcons)

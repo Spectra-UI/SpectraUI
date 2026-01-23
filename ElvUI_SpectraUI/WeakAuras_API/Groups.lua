@@ -11,6 +11,7 @@ end
 Spectra.Left = function(newPositions, activeRegions, spacing, sizes, maxIcons)
   local totalIcons = #activeRegions
 
+---@diagnostic disable-next-line: undefined-global
   if WeakAuras.IsOptionsOpen() and maxIcons then
     totalIcons = math.min(totalIcons, maxIcons)
   end
@@ -33,6 +34,7 @@ end
 Spectra.CenteredHorizontal = function(newPositions, activeRegions, spacing, sizes, maxIcons)
   local totalIcons = #activeRegions
 
+---@diagnostic disable-next-line: undefined-global
   if WeakAuras.IsOptionsOpen() and maxIcons then
     totalIcons = math.min(totalIcons, maxIcons)
   end

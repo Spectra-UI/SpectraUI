@@ -15,10 +15,12 @@ local function HandleLFGProposal(show)
   if show then
     db.lfgStartTimer = time()
     db.lfgExpTimer = db.lfgStartTimer + 40
+---@diagnostic disable-next-line: undefined-global
     WeakAuras.ScanEvents("WA_Spectra_PROPOSAL", "SHOW")
   else
     db.lfgStartTimer = 0
     db.lfgExpTimer = 0
+---@diagnostic disable-next-line: undefined-global
     WeakAuras.ScanEvents("WA_Spectra_PROPOSAL", "HIDE")
   end
 end

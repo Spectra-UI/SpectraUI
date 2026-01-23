@@ -5,12 +5,14 @@ local UnitAffectingCombat = UnitAffectingCombat
 local GetSpellInfo = GetSpellInfo
 
 local SetItemTooltip = function(button, tooltipContextId)
+---@diagnostic disable-next-line: undefined-global
   aura_env.button:SetScript("OnEnter", function(self)
     GameTooltip:SetOwner(self, "ANCHOR_CURSOR")
     GameTooltip:ClearLines()
     GameTooltip:SetItemByID(tooltipContextId)
     GameTooltip:Show()
   end)
+---@diagnostic disable-next-line: undefined-global
   aura_env.button:SetScript("OnLeave", function(self)
     GameTooltip:Hide()
   end)
@@ -18,6 +20,7 @@ end
 
 -- Clickable Reminder
 Spectra.SetButtonTemplate = function(aura_env, buttonName, type, context, context2)
+---@diagnostic disable-next-line: undefined-global
   if WeakAuras.IsOptionsOpen() then
     return
   end
@@ -26,6 +29,7 @@ Spectra.SetButtonTemplate = function(aura_env, buttonName, type, context, contex
   end
 
   if not aura_env.button then
+---@diagnostic disable-next-line: undefined-global
     local r = WeakAuras.GetRegion(aura_env.id)
     aura_env.button = CreateFrame("Button", buttonName, r, "SecureActionButtonTemplate")
   end
@@ -50,6 +54,7 @@ end
 -- Sets Tooltip
 Spectra.SetButtonTooltipItem = function(aura_env, buttonName, itemId)
   if not aura_env.button then
+---@diagnostic disable-next-line: undefined-global
     local r = WeakAuras.GetRegion(aura_env.id)
     aura_env.button = CreateFrame("Button", buttonName, r, "SecureActionButtonTemplate")
   end

@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: undefined-global
 local GetNumTalentTabs, GetNumTalents, GetTalentInfo = GetNumTalentTabs, GetNumTalents, GetTalentInfo
 
 Spectra = Spectra or {}
@@ -7,9 +8,11 @@ local class = select(2, UnitClass("player")) -- Get player's class
 local isHealer = false -- Initialize healer status
 
 local WAScanEvents = function(...)
+---@diagnostic disable-next-line: undefined-global
   if not WeakAuras then
     return
   end
+---@diagnostic disable-next-line: undefined-global
   WeakAuras.ScanEvents(...)
 end
 
@@ -73,6 +76,7 @@ local function RecordPlayerTalents()
   for tree = 1, GetNumTalentTabs() do
     classTalents[tree] = {}
     for j = 1, GetNumTalents(tree) do
+---@diagnostic disable-next-line: missing-parameter
       local _, _, tier, column, rank = GetTalentInfo(tree, j)
       if rank > 0 then
         if not classTalents[tree][tier] then

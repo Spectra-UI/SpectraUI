@@ -26,9 +26,11 @@ function Spectra.SetDungeonButtonTemplate(aura_env, dungeonID, isRandom)
   aura_env.difficultyID = difficultyID
   aura_env.difficultyName = difficultyName
 
+---@diagnostic disable-next-line: undefined-global
   Spectra.DungeonBars[dungeonID] = LFGEnabledList[dungeonID]
 
   local SetDungeonEnabled = function(dungeonID, isEnabled)
+---@diagnostic disable-next-line: undefined-global
     LFGEnabledList[dungeonID] = isEnabled
     Spectra.DungeonBars[dungeonID] = isEnabled
     SetLFGDungeonEnabled(dungeonID, isEnabled)
@@ -107,9 +109,11 @@ function Spectra.SetDungeonButtonTemplate(aura_env, dungeonID, isRandom)
           end
         end
 
+---@diagnostic disable-next-line: undefined-global
         WeakAuras.ScanEvents("Spectra_DUNGEON_BUTTON_UPDATE")
       elseif button == "RightButton" then
         SetDungeonEnabled(dungeonID, false)
+---@diagnostic disable-next-line: undefined-global
         WeakAuras.ScanEvents("Spectra_DUNGEON_BUTTON_UPDATE")
       end
     end)

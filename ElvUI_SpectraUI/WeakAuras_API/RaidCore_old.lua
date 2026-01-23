@@ -39,6 +39,7 @@ local GetClassColorName = function(unit)
     if not class then
       return name
     else
+---@diagnostic disable-next-line: undefined-global
       local classData = (CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS)[class]
       local coloredName = ("|c%s%s|r"):format(classData.colorStr, name)
       return coloredName
@@ -85,7 +86,9 @@ CORE.GetSettings = function(t1, t2)
 end
 
 CORE.SendMRTNote = function(customEvent)
+---@diagnostic disable-next-line: undefined-global
   if GMRT and GMRT.F and GMRT.F.Note_Timer then
+---@diagnostic disable-next-line: undefined-global
     GMRT.F.Note_Timer(customEvent)
   end
 end
@@ -187,6 +190,7 @@ CORE.TargettedCast = function(sourceGUID, e)
   local unitName = targetUnit and UnitName(targetUnit)
   if unitName then
     local raidId = CORE.GetRaidUnitByName(unitName)
+---@diagnostic disable-next-line: undefined-global
     WeakAuras.ScanEvents(e, raidId, unitName)
   end
 end
@@ -260,6 +264,7 @@ end
 CORE.CancelScheduler = function(ENTRY, mechanic)
   local timer = ENTRY.schedulers[mechanic]
   if timer then
+---@diagnostic disable-next-line: undefined-global
     WeakAuras.timer:CancelTimer(timer)
     ENTRY.schedulers[mechanic] = nil
   end
@@ -275,14 +280,19 @@ end
 
 CORE.Schedule = function(ENTRY, mechanic, after, func, ...)
   if ENTRY.schedulers[mechanic] then
+---@diagnostic disable-next-line: undefined-global
     WeakAuras.timer:CancelTimer(ENTRY.schedulers[mechanic])
   end
+---@diagnostic disable-next-line: undefined-global
   ENTRY.schedulers[mechanic] = WeakAuras.timer:ScheduleTimer(func, after, ...)
 end
 
 CORE.WipeCounter = function(type, mechanic)
+---@diagnostic disable-next-line: undefined-global
   ENTRY.counter[type] = ENTRY.counter[type] or {}
+---@diagnostic disable-next-line: undefined-global
   ENTRY.counter[type][mechanic] = 0
+---@diagnostic disable-next-line: undefined-global
   return ENTRY.counter[type][mechanic]
 end
 
@@ -296,6 +306,7 @@ end
 
 CORE.SetStage = function(ENTRY, n)
   ENTRY.stage = n
+---@diagnostic disable-next-line: undefined-global
   WeakAuras.ScanEvents("PHASE_" .. n)
   CORE.SendMRTNote("Spectra_P" .. n .. "_Start")
 end
@@ -319,6 +330,7 @@ local IncrMechanic = function(ENTRY, type, mechanic)
 end
 
 local GetAutoHide = function()
+---@diagnostic disable-next-line: undefined-global
   if not WeakAuras.CurrentEncounter then
     return true
   else
@@ -339,6 +351,7 @@ end
 
 local WA_HandlerEvent = "WA_Spectra_RAID_HANDLER"
 local SendEvent = function(...)
+---@diagnostic disable-next-line: undefined-global
   WeakAuras.ScanEvents(WA_HandlerEvent, ...)
 end
 
@@ -453,6 +466,7 @@ local Prototype = {
   CANCEL = function(ENTRY, mechanic, cancelType, name)
     if cancelType == "ALL" or cancelType == "PRE_WARNING" then
       if ENTRY.schedulers[mechanic] then
+---@diagnostic disable-next-line: undefined-global
         WeakAuras.timer:CancelTimer(ENTRY.schedulers[mechanic])
       end
     end
@@ -474,8 +488,10 @@ local Prototype = {
   PRE_WARNING = function(ENTRY, mechanic, showIn, duration, counter)
     local spellName, icon = GetMechanicInfo(ENTRY, mechanic)
     if ENTRY.schedulers[mechanic] then
+---@diagnostic disable-next-line: undefined-global
       WeakAuras.timer:CancelTimer(ENTRY.schedulers[mechanic])
     end
+---@diagnostic disable-next-line: undefined-global
     ENTRY.schedulers[mechanic] = WeakAuras.timer:ScheduleTimer(
       SendEvent,
       showIn,

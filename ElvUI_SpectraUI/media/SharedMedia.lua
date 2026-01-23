@@ -14,6 +14,7 @@ LSM:Register("border", "SUI Dark", [[Interface\AddOns\ElvUI_SpectraUI\Media\Bord
 --LSM:Register("font", "SUI Font", [[Interface\AddOns\ElvUI_SpectraUI\Media\Font\dummy.ttf]])
 LSM:Register("font", "SpectraUI Caption", [[Interface\AddOns\ElvUI_SpectraUI\Media\Font\GothamXNarrow-Black.ttf]])
 LSM:Register("font", "SpectraUI Title", [[Interface\AddOns\ElvUI_SpectraUI\Media\Font\GothamXNarrow-BlackCAPS.ttf]])
+LSM:Register("font", "SpectraUI Texture", [[Interface\AddOns\ElvUI_SpectraUI\Media\Font\HOOGE.ttf]])
 
 -- SOUND
 --LSM:Register("sound", "SUI Sound", [[Interface\AddOns\ElvUI_SpectraUI\Media\Sound\dummy.mp3]])
