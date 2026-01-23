@@ -1,0 +1,12 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+<Script file="ButtonTemplate.lua"/>
+<Script file="ClassSettings.lua"/>
+<Script file="Groups.lua"/>
+<Script file="Helpful.lua"/>
+<Script file="LFG.lua"/>
+<Script file="RaidKit.lua"/>
+<Script file="RoleHelper.lua"/>
+<Script file="SpectraConfigBridge.lua"/>
+<Script file="TalentsClassic.lua"/>
+<Script file="Timers.lua"/>
+</Ui>
