@@ -19,3 +19,4 @@ profiles\load_profiles_classic.xml
 media\load_media.xml
 misc\load_misc.xml
 datatext\load_datatext.xml
+WeakAuras_API\WeakAuras_API_Mists.xml
