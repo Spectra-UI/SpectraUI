@@ -1,4 +1,4 @@
-local SpectraUI = LibStub("AceAddon-3.0"):GetAddon("SpectraUI")
+local SpectraUI = LibStub("AceAddon-3.0"):GetAddon("ElvUI_SpectraUI")
 
 local db
 
