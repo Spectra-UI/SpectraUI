@@ -10,13 +10,13 @@
 ## DefaultState: Enabled
 
 lib\load_libs.xml
-
 localization\load_localization.xml
-
 init.lua
 core\load_core.xml
 profiles\load_profiles_classic.xml
 media\load_media.xml
 misc\load_misc.xml
 datatext\load_datatext.xml
+
 WeakAuras_API\WeakAuras_API_TBC.xml
+Weakauras_Data\QuickRationsData\QuickRationsData_TBC.lua
