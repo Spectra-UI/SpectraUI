@@ -23,7 +23,7 @@ SpectraUI.Version = GetAddOnMetadata(addon, "Version")
 
 SpectraUI.Media = {
 	mediaPath = "Interface\\AddOns\\ElvUI_SpectraUI\\media\\",
-	icon = "|TInterface\\AddOns\\ElvUI_SpectraUI\\media\\icon.tga:16:16|t",
+	icon = "|TInterface\\AddOns\\ElvUI_SpectraUI\\media\\icon.tga:14:14|t",
 	logo = "Interface\\AddOns\\ElvUI_SpectraUI\\media\\logo.tga",
 	logoText = "Interface\\AddOns\\ElvUI_SpectraUI\\media\\logo_text.tga",
 	discordLogo = "|TInterface\\AddOns\\ElvUI_SpectraUI\\media\\discord_logo.tga:14:14|t",

@@ -1,12 +1,12 @@
 ## Interface: 20505
 ## Author: Hoffa
 ## Version: 1.3.0
-## Title: |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
-## Notes: An |CFF1784D1ElvUI|r Profile Installer for |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
-## Notes-deDE: An |CFF1784D1ElvUI|r Profil Installer für |CFFFFFFFFSpectra|r |CFF03FA6EUI|r
+## Title: |CFFFFFFFFSpectra|r|CFF2AB6FFEUI|r
+## Notes: An |CFF1784D1ElvUI|r Profile Installer for |CFFFFFFFFSpectra|r|CFF2AB6FFUI|r
+## Notes-deDE: An |CFF1784D1ElvUI|r Profil Installer für |CFFFFFFFFSpectra|r|CFF2AB6FFUI|r
 ## IconTexture: Interface\AddOns\ElvUI_SpectraUI\media\icon.tga
-## RequiredDeps: ElvUI
-## OptionalDeps: ElvUI_EltreumUI, Weakauras
+## RequiredDeps: ElvUI, Weakauras
+## OptionalDeps: ElvUI_EltreumUI
 ## DefaultState: Enabled
 
 lib\load_libs.xml
