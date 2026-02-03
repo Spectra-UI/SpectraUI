@@ -159,43 +159,43 @@ SpectraUI.InstallerData[1] = {
 	},
 }
 
-SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
-	SubTitle = L["Choose the layout you prefer"],
-	StepTitle = "Layout selection",
-	tutorialImage = true,
-	descriptions = {
-		[1] = format(
-			L["On this page, you can choose which layout you want to install. You can select either %s or NOVA. Please select your preferred option to proceed with the installation."],
-			spectra_name,
-			SpectraUI.Name
-		),
-		[2] = format(
-			L["|CFFF63939Important|r: Major updates to %s will require you to go through the installation process again, which may result in the loss of any changes you’ve made. Please make sure to back up your settings if needed!"],
-			SpectraUI.Name
-		),
-		[3] = L["Please select a layout to continue the process."],
-	},
-	options = {
-		[1] = {
-			text = spectra_name,
-			preview = path .. "preview\\profile_horizontal.tga",
-			func = function()
-				SpectraUI:CheckProfile()
-				chosen_profile = "spectra"
-				PI:NextPage()
-			end,
-		},
-		[2] = {
-			text = nova_name,
-			preview = path .. "preview\\NOVA.tga",
-			func = function()
-				SpectraUI:CheckProfile()
-				chosen_profile = "nova"
-				PI:NextPage()
-			end,
-		},
-	},
-}
+--SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
+--	SubTitle = L["Choose the layout you prefer"],
+--	StepTitle = "Layout selection",
+--	tutorialImage = true,
+--	descriptions = {
+--		[1] = format(
+--			L["On this page, you can choose which layout you want to install. You can select either %s or nova_name. Please select your preferred option to proceed with the installation."],
+--			spectra_name,
+--			SpectraUI.Name
+--		),
+--		[2] = format(
+--			L["|CFFF63939Important|r: Major updates to %s will require you to go through the installation process again, which may result in the loss of any changes you’ve made. Please make sure to back up your settings if needed!"],
+--			SpectraUI.Name
+--		),
+--		[3] = L["Please select a layout to continue the process."],
+--	},
+--	options = {
+--		[1] = {
+--			text = spectra_name,
+--			preview = path .. "preview\\profile_horizontal.tga",
+--			func = function()
+--				SpectraUI:CheckProfile()
+--				chosen_profile = "spectra"
+--				PI:NextPage()
+--			end,
+--		},
+--		[2] = {
+--			text = nova_name,
+--			preview = path .. "preview\\NOVA.tga",
+--			func = function()
+--				SpectraUI:CheckProfile()
+--				chosen_profile = "nova"
+--				PI:NextPage()
+--			end,
+--		},
+--	},
+--}
 
 SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Essential Settings"],
