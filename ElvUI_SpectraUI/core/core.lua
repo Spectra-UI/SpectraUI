@@ -50,13 +50,7 @@ end
 -- check if addons are loaded
 function SpectraUI:CheckAddons()
 	SpectraUI.Addons.BigWigs = IsAddOnLoaded("BigWigs")
-	SpectraUI.Addons.CooldownTimeline2 = IsAddOnLoaded("CooldownTimeline2")
-	SpectraUI.Addons.CooldownToGo = IsAddOnLoaded("CooldownToGo")
 	SpectraUI.Addons.Details = IsAddOnLoaded("Details")
-	SpectraUI.Addons.OmniCD = IsAddOnLoaded("OmniCD")
-	SpectraUI.Addons.Scorpio = IsAddOnLoaded("Scorpio")
-	SpectraUI.Addons.SylingTracker = IsAddOnLoaded("SylingTracker")
-	SpectraUI.Addons.mMediaTag = IsAddOnLoaded("ElvUI_mMediaTag")
 end
 
 local function CheckForProfile(db, name)
@@ -75,26 +69,26 @@ function SpectraUI:CheckProfile()
 
 	if privateProfiles and profiles then
 		SpectraUI.Profiles = {
-			private = CheckForProfile(privateProfiles, "Spectra"),
-			privateIsSet = E.charSettings:GetCurrentProfile() == "Spectra",
+			private = CheckForProfile(privateProfiles, "SpectraUI"),
+			privateIsSet = E.charSettings:GetCurrentProfile() == "SpectraUI",
 			spectra = {
-				private = CheckForProfile(privateProfiles, "Spectra"),
-				profile = CheckForProfile(profiles, "Spectra"),
-				privateIsSet = E.charSettings:GetCurrentProfile() == "Spectra",
-				profileIsSet = E.data:GetCurrentProfile() == "Spectra",
+				private = CheckForProfile(privateProfiles, "SpectraUI"),
+				profile = CheckForProfile(profiles, "SUI DPS/Tank"),
+				privateIsSet = E.charSettings:GetCurrentProfile() == "SpectraUI",
+				profileIsSet = E.data:GetCurrentProfile() == "SUI DPS/Tank",
 			},
 			spectraV2 = {
-				private = CheckForProfile(privateProfiles, "Spectra"),
-				profile = CheckForProfile(profiles, "Spectra V2"),
-				privateIsSet = E.charSettings:GetCurrentProfile() == "Spectra",
-				profileIsSet = E.data:GetCurrentProfile() == "Spectra V2",
-			},
-			nova = {
-				private = CheckForProfile(privateProfiles, "Nova"),
-				profile = CheckForProfile(profiles, "Nova"),
-				privateIsSet = E.charSettings:GetCurrentProfile() == "Nova",
-				profileIsSet = E.data:GetCurrentProfile() == "Nova",
-			},
+				private = CheckForProfile(privateProfiles, "SpectraUI"),
+				profile = CheckForProfile(profiles, "SUI Healer"),
+				privateIsSet = E.charSettings:GetCurrentProfile() == "SpectraUI",
+				profileIsSet = E.data:GetCurrentProfile() == "SUI Healer",
+			}
+			--nova = {
+			--	private = CheckForProfile(privateProfiles, "Nova"),
+			--	profile = CheckForProfile(profiles, "Nova"),
+			--	privateIsSet = E.charSettings:GetCurrentProfile() == "Nova",
+			--	profileIsSet = E.data:GetCurrentProfile() == "Nova",
+			--},
 		}
 	end
 end
