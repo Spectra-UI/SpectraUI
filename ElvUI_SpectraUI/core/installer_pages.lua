@@ -220,11 +220,11 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 --			return (chosen_profile == "nova") and text_nova
 --				or ((chosen_profile == "spectra") and text_spectra or text_not_selected)
 		end,
-		[2] = function()
-			local text =
-				L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"]
-			return chosen_profile and text or ""
-		end,
+--		[2] = function()
+--			local text =
+--				L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"]
+--			return chosen_profile and text or ""
+--		end,
 	},
 	options = {
 		[1] = function()
