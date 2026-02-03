@@ -201,7 +201,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	SubTitle = L["Essential Settings"],
 	StepTitle = "SpectraUI",
 	tutorialImage = true,
-	descriptions = {
+--	descriptions = {
 --		[1] = function()
 --			local text_spectra = format(
 --				L["This process will install %s and allow you to choose between a DPS/Tank or Healer layout. It will also activate the essential features of %s."],
@@ -225,7 +225,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 --				L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"]
 --			return chosen_profile and text or ""
 --		end,
-	},
+--	},
 	options = {
 		[1] = function()
 			local spectra = {
