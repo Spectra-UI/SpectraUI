@@ -202,29 +202,29 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	StepTitle = "SpectraUI",
 	tutorialImage = true,
 	descriptions = {
-		[1] = function()
-			local text_spectra = format(
-				L["This process will install %s and allow you to choose between a DPS/Tank or Healer layout. It will also activate the essential features of %s."],
-				SpectraUI.Name,
-				SpectraUI.Name
-			)
-			local text_nova = format(
-				L["This process will install %s's NOVA Project. It will also activate the essential features of %s."],
-				SpectraUI.Name,
-				SpectraUI.Name
-			)
-			local text_not_selected = format(
-				L["You have |CFFF63939not selected a layout|r yet. Please select a layout to continue the process."]
-			)
-
-			return (chosen_profile == "nova") and text_nova
-				or ((chosen_profile == "spectra") and text_spectra or text_not_selected)
-		end,
-		[2] = function()
-			local text =
-				L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"]
-			return chosen_profile and text or ""
-		end,
+--		[1] = function()
+--			local text_spectra = format(
+--				L["This process will install %s and allow you to choose between a DPS/Tank or Healer layout. It will also activate the essential features of %s."],
+--				SpectraUI.Name,
+--				SpectraUI.Name
+--			)
+--			local text_nova = format(
+--				L["This process will install %s's NOVA Project. It will also activate the essential features of %s."],
+--				SpectraUI.Name,
+--				SpectraUI.Name
+--			)
+--			local text_not_selected = format(
+--				L["You have |CFFF63939not selected a layout|r yet. Please select a layout to continue the process."]
+--			)
+--
+--			return (chosen_profile == "nova") and text_nova
+--				or ((chosen_profile == "spectra") and text_spectra or text_not_selected)
+--		end,
+--		[2] = function()
+--			local text =
+--				L["|CFFF63939Important|r: Skipping this step may lead to an incomplete and malfunctioning interface!"]
+--			return chosen_profile and text or ""
+--		end,
 	},
 	options = {
 		[1] = function()
