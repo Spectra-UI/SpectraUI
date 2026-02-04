@@ -124,8 +124,13 @@ end
 function SpectraUI:InstallComplete()
 	E.db.SpectraUI.install_version = SpectraUI.Version
 
-	-- this is so eltruism doesn't popup after
-	E.private.ElvUI_EltreumUI.install_version = _G.C_AddOns.GetAddOnMetadata("ElvUI_EltreumUI", "Version")
+	-- Prevent EltreumUI installer popup if it exists
+if C_AddOns.GetAddOnMetadata("ElvUI_EltreumUI", "Version") then
+	E.private.ElvUI_EltreumUI = E.private.ElvUI_EltreumUI or {}
+	E.private.ElvUI_EltreumUI.install_version =
+		C_AddOns.GetAddOnMetadata("ElvUI_EltreumUI", "Version")
+end
+
 
 	if E.db.SpectraUI.elvui_skipped then
 		E.private.install_complete = E.version
