@@ -275,7 +275,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 				text = L["|cffD96C3ADPS / Tank|r"],
 				func = function()
 					if SpectraUI.Profiles.spectra.private and SpectraUI.Profiles.spectra.profile then
-						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Spectra")
+						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "DPS")
 					else
 						InstallProfile("dps")
 					end
@@ -287,7 +287,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 				text = L["Nova"],
 				func = function()
 					if SpectraUI.Profiles.nova.private and SpectraUI.Profiles.nova.profile then
-						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Nova")
+						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Healer")
 					else
 						InstallProfile("nova")
 					end
