@@ -1,8 +1,8 @@
 local E = unpack(ElvUI)
 local D = E:GetModule("Distributor")
 
--- ! classic horizontal profile
-function SpectraUI:ElvUIProfileVertical()
+-- ! classic DPS QHD profile
+function SpectraUI:ElvUIProfileDPSQHD()
 
 	-- donte remove the " at the begining and and of the string here
 	-- Profile! replace !E1!DUMMY ELVUI PROFILE STRING with your ElvUI Profile String.
@@ -39,5 +39,5 @@ function SpectraUI:ElvUIProfileVertical()
 	-- Set UI Scale
 	E.global.general.UIScale = 0.5333333333
 
-	SpectraUI:Print("|cffD96C3ADPS / Tank|r layout |CFF2ab6ffset|r!")
+	SpectraUI:Print("|cffD96C3ADPS / Tank|r layout |CFF5ddb60set|r!")
 end

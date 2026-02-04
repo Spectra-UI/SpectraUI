@@ -1,4 +1,4 @@
-## Interface: 11508, 11507
+## Interface: 11508
 ## Author: Hoffa
 ## Version: 2.0.0
 ## Title: |CFFFFFFFFSpectra|r|CFF2AB6FFUI|r
