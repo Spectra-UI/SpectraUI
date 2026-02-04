@@ -2,7 +2,7 @@ local E = unpack(ElvUI)
 local D = E:GetModule("Distributor")
 
 -- ! classic vertical profile
-function SpectraUI:ElvUIProfileVertical()
+function SpectraUI:ElvUIProfileHorizontal()
 	-- donte remove the " at the begining and and of the string here
 	-- Profile! replace !E1!DUMMY ELVUI PROFILE STRING with your ElvUI Profile String.
 	local profile =
@@ -34,7 +34,7 @@ function SpectraUI:ElvUIProfileVertical()
 	E:SetupChat()
 
 	-- Set UI Scale
-	E.global.general.UIScale = 0.7111111111111111
+	E.global.general.UIScale = 0.5333333333
 
-	SpectraUI:Print("|CFFB707E2ElvUI|r" .. " Vertical profile |CFF03FA6Eset|r!")
+	SpectraUI:Print("|cff57ff75Healer|r layout |CFF2ab6ffset|r!!")
 end

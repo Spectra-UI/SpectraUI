@@ -6,16 +6,36 @@ local chosen_profile = nil
 -- dont touch this ^
 
 -- =====================================================
+-- INSTALLER SETTINGS
+-- =====================================================
+SpectraUI.InstallerData.Title = SpectraUI.Name
+SpectraUI.InstallerData.Name = SpectraUI.Name
+SpectraUI.InstallerData.Logo = SpectraUI.Media.logo
+SpectraUI.InstallerData.LogoSize = { 410, 205 }
+SpectraUI.InstallerData.StepTitlesColor = { 0.9, 0.9, 0.9 }
+SpectraUI.InstallerData.StepTitlesColorSelected = { 0.1647, 0.7137, 1, 1 }
+
+-- media path & files
+local path = SpectraUI.Media.mediaPath
+
+local spectra_name = SpectraUI.Name
+local nova_name = "|CFF03DDFANOVA|r" --#03DDFAFF
+
+function SpectraUI:Print(msg)
+	print(format("|cff2ab6ff%s|r: %s", spectra_name, msg))
+end
+
+-- =====================================================
 -- INSTALLER MODE
 -- =====================================================
 -- false = Single layout (Spectra only)
 -- true  = Dual layout (Spectra + Nova)
 local DUAL_LAYOUT_MODE = false
-local DEFAULT_LAYOUT = "spectra"
+local DEFAULT_LAYOUT = "DPS"
 
 local function ChangeProfile(layout)
 	if E.charSettings then
-		local profileName = layout == "Nova" and "Nova" or "Spectra"
+		local profileName = layout == "FHD" and "QHD" or "DPS"
 		E.charSettings:SetProfile(profileName)
 	end
 
@@ -29,7 +49,7 @@ local function InstallProfile(layout)
 	E:SetupCVars()
 	E:SetupChat()
 
-	local profileName = layout == "Nova" and "Nova" or "Spectra"
+	local profileName = layout == "FHD" and "QHD" or "DPS"
 
 	-- create and set a new private profile
 	if ElvPrivateDB then
@@ -41,11 +61,11 @@ local function InstallProfile(layout)
 		end
 	end
 
-	if layout == "nova" then
+	if layout == "QHD" then
 		SpectraUI:ElvUIProfileNova()
 	else
 		-- run the profile setup
-		if layout == "healer" or layout == "Spectra V2" then
+		if layout == "healer" or layout == "dps" then
 			SpectraUI:ElvUIProfileHorizontal()
 		else
 			SpectraUI:ElvUIProfileVertical()
@@ -97,8 +117,20 @@ E.PopupDialogs.SPECTRAUI_CONFIRM_WA_IMPORT = {
 	button1 = L["Import"],
 	button2 = CANCEL,
 	OnAccept = function(_, data)
-		-- data = { groupKey = "anchors"/"essentials" }
+		-- data = { groupKey = "anchors" / "essentials" }
 		SpectraUI_ImportWeakAura(data.groupKey)
+
+		if data.groupKey == "anchors" then
+			SpectraUI:Print(format(
+				L["|cff2ab6ffAnchors|r WeakAuras installed successfully."],
+				spectra_name
+			))
+		elseif data.groupKey == "essentials" then
+			SpectraUI:Print(format(
+				L["|cffF5C56AEssentials|r WeakAuras installed successfully."],
+				spectra_name
+			))
+		end
 	end,
 	timeout = 0,
 	whileDead = 1,
@@ -128,21 +160,6 @@ E.PopupDialogs.SPECTRAUI_SELECT = {
 	preferredIndex = 3,
 }
 
--- media path & files
-local path = SpectraUI.Media.mediaPath
-
--- =====================================================
--- INSTALLER SETTINGS
--- =====================================================
-SpectraUI.InstallerData.Title = SpectraUI.Name
-SpectraUI.InstallerData.Name = SpectraUI.Name
-SpectraUI.InstallerData.Logo = SpectraUI.Media.logo
-SpectraUI.InstallerData.LogoSize = { 410, 205 }
-SpectraUI.InstallerData.StepTitlesColor = { 0.9, 0.9, 0.9 }
-SpectraUI.InstallerData.StepTitlesColorSelected = { 0.1647, 0.7137, 1, 1 }
-
-local spectra_name = SpectraUI.Name
-local nova_name = "|CFF03DDFANOVA|r" --#03DDFAFF
 
 -- =====================================================
 -- SELECTION STATE
@@ -184,6 +201,7 @@ SpectraUI.InstallerData[1] = {
 		[1] = {
 			text = L["Skip Process"],
 			func = function()
+				SpectraUI:Print(L["Installation skipped, No settings were applied."])
 				SpectraUI:SetupSkip()
 			end,
 		},
@@ -243,7 +261,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 	descriptions = {
 		[1] = function()
 			local text_spectra = format(
-				L["|cffD96C3ADPS / Tank|r focuses on awareness and damage tracking \n\n|cff57ff75Healer|r focuses on clarity and raid visibility.\n|CFFedbf46Profile is currently under development.|r"],
+				L["|cffD96C3ADPS / Tank|r focuses on awareness and damage tracking \n\n|cff57ff75Healer|r focuses on clarity and raid visibility.\n|cff8b8b8bLayout is currently under development.|r"],
 				SpectraUI.Name,
 				SpectraUI.Name
 			)
@@ -259,7 +277,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 					if SpectraUI.Profiles.spectra.private and SpectraUI.Profiles.spectra.profile then
 						E:StaticPopup_Show("SPECTRAUI_SELECT", nil, nil, "Spectra")
 					else
-						InstallProfile("spectra")
+						InstallProfile("dps")
 					end
 				end,
 				preview = path .. "preview\\profile_vertical.tga",
@@ -281,17 +299,19 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			return (chosen_profile == "nova") and nova or spectra
 		end,
 
-		[2] = function()
-			local spectra = {
-				text = L["|cff8b8b8bHealer|r"],
-				disabled = true, -- disables the button
-				func = function()
-					-- intentionally empty
-				end,
-				preview = path .. "preview\\profile_horizontal.tga",
-			}
-			return (chosen_profile == "spectra") and spectra
-		end,
+        [2] = function()
+	        local spectra = {
+		       text = L["|cff8b8b8bHealer|r"],
+		       func = function()
+			    SpectraUI:Print(L["|cff57ff75Healer|r |cff8b8b8blayout is currently under development.|r"])
+		        end,
+		    preview = path .. "preview\\profile_horizontal.tga",
+		-- visually disabled but clickable
+		disabled = false,
+	}
+	return (chosen_profile == "spectra") and spectra
+end,
+
 	},
 }
 
@@ -317,7 +337,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			text = L["|cff2ab6ffAnchors|r"],
 			func = function()
 				E.PopupDialogs.SPECTRAUI_CONFIRM_WA_IMPORT.text =
-					L["This will import the required WeakAuras: Anchors.\n\nContinue?"]
+					L["This will import the required WeakAuras:\n|cff2ab6ffAnchors|r"]
 
 				E:StaticPopup_Show(
 					"SPECTRAUI_CONFIRM_WA_IMPORT",
@@ -332,7 +352,7 @@ SpectraUI.InstallerData[#SpectraUI.InstallerData + 1] = {
 			text = L["|cffF5C56AEssentials|r"],
 			func = function()
 				E.PopupDialogs.SPECTRAUI_CONFIRM_WA_IMPORT.text =
-					L["This will import the required WeakAuras: Essentials.\n\nContinue?"]
+					L["This will import the required WeakAuras:\n|cffF5C56AEssentials|r"]
 
 				E:StaticPopup_Show(
 					"SPECTRAUI_CONFIRM_WA_IMPORT",

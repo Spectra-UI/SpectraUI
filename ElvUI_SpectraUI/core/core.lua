@@ -71,24 +71,18 @@ function SpectraUI:CheckProfile()
 		SpectraUI.Profiles = {
 			private = CheckForProfile(privateProfiles, "SpectraUI"),
 			privateIsSet = E.charSettings:GetCurrentProfile() == "SpectraUI",
-			spectra = {
+			dps = {
 				private = CheckForProfile(privateProfiles, "SpectraUI"),
 				profile = CheckForProfile(profiles, "SUI DPS/Tank"),
 				privateIsSet = E.charSettings:GetCurrentProfile() == "SpectraUI",
 				profileIsSet = E.data:GetCurrentProfile() == "SUI DPS/Tank",
 			},
-			spectraV2 = {
+			healer = {
 				private = CheckForProfile(privateProfiles, "SpectraUI"),
 				profile = CheckForProfile(profiles, "SUI Healer"),
 				privateIsSet = E.charSettings:GetCurrentProfile() == "SpectraUI",
 				profileIsSet = E.data:GetCurrentProfile() == "SUI Healer",
 			}
-			--nova = {
-			--	private = CheckForProfile(privateProfiles, "Nova"),
-			--	profile = CheckForProfile(profiles, "Nova"),
-			--	privateIsSet = E.charSettings:GetCurrentProfile() == "Nova",
-			--	profileIsSet = E.data:GetCurrentProfile() == "Nova",
-			--},
 		}
 	end
 end
