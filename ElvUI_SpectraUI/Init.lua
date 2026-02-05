@@ -80,11 +80,13 @@ SpectraUI.Options = {}
 SpectraUI.CREDITS = {
 	L["|CFF03FA6EHoffa|r - Author"], --#16F5EE
 	L["|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Foundational Programming"],
-	L["|cff0DB1D0Dlarge|r - DE Localization"],
-	L["|cff0DB1D0ZamestoTV|r - RU Localization"],
+	L["|CFF0DB1D0Dlarge|r - DE Localization"],
+	L["|CFF0DB1D0ZamestoTV|r - RU Localization"],
+	L["|CFFFF41CFmMediaTag|r - Original textures and icons, used with Author permission"],
 	L["|CFFC7D377Lillekatt|r  - Creator and provider of the Role Icons"],
-	L["|cffc500ffRepooc|r - Technical Guidance"],
-	L["|cff0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r - The Spark Behind the Project"],
+	L["|CFFB2F9FFEltreum|r  - Backstage Support"],
+	L["|CFFC500FFRepooc|r - Technical Guidance"],
+	L["|CFF0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r - The Spark Behind the Project"],
 }
 
 -- example of donators if you want to add some
