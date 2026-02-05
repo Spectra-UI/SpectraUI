@@ -11,7 +11,7 @@ local _G = _G
 local GetAddOnMetadata = _G.C_AddOns and _G.C_AddOns.GetAddOnMetadata or _G.GetAddOnMetadata
 
 -- Create a new ElvUI module so ElvUI can handle initialization when ready
-SpectraUI = E:NewModule("SpectraUI", "AceHook-3.0", "AceEvent-3.0", "AceTimer-3.0")
+SpectraUI = E:NewModule("SpectraUI", "AceHook-3.0", "AceEvent-3.0", "AceTimer-3.0", "AceConsole-3.0")
 
 -- Load Locales
 SpectraUI.Locales = LibStub("AceLocale-3.0"):GetLocale("SpectraUI")
@@ -42,10 +42,6 @@ SpectraUI.Links = {
 		spectra = {
 			classic = "https://wago.io/A2fUaQ0bp",
 			retail = "https://wago.io/uPWYrGAFW",
-		},
-		nova = {
-			classic = "https://wago.io/UMIyqBEat",
-			retail = "https://wago.io/UMIyqBEat",
 		},
 	},
 }
@@ -78,7 +74,7 @@ SpectraUI.Options = {}
 
 -- example of credits if you want to add some
 SpectraUI.CREDITS = {
-	L["|CFF03FA6EHoffa|r - Author"], --#16F5EE
+	L["|CFFFFFFFFHoffa|r - |CFF2AB6FFAuthor|r"],
 	L["|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Foundational Programming"],
 	L["|CFF0DB1D0Dlarge|r - DE Localization"],
 	L["|CFF0DB1D0ZamestoTV|r - RU Localization"],
@@ -109,6 +105,9 @@ function SpectraUI:Initialize()
 	-- check wich addons are loaded
 	SpectraUI:CheckAddons()
 
+	-- add chat commands
+	SpectraUI:LoadCommands()
+
 	-- add textures to mMT
 	SpectraUI:Setup_mMediaTag()
 
@@ -135,9 +134,8 @@ function SpectraUI:Initialize()
 	SpectraUI:CheckProfile()
 
 	local profiles = {
-		SpectraUI.Profiles.nova,
-		SpectraUI.Profiles.spectra,
-		SpectraUI.Profiles.spectraV2,
+		SpectraUI.Profiles.DPS,
+		SpectraUI.Profiles.Healer,
 	}
 
 	local function needsForceInstall(profile)

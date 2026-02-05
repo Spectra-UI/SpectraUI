@@ -1,8 +1,9 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
-	<Script file='defaults.lua'/>
-	<Script file='core.lua'/>
-    <Script file='options.lua'/>
-	<Script file='installer_pages.lua'/>
-	<Script file='installer_skin.lua'/>
-    <Script file='mmediatag.lua'/>
+	<Script file='Commands.lua'/>
+	<Script file='Core.lua'/>
+	<Script file='Defaults.lua'/>
+	<Script file='Installer_Pages.lua'/>
+	<Script file='Installer_Skin.lua'/>
+    <Script file='MmediaTag.lua'/>
+	<Script file='Options.lua'/>
 </Ui>
