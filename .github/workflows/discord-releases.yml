@@ -2,7 +2,7 @@ name: Discord Releases
 
 on:
   release:
-    types: [published]  # triggers on new release
+    types: [published]
 
 jobs:
   notify:
@@ -12,21 +12,29 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          # GitHub provides release info via env
-          RELEASE_NAME=${{ github.event.release.name }}
-          RELEASE_TAG=${{ github.event.release.tag_name }}
-          RELEASE_BODY=${{ github.event.release.body }}
-          AUTHOR=${{ github.event.release.author.login }}
-          URL=${{ github.event.release.html_url }}
+          RELEASE_NAME="${{ github.event.release.name }}"
+          RELEASE_TAG="${{ github.event.release.tag_name }}"
+          RELEASE_BODY="${{ github.event.release.body }}"
+          AUTHOR="${{ github.event.release.author.login }}"
+          URL="${{ github.event.release.html_url }}"
 
-          # JSON payload for Discord embed
-          JSON_PAYLOAD="{\"embeds\":[{
-            \"title\":\"✨ New Stable Build: $RELEASE_NAME\",
-            \"description\":\"$RELEASE_BODY\",
-            \"url\":\"$URL\",
-            \"color\":5814783,
-            \"footer\":{\"text\":\"Published by $AUTHOR | Tag: $RELEASE_TAG\"}
-          }]}"
+          # Safe JSON creation
+          JSON_PAYLOAD=$(jq -n \
+            --arg name "$RELEASE_NAME" \
+            --arg body "$RELEASE_BODY" \
+            --arg url "$URL" \
+            --arg author "$AUTHOR" \
+            --arg tag "$RELEASE_TAG" \
+            '{
+              embeds: [{
+                title: "New Stable Build: " + $name,
+                description: $body,
+                url: $url,
+                color: 5814783,
+                footer: { text: "Published by " + $author + " | Tag: " + $tag }
+              }]
+            }')
 
-          # Send to Discord
-          curl -H "Content-Type: application/json" -d "$JSON_PAYLOAD" $DISCORD_RELEASE_WEBHOOK
+          curl -H "Content-Type: application/json" \
+               -d "$JSON_PAYLOAD" \
+               $DISCORD_WEBHOOK
