@@ -1,6 +1,13 @@
 local E = unpack(ElvUI)
 local L = SpectraUI.Locales
 
+local UnitGUID = UnitGUID
+local UnitIsAFK = UnitIsAFK
+local UnitIsDND = UnitIsDND
+local UnitIsConnected = UnitIsConnected
+local UnitIsDead = UnitIsDead
+local UnitIsGhost = UnitIsGhost
+
 local classIconPath = "Interface\\Addons\\ElvUI_SpectraUI\\media\\class\\"
 local classIconStrings = {
 	WARRIOR = "0:128:0:128",
@@ -45,7 +52,7 @@ end)
 
 E:AddTagInfo("spectra:modern:outline", SpectraUI.Name, L["Modern class icons with outline,"] .. " " .. L["The size can be set as follows"] .. " > spectra:modern:outline{32}")
 
--- Role Icons
+-- Role icons
 local roleIocns = {
 	TANK = "Interface\\Addons\\ElvUI_SpectraUI\\media\\role\\Tank.tga",
 	HEALER = "Interface\\Addons\\ElvUI_SpectraUI\\media\\role\\Healer.tga",
@@ -63,3 +70,79 @@ E:AddTag("spectra:roleicon", "PLAYER_ROLES_ASSIGNED GROUP_ROSTER_UPDATE", functi
 end)
 
 E:AddTagInfo("spectra:roleicon", SpectraUI.Name, L["Role Icons,"] .. " " .. L["The size can be set as follows"] .. " > spectra:roleicon{32}")
+
+-- Role text
+E:AddTag('spectra:roletext', 'UNIT_NAME_UPDATE PLAYER_ROLES_ASSIGNED GROUP_ROSTER_UPDATE', function(unit, _, args)
+	local v = tonumber(args) or 1
+	local role = UnitGroupRolesAssigned(unit)
+
+	if v == 1 then
+		local roleText = {
+			HEALER = "|cff00ff96HEALER|r",
+			TANK = "|cff00a5ffTANK|r"
+		}
+		return roleText[role]
+	end
+end)
+
+E:AddTagInfo("spectra:roletext", SpectraUI.Name, L["Colored role text"])
+
+-- Mana healeronly
+E:AddTag('spectra:perpp:healeronly', 'UNIT_POWER_FREQUENT UNIT_MAXPOWER UNIT_DISPLAYPOWER UNIT_CONNECTION PLAYER_ROLES_ASSIGNED GROUP_ROSTER_UPDATE', function(unit)
+    local role = UnitGroupRolesAssigned(unit)
+    
+    if role ~= "HEALER" then
+        return nil
+    end
+    
+    local status = UnitIsDead(unit) and L["Dead"] or UnitIsGhost(unit) and L["Ghost"] or not UnitIsConnected(unit) and L["Offline"]
+    local powerType = UnitPowerType(unit)
+    local cur = UnitPower(unit, powerType)
+    local max = UnitPowerMax(unit, powerType)
+
+    if status or (powerType ~= 0 and cur == 0) or max == 0 then
+        return nil
+    else
+        return format("%.0f", (cur / max) * 100)
+    end
+end)
+
+E:AddTagInfo("spectra:perpp:healeronly", SpectraUI.Name, L["Display percentage power if their role is set to healer"])
+
+-- Statustimer
+local unitStatus = {}
+E:AddTag("spectra:statustimer", 1, function(unit)
+	if not UnitIsPlayer(unit) then return end
+	
+	local guid = UnitGUID(unit)
+	if not guid then return end
+	
+	local currentStatus = unitStatus[guid]
+	local newStatusType
+	
+	if not UnitIsConnected(unit) then
+		newStatusType = "Offline"
+	elseif UnitIsDead(unit) or UnitIsGhost(unit) then
+		newStatusType = "Dead"
+	elseif UnitIsAFK(unit) then
+		newStatusType = "AFK"
+	elseif UnitIsDND(unit) then
+		newStatusType = "DND"
+	end
+	
+	if newStatusType then
+		if not currentStatus or currentStatus[1] ~= newStatusType then
+			unitStatus[guid] = { newStatusType, GetTime() }
+		end
+	else
+		unitStatus[guid] = nil
+		return
+	end
+	
+	local timer = GetTime() - unitStatus[guid][2]
+	local mins = floor(timer / 60)
+	local secs = floor(timer % 60)
+	return format("%01.f:%02.f", mins, secs)
+end)
+
+E:AddTagInfo("spectra:statustimer", SpectraUI.Name, L["Displays a timer for status events"])
