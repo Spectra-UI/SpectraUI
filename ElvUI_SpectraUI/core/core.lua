@@ -124,7 +124,7 @@ SpectraGameMenu:SetScript("OnEvent", function()
 			GameMenuFrame.MenuButtons.SpectraUI = Menubutton
 
 			hooksecurefunc(GameMenuFrame, 'Layout', function()
-				GameMenuFrame.MenuButtons.SpectraUI:SetPoint("CENTER", _G.GameMenuFrame, "TOP", 0, -20)
+				GameMenuFrame.MenuButtons.SpectraUI:SetPoint("CENTER", _G.GameMenuFrame, "TOP", 0, -21)
 				for _, button in pairs(GameMenuFrame.MenuButtons) do
 					if button then
 						local point, anchor, point2, x, y = button:GetPoint()
