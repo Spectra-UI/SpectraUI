@@ -29,3 +29,7 @@ LSM:Register("statusbar", "SUI Light Small Stripes #1", [[Interface\AddOns\ElvUI
 LSM:Register("statusbar", "SUI Light Small Stripes #2", [[Interface\AddOns\ElvUI_SpectraUI\Media\Statusbar\SUI_Light_Small_RStripes.tga]])
 LSM:Register("statusbar", "SUI Light XL Stripes #1", [[Interface\AddOns\ElvUI_SpectraUI\Media\Statusbar\SUI_Light_XL_LStripes.tga]])
 LSM:Register("statusbar", "SUI Light XL Stripes #2", [[Interface\AddOns\ElvUI_SpectraUI\Media\Statusbar\SUI_Light_XL_RStripes.tga]])
+LSM:Register("statusbar", "SpectraUI Main", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI_Main.tga]])
+LSM:Register("statusbar", "SpectraUI Stripes", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI_Stripes.tga]])
+LSM:Register("statusbar", "SpectraUI Overlay", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI_Nova_Overlay.tga]])
+LSM:Register("statusbar", "SpectraUI Nova", [[Interface\AddOns\ElvUI_SpectraUI\media\statusbar\SpectraUI_Nova.tga]])
