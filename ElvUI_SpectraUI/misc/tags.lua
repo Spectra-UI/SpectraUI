@@ -24,6 +24,18 @@ local classIconStrings = {
 	MONK = "256:384:256:384",
 	DEMONHUNTER = "384:512:256:384",
 }
+
+local CustomRaidTargetIcons = {
+	[1] = "|TInterface\\Addons\\ElvUI_SpectraUI\\Media\\Icons\\TM01.tga:15:15|t",
+	[2] = "|TInterface\\Addons\\ElvUI_SpectraUI\\Media\\Icons\\TM02.tga:15:15|t",
+	[3] = "|TInterface\\Addons\\ElvUI_SpectraUI\\Media\\Icons\\TM03.tga:15:15|t",
+	[4] = "|TInterface\\Addons\\ElvUI_SpectraUI\\Media\\Icons\\TM04.tga:15:15|t",
+	[5] = "|TInterface\\Addons\\ElvUI_SpectraUI\\Media\\Icons\\TM05.tga:15:15|t",
+	[6] = "|TInterface\\Addons\\ElvUI_SpectraUI\\Media\\Icons\\TM06.tga:15:15|t",
+	[7] = "|TInterface\\Addons\\ElvUI_SpectraUI\\Media\\Icons\\TM07.tga:15:15|t",
+	[8] = "|TInterface\\Addons\\ElvUI_SpectraUI\\Media\\Icons\\TM08.tga:15:15|t",
+}
+
 -- Modern class icons
 E:AddTag("spectra:modern", "UNIT_NAME_UPDATE", function(unit, _, args)
 	if not UnitIsPlayer(unit) then return end
@@ -146,3 +158,11 @@ E:AddTag("spectra:statustimer", 1, function(unit)
 end)
 
 E:AddTagInfo("spectra:statustimer", SpectraUI.Name, L["Displays a timer for status events"])
+
+-- TargetMarkers
+E:AddTag("spectra:targetmarker", "RAID_TARGET_UPDATE", function(unit)
+	local index = GetRaidTargetIndex(unit)
+	return CustomRaidTargetIcons[index] or ""
+end)
+
+E:AddTagInfo("spectra:targetmarker", SpectraUI.Name, L["Display raid target marker"])
