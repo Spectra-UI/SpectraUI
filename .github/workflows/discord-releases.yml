@@ -1,24 +1,18 @@
-name: Stable Release Notify
+name: Discord Stable Release Notify
 
 on:
-  push:
-    tags:
-      - "v*"
+  release:
+    types: [published]
 
 jobs:
   notify:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
-
-      - name: Send stable release to Discord
+      - name: Send release to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TAG_NAME: ${{ github.ref_name }}
-          REPO: ${{ github.repository }}
+          RELEASE_JSON: ${{ toJson(github.event.release) }}
           ACTOR: ${{ github.actor }}
         run: |
           if [ -z "$DISCORD_WEBHOOK" ]; then
@@ -26,23 +20,17 @@ jobs:
             exit 1
           fi
 
-          API_URL="https://api.github.com/repos/$REPO/releases/tags/$TAG_NAME"
+          PRERELEASE=$(echo "$RELEASE_JSON" | jq -r '.prerelease')
 
-          RELEASE_JSON=$(curl -s \
-            -H "Authorization: Bearer $GITHUB_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            "$API_URL")
-
-          PRERELEASE=$(echo "$RELEASE_JSON" | jq -r '.prerelease // false')
-
-          # Skip prereleases
+          # Skip prereleases entirely
           if [ "$PRERELEASE" = "true" ]; then
-            echo "Release $TAG_NAME is marked as prerelease — skipping Discord notification."
+            echo "Prerelease detected — skipping Discord notification."
             exit 0
           fi
 
+          TAG_NAME=$(echo "$RELEASE_JSON" | jq -r '.tag_name')
           RELEASE_BODY=$(echo "$RELEASE_JSON" | jq -r '.body // empty')
-          RELEASE_URL=$(echo "$RELEASE_JSON" | jq -r '.html_url // empty')
+          RELEASE_URL=$(echo "$RELEASE_JSON" | jq -r '.html_url')
 
           if [ -z "$RELEASE_BODY" ]; then
             RELEASE_BODY="A new stable version of SpectraUI is now available."
@@ -52,7 +40,7 @@ jobs:
           RELEASE_BODY="${RELEASE_BODY:0:4000}"
 
           jq -n \
-            --arg title "New Stable Release: $TAG_NAME" \
+            --arg title "✨ New Stable Release: $TAG_NAME" \
             --arg body "$RELEASE_BODY" \
             --arg url "$RELEASE_URL" \
             --arg actor "$ACTOR" \
@@ -64,7 +52,7 @@ jobs:
                 color: 2799359,
                 fields: [
                   {
-                    name: "Downloads",
+                    name: "📦 Downloads",
                     value: "[CurseForge](https://www.curseforge.com/wow/addons/spectraui)\n[Wago](https://addons.wago.io/addons/spectraui)",
                     inline: false
                   }
