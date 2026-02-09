@@ -1,7 +1,5 @@
 [![Static Badge](https://img.shields.io/badge/Contribute-Patreon?style=for-the-badge&logo=patreon&logoColor=FF424D&color=151B23)](https://www.patreon.com/SpectraUI)
-[![Discord](https://img.shields.io/discord/1283555480085729382?style=for-the-badge&logo=discord&logoColor=5865F2&logoSize=auto&label=Discord&labelColor=151B23)](https://discord.gg/UxHZRpSwQz)
-[![CurseForge Version](https://img.shields.io/curseforge/v/1102865?style=for-the-badge&logo=curseforge&logoColor=F16436&label=Version&labelColor=151B23&color=03fa6e)](https://www.curseforge.com/wow/addons/spectraui)
-[![GitHub Tag](https://img.shields.io/github/v/tag/Spectra-UI/SpectraUI?style=for-the-badge&logo=github&label=Version&labelColor=151B23&color=03fa6e)](https://github.com/Spectra-UI/SpectraUI)
+[![CurseForge Version](https://img.shields.io/curseforge/v/1102865?style=for-the-badge&logo=curseforge&logoColor=F16436&label=Version&labelColor=151B23&color=2AB6FF)](https://www.curseforge.com/wow/addons/spectraui)
 
 <details>
   
