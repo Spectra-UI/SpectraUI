@@ -1,4 +1,4 @@
-## Interface: 20505
+## Interface: 120000
 ## Author: Hoffa
 ## Version: 2.0.2
 ## Title: |CFFFFFFFFSpectra|r|CFF2AB6FFUI|r
@@ -8,7 +8,7 @@
 ## RequiredDeps: ElvUI, WeakAuras
 ## OptionalDeps: 
 ## DefaultState: Enabled
-## X-Interface: 20505
+## X-Interface: 120000
 ## X-ElvUI: 15.03
 ## X-Wago-ID: kNM3QrKz
 

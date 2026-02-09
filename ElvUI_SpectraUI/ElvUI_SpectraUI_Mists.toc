@@ -8,6 +8,9 @@
 ## RequiredDeps: ElvUI, WeakAuras
 ## OptionalDeps: 
 ## DefaultState: Enabled
+## X-Interface: 50503
+## X-ElvUI: 15.03
+## X-Wago-ID: kNM3QrKz
 
 lib\load_libs.xml
 localization\load_localization.xml
