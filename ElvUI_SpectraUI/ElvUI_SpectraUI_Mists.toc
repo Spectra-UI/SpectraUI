@@ -10,7 +10,7 @@
 ## DefaultState: Enabled
 ## X-Interface: 50503
 ## X-ElvUI: 15.03
-## X-Wago-ID: kNM3QrKz
+## X-Wago-ID: QKy9OvK7
 
 lib\load_libs.xml
 localization\load_localization.xml
