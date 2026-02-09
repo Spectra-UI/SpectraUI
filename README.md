@@ -15,7 +15,7 @@
 
 ---
 
-<img width="836" height="100" alt="Features" src="https://github.com/user-attachments/assets/7631cd35-f5a9-427b-8674-004b975bf0e1" />
+<img width="836" height="100" alt="Features" src="https://github.com/user-attachments/assets/3fc591b9-2352-46d0-a868-55c7fc5cf2e5" />
 
 - High-end, performance-focused UI profiles
 - Custom tags for enhanced information display
@@ -26,7 +26,7 @@
 - And much more!
 
 ---
-<img width="836" height="100" alt="2" src="https://github.com/user-attachments/assets/92f9e4fe-b628-4865-9385-07e329b87008" />
+<img width="836" height="100" alt="Requirements" src="https://github.com/user-attachments/assets/2fc87a47-ef4f-405a-aa0a-419cc066b52d" />
 
 ## Required AddOns
 - [**ElvUI**](https://tukui.org/elvui)
@@ -54,7 +54,7 @@
 - [**High Quality Icons (Clean Icons – Mechagnome Edition)**](https://www.wowinterface.com/downloads/info25064-CleanIcons-MechagnomeEdition.html)
 
 ---
-<img width="836" height="100" alt="3" src="https://github.com/user-attachments/assets/c772d59d-78be-4674-9385-c3548562b6b2" />
+<img width="836" height="100" alt="Installation" src="https://github.com/user-attachments/assets/19e89529-a185-49cd-b0ed-821af408460a" />
 
 ## Step 1: Backup Your WTF Folder
 
@@ -95,7 +95,7 @@ If everything looks good — you’re all set. Enjoy your new **SpectraUI**!
 - Run **`/reloadui`** after installation or any configuration changes.
 - Double-check that all **required addons** are installed and loaded correctly.
 ---
-<img width="836" height="100" alt="4" src="https://github.com/user-attachments/assets/7ab01b74-872c-47f2-a644-4ef7c2e9ee1e" />
+<img width="836" height="100" alt="Credits" src="https://github.com/user-attachments/assets/59154d86-fdbb-4db9-8d76-0edd69d9aef0" />
 
 - **Blinkii** for developing the initial **SpectraUI** codebase
 - **Dlarge** German (DE) localization  
@@ -106,7 +106,7 @@ If everything looks good — you’re all set. Enjoy your new **SpectraUI**!
 - **ElvUI Discord** — Continuous help and support
 - **Patreon supporters** — Your support helps keep **SpectraUI** evolving
 ---
-[<img width="836" height="100" alt="5" src="https://github.com/user-attachments/assets/5c451b64-5116-4128-9085-1c20a44b198c" />](https://discord.gg/UxHZRpSwQz)
+<img width="836" height="100" alt="Discord" src="https://github.com/user-attachments/assets/6164ca3f-a824-4eb4-abe6-1024f1bb76c7" />
 
 [![Discord](https://img.shields.io/discord/1283555480085729382?style=for-the-badge&logo=discord&logoColor=5865F2&label=Discord&labelColor=151B23)](https://discord.gg/WCgGV4uRua)
 
