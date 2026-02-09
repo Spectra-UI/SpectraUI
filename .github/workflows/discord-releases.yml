@@ -1,40 +1,79 @@
-name: Discord Releases
+name: Stable Release Notify
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*"
 
 jobs:
   notify:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Send release to Discord
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Send stable release to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: ${{ github.ref_name }}
+          REPO: ${{ github.repository }}
+          ACTOR: ${{ github.actor }}
         run: |
-          RELEASE_NAME="${{ github.event.release.name }}"
-          RELEASE_TAG="${{ github.event.release.tag_name }}"
-          RELEASE_BODY="${{ github.event.release.body }}"
-          AUTHOR="${{ github.event.release.author.login }}"
-          URL="${{ github.event.release.html_url }}"
+          if [ -z "$DISCORD_WEBHOOK" ]; then
+            echo "DISCORD_WEBHOOK secret is missing"
+            exit 1
+          fi
 
-          # Safe JSON creation
-          JSON_PAYLOAD=$(jq -n \
-            --arg name "$RELEASE_NAME" \
+          API_URL="https://api.github.com/repos/$REPO/releases/tags/$TAG_NAME"
+
+          RELEASE_JSON=$(curl -s \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "$API_URL")
+
+          PRERELEASE=$(echo "$RELEASE_JSON" | jq -r '.prerelease // false')
+
+          # Skip prereleases
+          if [ "$PRERELEASE" = "true" ]; then
+            echo "Release $TAG_NAME is marked as prerelease — skipping Discord notification."
+            exit 0
+          fi
+
+          RELEASE_BODY=$(echo "$RELEASE_JSON" | jq -r '.body // empty')
+          RELEASE_URL=$(echo "$RELEASE_JSON" | jq -r '.html_url // empty')
+
+          if [ -z "$RELEASE_BODY" ]; then
+            RELEASE_BODY="A new stable version of SpectraUI is now available."
+          fi
+
+          # Discord embed description limit
+          RELEASE_BODY="${RELEASE_BODY:0:4000}"
+
+          jq -n \
+            --arg title "New Stable Release: $TAG_NAME" \
             --arg body "$RELEASE_BODY" \
-            --arg url "$URL" \
-            --arg author "$AUTHOR" \
-            --arg tag "$RELEASE_TAG" \
+            --arg url "$RELEASE_URL" \
+            --arg actor "$ACTOR" \
             '{
               embeds: [{
-                title: "New Stable Build: " + $name,
+                title: $title,
                 description: $body,
                 url: $url,
-                color: 5814783,
-                footer: { text: "Published by " + $author + " | Tag: " + $tag }
+                color: 2799359,
+                fields: [
+                  {
+                    name: "Downloads",
+                    value: "[CurseForge](https://www.curseforge.com/wow/addons/spectraui)\n[Wago](https://addons.wago.io/addons/spectraui)",
+                    inline: false
+                  }
+                ],
+                footer: {
+                  text: "Released by " + $actor
+                }
               }]
-            }')
-
-          curl -H "Content-Type: application/json" \
-               -d "$JSON_PAYLOAD" \
-               $DISCORD_WEBHOOK
+            }' | curl -X POST \
+              -H "Content-Type: application/json" \
+              -d @- \
+              "$DISCORD_WEBHOOK"
