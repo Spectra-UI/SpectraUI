@@ -50,7 +50,7 @@
 - [**Chattynator**](https://www.curseforge.com/wow/addons/chattynator)  
   *Stylish chat frame*
 
-## __Clean High Quality Icons__
+## Clean High Quality Icons
 - [**High Quality Icons (Clean Icons – Mechagnome Edition)**](https://www.wowinterface.com/downloads/info25064-CleanIcons-MechagnomeEdition.html)
 
 ---
@@ -62,14 +62,8 @@ Before installing **SpectraUI**, it is highly recommended to start with a clean 
 
 1. Go to your **World of Warcraft** installation folder.
 2. Locate the **WTF** folder:
-   - **Classic ERA / Anniversary:**
-     ```
-     \World of Warcraft\_Classic_Era_\WTF
-     ```
-   - **MoP Classic:**
-     ```
-     \World of Warcraft\_classic_\WTF
-     ```
+   - **Classic ERA / Anniversary:** ```\World of Warcraft\_Classic_Era_\WTF```
+   - **MoP Classic:** ```\World of Warcraft\_classic_\WTF```
 3. Copy and **store a backup** of this folder somewhere safe.
 
 ## Step 2: Enter the Game & Check AddOns
@@ -121,6 +115,6 @@ If everything looks good — you’re all set. Enjoy your new **SpectraUI**!
 - Development updates and previews
 - Community feedback and discussion
 
-This is the primary place for help and announcements.
+> This is the primary place for help and announcements.
 
 ---
