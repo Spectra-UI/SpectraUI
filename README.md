@@ -106,7 +106,7 @@ If everything looks good — you’re all set. Enjoy your new **SpectraUI**!
 ---
 <img width="836" height="100" alt="Discord" src="https://github.com/user-attachments/assets/6164ca3f-a824-4eb4-abe6-1024f1bb76c7" />
 
-[![Discord](https://img.shields.io/discord/1283555480085729382?style=for-the-badge&logo=discord&logoColor=5865F2&label=Discord&labelColor=151B23)](https://discord.gg/WCgGV4uRua)
+[![Discord](https://img.shields.io/discord/1283555480085729382?style=for-the-badge&logo=discord&logoColor=5865F2&label=Discord&labelColor=151B23)](https://discord.gg/UxHZRpSwQz)
 
 ### Join the **SpectraUI Discord** for:
 - Support and troubleshooting
