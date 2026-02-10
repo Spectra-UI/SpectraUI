@@ -1,6 +1,7 @@
 -- Create references to ElvUI internals
 local E = unpack(ElvUI)
 local S = E:GetModule("Skins")
+local _G = _G
 -- dont touch this ^
 
 local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
@@ -88,111 +89,135 @@ function SpectraUI:CheckProfile()
 	end
 end
 
--- Add button to Game Menu
-local SpectraMenuButton = CreateFrame('Button', nil, GameMenuFrame, 'GameMenuButtonTemplate')
-local isMenuExpanded = false
-local SpectraGameMenu = CreateFrame("Frame")
-SpectraGameMenu:RegisterEvent("PLAYER_ENTERING_WORLD")
-SpectraGameMenu:SetScript("OnEvent", function()
+-- SpectraUI Unified Game Menu Integration
+-- Disable ElvUI GameMenu Button
+if E.SetupGameMenu then
+    E.SetupGameMenu = function() end
+end
 
-	if E.Retail or E.TBC then
-		-- Retail/TBC
-		local Menubutton
-		if not _G["SpectraGameMenu"] then
-			Menubutton = CreateFrame('Button', 'SpectraGameMenu', GameMenuFrame, 'MainMenuFrameButtonTemplate')
-			Menubutton:SetScript('OnClick', function()
-				if InCombatLockdown() then return end
-				E:ToggleOptions()
-				E.Libs['AceConfigDialog']:SelectGroup('ElvUI', 'SpectraUI')
-				HideUIPanel(_G.GameMenuFrame)
-			end)
+if E.PositionGameMenuButton then
+    E.PositionGameMenuButton = function() end
+end
 
+-- Helpers
+local function IsStoreEnabled()
+    return C_StorePublic and C_StorePublic.IsEnabled and C_StorePublic.IsEnabled()
+end
 
-			Menubutton:SetText(SpectraUI.Name)
+-- TBC / Mists spacing table
+local gameMenuLastButtons = {}
 
-			S:HandleButton(Menubutton, nil, nil, nil, true)
+if _G.GAMEMENU_EXTERNALEVENT then
+    gameMenuLastButtons.SpectraUI = IsStoreEnabled() and 3 or 2
+    gameMenuLastButtons[_G.GAMEMENU_EXTERNALEVENT] = 1
+    gameMenuLastButtons[_G.GAMEMENU_OPTIONS] = 2
+    gameMenuLastButtons[_G.BLIZZARD_STORE] = 3
+else
+    gameMenuLastButtons.SpectraUI = IsStoreEnabled() and 2 or 1
+    gameMenuLastButtons[_G.GAMEMENU_OPTIONS] = 1
+    gameMenuLastButtons[_G.BLIZZARD_STORE] = 2
+end
 
-			local offset = E.TBC and 19 or 36
-			local xMenubutton = _G.GameMenuFrame:GetSize()
-			if E.TBC then
-				Menubutton:Size(xMenubutton - 118, offset)
-			else
-				Menubutton:Size(xMenubutton - 62, offset)
-			end
+-- TBC / Mists positioning
+local function Spectra_PositionGameMenu_Retail()
+    if not GameMenuFrame.buttonPool then return end
 
-			GameMenuFrame.SpectraUI = Menubutton
-			GameMenuFrame.MenuButtons.SpectraUI = Menubutton
+    local offset = E.TBC and 20 or 35
 
-			hooksecurefunc(GameMenuFrame, 'Layout', function()
-				GameMenuFrame.MenuButtons.SpectraUI:SetPoint("CENTER", _G.GameMenuFrame, "TOP", 0, -21)
-				for _, button in pairs(GameMenuFrame.MenuButtons) do
-					if button then
-						local point, anchor, point2, x, y = button:GetPoint()
-						button:SetPoint(point, anchor, point2, x, y - offset)
-					end
-				end
+    for button in GameMenuFrame.buttonPool:EnumerateActive() do
+        local text = button:GetText()
+        GameMenuFrame.MenuButtons[text] = button
 
-				if E.Retail then
-					GameMenuFrame:Height(538 + offset)
-				end
+        local lastIndex = gameMenuLastButtons[text]
+        if lastIndex == gameMenuLastButtons.SpectraUI and GameMenuFrame.SpectraUI then
+            GameMenuFrame.SpectraUI:ClearAllPoints()
+            GameMenuFrame.SpectraUI:Point("TOPLEFT", button, "BOTTOMLEFT", 1, 10)
+            GameMenuFrame.SpectraUI:NudgePoint(nil, -offset)
+        elseif not lastIndex then
+            button:NudgePoint(nil, -offset)
+        end
+    end
 
+    GameMenuFrame:Height(GameMenuFrame:GetHeight() + offset)
+end
 
-			end)
-		end
-	else
-		-- Classic
-		if not isMenuExpanded then
+-- Classic ERA positioning
+local function Spectra_PositionGameMenu_Classic()
+    local btn = GameMenuFrame.SpectraUI
+    if not btn then return end
 
-			SpectraMenuButton:SetText(SpectraUI.Name)
-			S:HandleButton(SpectraMenuButton)
+    btn:ClearAllPoints()
 
-			    -- Size from logout button
-			local logoutBtn = _G["GameMenuButtonLogout"]
-			if logoutBtn then
-				local x, y = logoutBtn:GetSize()
-				SpectraMenuButton:SetSize(x, y)
-			end
+    local addons = _G.GameMenuButtonAddons
+    if addons then
+        btn:SetPoint("TOPLEFT", addons, "BOTTOMLEFT", 0, -1)
+    end
 
-			SpectraMenuButton:SetScript("OnClick", function()
-				if not InCombatLockdown() then
-					E:ToggleOptions("SpectraUI")
-					HideUIPanel(_G["GameMenuFrame"])
-				end
-			end)
+    local logout = _G.GameMenuButtonLogout
+    if logout then
+        local _, _, _, _, offY = logout:GetPoint()
+        logout:ClearAllPoints()
+        logout:SetPoint("TOPLEFT", btn, "BOTTOMLEFT", 0, offY)
+    end
 
-			    -- Anchor update function
-			local function UpdateSpectraMenuAnchor()
-				if GameMenuFrame.ElvUI then
-					SpectraMenuButton:Point("TOP", GameMenuFrame.ElvUI, "BOTTOM", 0, -1)
-				elseif _G.GameMenuButtonAddons then
-					SpectraMenuButton:Point("TOP", _G.GameMenuButtonAddons, "BOTTOM", 0, -1)
-				end
-			end
+    GameMenuFrame:SetHeight(
+        GameMenuFrame:GetHeight() + btn:GetHeight() - 4
+    )
+end
 
-			    -- Hook
-			if type(_G.GameMenuFrame_UpdateVisibleButtons) == "function" then
-				hooksecurefunc('GameMenuFrame_UpdateVisibleButtons', function()
-					UpdateSpectraMenuAnchor()
-				end)
-			else
-				-- Fallback: do the same update whenever menu opens
-				_G["GameMenuFrame"]:HookScript("OnShow", function()
-					UpdateSpectraMenuAnchor()
-				end)
-			end
+-- Unified setup
+local function Spectra_SetupGameMenu()
+    if GameMenuFrame.SpectraUI then return end
 
-			_G["GameMenuFrame"]:HookScript("OnShow", function()
-				local logoutBtn = _G["GameMenuButtonLogout"]
-				if not logoutBtn then return end
+    local isRetail = E.Retail or E.TBC
+    local template = isRetail
+        and "MainMenuFrameButtonTemplate"
+        or "GameMenuButtonTemplate"
 
-				local _, y = logoutBtn:GetSize()
+    local button = CreateFrame(
+        "Button",
+        "SpectraUI_GameMenuButton",
+        GameMenuFrame,
+        template
+    )
 
-				logoutBtn:ClearAllPoints()
-				logoutBtn:SetPoint("TOP", SpectraMenuButton, "BOTTOM", 0, -y)
-				_G["GameMenuFrame"]:SetHeight(_G["GameMenuFrame"]:GetHeight() + logoutBtn:GetHeight() + 4)
-			end)
+    -- Branding
+    button:SetText("SpectraUI")
+    button:GetFontString():SetText(SpectraUI.Name)
 
-			isMenuExpanded = true
-		end
-	end
+    -- Skin
+    S:HandleButton(button, nil, nil, nil, true)
+
+    -- Click behavior
+    button:SetScript("OnClick", function()
+        if InCombatLockdown() then return end
+        E:ToggleOptions()
+        HideUIPanel(GameMenuFrame)
+    end)
+
+    -- Client specific setup
+    if isRetail then
+        button:SetSize(E.TBC and 142 or 198, E.TBC and 21 or 35)
+        GameMenuFrame.MenuButtons = {}
+        hooksecurefunc(GameMenuFrame, "Layout", Spectra_PositionGameMenu_Retail)
+    else
+        local logout = _G.GameMenuButtonLogout
+        if logout then
+            button:SetSize(logout:GetSize())
+        end
+
+        hooksecurefunc("GameMenuFrame_UpdateVisibleButtons", Spectra_PositionGameMenu_Classic)
+        GameMenuFrame:HookScript("OnShow", Spectra_PositionGameMenu_Classic)
+    end
+
+    GameMenuFrame.SpectraUI = button
+end
+
+-- Init
+local init = CreateFrame("Frame")
+init:RegisterEvent("PLAYER_ENTERING_WORLD")
+init:SetScript("OnEvent", function()
+    if GameMenuFrame then
+        Spectra_SetupGameMenu()
+    end
 end)
