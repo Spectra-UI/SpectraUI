@@ -1,4 +1,4 @@
-## Title: |cff1784d1ElvUI|r |cffffffffSpectra|r|cff2ab6ffUI|r |cff0eefa3Mists of Pandaria|r
+## Title: |cff1784d1ElvUI|r |cffffffffSpectra|r|cff2ab6ffUI|r |cffefca34ERA|r
 ## Notes: ElvUI Edit by |cff2ab6ffHoffa|r
 ## Author: Hoffa
 ## Version: 2.0.2
@@ -7,8 +7,8 @@
 ## RequiredDeps: ElvUI, WeakAuras
 ## OptionalDeps: Details, BigWigs
 ## DefaultState: Enabled
-## Interface: 50503
-## X-Interface: 50503
+## Interface: 11508
+## X-Interface: 11508
 ## X-ElvUI: 15.03
 ## X-Curse-Project-ID: 1102865
 ## X-Wago-ID: QKy9OvK7
@@ -21,4 +21,4 @@ Init.lua
 Core\Core.xml
 Media\Media.xml
 Modules\Modules.xml
-WeakAuras\WeakAuras_API_Mists.xml
+WeakAuras\WeakAuras_API_Vanilla.xml

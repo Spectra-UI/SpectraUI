@@ -2,8 +2,6 @@
 	<Script file='Commands.lua'/>
 	<Script file='Core.lua'/>
 	<Script file='Defaults.lua'/>
-	<Script file='Installer_Pages.lua'/>
-	<Script file='Installer_Skin.lua'/>
     <Script file='MmediaTag.lua'/>
 	<Script file='Options.lua'/>
 </Ui>

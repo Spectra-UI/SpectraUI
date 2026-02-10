@@ -1,0 +1,5 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file='Portraits.lua'/>
+	<Script file='Tags.lua'/>
+	<Script file='Details.lua'/>
+</Ui>
