@@ -1,0 +1,4 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file='SUI_DPS_QHD.lua'/>
+	<Script file='SUI_Healer_QHD.lua'/>
+</Ui>

@@ -1,4 +1,4 @@
-## Title: |cff1784d1ElvUI|r |cffffffffSpectra|r|cff2ab6ffUI|r |cffefca34ERA|r
+## Title: |cff1784d1ElvUI|r |cffffffffSpectra|r|cff2ab6ffUI|r |cfd9b9b9bClassic|r
 ## Notes: ElvUI Edit by |cff2ab6ffHoffa|r
 ## Author: Hoffa
 ## Version: 2.0.2
@@ -15,10 +15,8 @@
 
 Libs\Libs.xml
 Localization\Localization.xml
-
-Init.lua
-
-Core\Core.xml
 Media\Media.xml
+Init.lua
+Core\Core.xml
 Modules\Modules.xml
-WeakAuras\WeakAuras_API_Vanilla.xml
+Integrations\WeakAuras\WeakAuras_Vanilla.xml

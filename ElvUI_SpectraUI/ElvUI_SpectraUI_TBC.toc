@@ -1,4 +1,4 @@
-## Title: |cff1784d1ElvUI|r |cffffffffSpectra|r|cff2ab6ffUI|r |cffa1e145TBC Anniversary|r
+## Title: |cff1784d1ElvUI|r |cffffffffSpectra|r|cff2ab6ffUI|r |cfd9b9b9bTBC Anniversary|r
 ## Notes: ElvUI Edit by |cff2ab6ffHoffa|r
 ## Author: Hoffa
 ## Version: 2.0.2
@@ -15,10 +15,8 @@
 
 Libs\Libs.xml
 Localization\Localization.xml
-
-Init.lua
-
-Core\Core.xml
 Media\Media.xml
+Init.lua
+Core\Core.xml
 Modules\Modules.xml
-WeakAuras\WeakAuras_API_TBC.xml
+Integrations\WeakAuras\WeakAuras_TBC.xml

@@ -1,3 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
-	<include file='SpectraUI\SpectraUI.xml'/>
+	<include file='ElvUI\ElvUI.xml'/>
+	<Script file='BigWigs.lua'/>
+	<Script file='Details.lua'/>
+	<Script file='WeakAuras.lua'/>
 </Ui>
