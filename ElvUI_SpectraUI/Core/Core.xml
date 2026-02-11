@@ -3,5 +3,4 @@
 	<Script file='Core.lua'/>
 	<Script file='Defaults.lua'/>
     <Script file='MmediaTag.lua'/>
-	<Script file='Options.lua'/>
 </Ui>
