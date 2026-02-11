@@ -6,6 +6,7 @@ local _G = _G
 
 local IsAddOnLoaded = _G.C_AddOns and _G.C_AddOns.IsAddOnLoaded or _G.IsAddOnLoaded
 
+
 -- Popup for our links
 E.PopupDialogs.SPECTRAUI_EDITBOX = {
 	text = SpectraUI.Media.icon .. " " .. SpectraUI.Name,
@@ -213,11 +214,53 @@ local function Spectra_SetupGameMenu()
     GameMenuFrame.SpectraUI = button
 end
 
+-- AddOn loaded print
+function SpectraUI:PrintLoginMessage()
+	local addonName = "ElvUI_SpectraUI"
+
+	local title = (C_AddOns and C_AddOns.GetAddOnMetadata(addonName, "Title"))
+		or GetAddOnMetadata(addonName, "Title")
+
+	local version = (C_AddOns and C_AddOns.GetAddOnMetadata(addonName, "Version"))
+		or GetAddOnMetadata(addonName, "Version")
+
+	title = title or SpectraUI.Name
+	version = version or "Unknown"
+
+	E.global.SpectraUI = E.global.SpectraUI or {}
+	local previousVersion = E.global.SpectraUI.lastVersion
+
+	local isFirstInstall = not previousVersion
+	local isUpdate = previousVersion and previousVersion ~= version
+
+	-- LINE 1 (always prints)
+	if isUpdate then
+		print(title .. " |cff43eb47New Version|r |cff2AB6FF" .. version .. "|r loaded.")
+	else
+		print(title .. " |cff2AB6FF" .. version .. "|r loaded.")
+	end
+
+	-- LINE 2 (state specific)
+	if isFirstInstall then
+		print("Type |cff2ab6ff/sui|r to open Spectra|cff2ab6ffUI|r options. If the installer did not launch automatically, Type |cff2ab6ff/sui install|r.")
+
+	elseif isUpdate then
+        SpectraUI:Print("has been updated |cff43eb47successfully|r.")
+    	end
+
+	E.global.SpectraUI.lastVersion = version
+end
+
 -- Init
 local init = CreateFrame("Frame")
 init:RegisterEvent("PLAYER_ENTERING_WORLD")
-init:SetScript("OnEvent", function()
-    if GameMenuFrame then
-        Spectra_SetupGameMenu()
-    end
+init:SetScript("OnEvent", function(self, event, isInitialLogin, isReloadingUi)
+	if GameMenuFrame then
+		Spectra_SetupGameMenu()
+	end
+
+	-- Only print on login or reload (not zoning)
+	if isInitialLogin or isReloadingUi then
+		SpectraUI:PrintLoginMessage()
+	end
 end)

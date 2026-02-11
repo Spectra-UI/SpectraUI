@@ -37,7 +37,7 @@ function SpectraUI:ElvUIProfileDPSQHD()
 	E:SetupChat()
 
 	-- Set UI Scale
-	E.global.general.UIScale = 0.5333333333
+	E.global.general.UIScale = 0.53333333333333
 
 	SpectraUI:Print("|cffD96C3ADPS / Tank|r layout |CFF5ddb60set|r!")
 end
