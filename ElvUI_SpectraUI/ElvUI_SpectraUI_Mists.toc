@@ -1,7 +1,7 @@
 ## Title: |cff1784d1ElvUI|r |cffffffffSpectra|r|cff2ab6ffUI|r |cfd9b9b9bMists|r
 ## Notes: ElvUI Edit by |cff2ab6ffHoffa|r
 ## Author: Hoffa
-## Version: 2.0.2
+## Version: 2.0.3
 ## IconTexture: Interface\AddOns\ElvUI_SpectraUI\Media\Icon.tga
 ## Group: ElvUI
 ## RequiredDeps: ElvUI, WeakAuras
@@ -9,7 +9,7 @@
 ## DefaultState: Enabled
 ## Interface: 50503
 ## X-Interface: 50503
-## X-ElvUI: 15.03
+## X-ElvUI: 15.05
 ## X-Curse-Project-ID: 1102865
 ## X-Wago-ID: QKy9OvK7
 
