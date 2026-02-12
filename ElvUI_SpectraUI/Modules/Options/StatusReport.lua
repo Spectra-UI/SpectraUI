@@ -43,6 +43,10 @@ local function ValueColor(isGood)
 	return isGood and GOOD_COLOR or BAD_COLOR
 end
 
+-- Helpers: Normalize scale
+local function NormalizeScale(value)
+	return tonumber(format("%.2f", value))
+end
 
 -- Helpers: Client detection
 local function GetClientName()
@@ -161,13 +165,13 @@ function StatusReport:StatusReportCreateSection(width, height, headerWidth, head
 	left:SetHeight(1)
 	left:SetPoint("LEFT", header, "LEFT", 8, 0)
 	left:SetPoint("RIGHT", text, "LEFT", -8, 0)
-	left:SetColorTexture(1, 1, 1, 0.25)
+	left:SetColorTexture(1, 1, 1, 0.18)
 
 	local right = header:CreateTexture(nil, "ARTWORK")
 	right:SetHeight(1)
 	right:SetPoint("RIGHT", header, "RIGHT", -8, 0)
 	right:SetPoint("LEFT", text, "RIGHT", 8, 0)
-	right:SetColorTexture(1, 1, 1, 0.25)
+	right:SetColorTexture(1, 1, 1, 0.18)
 
 	return section
 end
@@ -189,23 +193,19 @@ function StatusReport:StatusReportCreate()
 	statusFrame:CreateBackdrop("Transparent")
 	statusFrame:CreateCloseButton()
 
-	-- Logo Header
 	local header = CreateFrame("Frame", nil, statusFrame, "TitleDragAreaTemplate")
 	header:SetPoint("TOP", statusFrame, "TOP", 0, -12)
 	header:SetSize(240, 32)
 	statusFrame.Header = header
-	
+
 	local logo = header:CreateTexture(nil, "ARTWORK")
 	logo:SetPoint("CENTER", header, "CENTER", 0, -9)
 	logo:SetTexture(SpectraUI.Media.logo)
 	logo:SetSize(300, 150)
-	
 	logo:SetBlendMode("ADD")
-	logo:SetAlpha(0.4)
-	
+	logo:SetAlpha(0.25)
 	header.Logo = logo
 
-	-- AddOn Frame
 	local addOnFrame = CreateFrame("Frame", nil, statusFrame)
 	addOnFrame:SetPoint("TOPLEFT", statusFrame, "TOPRIGHT", 12, 0)
 	addOnFrame:SetFrameStrata("DIALOG")
@@ -217,7 +217,6 @@ function StatusReport:StatusReportCreate()
 	local mainSectionPadding = 40
 	local sideSectionWidth = 280
 
-	-- Sections
 	statusFrame.Section1 = self:StatusReportCreateSection(mainSectionWidth, (5 * 30) + 5, nil, 30, statusFrame, "TOP", header, "BOTTOM", -15)
 	statusFrame.Section2 = self:StatusReportCreateSection(mainSectionWidth, (3 * 30) + 15, nil, 30, statusFrame, "TOP", statusFrame.Section1, "BOTTOM", -5)
 	statusFrame.Section3 = self:StatusReportCreateSection(mainSectionWidth, (5 * 30) + 15, nil, 30, statusFrame, "TOP", statusFrame.Section2, "BOTTOM", -5)
@@ -238,14 +237,13 @@ function StatusReport:StatusReportUpdate()
 	statusFrame.Section1.Header.Text:SetText("|cff2ab6ffA|rDDON INFO")
 	statusFrame.Section2.Header.Text:SetText("|cff2ab6ffW|rOW INFO")
 	statusFrame.Section3.Header.Text:SetText("|cff2ab6ffC|rHARACTER INFO")
-	
+
 	local pixelScale = tonumber(E:PixelBestSize()) or 0
 	local uiScale = tonumber(E.global.general.UIScale) or 0
-	local scaleMatch = math.abs(uiScale - pixelScale) < 0.001
+	local scaleMatch = (NormalizeScale(uiScale) == NormalizeScale(pixelScale))
 
 	local res = E.resolution or ""
-	local width, height = res:match("^(%d+)x(%d+)$")
-	width = tonumber(width) or 0
+	local _, height = res:match("^(%d+)x(%d+)$")
 	height = tonumber(height) or 0
 	local goodResolution = height >= 1440
 
@@ -254,29 +252,24 @@ function StatusReport:StatusReportUpdate()
 
 	local classColor = RAID_CLASS_COLORS[E.myclass]
 	local classHex = classColor and classColor:GenerateHexColor():sub(3) or GOOD_COLOR
-
 	local factionHex = FACTION_COLORS[E.myfaction] or GOOD_COLOR
 
-	-- AddOn Info
-	statusFrame.Section1.Content.Line1.Text:SetFormattedText("Version of %s: %s",SpectraUI.Name,ColorText(GOOD_COLOR, SpectraUI.Version or UNKNOWN))
-	statusFrame.Section1.Content.Line2.Text:SetFormattedText("Client: %s",ColorText(clientColor, clientName))
-	statusFrame.Section1.Content.Line3.Text:SetFormattedText("Pixel Perfect Scale: %s",ColorText(GOOD_COLOR, pixelScale))
-	statusFrame.Section1.Content.Line4.Text:SetFormattedText("Your UI Scale: %s",ColorText(ValueColor(scaleMatch), uiScale))
-	statusFrame.Section1.Content.Line5.Text:SetFormattedText("UI Scale Match: %s",ColorText(ValueColor(scaleMatch), scaleMatch and "Yes" or "No"))
+	statusFrame.Section1.Content.Line1.Text:SetFormattedText("Version of %s: %s", SpectraUI.Name, ColorText(GOOD_COLOR, SpectraUI.Version or UNKNOWN))
+	statusFrame.Section1.Content.Line2.Text:SetFormattedText("Client: %s", ColorText(clientColor, clientName))
+	statusFrame.Section1.Content.Line3.Text:SetFormattedText("Pixel Perfect Scale: %s", ColorText(GOOD_COLOR, pixelScale))
+	statusFrame.Section1.Content.Line4.Text:SetFormattedText("Your UI Scale: %s", ColorText(ValueColor(scaleMatch), uiScale))
+	statusFrame.Section1.Content.Line5.Text:SetFormattedText("UI Scale Match: %s", ColorText(ValueColor(scaleMatch), scaleMatch and "Yes" or "No"))
 
-	-- WoW Info
-	statusFrame.Section2.Content.Line1.Text:SetFormattedText("Version of WoW: %s (build %s)",ColorText(GOOD_COLOR, E.wowpatch or UNKNOWN),ColorText(GOOD_COLOR, E.wowbuild or UNKNOWN))
-	statusFrame.Section2.Content.Line2.Text:SetFormattedText("Display Mode: %s",ColorText(GOOD_COLOR, (E.GetDisplayMode and E:GetDisplayMode()) or UNKNOWN))
-	statusFrame.Section2.Content.Line3.Text:SetFormattedText("Resolution: %s",ColorText(ValueColor(goodResolution), res ~= "" and res or UNKNOWN))
+	statusFrame.Section2.Content.Line1.Text:SetFormattedText("Version of WoW: %s (build %s)", ColorText(GOOD_COLOR, E.wowpatch or UNKNOWN), ColorText(GOOD_COLOR, E.wowbuild or UNKNOWN))
+	statusFrame.Section2.Content.Line2.Text:SetFormattedText("Display Mode: %s", ColorText(GOOD_COLOR, (E.GetDisplayMode and E:GetDisplayMode()) or UNKNOWN))
+	statusFrame.Section2.Content.Line3.Text:SetFormattedText("Resolution: %s", ColorText(ValueColor(goodResolution), res ~= "" and res or UNKNOWN))
 
-	-- Character Info
-	statusFrame.Section3.Content.Line1.Text:SetFormattedText("Faction: %s",ColorText(factionHex, E.myfaction or UNKNOWN))
-	statusFrame.Section3.Content.Line2.Text:SetFormattedText("Race: %s",ColorText(factionHex, E.myrace or UNKNOWN))
-	statusFrame.Section3.Content.Line3.Text:SetFormattedText("Class: %s",ColorText(classHex, englishClassName[E.myclass] or UNKNOWN))
-	statusFrame.Section3.Content.Line4.Text:SetFormattedText("Level: %s",ColorText(INFO_COLOR, E.mylevel or UNKNOWN))
-	statusFrame.Section3.Content.Line5.Text:SetFormattedText("Zone: %s",ColorText(INFO_COLOR, GetRealZoneText() or UNKNOWN))
+	statusFrame.Section3.Content.Line1.Text:SetFormattedText("Faction: %s", ColorText(factionHex, E.myfaction or UNKNOWN))
+	statusFrame.Section3.Content.Line2.Text:SetFormattedText("Race: %s", ColorText(factionHex, E.myrace or UNKNOWN))
+	statusFrame.Section3.Content.Line3.Text:SetFormattedText("Class: %s", ColorText(classHex, englishClassName[E.myclass] or UNKNOWN))
+	statusFrame.Section3.Content.Line4.Text:SetFormattedText("Level: %s", ColorText(INFO_COLOR, E.mylevel or UNKNOWN))
+	statusFrame.Section3.Content.Line5.Text:SetFormattedText("Zone: %s", ColorText(INFO_COLOR, GetRealZoneText() or UNKNOWN))
 
-	-- AddOns
 	local AddOnSection = addOnFrame.SectionA
 	AddOnSection.Header.Text:SetText("|cff2ab6ffA|rDDONS")
 
@@ -289,8 +282,7 @@ function StatusReport:StatusReportUpdate()
 
 			if addonName == "ElvUI" then
 				version = E.versionString or version
-			elseif addonName == "Details" and Details and Details.GetVersionString
-			then
+			elseif addonName == "Details" and Details and Details.GetVersionString then
 				title = "Details"
 				local detailsVersion = Details:GetVersionString()
 				version = detailsVersion:match("(%d+%.%d+%.%d+)") or detailsVersion
@@ -309,11 +301,7 @@ function StatusReport:StatusReportUpdate()
 	AddOnSection.Content = self:StatusReportCreateContent(count, AddOnSection:GetWidth() - 20, AddOnSection, AddOnSection.Header)
 
 	for i = 1, count do
-		AddOnSection.Content["Line" .. i].Text:SetFormattedText(
-			"%s: %s",
-			addOnData[i].name,
-			ColorText(GOOD_COLOR, addOnData[i].version)
-		)
+		AddOnSection.Content["Line" .. i].Text:SetFormattedText("%s: %s", addOnData[i].name, ColorText(GOOD_COLOR, addOnData[i].version))
 	end
 
 	AddOnSection:SetHeight((count * 25) + 40)
@@ -338,4 +326,3 @@ function StatusReport:ToggleStatusReport()
 		self.StatusReportFrame.AddOnFrame:Hide()
 	end
 end
-

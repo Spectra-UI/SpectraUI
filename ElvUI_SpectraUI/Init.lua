@@ -39,12 +39,15 @@ SpectraUI.Color = {
 
 SpectraUI.Links = {
 	WA = {
-		spectra = {
+		SUI = {
 			classic = "https://wago.io/A2fUaQ0bp",
 			retail = "https://wago.io/uPWYrGAFW",
 		},
 	},
+
+	Discord = "https://discord.gg/UxHZRpSwQz",
 }
+
 
 SpectraUI.Profiles = {
 	spectra = {
@@ -72,9 +75,8 @@ SpectraUI.Addons = {}
 SpectraUI.InstallerData = {}
 SpectraUI.Options = {}
 
--- example of credits if you want to add some
+-- Credits
 SpectraUI.CREDITS = {
-	L["|CFFFFFFFFHoffa|r - |CFF2AB6FFAuthor|r"],
 	L["|CFF00A3FFB|r|CFF00B4FFl|r|CFF00C6FFi|r|CFF00D8FFn|r|CFF00EAFFk|r|CFF00F6FFi|r|CFF00F6FFi|r - Foundational Programming"],
 	L["|CFF0DB1D0Dlarge|r - DE Localization"],
 	L["|CFF0DB1D0ZamestoTV|r - RU Localization"],
@@ -85,7 +87,7 @@ SpectraUI.CREDITS = {
 	L["|CFF0DB1D0J|r|cff18A2D2i|r|cff2494D4b|r|cff2F86D7e|r|cff3B78D9r|r|cff4669DBi|r|cff525BDEs|r|cff5D4DE0h|r - The Spark Behind the Project"],
 }
 
--- example of donators if you want to add some
+-- Donators
 SpectraUI.DONATORS = {
 	"|CFFA335EELysergic|r - |CFFFF8000Ascended Supporter|r",
 
