@@ -1,18 +1,10 @@
-name: Discord Stable Release Notify
-
-on:
-  release:
-    types: [published]
-
-jobs:
-  notify:
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Send release to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          RELEASE_JSON: ${{ toJson(github.event.release) }}
+          TAG_NAME: ${{ github.event.release.tag_name }}
+          RELEASE_BODY: ${{ github.event.release.body }}
+          RELEASE_URL: ${{ github.event.release.html_url }}
+          PRERELEASE: ${{ github.event.release.prerelease }}
           ACTOR: ${{ github.actor }}
         run: |
           if [ -z "$DISCORD_WEBHOOK" ]; then
@@ -20,17 +12,11 @@ jobs:
             exit 1
           fi
 
-          PRERELEASE=$(echo "$RELEASE_JSON" | jq -r '.prerelease')
-
-          # Skip prereleases entirely
+          # Skip prereleases
           if [ "$PRERELEASE" = "true" ]; then
             echo "Prerelease detected — skipping Discord notification."
             exit 0
           fi
-
-          TAG_NAME=$(echo "$RELEASE_JSON" | jq -r '.tag_name')
-          RELEASE_BODY=$(echo "$RELEASE_JSON" | jq -r '.body // empty')
-          RELEASE_URL=$(echo "$RELEASE_JSON" | jq -r '.html_url')
 
           if [ -z "$RELEASE_BODY" ]; then
             RELEASE_BODY="A new stable version of SpectraUI is now available."
@@ -40,7 +26,7 @@ jobs:
           RELEASE_BODY="${RELEASE_BODY:0:4000}"
 
           jq -n \
-            --arg title "✨ New Stable Release: $TAG_NAME" \
+            --arg title "New Stable Release: $TAG_NAME" \
             --arg body "$RELEASE_BODY" \
             --arg url "$RELEASE_URL" \
             --arg actor "$ACTOR" \
@@ -52,7 +38,7 @@ jobs:
                 color: 2799359,
                 fields: [
                   {
-                    name: "📦 Downloads",
+                    name: "Downloads",
                     value: "[CurseForge](https://www.curseforge.com/wow/addons/spectraui)\n[Wago](https://addons.wago.io/addons/spectraui)",
                     inline: false
                   }
