@@ -1,3 +1,17 @@
+name: Discord Stable Release Notify
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
       - name: Send release to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
@@ -22,11 +36,11 @@
             RELEASE_BODY="A new stable version of SpectraUI is now available."
           fi
 
-          # Discord embed description limit
+          # Trim to Discord limit
           RELEASE_BODY="${RELEASE_BODY:0:4000}"
 
           jq -n \
-            --arg title "New Stable Release: $TAG_NAME" \
+            --arg title "✨ New Stable Release: $TAG_NAME" \
             --arg body "$RELEASE_BODY" \
             --arg url "$RELEASE_URL" \
             --arg actor "$ACTOR" \
@@ -38,7 +52,7 @@
                 color: 2799359,
                 fields: [
                   {
-                    name: "Downloads",
+                    name: "📦 Downloads",
                     value: "[CurseForge](https://www.curseforge.com/wow/addons/spectraui)\n[Wago](https://addons.wago.io/addons/spectraui)",
                     inline: false
                   }
