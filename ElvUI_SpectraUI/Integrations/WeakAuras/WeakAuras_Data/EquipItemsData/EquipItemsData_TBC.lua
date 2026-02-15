@@ -778,6 +778,16 @@ local trinketData = {
     },
   },
   {
+    name = "Dragonmaw / Dragonstrike / Drakefist Hammer / Empyrean Demolisher",
+    items = { 28438, 28439, 28437, 17112 },
+    effects = {
+      {
+        type = "proc",
+        spells = { 21165 },
+      },
+    },
+  },
+  {
     name = "Earring of Soulful Meditation",
     items = {
       30665,
