@@ -1,14 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
-<Script file="WeakAuras_API\ButtonTemplate.lua"/>
-<Script file="WeakAuras_API\ClassSettings.lua"/>
-<Script file="WeakAuras_API\Groups.lua"/>
-<Script file="WeakAuras_API\Helpful.lua"/>
-<Script file="WeakAuras_API\LFG.lua"/>
-<Script file="WeakAuras_API\RaidKit.lua"/>
-<Script file="WeakAuras_API\RoleHelper.lua"/>
-<Script file="WeakAuras_API\SpectraConfigBridge.lua"/>
-<Script file="WeakAuras_API\TalentsClassic.lua"/>
-<Script file="WeakAuras_API\Timers.lua"/>
 <Script file="WeakAuras_Data\EquipItemsData\EquipItemsData_TBC.lua"/>
 <Script file="WeakAuras_Data\QuickRationsData\QuickRationsData_TBC.lua"/>
+<Include file="WeakAuras_Data\GameData\GameData_TBC.xml"/>
+<Include file="WeakAuras_API\API_TBC.xml"/>
 </Ui>

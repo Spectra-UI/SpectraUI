@@ -1,0 +1,10 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+<Script file="GameData_Collections_TBC.lua"/>
+<Script file="GameData_Core_TBC.lua"/>
+<Script file="GameData_Faction_TBC.lua"/>
+<Script file="GameData_InstanceTags_TBC.lua"/>
+<Script file="GameData_LootSets_TBC.lua"/>
+<Script file="GameData_Profession_TBC.lua"/>
+<Script file="GameData_TierTokens_TBC.lua"/>
+<Script file="GameData_Vendor_TBC.lua"/>
+</Ui>

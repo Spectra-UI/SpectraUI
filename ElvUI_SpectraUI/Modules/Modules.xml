@@ -4,4 +4,5 @@
 	<Include file="Misc\Misc.xml"/>
 	<Include file="Profiles\Profiles.xml"/>
 	<Include file="Options\Options.xml"/>
+	<Include file="GearTracker\GearTracker.xml"/>
 </Ui>

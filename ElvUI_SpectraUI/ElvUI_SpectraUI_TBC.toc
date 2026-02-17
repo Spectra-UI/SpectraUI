@@ -18,5 +18,5 @@ Localization\Localization.xml
 Media\Media.xml
 Init.lua
 Core\Core.xml
-Modules\Modules.xml
 Integrations\WeakAuras\WeakAuras_TBC.xml
+Modules\Modules.xml
