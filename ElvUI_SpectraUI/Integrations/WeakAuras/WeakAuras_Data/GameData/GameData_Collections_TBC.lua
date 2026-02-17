@@ -1,4 +1,3 @@
--- Auto generated TBC Collections mapping
 local SpectraUI = _G.SpectraUI
 SpectraUI.Data = SpectraUI.Data or {}
 SpectraUI.Data.TBC = SpectraUI.Data.TBC or {}

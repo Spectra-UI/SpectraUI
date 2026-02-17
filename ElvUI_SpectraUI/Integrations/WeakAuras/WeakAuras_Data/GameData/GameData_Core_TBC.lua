@@ -435,26 +435,6 @@ local function ResolveTierTokenSources(itemID)
   return out
 end
 
---[[local function GetDarkmoonSuffix(itemID)
-  local name = GetItemInfo(itemID)
-  if not name then
-    return nil
-  end
-  name = name:gsub("：", ":")
-  return name:match("^.*:%s*(.+)$") or name
-end
-
-local DARKMOON_IDS = {
-  [42989] = true,
-  [42988] = true,
-  [42990] = true,
-  [42987] = true,
-  [44253] = true,
-  [44254] = true,
-  [44255] = true,
-}]]
-
-
 function TBC.GetItemDropString(itemID)
   if type(itemID) ~= "number" then
     return ""
@@ -483,14 +463,6 @@ function TBC.GetItemDropString(itemID)
     end
   end
 
-  --[[if DARKMOON_IDS[itemID] then
-    local suffix = GetDarkmoonSuffix(itemID)
-    if suffix then
-      return ("Darkmoon Faire (%s)"):format(suffix)
-    end
-    return "Darkmoon Faire"
-  end]]
-
   local faction = TBC.FactionSourceDB and TBC.FactionSourceDB[itemID]
   if faction then
     local factionName = GetFactionInfoByID(faction.factionID)
@@ -517,10 +489,7 @@ function TBC.GetItemDropString(itemID)
   return table.concat(outParts, " | ")
 end
 
--- --------------------------------------------------------
--- Public Resolver Entry (Expansion Safe)
--- --------------------------------------------------------
-
+-- Public Resolver Entry
 function SpectraUI.Data.GetItemDropString(itemID)
     if SpectraUI.Data.TBC and SpectraUI.Data.TBC.GetItemDropString then
         return SpectraUI.Data.TBC.GetItemDropString(itemID)

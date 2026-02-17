@@ -22,20 +22,21 @@
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
 
-.gitattributes  text
-.gitignore      text
-.editorconfig   text
+.gitattributes  text eol=lf
+.gitignore      text eol=lf
+.editorconfig   text eol=lf
 
-.luacheckrc     text
-.pkgmeta        text
+.luacheckrc     text eol=lf
+.pkgmeta        text eol=lf
 
-*.lua           text
-*.xml           text
-*.toc           text
+*.lua           text eol=lf
+*.xml           text eol=lf
+*.toc           text eol=lf
 
-*.yml           text
-*.md            text
-*.py            text
+*.yml           text eol=lf
+*.md            text eol=lf
+*.py            text eol=lf
+*.json          text eol=lf
 
 *.blp           binary
 *.png           binary

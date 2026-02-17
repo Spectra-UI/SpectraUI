@@ -1,8 +1,6 @@
--- ElvUI
 local E = unpack(ElvUI)
 local L = SpectraUI.Locales
 
--- Module
 local GearTracker = SpectraUI:NewModule("GearTracker")
 SpectraUI.GearTracker = GearTracker
 
@@ -10,7 +8,7 @@ SpectraUI.GearTracker = GearTracker
 local next, pairs, type = next, pairs, type
 local format = string.format
 
--- WoW API (locals to avoid "unified global" / faster access)
+-- WoW API
 local UnitName = UnitName
 local UnitClass = UnitClass
 local GetNormalizedRealmName = GetNormalizedRealmName
@@ -22,19 +20,14 @@ local GetTalentTabInfo = _G.GetTalentTabInfo
 -- WeakAuras
 local WeakAuras = WeakAuras
 
--- --------------------------------------------------------
--- Expansion Detection
--- --------------------------------------------------------
 
+-- Expansion Detection
 local function IsTBC()
     local build = select(4, GetBuildInfo())
     return build > 20500 and build < 30000
 end
 
--- --------------------------------------------------------
 -- TBC Spec Mapping (Talent Tab → SpecID)
--- --------------------------------------------------------
--- NOTE: This is the "SpectraUI" specID set you’re using for presets.
 GearTracker.SpecMap = {
     WARRIOR = { [1] = 161, [2] = 164, [3] = 163 },
     PALADIN = { [1] = 382, [2] = 383, [3] = 381 },
@@ -47,10 +40,7 @@ GearTracker.SpecMap = {
     DRUID   = { [1] = 283, [2] = 281, [3] = 282 },
 }
 
--- --------------------------------------------------------
 -- Character / Spec Helpers
--- --------------------------------------------------------
-
 function GearTracker:GetCharKey()
     local name = UnitName("player") or "Unknown"
     local realm = GetNormalizedRealmName() or GetRealmName() or "UnknownRealm"
@@ -77,21 +67,12 @@ function GearTracker:GetSpecID()
     return map and map[bestTab]
 end
 
--- --------------------------------------------------------
 -- Database
--- --------------------------------------------------------
--- Goal: per character + per spec, ONLY:
--- - preset data (static)
--- - custom data (user edited/imported later)
--- - boolean: useCustom
---
--- No AceDB profiles. No copying profiles. Simple.
-
 function GearTracker:GetDB()
-    -- 🔹 Ensure base addon DB exists
+    -- Ensure base addon DB exists
     E.db.SpectraUI = E.db.SpectraUI or {}
 
-    -- 🔹 Ensure GearTracker container exists
+    -- Ensure GearTracker container exists
     E.db.SpectraUI.gearTracker = E.db.SpectraUI.gearTracker or {
         custom = {},
         useCustom = {},
@@ -106,7 +87,7 @@ function GearTracker:EnsureDB()
 
     db.custom = db.custom or {}
     db.useCustom = db.useCustom or {}
-    db.presetKey = db.presetKey or "" -- later: options can choose this globally
+    db.presetKey = db.presetKey or ""
 
     local charKey = self:GetCharKey()
 
@@ -122,31 +103,25 @@ function GearTracker:EnsureSpec()
     local specID = self:GetSpecID()
     if not specID then return end
 
-    -- 🔹 Default behavior: preset unless user explicitly enables custom
+    -- Default behavior: preset unless user explicitly enables custom
     if db.useCustom[charKey][specID] == nil then
         db.useCustom[charKey][specID] = false
     end
 
-    -- 🔹 Custom container exists when needed
+    -- Custom container exists when needed
     db.custom[charKey][specID] = db.custom[charKey][specID] or {
         items = {},
         suffixes = {},
     }
 end
 
-
--- --------------------------------------------------------
 -- Presets Registry + Selection
--- --------------------------------------------------------
--- Preset files register like:
--- SpectraUI.GearTrackerPresets[Preset.key] = Preset
-
 function GearTracker:GetPresetRegistry()
     return SpectraUI.GearTrackerPresets or {}
 end
 
 function GearTracker:PickDefaultPresetKey()
-    -- Today: only TBC. Later: expansion/phase filtering.
+    
     local reg = self:GetPresetRegistry()
 
     local bestKey, bestOrder
@@ -181,10 +156,7 @@ function GearTracker:GetActivePreset()
     return nil
 end
 
--- --------------------------------------------------------
--- Public API (For WeakAura)
--- --------------------------------------------------------
-
+-- Public API
 function GearTracker:GetActiveData()
     if not IsTBC() then return nil end
 
@@ -210,7 +182,7 @@ function GearTracker:GetActiveData()
     return preset.profiles[specID]
 end
 
--- Explicit toggle (your options UI later can call this)
+-- Explicit toggle
 function GearTracker:SetUseCustom(enabled)
     if enabled ~= true and enabled ~= false then return end
     if not IsTBC() then return end
@@ -247,20 +219,14 @@ function GearTracker:SetCustomData(itemsTable, suffixesTable)
     self:NotifyUpdate()
 end
 
--- --------------------------------------------------------
 -- WeakAura Bridge
--- --------------------------------------------------------
-
 function GearTracker:NotifyUpdate()
     if WeakAuras and WeakAuras.ScanEvents then
         WeakAuras.ScanEvents("SPECTRA_GEARTRACKER_UPDATED")
     end
 end
 
--- --------------------------------------------------------
 -- Events
--- --------------------------------------------------------
-
 function GearTracker:PLAYER_ENTERING_WORLD()
     self:EnsureSpec()
     self:NotifyUpdate()
@@ -271,10 +237,8 @@ function GearTracker:PLAYER_TALENT_UPDATE()
     self:NotifyUpdate()
 end
 
--- --------------------------------------------------------
--- Initialize
--- --------------------------------------------------------
 
+-- Initialize
 function GearTracker:Initialize()
     if not IsTBC() then return end
 
