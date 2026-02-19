@@ -67,6 +67,38 @@ function GearTracker:GetSpecID()
     return map and map[bestTab]
 end
 
+function GearTracker:GetTrackedSpecID()
+    if not IsTBC() then return nil end
+
+    self:EnsureDB()
+
+    local db = self:GetDB()
+    local charKey = self:GetCharKey()
+
+    local override = db.trackedSpec and db.trackedSpec[charKey]
+    if type(override) == "number" and override > 0 then
+        return override -- Manual override
+    end
+
+    return self:GetSpecID()
+end
+
+function GearTracker:GetSpecNameByID(specID)
+    if not specID then return "Unknown" end
+
+    local preset = self:GetActivePreset()
+    if not preset or not preset.profiles then
+        return tostring(specID)
+    end
+
+    local profile = preset.profiles[specID]
+    if profile and profile.specName then
+        return profile.specName
+    end
+
+    return tostring(specID)
+end
+
 -- Database
 function GearTracker:GetDB()
     -- Ensure base addon DB exists
@@ -77,6 +109,7 @@ function GearTracker:GetDB()
         custom = {},
         useCustom = {},
         presetKey = "",
+        trackedSpec = {},
     }
 
     return E.db.SpectraUI.gearTracker
@@ -88,6 +121,7 @@ function GearTracker:EnsureDB()
     db.custom = db.custom or {}
     db.useCustom = db.useCustom or {}
     db.presetKey = db.presetKey or ""
+    db.trackedSpec = db.trackedSpec or {}
 
     local charKey = self:GetCharKey()
 
@@ -100,7 +134,7 @@ function GearTracker:EnsureSpec()
 
     local db = self:GetDB()
     local charKey = self:GetCharKey()
-    local specID = self:GetSpecID()
+    local specID = self:GetTrackedSpecID()
     if not specID then return end
 
     -- Default behavior: preset unless user explicitly enables custom
@@ -164,22 +198,47 @@ function GearTracker:GetActiveData()
 
     local db = self:GetDB()
     local charKey = self:GetCharKey()
-    local specID = self:GetSpecID()
+    local specID = self:GetTrackedSpecID()
     if not specID then return nil end
 
-    -- If user enabled custom AND custom has something, use it.
-    if db.useCustom[charKey][specID] == true then
-        local c = db.custom[charKey][specID]
-        if c and c.items and next(c.items) ~= nil then
-            return c
-        end
-    end
-
-    -- Otherwise use preset
+    -- Load preset first
     local preset = self:GetActivePreset()
     if not preset or not preset.profiles then return nil end
 
-    return preset.profiles[specID]
+    local p = preset.profiles[specID]
+    if not p then return nil end
+
+    -- If custom enabled and has overrides, merge per-slot over preset
+    if db.useCustom[charKey][specID] == true then
+        local c = db.custom[charKey][specID]
+        if c and c.items and next(c.items) ~= nil then
+            local merged = { items = {}, suffixes = {} }
+
+            -- Start from preset
+            if p.items then
+                for slot, id in pairs(p.items) do
+                    merged.items[slot] = id
+                end
+            end
+            if p.suffixes then
+                for k, v in pairs(p.suffixes) do
+                    merged.suffixes[k] = v
+                end
+            end
+
+            -- Overlay custom overrides
+            for slot, id in pairs(c.items) do
+                merged.items[slot] = id
+            end
+            for k, v in pairs(c.suffixes or {}) do
+                merged.suffixes[k] = v
+            end
+
+            return merged
+        end
+    end
+
+    return p
 end
 
 -- Explicit toggle
@@ -191,7 +250,7 @@ function GearTracker:SetUseCustom(enabled)
 
     local db = self:GetDB()
     local charKey = self:GetCharKey()
-    local specID = self:GetSpecID()
+    local specID = self:GetTrackedSpecID()
     if not specID then return end
 
     db.useCustom[charKey][specID] = enabled
@@ -206,7 +265,7 @@ function GearTracker:SetCustomData(itemsTable, suffixesTable)
 
     local db = self:GetDB()
     local charKey = self:GetCharKey()
-    local specID = self:GetSpecID()
+    local specID = self:GetTrackedSpecID()
     if not specID then return end
 
     local c = db.custom[charKey][specID]
