@@ -47,6 +47,8 @@
   *Auction house tools & tracking*
 - [**Chattynator**](https://www.curseforge.com/wow/addons/chattynator)  
   *Stylish chat frame*
+- [**Plater**](https://www.curseforge.com/wow/addons/plater-nameplates)  
+  *Highly customizable nameplates*
 
 ## Clean High Quality Icons
 - [**High Quality Icons (Clean Icons – Mechagnome Edition)**](https://www.wowinterface.com/downloads/info25064-CleanIcons-MechagnomeEdition.html)
