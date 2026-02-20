@@ -1,7 +1,7 @@
 ## Title: |cff1784d1ElvUI|r |cffffffffSpectra|r|cff2ab6ffUI|r |cfd9b9b9bMists|r
 ## Notes: ElvUI Edit by |cff2ab6ffHoffa|r
-## Author: Hoffa
-## Version: 2.0.4
+## Author: |cff2ab6ffHoffa|r
+## Version: 2.0.5
 ## IconTexture: Interface\AddOns\ElvUI_SpectraUI\Media\Icon.tga
 ## Group: ElvUI
 ## RequiredDeps: ElvUI, WeakAuras
