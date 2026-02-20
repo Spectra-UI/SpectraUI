@@ -66,7 +66,7 @@ Spectra.GetBar1KeybindText = function(buttonIndex)
     return nil
   end
   local function pretty(k)
-    return GetBindingText(k, "KEY_", 1)
+    return GetBindingText(k, "KEY_", true)
   end
   return (k1 and k2) and (pretty(k1) .. ", " .. pretty(k2)) or pretty(k1 or k2)
 end

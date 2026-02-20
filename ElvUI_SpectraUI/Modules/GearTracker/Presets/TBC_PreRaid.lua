@@ -3,7 +3,7 @@ local Preset = {}
 Preset.key = "TBC_PreRaid"
 Preset.label = "Pre-Raid BiS"
 Preset.expansion = "TBC"
-Preset.phase = 0
+Preset.phase = 0.5
 Preset.order = 1
 
 -- Profiles indexed by specID

@@ -174,7 +174,6 @@ SpectraUI.options = {
             }
         },
 
- -- ARMORY TAB
         armory = {
             order = 3,
             type = "group",
@@ -182,154 +181,271 @@ SpectraUI.options = {
             childGroups = "tab",
             args = {
 
-                -- TRACKING TAB
-                tracking = {
+                geartracker = {
                     order = 1,
                     type = "group",
-                    name = L["Tracking"],
+                    name = "GearTracker",
+                    childGroups = "tab",
                     args = {
 
-                        -- Description Box
-                        descBox = {
+                        -- TRACKING TAB
+                        tracking = {
                             order = 1,
                             type = "group",
-                            inline = true,
                             name = L["Tracking"],
                             args = {
-                                desc = {
+
+                                -- Description Box
+                                descBox = {
                                     order = 1,
+                                    type = "group",
+                                    inline = true,
+                                    name = L["Tracking"],
+                                    args = {
+                                        desc = {
+                                            order = 1,
+                                            type = "description",
+                                            fontSize = "medium",
+                                            name = "Choose which specialization to track and optionally override individual gear slots."
+                                        }
+                                    }
+                                },
+
+                                spacer1 = {
+                                    order = 2,
                                     type = "description",
-                                    fontSize = "medium",
-                                    name = "Choose which specialization to track and optionally override individual gear slots."
+                                    name = "\n",
+                                    width = "full"
+                                },
+
+                                -- Spec Select
+                                specSelect = {
+                                    order = 5,
+                                    type = "select",
+                                    name = "Tracked Specialization",
+                                    width = "full",
+                                    values = {}
+                                },
+
+                                specStatus = {
+                                    order = 6,
+                                    type = "description",
+                                    width = "full",
+                                    name = ""
+                                },
+
+                                spacer3 = {
+                                    order = 7,
+                                    type = "description",
+                                    name = "\n",
+                                    width = "full"
+                                },
+
+                                -- Gear Slots
+                                slots = {
+                                    order = 8,
+                                    type = "group",
+                                    inline = true,
+                                    name = "Gear Slots",
+                                    args = {
+                                        head = {
+                                            order = 1,
+                                            type = "input",
+                                            name = "Head",
+                                            width = "full"
+                                        },
+                                        neck = {
+                                            order = 2,
+                                            type = "input",
+                                            name = "Neck",
+                                            width = "full"
+                                        },
+                                        shoulder = {
+                                            order = 3,
+                                            type = "input",
+                                            name = "Shoulder",
+                                            width = "full"
+                                        },
+                                        back = {
+                                            order = 4,
+                                            type = "input",
+                                            name = "Back",
+                                            width = "full"
+                                        },
+                                        chest = {
+                                            order = 5,
+                                            type = "input",
+                                            name = "Chest",
+                                            width = "full"
+                                        },
+                                        wrist = {
+                                            order = 6,
+                                            type = "input",
+                                            name = "Wrist",
+                                            width = "full"
+                                        },
+                                        hands = {
+                                            order = 7,
+                                            type = "input",
+                                            name = "Hands",
+                                            width = "full"
+                                        },
+                                        waist = {
+                                            order = 8,
+                                            type = "input",
+                                            name = "Waist",
+                                            width = "full"
+                                        },
+                                        legs = {
+                                            order = 9,
+                                            type = "input",
+                                            name = "Legs",
+                                            width = "full"
+                                        },
+                                        boots = {
+                                            order = 10,
+                                            type = "input",
+                                            name = "Boots",
+                                            width = "full"
+                                        },
+                                        finger1 = {
+                                            order = 11,
+                                            type = "input",
+                                            name = "Finger 1",
+                                            width = "full"
+                                        },
+                                        finger2 = {
+                                            order = 12,
+                                            type = "input",
+                                            name = "Finger 2",
+                                            width = "full"
+                                        },
+                                        trinket1 = {
+                                            order = 13,
+                                            type = "input",
+                                            name = "Trinket 1",
+                                            width = "full"
+                                        },
+                                        trinket2 = {
+                                            order = 14,
+                                            type = "input",
+                                            name = "Trinket 2",
+                                            width = "full"
+                                        },
+                                        mainhand = {
+                                            order = 15,
+                                            type = "input",
+                                            name = "Main Hand",
+                                            width = "full"
+                                        },
+                                        offhand = {
+                                            order = 16,
+                                            type = "input",
+                                            name = "Off Hand",
+                                            width = "full"
+                                        },
+                                        ranged = {
+                                            order = 17,
+                                            type = "input",
+                                            name = "Ranged",
+                                            width = "full"
+                                        }
+                                    }
+                                },
+
+                                spacer4 = {
+                                    order = 9,
+                                    type = "description",
+                                    name = "\n",
+                                    width = "full"
+                                },
+
+                                reset = {
+                                    order = 10,
+                                    type = "execute",
+                                    name = "Reset to Preset",
+                                    width = "full",
+                                    func = function() end
                                 }
                             }
                         },
 
-                        spacer1 = {
+                        -- IMPORT TAB
+                        import = {
                             order = 2,
-                            type = "description",
-                            name = "\n",
-                            width = "full"
-                        },
-
-                        -- Spec Select
-                        specSelect = {
-                            order = 5,
-                            type = "select",
-                            name = "Tracked Specialization",
-                            width = "full",
-                            values = {}
-                        },
-
-                        specStatus = {
-                            order = 6,
-                            type = "description",
-                            width = "full",
-                            name = ""
-                        },
-
-                        spacer3 = {
-                            order = 7,
-                            type = "description",
-                            name = "\n",
-                            width = "full"
-                        },
-
-                        -- Gear Slots
-                        slots = {
-                            order = 8,
                             type = "group",
-                            inline = true,
-                            name = "Gear Slots",
-                            args = {
-                                head     = { order = 1, type = "input", name = "Head",     width = "full" },
-                                neck     = { order = 2, type = "input", name = "Neck",     width = "full" },
-                                shoulder = { order = 3, type = "input", name = "Shoulder", width = "full" },
-                                back     = { order = 4, type = "input", name = "Back",     width = "full" },
-                                chest    = { order = 5, type = "input", name = "Chest",    width = "full" },
-                                wrist    = { order = 6, type = "input", name = "Wrist",    width = "full" },
-                                hands    = { order = 7, type = "input", name = "Hands",    width = "full" },
-                                waist    = { order = 8, type = "input", name = "Waist",    width = "full" },
-                                legs     = { order = 9, type = "input", name = "Legs",     width = "full" },
-                                boots    = { order = 10,type = "input", name = "Boots",    width = "full" },
-                                finger1  = { order = 11,type = "input", name = "Finger 1", width = "full" },
-                                finger2  = { order = 12,type = "input", name = "Finger 2", width = "full" },
-                                trinket1 = { order = 13,type = "input", name = "Trinket 1",width = "full" },
-                                trinket2 = { order = 14,type = "input", name = "Trinket 2",width = "full" },
-                                mainhand = { order = 15,type = "input", name = "Main Hand",width = "full" },
-                                offhand  = { order = 16,type = "input", name = "Off Hand", width = "full" },
-                                ranged   = { order = 17,type = "input", name = "Ranged",   width = "full" },
-                            }
-                        },
-
-                        spacer4 = {
-                            order = 9,
-                            type = "description",
-                            name = "\n",
-                            width = "full"
-                        },
-
-                        reset = {
-                            order = 10,
-                            type = "execute",
-                            name = "Reset to Preset",
-                            width = "full",
-                            func = function() end
-                        }
-                    }
-                },
-
-                -- IMPORT TAB
-                import = {
-                    order = 2,
-                    type = "group",
-                    name = L["Import"],
-                    args = {
-
-                        descBox = {
-                            order = 1,
-                            type = "group",
-                            inline = true,
                             name = L["Import"],
                             args = {
-                                desc = {
+
+                                descBox = {
                                     order = 1,
+                                    type = "group",
+                                    inline = true,
+                                    name = L["Import"],
+                                    args = {
+                                        desc = {
+                                            order = 1,
+                                            type = "description",
+                                            fontSize = "medium",
+                                            name = "Import a gear profile from WoWSims. This will populate your tracked gear slots automatically.\n\n|cffffcc00Important:|r The import string must be a valid |cff2ab6ffWoWSims JSON export|r."
+                                        }
+                                    }
+                                },
+
+                                spacer = {
+                                    order = 2,
                                     type = "description",
-                                    fontSize = "medium",
-                                    name = "Import a gear profile from WoWSims. This will populate your tracked gear slots automatically."
+                                    name = "\n",
+                                    width = "full"
+                                },
+
+                                importBox = {
+                                    order = 3,
+                                    type = "input",
+                                    multiline = 18,
+                                    width = "full",
+                                    dialogControl = "MultiLineEditBox",
+                                    name = "Paste WoWSims Export String",
+                                    get = function()
+                                        local GT =
+                                            SpectraUI:GetModule("GearTracker")
+                                        local db = GT:GetDB()
+                                        return db.importBuffer or ""
+                                    end,
+                                    set = function(_, v)
+                                        local GT =
+                                            SpectraUI:GetModule("GearTracker")
+                                        local db = GT:GetDB()
+                                        db.importBuffer = v or ""
+                                    end
+                                },
+
+                                importButton = {
+                                    order = 4,
+                                    type = "execute",
+                                    name = "Import",
+                                    func = function()
+                                        local GT =
+                                            SpectraUI:GetModule("GearTracker")
+                                        local db = GT:GetDB()
+
+                                        if not GT or not GT.DoImport then
+                                            SpectraUI:Print(
+                                                "|cffff3333GearTracker: Import function missing.|r")
+                                            return
+                                        end
+
+                                        GT:DoImport(db.importBuffer)
+                                    end
                                 }
                             }
-                        },
-
-                        spacer = {
-                            order = 2,
-                            type = "description",
-                            name = "\n",
-                            width = "full"
-                        },
-
-                        importBox = {
-                            order = 3,
-                            type = "input",
-                            multiline = true,
-                            width = "full",
-                            name = "Paste WoWSims Export String"
-                        },
-
-                        importButton = {
-                            order = 4,
-                            type = "execute",
-                            name = "Import",
-                            func = function() end
                         }
                     }
                 }
             }
-        },
-    },
+        }
+    }
 }
 
 -- Inject GearTracker module options (DO NOT TOUCH DASHBOARD)
-if SpectraUI.InjectGearTrackerOptions then
-    SpectraUI:InjectGearTrackerOptions()
-end
+if SpectraUI.InjectGearTrackerOptions then SpectraUI:InjectGearTrackerOptions() end

@@ -8,7 +8,7 @@ local GearTracker = SpectraUI:GetModule("GearTracker")
 -- ------------------------------------------------------------
 
 -- Current released phase (keep at 0 until you ship T4/T5/T6 presets)
-local CURRENT_PHASE = 0
+local CURRENT_PHASE = 1
 
 -- Slot mapping (matches your preset numeric keys)
 local SLOT = {
@@ -310,41 +310,73 @@ local function SlotTooltip(label, slotIndex)
 end
 
 local function ResetAllOverrides()
-  if not IsTBC() then return end
+    local specID = GetTrackedSpecID()
+    if not specID then return end
 
-  local specID = GetTrackedSpecID()
-  if not specID then return end
+    GearTracker:EnsureSpec()
 
-  GearTracker:EnsureSpec()
+    local db = GetDB()
+    local ck = GetCharKey()
 
-  local db = GetDB()
-  local ck = GetCharKey()
+    db.custom[ck][specID].items = {}
+    db.custom[ck][specID].suffixes = {}
+    db.useCustom[ck][specID] = false
 
-  db.custom[ck][specID].items = {}
-  db.custom[ck][specID].suffixes = {}
-  db.useCustom[ck][specID] = false
+    GearTracker:NotifyUpdate()
 
-  GearTracker:NotifyUpdate()
+    SpectraUI:Print("|cfd9b9b9bGearTracker|r Reset to |cff2ab6ffPreset|r.")
 end
 
--- ------------------------------------------------------------
--- Import (soft integration)
--- ------------------------------------------------------------
-local function DoImport(raw)
-  if not raw or raw == "" then return end
 
-  -- If you add an importer elsewhere later, we auto-detect it:
-  -- SpectraUI.GearTrackerImport.Parse(raw) -> itemsTable, suffixesTable
-  local importer = SpectraUI.GearTrackerImport
-  if importer and importer.Parse then
-    local ok, items, suffixes = pcall(importer.Parse, importer, raw)
-    if ok and type(items) == "table" then
-      GearTracker:SetCustomData(items, type(suffixes) == "table" and suffixes or {})
-      return
+-- Import (Validated Integration)
+function DoImport(raw)
+    if not raw or raw == "" then
+        SpectraUI:Print("|cfd9b9b9bGearTracker|r Import |cffff5353No data provided.|r")
+        return false
     end
-  end
 
-  E:Print("GearTracker Import: No importer available yet. Add SpectraUI.GearTrackerImport:Parse(raw).")
+    -- Ensure JSON decoder exists (Classic compatible)
+    if not C_EncodingUtil or not C_EncodingUtil.DeserializeJSON then
+        SpectraUI:Print("|cfd9b9b9bGearTracker|r |cffff5353JSON decoder not available in this WoW client.|r")
+        return false
+    end
+
+    -- Decode JSON safely
+    local ok, data = pcall(C_EncodingUtil.DeserializeJSON, raw)
+    if not ok or type(data) ~= "table" then
+        SpectraUI:Print("|cfd9b9b9bGearTracker|r Import |cffff5353Invalid code|r.")
+        return false
+    end
+
+    -- Validate WoWSim structure
+    if not data.player
+        or not data.player.equipment
+        or type(data.player.equipment.items) ~= "table"
+    then
+        SpectraUI:Print("|cfd9b9b9bGearTracker|r Import |cffff5353Wrong format|r. Expected WoWSim JSON export.")
+        return true
+    end
+
+    -- Ensure importer module exists
+    local importer = SpectraUI.GearTrackerImport
+    if not importer or not importer.Parse then
+        SpectraUI:Print("|cfd9b9b9bGearTracker|r Import |cffff5353Module missing|r.")
+        return false
+    end
+
+    -- Parse gear through your modular importer
+    local success, items, suffixes = pcall(importer.Parse, importer, raw)
+
+    if not success or type(items) ~= "table" or not next(items) then
+        SpectraUI:Print("|cfd9b9b9bGearTracker|r Import |cffff5353Failed|r. Could not extract gear data.")
+        return false
+    end
+
+    -- Apply imported data
+    GearTracker:SetCustomData(items, type(suffixes) == "table" and suffixes or {})
+
+    SpectraUI:Print("|cfd9b9b9bGearTracker|r Import |cff43eb47Successful.|r")
+    return true
 end
 
 -- ------------------------------------------------------------
@@ -355,15 +387,18 @@ function SpectraUI:InjectGearTrackerOptions()
     or not SpectraUI.options.args
     or not SpectraUI.options.args.armory
     or not SpectraUI.options.args.armory.args
-    or not SpectraUI.options.args.armory.args.tracking
+    or not SpectraUI.options.args.armory.args.geartracker
+    or not SpectraUI.options.args.armory.args.geartracker.args
+    or not SpectraUI.options.args.armory.args.geartracker.args.tracking
   then
     return
   end
 
-  local tracking = SpectraUI.options.args.armory.args.tracking.args
-  local import = SpectraUI.options.args.armory.args.import.args
+  local tracking = SpectraUI.options.args.armory.args.geartracker.args.tracking.args
+  local import = SpectraUI.options.args.armory.args.geartracker.args.import.args
 
-  -- Preset / Phase select (add just under descBox if you want; using existing foundation nodes)
+
+  -- Preset / Phase select
   tracking.presetSelect = {
     order = 2.5,
     type = "select",
@@ -385,7 +420,7 @@ function SpectraUI:InjectGearTrackerOptions()
     end,
   }
 
-tracking.presetHint = {
+ tracking.presetHint = {
   order = 2.6,
   type = "description",
   width = "full",
@@ -394,23 +429,26 @@ tracking.presetHint = {
     local reg = GearTracker:GetPresetRegistry()
     local currentPhase = CURRENT_PHASE or 0
 
-    local count = 0
     local labels = {}
 
     for _, preset in pairs(reg) do
-      if preset.expansion == "TBC" and preset.phase <= currentPhase then
-        count = count + 1
-        labels[#labels + 1] = preset.label
+      if preset.expansion == "TBC" then
+        local label = preset.label or preset.key
+
+        if preset.phase > currentPhase then
+          label = "|cff666666" .. label .. " (Coming Soon)|r"
+        end
+
+        labels[#labels + 1] = label
       end
     end
 
     table.sort(labels)
-
     local labelString = table.concat(labels, " | ")
 
     return string.format(
-      "Available Phases: |cff40ff40%d|r | %s",
-      count,
+      "Available Phase: |cff40ff40%d|r | %s",
+      currentPhase,
       labelString ~= "" and labelString or "None"
     )
   end,
@@ -584,8 +622,12 @@ end
   end
   import.importButton.func = function()
     local db = GetDB()
-    DoImport(db._import or "")
-  end
+    local success = DoImport(db._import or "")
+
+    if success then
+        db._import = ""
+    end
+end
   import.importButton.disabled = function()
     return not IsTBC()
   end
