@@ -50,10 +50,16 @@ function SpectraUI:Print(...)
 	print(printName, ...)
 end
 
--- check if addons are loaded
+-- Check if AddOns are loaded
 function SpectraUI:CheckAddons()
-	SpectraUI.Addons.BigWigs = IsAddOnLoaded("BigWigs")
-	SpectraUI.Addons.Details = IsAddOnLoaded("Details")
+    SpectraUI.Addons = SpectraUI.Addons or {}
+
+    SpectraUI.Addons.BigWigs = IsAddOnLoaded("BigWigs")
+    SpectraUI.Addons.Details = IsAddOnLoaded("Details")
+    SpectraUI.Addons.WeakAuras = IsAddOnLoaded("WeakAuras")
+    SpectraUI.Addons.Chattynator = IsAddOnLoaded("Chattynator")
+    SpectraUI.Addons.Platynator = IsAddOnLoaded("Platynator")
+    SpectraUI.Addons.Baganator = IsAddOnLoaded("Baganator")
 end
 
 local function CheckForProfile(db, name)
